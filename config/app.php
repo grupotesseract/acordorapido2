@@ -178,6 +178,9 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         Yajra\Datatables\ButtonsServiceProvider::class,
 
+        //Entrust
+        Zizaco\Entrust\EntrustServiceProvider::class,
+
 
 
 
@@ -241,6 +244,8 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'Flash'     => Laracasts\Flash\Flash::class,
+
+        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
     ],
 
 ];
