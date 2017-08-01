@@ -6,3 +6,7 @@
     <a href="{!! route('empresas.index') !!}"><i class="fa fa-edit"></i><span>Empresas</span></a>
 </li>
 
+<li class="{{ Request::is('titulos*') ? 'active' : '' }}">
+    <a href="{!! route('titulos.index') !!}"><i class="fa fa-edit"></i><span>Titulos</span></a>
+</li>
+
