@@ -25,3 +25,5 @@ Route::resource('clientes', 'ClienteController');
 Route::resource('empresas', 'EmpresaController');
 
 Route::resource('titulos', 'TituloController');
+
+Route::resource('avisos', 'AvisoController');

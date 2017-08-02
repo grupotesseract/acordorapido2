@@ -10,3 +10,7 @@
     <a href="{!! route('titulos.index') !!}"><i class="fa fa-edit"></i><span>Titulos</span></a>
 </li>
 
+<li class="{{ Request::is('avisos*') ? 'active' : '' }}">
+    <a href="{!! route('avisos.index') !!}"><i class="fa fa-edit"></i><span>Avisos</span></a>
+</li>
+
