@@ -14,11 +14,11 @@ class EmpresaRepository extends BaseRepository
         'nome',
         'user_id',
         'cidade',
-        'estado'
+        'estado',
     ];
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {

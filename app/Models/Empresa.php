@@ -3,18 +3,15 @@
 namespace App\Models;
 
 use Eloquent as Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Empresa
- * @package App\Models
+ * Class Empresa.
  * @version August 1, 2017, 9:37 pm UTC
  */
 class Empresa extends Model
 {
-
     public $table = 'empresas';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -22,7 +19,7 @@ class Empresa extends Model
         'nome',
         'user_id',
         'cidade',
-        'estado'
+        'estado',
     ];
 
     /**
@@ -35,16 +32,16 @@ class Empresa extends Model
         'nome' => 'string',
         'user_id' => 'integer',
         'cidade' => 'string',
-        'estado' => 'string'
+        'estado' => 'string',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     /**
