@@ -20,8 +20,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class AvisosEnviado extends Model
 {
-    use SoftDeletes;
-
     public $table = 'avisos_enviados';
     
 
