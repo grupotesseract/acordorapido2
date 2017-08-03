@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Flash;
+use Response;
+use Illuminate\Http\Request;
+use App\Repositories\AvisoRepository;
 use App\Http\Requests\CreateAvisoRequest;
 use App\Http\Requests\UpdateAvisoRequest;
-use App\Repositories\AvisoRepository;
-use App\Http\Controllers\AppBaseController;
-use Illuminate\Http\Request;
-use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
-use Response;
 
 class AvisoController extends AppBaseController
 {
-    /** @var  AvisoRepository */
+    /** @var AvisoRepository */
     private $avisoRepository;
 
     public function __construct(AvisoRepository $avisoRepo)

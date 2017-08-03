@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Flash;
+use Response;
 use App\DataTables\AvisosEnviadoDataTable;
-use App\Http\Requests;
+use App\Repositories\AvisosEnviadoRepository;
 use App\Http\Requests\CreateAvisosEnviadoRequest;
 use App\Http\Requests\UpdateAvisosEnviadoRequest;
-use App\Repositories\AvisosEnviadoRepository;
-use Flash;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 class AvisosEnviadoController extends AppBaseController
 {
-    /** @var  AvisosEnviadoRepository */
+    /** @var AvisosEnviadoRepository */
     private $avisosEnviadoRepository;
 
     public function __construct(AvisosEnviadoRepository $avisosEnviadoRepo)

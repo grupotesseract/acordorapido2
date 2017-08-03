@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Flash;
+use Response;
 use App\DataTables\ModeloAvisoDataTable;
-use App\Http\Requests;
+use App\Repositories\ModeloAvisoRepository;
 use App\Http\Requests\CreateModeloAvisoRequest;
 use App\Http\Requests\UpdateModeloAvisoRequest;
-use App\Repositories\ModeloAvisoRepository;
-use Flash;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 class ModeloAvisoController extends AppBaseController
 {
-    /** @var  ModeloAvisoRepository */
+    /** @var ModeloAvisoRepository */
     private $modeloAvisoRepository;
 
     public function __construct(ModeloAvisoRepository $modeloAvisoRepo)

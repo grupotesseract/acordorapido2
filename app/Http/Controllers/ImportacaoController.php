@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Flash;
+use Response;
 use App\DataTables\ImportacaoDataTable;
-use App\Http\Requests;
+use App\Repositories\ImportacaoRepository;
 use App\Http\Requests\CreateImportacaoRequest;
 use App\Http\Requests\UpdateImportacaoRequest;
-use App\Repositories\ImportacaoRepository;
-use Flash;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 class ImportacaoController extends AppBaseController
 {
-    /** @var  ImportacaoRepository */
+    /** @var ImportacaoRepository */
     private $importacaoRepository;
 
     public function __construct(ImportacaoRepository $importacaoRepo)

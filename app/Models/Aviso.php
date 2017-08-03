@@ -6,8 +6,7 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Aviso
- * @package App\Models
+ * Class Aviso.
  * @version August 2, 2017, 11:09 pm UTC
  *
  * @method static Aviso find($id=null, $columns = array())
@@ -17,10 +16,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Illuminate\Database\Eloquent\Collection Cliente
  * @property string titulo
  * @property string texto
- * @property integer user_id
- * @property integer cliente_id
- * @property integer titulo_id
- * @property integer status
+ * @property int user_id
+ * @property int cliente_id
+ * @property int titulo_id
+ * @property int status
  * @property string estado
  */
 class Aviso extends Model
@@ -28,10 +27,8 @@ class Aviso extends Model
     use SoftDeletes;
 
     public $table = 'avisos';
-    
 
     protected $dates = ['deleted_at'];
-
 
     public $fillable = [
         'titulo',
@@ -40,7 +37,7 @@ class Aviso extends Model
         'cliente_id',
         'titulo_id',
         'status',
-        'estado'
+        'estado',
     ];
 
     /**
@@ -56,16 +53,16 @@ class Aviso extends Model
         'cliente_id' => 'integer',
         'titulo_id' => 'integer',
         'status' => 'integer',
-        'estado' => 'string'
+        'estado' => 'string',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     /**

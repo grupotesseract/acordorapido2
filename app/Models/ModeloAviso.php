@@ -6,14 +6,13 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class ModeloAviso
- * @package App\Models
+ * Class ModeloAviso.
  * @version August 3, 2017, 1:17 am UTC
  *
  * @method static ModeloAviso find($id=null, $columns = array())
  * @method static ModeloAviso|\Illuminate\Database\Eloquent\Collection findOrFail($id, $columns = ['*'])
- * @property integer user_id
- * @property integer empresa_id
+ * @property int user_id
+ * @property int empresa_id
  * @property string titulo
  * @property string mensagem
  */
@@ -22,16 +21,14 @@ class ModeloAviso extends Model
     use SoftDeletes;
 
     public $table = 'modelo_avisos';
-    
 
     protected $dates = ['deleted_at'];
-
 
     public $fillable = [
         'user_id',
         'empresa_id',
         'titulo',
-        'mensagem'
+        'mensagem',
     ];
 
     /**
@@ -44,17 +41,15 @@ class ModeloAviso extends Model
         'user_id' => 'integer',
         'empresa_id' => 'integer',
         'titulo' => 'string',
-        'mensagem' => 'string'
+        'mensagem' => 'string',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
-        
-    ];
 
-    
+    ];
 }

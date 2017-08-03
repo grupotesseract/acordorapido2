@@ -6,14 +6,13 @@ use App\Models\AvisosEnviado;
 use InfyOm\Generator\Common\BaseRepository;
 
 /**
- * Class AvisosEnviadoRepository
- * @package App\Repositories
+ * Class AvisosEnviadoRepository.
  * @version August 3, 2017, 12:29 am UTC
  *
  * @method AvisosEnviado findWithoutFail($id, $columns = ['*'])
  * @method AvisosEnviado find($id, $columns = ['*'])
  * @method AvisosEnviado first($columns = ['*'])
-*/
+ */
 class AvisosEnviadoRepository extends BaseRepository
 {
     /**
@@ -24,11 +23,11 @@ class AvisosEnviadoRepository extends BaseRepository
         'aviso_id',
         'tipodeaviso',
         'status',
-        'estado'
+        'estado',
     ];
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {
