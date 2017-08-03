@@ -31,3 +31,5 @@ Route::resource('avisos', 'AvisoController');
 Route::resource('avisosEnviados', 'AvisosEnviadoController');
 
 Route::resource('importacaos', 'ImportacaoController');
+
+Route::resource('modeloAvisos', 'ModeloAvisoController');

@@ -22,3 +22,7 @@
     <a href="{!! route('importacaos.index') !!}"><i class="fa fa-edit"></i><span>Importacaos</span></a>
 </li>
 
+<li class="{{ Request::is('modeloAvisos*') ? 'active' : '' }}">
+    <a href="{!! route('modeloAvisos.index') !!}"><i class="fa fa-edit"></i><span>ModeloAvisos</span></a>
+</li>
+
