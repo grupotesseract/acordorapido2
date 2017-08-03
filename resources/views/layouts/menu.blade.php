@@ -14,3 +14,7 @@
     <a href="{!! route('avisos.index') !!}"><i class="fa fa-edit"></i><span>Avisos</span></a>
 </li>
 
+<li class="{{ Request::is('avisosEnviados*') ? 'active' : '' }}">
+    <a href="{!! route('avisosEnviados.index') !!}"><i class="fa fa-edit"></i><span>AvisosEnviados</span></a>
+</li>
+
