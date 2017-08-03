@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Flash;
+use Response;
 use App\DataTables\ClienteDataTable;
-use App\Http\Requests;
+use App\Repositories\ClienteRepository;
 use App\Http\Requests\CreateClienteRequest;
 use App\Http\Requests\UpdateClienteRequest;
-use App\Repositories\ClienteRepository;
-use Flash;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 class ClienteController extends AppBaseController
 {
-    /** @var  ClienteRepository */
+    /** @var ClienteRepository */
     private $clienteRepository;
 
     public function __construct(ClienteRepository $clienteRepo)
