@@ -29,3 +29,5 @@ Route::resource('titulos', 'TituloController');
 Route::resource('avisos', 'AvisoController');
 
 Route::resource('avisosEnviados', 'AvisosEnviadoController');
+
+Route::resource('importacaos', 'ImportacaoController');

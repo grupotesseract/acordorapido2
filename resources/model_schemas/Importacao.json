@@ -1,7 +1,7 @@
 [
     {
         "name": "id",
-        "dbType": "integer",
+        "dbType": "integer,true",
         "htmlType": null,
         "validations": null,
         "searchable": false,
@@ -44,7 +44,7 @@
         "inIndex": false
     },
     {
-        "name": "aviso_id",
+        "name": "empresa_id",
         "dbType": "integer",
         "htmlType": null,
         "validations": null,
@@ -55,29 +55,7 @@
         "inIndex": true
     },
     {
-        "name": "tipodeaviso",
-        "dbType": "integer:default,0",
-        "htmlType": null,
-        "validations": null,
-        "searchable": true,
-        "fillable": true,
-        "primary": false,
-        "inForm": true,
-        "inIndex": true
-    },
-    {
-        "name": "status",
-        "dbType": "integer:default,0",
-        "htmlType": null,
-        "validations": null,
-        "searchable": true,
-        "fillable": true,
-        "primary": false,
-        "inForm": true,
-        "inIndex": true
-    },
-    {
-        "name": "estado",
+        "name": "modulo",
         "dbType": "string",
         "htmlType": "text",
         "validations": null,

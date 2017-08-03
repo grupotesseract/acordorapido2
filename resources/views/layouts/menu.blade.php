@@ -18,3 +18,7 @@
     <a href="{!! route('avisosEnviados.index') !!}"><i class="fa fa-edit"></i><span>AvisosEnviados</span></a>
 </li>
 
+<li class="{{ Request::is('importacaos*') ? 'active' : '' }}">
+    <a href="{!! route('importacaos.index') !!}"><i class="fa fa-edit"></i><span>Importacaos</span></a>
+</li>
+
