@@ -3,12 +3,10 @@
 namespace App\DataTables;
 
 use App\Models\Importacao;
-use Form;
 use Yajra\Datatables\Services\DataTable;
 
 class ImportacaoDataTable extends DataTable
 {
-
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -59,8 +57,8 @@ class ImportacaoDataTable extends DataTable
                              'pdf',
                          ],
                     ],
-                    'colvis'
-                ]
+                    'colvis',
+                ],
             ]);
     }
 
@@ -74,7 +72,7 @@ class ImportacaoDataTable extends DataTable
         return [
             'user_id' => ['name' => 'user_id', 'data' => 'user_id'],
             'empresa_id' => ['name' => 'empresa_id', 'data' => 'empresa_id'],
-            'modulo' => ['name' => 'modulo', 'data' => 'modulo']
+            'modulo' => ['name' => 'modulo', 'data' => 'modulo'],
         ];
     }
 

@@ -5,14 +5,13 @@ namespace App\Models;
 use Eloquent as Model;
 
 /**
- * Class Cliente
- * @package App\Models
+ * Class Cliente.
  * @version August 1, 2017, 9:17 pm UTC
  */
 class Cliente extends Model
 {
     public $table = 'clientes';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -26,7 +25,7 @@ class Cliente extends Model
         'telefone',
         'telefone2',
         'celular2',
-        'rg'
+        'rg',
     ];
 
     /**
@@ -45,16 +44,16 @@ class Cliente extends Model
         'telefone' => 'string',
         'telefone2' => 'string',
         'celular2' => 'string',
-        'rg' => 'string'
+        'rg' => 'string',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     /**

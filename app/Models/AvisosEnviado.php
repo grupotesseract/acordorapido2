@@ -3,35 +3,31 @@
 namespace App\Models;
 
 use Eloquent as Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class AvisosEnviado
- * @package App\Models
+ * Class AvisosEnviado.
  * @version August 3, 2017, 12:29 am UTC
  *
  * @method static AvisosEnviado find($id=null, $columns = array())
  * @method static AvisosEnviado|\Illuminate\Database\Eloquent\Collection findOrFail($id, $columns = ['*'])
- * @property integer user_id
- * @property integer aviso_id
- * @property integer tipodeaviso
- * @property integer status
+ * @property int user_id
+ * @property int aviso_id
+ * @property int tipodeaviso
+ * @property int status
  * @property string estado
  */
 class AvisosEnviado extends Model
 {
     public $table = 'avisos_enviados';
-    
 
     protected $dates = ['deleted_at'];
-
 
     public $fillable = [
         'user_id',
         'aviso_id',
         'tipodeaviso',
         'status',
-        'estado'
+        'estado',
     ];
 
     /**
@@ -45,17 +41,15 @@ class AvisosEnviado extends Model
         'aviso_id' => 'integer',
         'tipodeaviso' => 'integer',
         'status' => 'integer',
-        'estado' => 'string'
+        'estado' => 'string',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
-        
-    ];
 
-    
+    ];
 }

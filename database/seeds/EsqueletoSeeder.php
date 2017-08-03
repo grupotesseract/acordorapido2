@@ -18,20 +18,20 @@ class EsqueletoSeeder extends Seeder
             // Criando usuário para aluno, escola e admin
             $userAluno = factory(App\Models\User::class)->create([
                 'name' => 'Evandro Carreira',
-                'email' => 'evandro.carreira@gmail.com',                     
-                'password' => bcrypt(env('ADMIN_PWD', '123321'))
+                'email' => 'evandro.carreira@gmail.com',
+                'password' => bcrypt(env('ADMIN_PWD', '123321')),
             ]);
 
             $userEscola = factory(App\Models\User::class)->create([
                 'name' => 'Escola Teste',
-                'email' => 'toledo@ite.edu.br',                     
-                'password' => bcrypt(env('ADMIN_PWD', '123321'))
+                'email' => 'toledo@ite.edu.br',
+                'password' => bcrypt(env('ADMIN_PWD', '123321')),
             ]);
 
             $userAdmin = factory(App\Models\User::class)->create([
                 'name' => 'Edilson Alexandre',
-                'email' => 'edilson.bauru@gmail.com',                     
-                'password' => bcrypt(env('ADMIN_PWD', '123321'))
+                'email' => 'edilson.bauru@gmail.com',
+                'password' => bcrypt(env('ADMIN_PWD', '123321')),
             ]);
 
             // Criando entidades de aluno e escola e associando o user
@@ -60,7 +60,7 @@ class EsqueletoSeeder extends Seeder
             $admin->display_name = 'Admin do sistema';
             $admin->description = 'Usuário autorizado a excluir, editar e incluir alunos, escolas e novos usuários';
             $admin->save();
-            
+
             $aluno = new App\Models\Role();
             $aluno->name = 'aluno';
             $aluno->display_name = 'Usuário Aluno';
@@ -71,14 +71,13 @@ class EsqueletoSeeder extends Seeder
             $userAluno->attachRole($aluno);
             $userEscola->attachRole($escola);
             $userAdmin->attachRole($admin);
-
         } catch (\Illuminate\Database\QueryException $exception) {
             dd($exception->getMessage());
             echo 'erro';
         }
     }
 
-    private function seedUsers() 
+    private function seedUsers()
     {
     }
 }

@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Flash;
+use Response;
 use App\DataTables\TituloDataTable;
-use App\Http\Requests;
+use App\Repositories\TituloRepository;
 use App\Http\Requests\CreateTituloRequest;
 use App\Http\Requests\UpdateTituloRequest;
-use App\Repositories\TituloRepository;
-use Flash;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 class TituloController extends AppBaseController
 {
-    /** @var  TituloRepository */
+    /** @var TituloRepository */
     private $tituloRepository;
 
     public function __construct(TituloRepository $tituloRepo)

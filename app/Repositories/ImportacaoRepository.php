@@ -6,14 +6,13 @@ use App\Models\Importacao;
 use InfyOm\Generator\Common\BaseRepository;
 
 /**
- * Class ImportacaoRepository
- * @package App\Repositories
+ * Class ImportacaoRepository.
  * @version August 3, 2017, 1:06 am UTC
  *
  * @method Importacao findWithoutFail($id, $columns = ['*'])
  * @method Importacao find($id, $columns = ['*'])
  * @method Importacao first($columns = ['*'])
-*/
+ */
 class ImportacaoRepository extends BaseRepository
 {
     /**
@@ -22,11 +21,11 @@ class ImportacaoRepository extends BaseRepository
     protected $fieldSearchable = [
         'user_id',
         'empresa_id',
-        'modulo'
+        'modulo',
     ];
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {

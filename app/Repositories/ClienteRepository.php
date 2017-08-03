@@ -20,11 +20,11 @@ class ClienteRepository extends BaseRepository
         'telefone',
         'telefone2',
         'celular2',
-        'rg'
+        'rg',
     ];
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {

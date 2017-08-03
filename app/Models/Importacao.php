@@ -6,14 +6,13 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Importacao
- * @package App\Models
+ * Class Importacao.
  * @version August 3, 2017, 1:06 am UTC
  *
  * @method static Importacao find($id=null, $columns = array())
  * @method static Importacao|\Illuminate\Database\Eloquent\Collection findOrFail($id, $columns = ['*'])
- * @property integer user_id
- * @property integer empresa_id
+ * @property int user_id
+ * @property int empresa_id
  * @property string modulo
  */
 class Importacao extends Model
@@ -21,15 +20,13 @@ class Importacao extends Model
     use SoftDeletes;
 
     public $table = 'importacoes';
-    
 
     protected $dates = ['deleted_at'];
-
 
     public $fillable = [
         'user_id',
         'empresa_id',
-        'modulo'
+        'modulo',
     ];
 
     /**
@@ -41,17 +38,15 @@ class Importacao extends Model
         'id' => 'integer',
         'user_id' => 'integer',
         'empresa_id' => 'integer',
-        'modulo' => 'string'
+        'modulo' => 'string',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
-        
-    ];
 
-    
+    ];
 }

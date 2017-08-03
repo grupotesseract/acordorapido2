@@ -6,14 +6,13 @@ use App\Models\Aviso;
 use InfyOm\Generator\Common\BaseRepository;
 
 /**
- * Class AvisoRepository
- * @package App\Repositories
+ * Class AvisoRepository.
  * @version August 2, 2017, 11:09 pm UTC
  *
  * @method Aviso findWithoutFail($id, $columns = ['*'])
  * @method Aviso find($id, $columns = ['*'])
  * @method Aviso first($columns = ['*'])
-*/
+ */
 class AvisoRepository extends BaseRepository
 {
     /**
@@ -26,11 +25,11 @@ class AvisoRepository extends BaseRepository
         'cliente_id',
         'titulo_id',
         'status',
-        'estado'
+        'estado',
     ];
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {
