@@ -18,11 +18,11 @@ class TituloRepository extends BaseRepository
         'vencimento',
         'valor',
         'titulo',
-        'importacao_id'
+        'importacao_id',
     ];
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {

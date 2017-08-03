@@ -3,12 +3,10 @@
 namespace App\DataTables;
 
 use App\Models\Empresa;
-use Form;
 use Yajra\Datatables\Services\DataTable;
 
 class EmpresaDataTable extends DataTable
 {
-
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -59,8 +57,8 @@ class EmpresaDataTable extends DataTable
                              'pdf',
                          ],
                     ],
-                    'colvis'
-                ]
+                    'colvis',
+                ],
             ]);
     }
 
@@ -75,7 +73,7 @@ class EmpresaDataTable extends DataTable
             'nome' => ['name' => 'nome', 'data' => 'nome'],
             'user_id' => ['name' => 'user_id', 'data' => 'user_id'],
             'cidade' => ['name' => 'cidade', 'data' => 'cidade'],
-            'estado' => ['name' => 'estado', 'data' => 'estado']
+            'estado' => ['name' => 'estado', 'data' => 'estado'],
         ];
     }
 
