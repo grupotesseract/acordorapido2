@@ -3,17 +3,15 @@
 namespace App\Models;
 
 use Eloquent as Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Titulo
- * @package App\Models
+ * Class Titulo.
  * @version August 1, 2017, 9:42 pm UTC
  */
 class Titulo extends Model
 {
     public $table = 'titulos';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
@@ -25,7 +23,7 @@ class Titulo extends Model
         'vencimento',
         'valor',
         'titulo',
-        'importacao_id'
+        'importacao_id',
     ];
 
     /**
@@ -41,16 +39,16 @@ class Titulo extends Model
         'pago' => 'boolean',
         'vencimento' => 'date',
         'titulo' => 'string',
-        'importacao_id' => 'integer'
+        'importacao_id' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     /**

@@ -3,12 +3,10 @@
 namespace App\DataTables;
 
 use App\Models\Titulo;
-use Form;
 use Yajra\Datatables\Services\DataTable;
 
 class TituloDataTable extends DataTable
 {
-
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -59,8 +57,8 @@ class TituloDataTable extends DataTable
                              'pdf',
                          ],
                     ],
-                    'colvis'
-                ]
+                    'colvis',
+                ],
             ]);
     }
 
@@ -79,7 +77,7 @@ class TituloDataTable extends DataTable
             'vencimento' => ['name' => 'vencimento', 'data' => 'vencimento'],
             'valor' => ['name' => 'valor', 'data' => 'valor'],
             'titulo' => ['name' => 'titulo', 'data' => 'titulo'],
-            'importacao_id' => ['name' => 'importacao_id', 'data' => 'importacao_id']
+            'importacao_id' => ['name' => 'importacao_id', 'data' => 'importacao_id'],
         ];
     }
 
