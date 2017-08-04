@@ -13,7 +13,7 @@ class Cliente extends Model
     public $table = 'clientes';
 
     /**
-     * The attributes that should be treated as \Carbon\Carbon instances
+     * The attributes that should be treated as \Carbon\Carbon instances.
      *
      * @var array
      */

@@ -13,7 +13,7 @@ class Empresa extends Model
     public $table = 'empresas';
 
     /**
-     * The attributes that should be treated as \Carbon\Carbon instances
+     * The attributes that should be treated as \Carbon\Carbon instances.
      *
      * @var array
      */
