@@ -10,11 +10,12 @@ use Eloquent as Model;
  */
 class Titulo extends Model
 {
-    public $table = 'titulos';
 
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     public $fillable = [
         'estado',
         'cliente_id',
@@ -70,9 +71,9 @@ class Titulo extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
-    public function importaco()
+    public function importacoes()
     {
-        return $this->belongsTo(\App\Models\Importaco::class);
+        return $this->belongsTo(\App\Models\Importacao::class);
     }
 
     /**
@@ -82,4 +83,92 @@ class Titulo extends Model
     {
         return $this->hasMany(\App\Models\Aviso::class);
     }
+
+
+    /**
+     * Atribui pago para todos os que não foram importados no módulo Verde.
+     */
+    public function ficaPago($obj)
+    {
+        $titulo = self::find($obj->id);
+        $titulo->estado = 'verde';
+        $titulo->save();
+
+        $user = $titulo->cliente->user;
+        // Envia o SMS
+        // @todo
+    }
+
+    /**
+     * scopePorEstado - Titulos por estado
+     * ['azul', 'verde', 'amarelo', 'vermelho']
+     *
+     * @param mixed $query
+     * @param mixed $valor
+     */
+    public function scopePorEstado($query, $valor)
+    {
+        return $query->where('estado', $valor);
+    }
+
+    /**
+     * scopePagos - Scope para facilitar a query pelos Titulos pagos
+     *
+     * @param mixed $query
+     */
+    public function scopePagos($query)
+    {
+        return $query->where('pago', true);
+    }
+
+    /**
+     * scopeAzuis Facilitar query dois titulos Azuis
+     *
+     * @param mixed $query
+     */
+    public function scopeAzuis($query)
+    {
+        return $query->where('estado', 'azul');
+    }
+
+    /**
+     * scopeVerdes Facilitar query dois titulos Verdes
+     *
+     * @param mixed $query
+     */
+    public function scopeVerdes($query)
+    {
+        return $query->where('estado', 'verde');
+    }
+
+    /**
+     * scopeAmarelos Facilitar query dois titulos Amarelos
+     *
+     * @param mixed $query
+     */
+    public function scopeAmarelos($query)
+    {
+        return $query->where('estado', 'amarelo');
+    }
+
+    /**
+     * scopeCinzas Facilitar query dois titulos Cinzas
+     *
+     * @param mixed $query
+     */
+    public function scopeVermelhos($query)
+    {
+        return $query->where('estado', 'vermelho');
+    }
+
+    /**
+     * scopeCinzas Facilitar query dois titulos Cinza
+     *
+     * @param mixed $query
+     */
+    public function scopeCinzas($query)
+    {
+        return $query->where('estado', 'cinza');
+    }
+    
 }

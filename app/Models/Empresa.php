@@ -12,9 +12,18 @@ class Empresa extends Model
 {
     public $table = 'empresas';
 
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
+    /**
+     * The attributes that should be treated as \Carbon\Carbon instances
+     *
+     * @var array
+     */
+    protected $dates = ['created_at', 'updated_at'];
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     public $fillable = [
         'nome',
         'user_id',

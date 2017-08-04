@@ -22,8 +22,18 @@ class ModeloAviso extends Model
 
     public $table = 'modelo_avisos';
 
-    protected $dates = ['deleted_at'];
+    /**
+     * The attributes that should be treated as \Carbon\Carbon instances
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at', 'created_at', 'updated_at'];
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     public $fillable = [
         'user_id',
         'empresa_id',
@@ -52,4 +62,22 @@ class ModeloAviso extends Model
     public static $rules = [
 
     ];
+
+    
+    /**
+     * Retorna a Empresa a qual esse ModeloAviso esta relacionado
+     */
+    public function empresa()
+    {
+        return $this->belongsTo('App\Models\Empresa');
+    }
+
+    /**
+     * Retorna o User a qual esse ModeloAviso esta relacionado
+     */
+    public function usuario()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
 }

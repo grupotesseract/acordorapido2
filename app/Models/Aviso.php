@@ -28,8 +28,18 @@ class Aviso extends Model
 
     public $table = 'avisos';
 
-    protected $dates = ['deleted_at'];
+    /**
+     * The attributes that should be treated as \Carbon\Carbon instances
+     *
+     * @var array
+     */
+    protected $dates = ['created_at', 'updated_at'];
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     public $fillable = [
         'titulo',
         'texto',
@@ -88,4 +98,13 @@ class Aviso extends Model
     {
         return $this->hasMany(\App\Models\Cliente::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function avisosenviados()
+    {
+        return $this->hasMany(\App\Models\AvisoEnviado::class);
+    }
+    
 }
