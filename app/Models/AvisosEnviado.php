@@ -16,7 +16,7 @@ use Eloquent as Model;
  * @property int status
  * @property string estado
  */
-class AvisoEnviado extends Model
+class AvisosEnviado extends Model
 {
     public $table = 'avisos_enviados';
 
