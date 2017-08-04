@@ -29,7 +29,7 @@ class Aviso extends Model
     public $table = 'avisos';
 
     /**
-     * The attributes that should be treated as \Carbon\Carbon instances
+     * The attributes that should be treated as \Carbon\Carbon instances.
      *
      * @var array
      */
@@ -106,5 +106,4 @@ class Aviso extends Model
     {
         return $this->hasMany(\App\Models\AvisoEnviado::class);
     }
-    
 }

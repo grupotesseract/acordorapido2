@@ -12,7 +12,7 @@ class User extends Authenticatable
     use EntrustUserTrait;
 
     /**
-     * The attributes that should be treated as \Carbon\Carbon instances
+     * The attributes that should be treated as \Carbon\Carbon instances.
      *
      * @var array
      */
@@ -61,7 +61,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Importacoes feitas por esse usuario
+     * Importacoes feitas por esse usuario.
      */
     public function importacoes()
     {

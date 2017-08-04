@@ -21,7 +21,7 @@ class AvisosEnviado extends Model
     public $table = 'avisos_enviados';
 
     /**
-     * The attributes that should be treated as \Carbon\Carbon instances
+     * The attributes that should be treated as \Carbon\Carbon instances.
      *
      * @var array
      */
@@ -64,7 +64,7 @@ class AvisosEnviado extends Model
     ];
 
     /**
-     * Retorna o Aviso a qual esse AvisoEnviado esta associado
+     * Retorna o Aviso a qual esse AvisoEnviado esta associado.
      */
     public function aviso()
     {
@@ -72,7 +72,7 @@ class AvisosEnviado extends Model
     }
 
     /**
-     * Retorna o usuario assoaciado a esse AvisoEnviado
+     * Retorna o usuario assoaciado a esse AvisoEnviado.
      */
     public function user()
     {
@@ -81,7 +81,7 @@ class AvisosEnviado extends Model
 
     /**
      * scopePorEstado - Titulos por estado
-     * ['azul', 'verde', 'amarelo', 'vermelho']
+     * ['azul', 'verde', 'amarelo', 'vermelho'].
      *
      * @param mixed $query
      * @param mixed $valor
@@ -90,9 +90,9 @@ class AvisosEnviado extends Model
     {
         return $query->where('estado', $valor);
     }
-    
+
     /**
-     * Scope para pegar os de tipodeaviso SMS (0)
+     * Scope para pegar os de tipodeaviso SMS (0).
      *
      * @param mixed $query
      */
@@ -102,7 +102,7 @@ class AvisosEnviado extends Model
     }
 
     /**
-     * Scope para pegar os de tipodeaviso Ligacao telefonica (1)
+     * Scope para pegar os de tipodeaviso Ligacao telefonica (1).
      *
      * @param mixed $query
      */
@@ -110,5 +110,4 @@ class AvisosEnviado extends Model
     {
         return $query->where('tipodeaviso', 1);
     }
-
 }

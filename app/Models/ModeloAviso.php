@@ -23,7 +23,7 @@ class ModeloAviso extends Model
     public $table = 'modelo_avisos';
 
     /**
-     * The attributes that should be treated as \Carbon\Carbon instances
+     * The attributes that should be treated as \Carbon\Carbon instances.
      *
      * @var array
      */
@@ -63,9 +63,8 @@ class ModeloAviso extends Model
 
     ];
 
-    
     /**
-     * Retorna a Empresa a qual esse ModeloAviso esta relacionado
+     * Retorna a Empresa a qual esse ModeloAviso esta relacionado.
      */
     public function empresa()
     {
@@ -73,11 +72,10 @@ class ModeloAviso extends Model
     }
 
     /**
-     * Retorna o User a qual esse ModeloAviso esta relacionado
+     * Retorna o User a qual esse ModeloAviso esta relacionado.
      */
     public function usuario()
     {
         return $this->belongsTo('App\Models\User');
     }
-
 }

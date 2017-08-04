@@ -10,7 +10,6 @@ use Eloquent as Model;
  */
 class Titulo extends Model
 {
-
     /**
      * The attributes that are mass assignable.
      *
@@ -84,7 +83,6 @@ class Titulo extends Model
         return $this->hasMany(\App\Models\Aviso::class);
     }
 
-
     /**
      * Atribui pago para todos os que não foram importados no módulo Verde.
      */
@@ -101,7 +99,7 @@ class Titulo extends Model
 
     /**
      * scopePorEstado - Titulos por estado
-     * ['azul', 'verde', 'amarelo', 'vermelho']
+     * ['azul', 'verde', 'amarelo', 'vermelho'].
      *
      * @param mixed $query
      * @param mixed $valor
@@ -112,7 +110,7 @@ class Titulo extends Model
     }
 
     /**
-     * scopePagos - Scope para facilitar a query pelos Titulos pagos
+     * scopePagos - Scope para facilitar a query pelos Titulos pagos.
      *
      * @param mixed $query
      */
@@ -122,7 +120,7 @@ class Titulo extends Model
     }
 
     /**
-     * scopeAzuis Facilitar query dois titulos Azuis
+     * scopeAzuis Facilitar query dois titulos Azuis.
      *
      * @param mixed $query
      */
@@ -132,7 +130,7 @@ class Titulo extends Model
     }
 
     /**
-     * scopeVerdes Facilitar query dois titulos Verdes
+     * scopeVerdes Facilitar query dois titulos Verdes.
      *
      * @param mixed $query
      */
@@ -142,7 +140,7 @@ class Titulo extends Model
     }
 
     /**
-     * scopeAmarelos Facilitar query dois titulos Amarelos
+     * scopeAmarelos Facilitar query dois titulos Amarelos.
      *
      * @param mixed $query
      */
@@ -152,7 +150,7 @@ class Titulo extends Model
     }
 
     /**
-     * scopeCinzas Facilitar query dois titulos Cinzas
+     * scopeCinzas Facilitar query dois titulos Cinzas.
      *
      * @param mixed $query
      */
@@ -162,7 +160,7 @@ class Titulo extends Model
     }
 
     /**
-     * scopeCinzas Facilitar query dois titulos Cinza
+     * scopeCinzas Facilitar query dois titulos Cinza.
      *
      * @param mixed $query
      */
@@ -170,5 +168,4 @@ class Titulo extends Model
     {
         return $query->where('estado', 'cinza');
     }
-    
 }
