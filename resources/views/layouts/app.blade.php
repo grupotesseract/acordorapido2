@@ -87,7 +87,7 @@
     </div>
 
     <!-- Main Footer -->
-    <footer class="main-footer" style="max-height: 40px;text-align: center">
+    <footer class="main-footer" style="max-height: 100px;text-align: center">
         <strong>Copyleft 2018 <a href="http://grupotesseract.com.br" target="_blank">Grupo Tesseract</a>.</strong> 
     </footer>
 
