@@ -1,9 +1,9 @@
 <!-- Optionally, you can add icons to the links -->
-<li class="active"><a href="{{ url('home') }}"><i class='glyphicon glyphicon-home'></i> <span>{{ trans('message.home') }}</span></a></li>
+<li class="{{ Request::is('home*') ? 'active' : '' }}"><a href="{{ url('home') }}"><i class='glyphicon glyphicon-home'></i> <span>{{ trans('message.home') }}</span></a></li>
 
 @role('admin')
-<li class="active"><a href="{{ url('dashboard') }}"><i class='glyphicon glyphicon-dashboard'></i> <span>Estatísticas</span></a></li>
-<li class="treeview">
+<li class="{{ Request::is('dashboard*') ? 'active' : '' }}"><a href="{{ url('dashboard') }}"><i class='glyphicon glyphicon-dashboard'></i> <span>Estatísticas</span></a></li>
+<li class="{{ Request::is('escolas*') || Request::is('alunos*') ? 'active' : '' }} treeview">
     <a href="#"><i class='glyphicon glyphicon-th-list'></i> <span>Cadastros</span><i class="fa fa-angle-left pull-right"></i></a>
     <ul class="treeview-menu">
         <li><a href="{{ url('escolas') }}"><i class='glyphicon glyphicon-education'></i>Escolas</a></li>
@@ -21,7 +21,7 @@
         </li>
     </ul>
 </li>
-<li class="treeview">
+<li class="{{ Request::is('importacao*') ? 'active' : '' }} treeview">
     <a href="#"><i class='glyphicon glyphicon-import'></i> <span>Importações</span> <i class="fa fa-angle-left pull-right"></i></a>
     <ul class="treeview-menu">
         <li><a href="{{url('importacao/azul')}}"><label class="label label-modulo-azul"> <span aria-hidden="true" class="glyphicon glyphicon-envelope"></span></label> Preventiva</a></li>
@@ -30,7 +30,7 @@
         <li><a href="{{url('importacao/vermelho')}}"><label class="label label-modulo-vermelho"> <span aria-hidden="true" class="glyphicon glyphicon-alert"></span></label> Cobrança</a></li>
     </ul>
 </li>
-<li class="treeview">
+<li class="{{ Request::is('titulos*') ? 'active' : '' }} treeview">
     <a href="#"><i class='glyphicon glyphicon-th-large'></i> <span>Módulos</span> <i class="fa fa-angle-left pull-right"></i></a>
     <ul class="treeview-menu">
         <li><a href="{{url('titulos/modulo/azul')}}"><label class="label label-modulo-azul"> <span aria-hidden="true" class="glyphicon glyphicon-envelope"></span></label> Prevenção</a></li>
@@ -40,7 +40,7 @@
 
     </ul>
 </li>
-<li class="treeview">
+<li class="{{ Request::is('avisos*') ? 'active' : '' }} treeview">
     <a href="#"><i class='glyphicon glyphicon-comment'></i> <span>Avisos</span><i class="fa fa-angle-left pull-right"></i></a>
     <ul class="treeview-menu">
         <li><a href="{{ url('avisos') }}">Avisos</a></li>
