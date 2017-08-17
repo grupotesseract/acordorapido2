@@ -1,4 +1,5 @@
 (function ($, DataTable) {
+
     "use strict";
 
     var _buildUrl = function(dt, action) {
@@ -32,7 +33,7 @@
         className: 'buttons-export',
 
         text: function (dt) {
-            return '<i class="fa fa-download"></i> ' + dt.i18n('buttons.export', 'Export') + '&nbsp;<span class="caret"/>';
+            return '<i class="fa fa-download"></i> ' + dt.i18n('buttons.export', 'Exportar') + '&nbsp;<span class="caret"/>';
         },
 
         buttons: ['csv', 'excel', 'pdf']
