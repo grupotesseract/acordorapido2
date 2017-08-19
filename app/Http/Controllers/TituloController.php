@@ -2,29 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Flash;
+use Redirect;
 use Response;
-use App\DataTables\TituloDataTable;
-use App\Repositories\TituloRepository;
-use App\Http\Requests\CreateTituloRequest;
-use App\Http\Requests\UpdateTituloRequest;
-
-use App\Models\Aviso;
+use Illuminate\Http\Request;
+use App\Models\Titulo as Titulo;
 use App\Models\Cliente as Cliente;
 use App\Models\Empresa as Empresa;
-
-use App\Models\Importacao as Importacao;
-use App\Models\Repositories\AvisoRepository;
-
-use App\Models\Repositories\ModeloAvisoRepository;
-use App\Models\Titulo as Titulo;
-use App\Validators\TituloValidator;
-use Auth;
-use Illuminate\Http\Request;
+use App\DataTables\TituloDataTable;
 use Maatwebsite\Excel\Facades\Excel;
-use Prettus\Validator\Contracts\ValidatorInterface;
-use Prettus\Validator\Exceptions\ValidatorException;
-use Redirect;
+use App\Repositories\TituloRepository;
+use App\Models\Importacao as Importacao;
+use App\Http\Requests\CreateTituloRequest;
+use App\Http\Requests\UpdateTituloRequest;
 
 class TituloController extends AppBaseController
 {
@@ -164,11 +155,10 @@ class TituloController extends AppBaseController
         return redirect(route('titulos.index'));
     }
 
-
     /**
-     * View para a importação
+     * View para a importação.
      * @param  string $estado Estado para o qual vai fazer importação
-     * @return void         
+     * @return void
      */
     public function importacao($estado)
     {
@@ -177,9 +167,8 @@ class TituloController extends AppBaseController
         return view('importacaos.importar')->with(['estado'=> $estado, 'escolas' => $escolas]);
     }
 
-
     /**
-     * Importação da Planilha
+     * Importação da Planilha.
      * @param  TituloCreateRequest $request validação da Request
      * @param  string              $estado  Estado do Título (cor)
      * @return void                View com as importações feitas
@@ -191,9 +180,9 @@ class TituloController extends AppBaseController
         $empresa_id = $request->escola;
 
         //TODO - AQUI DEVE SER PARAMETRIZADO A MENSAGEM POR ESTADO E ESCOLA
-        $retorno = $this->modeloAvisoRepository->parametrizaAviso($estado,$empresa_id);
+        $retorno = $this->modeloAvisoRepository->parametrizaAviso($estado, $empresa_id);
 
-        if (!$retorno) {
+        if (! $retorno) {
             \Session::flash('flash_message_error', true);
             \Session::flash('flash_message', 'Antes de efetuar uma importação, você deve cadastrar os avisos que serão enviados para essa escola! Vá em Avisos->Modelo de Avisos');
 
@@ -201,7 +190,7 @@ class TituloController extends AppBaseController
             exit;
         }
 
-        $titulos_importados = array();
+        $titulos_importados = [];
 
         Excel::load($request->file('excel'), function ($reader) use ($estado,$empresa_id,$importacao_id,&$titulos_importados,$retorno) {
             $reader->each(function ($sheet) use ($estado,$empresa_id,$importacao_id,&$titulos_importados,$retorno) {
@@ -237,9 +226,8 @@ class TituloController extends AppBaseController
 
                 $user_id = Auth::id();
                 $escola = Empresa::find($empresa_id)->nome;
-                
-                
-                if (count($this->avisoRepository->findWhere(['titulo_id'  => $titulo->id,'estado' => $estado])->toArray()) == 0) {                    
+
+                if (count($this->avisoRepository->findWhere(['titulo_id'  => $titulo->id, 'estado' => $estado])->toArray()) == 0) {
                     $this->avisoRepository->create(
                         [
                             'tituloaviso' => $retorno['titulo'],
@@ -257,15 +245,16 @@ class TituloController extends AppBaseController
         });
 
         //TODO: CONFIRMAR COM EDILSON
-        if ($estado == 'verde' OR $estado == 'azul') {
-            $this->repository->atualizaPagantes($estado,$empresa_id, $titulos_importados);
+        if ($estado == 'verde' or $estado == 'azul') {
+            $this->repository->atualizaPagantes($estado, $empresa_id, $titulos_importados);
         }
 
         \Session::flash('flash_message_success', true);
         \Session::flash('flash_message', 'Títulos importados com sucesso!');
 
-        $titulos = Titulo::whereIn('id',$titulos_importados)->with('avisos')->get();
+        $titulos = Titulo::whereIn('id', $titulos_importados)->with('avisos')->get();
         $escolas = Empresa::all();
+
         return view('importacoes.importar')->with(['estado'=> $estado, 'escolas' => $escolas, 'titulos' => $titulos]);
     }
 }
