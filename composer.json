@@ -13,6 +13,7 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
+        "sebdesign/laravel-state-machine": "^1.1",
         "yajra/laravel-datatables-buttons": "^1.0",
         "yajra/laravel-datatables-oracle": "^7.5",
         "zizaco/entrust": "5.2.x-dev"
