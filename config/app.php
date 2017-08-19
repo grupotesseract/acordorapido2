@@ -181,6 +181,9 @@ return [
         //Entrust
         Zizaco\Entrust\EntrustServiceProvider::class,
 
+        //FSM - Finite State Machine
+        Sebdesign\SM\ServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -243,6 +246,7 @@ return [
         'Flash'     => Laracasts\Flash\Flash::class,
 
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'StateMachine' => Sebdesign\SM\Facade::class,
     ],
 
 ];
