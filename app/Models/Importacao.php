@@ -69,7 +69,7 @@ class Importacao extends Model
     }
 
     /**
-     * Traz empresa a qual a importação está associada
+     * Traz empresa a qual a importação está associada.
      * @return \App\Empresa Model de Empresa
      */
     public function empresa()
@@ -86,7 +86,7 @@ class Importacao extends Model
     }
 
     /**
-     * Traz contagem de títulos de uma Importação
+     * Traz contagem de títulos de uma Importação.
      * @return Collection Títulos agrupados por Importação
      */
     public function titulosCount()
@@ -97,13 +97,13 @@ class Importacao extends Model
     }
 
     /**
-     * TODO - Explicar o que é isso
+     * TODO - Explicar o que é isso.
      * @return [type] [description]
      */
     public function getTitulosCountAttribute()
     {
         // if relation is not loaded already, let's do it first
-        if (!array_key_exists('titulosCount', $this->relations)) {
+        if (! array_key_exists('titulosCount', $this->relations)) {
             $this->load('titulosCount');
         }
 
