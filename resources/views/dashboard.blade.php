@@ -6,14 +6,14 @@
 
 
 @section('main-content')
-    <div class="container-fluid spark-screen" style="background-image:url('{{URL::asset('/img/logoacordorapido.png')}}');background-position:center;background-repeat:no-repeat;filter:grayscale(100%) opacity(50%)">
+    <div class="container-fluid spark-screen">
 
         <!-- Main content -->
         <section class="content">
             <div class="row">
             <!-- MÓDULOS -->
-                @role('escola')
                <div class="col-md-5">
+                    <!-- AREA CHART -->
                     <div class="box box-default">
                         <div class="box-header with-border">
                             <h3 class="box-title">Títulos ativos</h3>
@@ -31,11 +31,12 @@
                             </div>
                             <!-- /.box-body -->
                     </div>
-                </div>
-                @endrole
+                        <!-- /.box -->
 
-                @role('escola')
+                </div>
+                <!-- /.col (LEFT) -->
                 <div class="col-md-7">
+                    <!-- LINE CHART -->
                     <div class="box box-info">
                         <div class="box-header with-border">
                             <h3 class="box-title">Últimas Importações</h3>
@@ -59,11 +60,16 @@
                                 <tbody>
                                     @forelse($importacoes as $importacao)
                                     <tr>
-
                                         <td>{{ Carbon\Carbon::parse($importacao->created_at)->format('d/m/Y h:i:s A') }}</td>
                                         <td><a href="{{ url('titulos/modulo/'.$importacao->modulo)}}" class="label label-{{ $importacao->modulo }}">{{ ucfirst($importacao->modulo) }}</a></td>
                                         <td>{{ $importacao->empresa->nome }}</td>
-                                        <td><a href="{{ url('importacao/'.$importacao->id.'/titulos') }}">{{ $importacao->titulos->count() }} Títulos</a></td>
+                                        <td>
+                                            @if($importacao->titulos->count() > 0)
+                                                <a href="{{ url('importacao/'.$importacao->id.'/titulos') }}">{{ $importacao->titulos->count() }} Títulos</a>
+                                            @else
+                                                <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+                                            @endif
+                                        </td>
                                     </tr>
                                     @empty
                                     @endforelse
@@ -72,11 +78,31 @@
                         </div>
                         <!-- /.box-body -->
                     </div>
+                        <!-- /.box -->
                 </div>
-                @endrole
 
-                @role('escola')
+                {{-- desativado momentaneamente
                 <div class="col-sm-12">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Títulos por módulos</h3>
+                        <div class="box-tools pull-right">
+                          <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                          </button>
+                          <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                        </div>
+                      </div>
+                      <div class="box-body">
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <div class="chart">
+                              <canvas id="titulosTotal" style="height:150px"></canvas>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                </div> --}}
+                <div class="col-sm-12">
+
                     <div class="box box-success">
                         <div class="box-header with-border">
                             <h3 class="box-title">Ultimos Títulos Importados</h3>
@@ -90,16 +116,16 @@
                             <div class="box-body">
                                     <table class="table table-striped table-hovered">
                                             <thead>
-                                                <tr>
-                                                    <th>Módulo</th>
-                                                    <th>Número</th>
-                                                    <th>Cliente</th>
-                                                    <th>Vencimento</th>
-                                                    <th>Valor</th>
-                                                    <th>Importado em</th>
-                                                    <th>Ações Tomadas</th>
-                                                    <th></th>
-                                                </tr>
+<tr>
+<th>Módulo</th>
+<th>Número</th>
+<th>Cliente</th>
+<th>Vencimento</th>
+<th>Valor</th>
+<th>Importado em</th>
+<th>Ações Tomadas</th>
+<th></th>
+</tr>
                                             </thead>
                                             <tbody>
 @foreach ($titulos as $titulo)
@@ -139,8 +165,9 @@
                             <!-- /.box-body -->
                     </div>
                 </div>
-                @endrole
+                    <!-- /.col (RIGHT) -->
             </div>
+                <!-- /.row -->
         </section>
     </div>
 
