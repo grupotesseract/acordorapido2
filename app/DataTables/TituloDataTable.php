@@ -77,7 +77,7 @@ class TituloDataTable extends DataTable
             'vencimento' => ['name' => 'vencimento', 'data' => 'vencimento'],
             'valor' => ['name' => 'valor', 'data' => 'valor'],
             'titulo' => ['name' => 'titulo', 'data' => 'titulo'],
-            
+
         ];
     }
 
