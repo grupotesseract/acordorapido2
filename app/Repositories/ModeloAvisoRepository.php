@@ -38,6 +38,7 @@ class ModeloAvisoRepository extends BaseRepository
                  
         $modeloaviso = ModeloAviso::where('tipo',ucfirst($estado))->where('empresa_id',$empresa)->get()->first();
 
+
         if (!$modeloaviso) {
             return false;
         }

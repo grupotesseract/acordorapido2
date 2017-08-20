@@ -14,11 +14,10 @@ use App\Models\Cliente as Cliente;
 use App\Models\Empresa as Empresa;
 
 use App\Models\Importacao as Importacao;
-use App\Models\Repositories\AvisoRepository;
+use App\Repositories\AvisoRepository;
 
-use App\Models\Repositories\ModeloAvisoRepository;
+use App\Repositories\ModeloAvisoRepository;
 use App\Models\Titulo as Titulo;
-use App\Validators\TituloValidator;
 use Auth;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -31,9 +30,13 @@ class TituloController extends AppBaseController
     /** @var TituloRepository */
     private $tituloRepository;
 
-    public function __construct(TituloRepository $tituloRepo)
+    public function __construct(TituloRepository $tituloRepo, AvisoRepository $avisoRepository, ModeloAvisoRepository $modeloAvisoRepository)
     {
         $this->tituloRepository = $tituloRepo;
+        $this->avisoRepository = $avisoRepository;
+        $this->modeloAvisoRepository = $modeloAvisoRepository;
+
+        $this->middleware('auth');
     }
 
     /**
@@ -180,11 +183,11 @@ class TituloController extends AppBaseController
 
     /**
      * Importação da Planilha
-     * @param  TituloCreateRequest $request validação da Request
+     * @param  CreateTituloRequest $request validação da Request
      * @param  string              $estado  Estado do Título (cor)
      * @return void                View com as importações feitas
      */
-    public function importa(TituloCreateRequest $request, $estado)
+    public function importa(CreateTituloRequest $request, $estado)
     {
         $importacao = Importacao::create(['user_id' => Auth::id(), 'modulo' => $estado, 'empresa_id' => $request->escola]);
         $importacao_id = $importacao->id;
@@ -258,7 +261,7 @@ class TituloController extends AppBaseController
 
         //TODO: CONFIRMAR COM EDILSON
         if ($estado == 'verde' OR $estado == 'azul') {
-            $this->repository->atualizaPagantes($estado,$empresa_id, $titulos_importados);
+            $this->tituloRepository->atualizaPagantes($estado,$empresa_id, $titulos_importados);
         }
 
         \Session::flash('flash_message_success', true);
@@ -266,6 +269,6 @@ class TituloController extends AppBaseController
 
         $titulos = Titulo::whereIn('id',$titulos_importados)->with('avisos')->get();
         $escolas = Empresa::all();
-        return view('importacoes.importar')->with(['estado'=> $estado, 'escolas' => $escolas, 'titulos' => $titulos]);
+        return view('importacaos.importar')->with(['estado'=> $estado, 'escolas' => $escolas, 'titulos' => $titulos]);
     }
 }

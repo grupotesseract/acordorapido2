@@ -6,17 +6,21 @@ use Flash;
 use Response;
 use App\DataTables\ModeloAvisoDataTable;
 use App\Repositories\ModeloAvisoRepository;
+use App\Repositories\EmpresaRepository;
 use App\Http\Requests\CreateModeloAvisoRequest;
 use App\Http\Requests\UpdateModeloAvisoRequest;
+use Auth;
 
 class ModeloAvisoController extends AppBaseController
 {
     /** @var ModeloAvisoRepository */
     private $modeloAvisoRepository;
 
-    public function __construct(ModeloAvisoRepository $modeloAvisoRepo)
+    public function __construct(ModeloAvisoRepository $modeloAvisoRepo, EmpresaRepository $empresaRepository)
     {
         $this->modeloAvisoRepository = $modeloAvisoRepo;
+        $this->empresaRepository = $empresaRepository;
+
     }
 
     /**
@@ -37,7 +41,8 @@ class ModeloAvisoController extends AppBaseController
      */
     public function create()
     {
-        return view('modelo_avisos.create');
+        $escolas = $this->empresaRepository->all();
+        return view('modelo_avisos.create', compact('escolas'));
     }
 
     /**
@@ -49,6 +54,8 @@ class ModeloAvisoController extends AppBaseController
      */
     public function store(CreateModeloAvisoRequest $request)
     {
+        $request->request->add(['user_id' => Auth::id()]);
+        
         $input = $request->all();
 
         $modeloAviso = $this->modeloAvisoRepository->create($input);
@@ -88,6 +95,7 @@ class ModeloAvisoController extends AppBaseController
     public function edit($id)
     {
         $modeloAviso = $this->modeloAvisoRepository->findWithoutFail($id);
+        $escolas = $this->empresaRepository->all();
 
         if (empty($modeloAviso)) {
             Flash::error('Modelo Aviso not found');
@@ -95,7 +103,7 @@ class ModeloAvisoController extends AppBaseController
             return redirect(route('modeloAvisos.index'));
         }
 
-        return view('modelo_avisos.edit')->with('modeloAviso', $modeloAviso);
+        return view('modelo_avisos.edit')->with('modeloAviso', $modeloAviso)->with(compact('escolas'));
     }
 
     /**

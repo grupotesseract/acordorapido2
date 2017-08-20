@@ -25,7 +25,7 @@ class ModeloAvisoDataTable extends DataTable
      */
     public function query()
     {
-        $modeloAvisos = ModeloAviso::query();
+        $modeloAvisos = ModeloAviso::query()->with('empresa');
 
         return $this->applyScopes($modeloAvisos);
     }
@@ -70,9 +70,11 @@ class ModeloAvisoDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'user_id' => ['name' => 'user_id', 'data' => 'user_id'],
-            'empresa_id' => ['name' => 'empresa_id', 'data' => 'empresa_id'],
+            //'user_id' => ['name' => 'user_id', 'data' => 'user_id'],
+            
+            'empresa' => ['name' => 'empresa_id', 'data' => 'empresa.nome'],
             'titulo' => ['name' => 'titulo', 'data' => 'titulo'],
+            'tipo' => ['name' => 'tipo', 'data' => 'tipo'],
             'mensagem' => ['name' => 'mensagem', 'data' => 'mensagem'],
         ];
     }

@@ -25,7 +25,7 @@ class TituloDataTable extends DataTable
      */
     public function query()
     {
-        $titulos = Titulo::query();
+        $titulos = Titulo::query()->with('empresa')->with('cliente');
 
         return $this->applyScopes($titulos);
     }
@@ -71,13 +71,13 @@ class TituloDataTable extends DataTable
     {
         return [
             'estado' => ['name' => 'estado', 'data' => 'estado'],
-            'cliente_id' => ['name' => 'cliente_id', 'data' => 'cliente_id'],
-            'empresa_id' => ['name' => 'empresa_id', 'data' => 'empresa_id'],
+            'aluno' => ['name' => 'cliente_id', 'data' => 'cliente.nome'],
+            'empresa' => ['name' => 'empresa_id', 'data' => 'empresa.nome'],
             'pago' => ['name' => 'pago', 'data' => 'pago'],
             'vencimento' => ['name' => 'vencimento', 'data' => 'vencimento'],
             'valor' => ['name' => 'valor', 'data' => 'valor'],
             'titulo' => ['name' => 'titulo', 'data' => 'titulo'],
-            'importacao_id' => ['name' => 'importacao_id', 'data' => 'importacao_id'],
+            
         ];
     }
 
