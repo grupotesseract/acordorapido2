@@ -50,7 +50,7 @@ class TituloDataTable extends DataTable
                     'reload',
                     [
                          'extend'  => 'collection',
-                         'text'    => '<i class="fa fa-download"></i> Export',
+                         'text'    => '<i class="fa fa-download"></i> Exportar',
                          'buttons' => [
                              'csv',
                              'excel',
@@ -59,6 +59,7 @@ class TituloDataTable extends DataTable
                     ],
                     'colvis',
                 ],
+                'language' => ['url' => '//cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json']
             ]);
     }
 
