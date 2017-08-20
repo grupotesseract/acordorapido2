@@ -39,7 +39,7 @@ class ModeloAviso extends Model
         'empresa_id',
         'titulo',
         'mensagem',
-        'tipo'
+        'tipo',
     ];
 
     /**

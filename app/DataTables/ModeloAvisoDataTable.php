@@ -71,7 +71,7 @@ class ModeloAvisoDataTable extends DataTable
     {
         return [
             //'user_id' => ['name' => 'user_id', 'data' => 'user_id'],
-            
+
             'empresa' => ['name' => 'empresa_id', 'data' => 'empresa.nome'],
             'titulo' => ['name' => 'titulo', 'data' => 'titulo'],
             'tipo' => ['name' => 'tipo', 'data' => 'tipo'],

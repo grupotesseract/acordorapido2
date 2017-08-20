@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Flash;
 use Response;
+use App\Repositories\EmpresaRepository;
 use App\DataTables\ModeloAvisoDataTable;
 use App\Repositories\ModeloAvisoRepository;
-use App\Repositories\EmpresaRepository;
 use App\Http\Requests\CreateModeloAvisoRequest;
 use App\Http\Requests\UpdateModeloAvisoRequest;
-use Auth;
 
 class ModeloAvisoController extends AppBaseController
 {
@@ -20,7 +20,6 @@ class ModeloAvisoController extends AppBaseController
     {
         $this->modeloAvisoRepository = $modeloAvisoRepo;
         $this->empresaRepository = $empresaRepository;
-
     }
 
     /**
@@ -42,6 +41,7 @@ class ModeloAvisoController extends AppBaseController
     public function create()
     {
         $escolas = $this->empresaRepository->all();
+
         return view('modelo_avisos.create', compact('escolas'));
     }
 
@@ -55,7 +55,7 @@ class ModeloAvisoController extends AppBaseController
     public function store(CreateModeloAvisoRequest $request)
     {
         $request->request->add(['user_id' => Auth::id()]);
-        
+
         $input = $request->all();
 
         $modeloAviso = $this->modeloAvisoRepository->create($input);
