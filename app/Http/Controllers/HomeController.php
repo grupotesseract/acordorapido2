@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Auth;
-
 use App\Models\Aviso as Aviso;
 use App\Models\Titulo as Titulo;
 use App\Models\Importacao as Importacao;
@@ -33,7 +32,7 @@ class HomeController extends Controller
         $u = Auth::user();
         if ($u->hasRole('aluno')) {
             $cliente = $u->cliente;
-            if (!$cliente) {
+            if (! $cliente) {
                 dd('aluno não encontrado');
             }
             $titulos = Titulo::where('cliente_id', $cliente->id);
@@ -45,7 +44,7 @@ class HomeController extends Controller
         }
         if ($u->hasRole('escola')) {
             $empresa = $u->empresa;
-            if (!$empresa) {
+            if (! $empresa) {
                 dd('empresa não encontrado');
             }
             $titulos = Titulo::where('empresa_id', $empresa->id);
@@ -53,10 +52,9 @@ class HomeController extends Controller
             $totalVerdes = $titulos->verdes()->count();
             $totalAmarelos = $titulos->amarelos()->count();
             $totalVermelhos = $titulos->vermelhos()->count();
-            
+
             $avisos = Aviso::where('empresa_id', $empresa->id);
             $importacoes = Importacao::where('empresa_id', $empresa->id);
-
         }
         if ($u->hasRole('admin')) {
             $titulos = Titulo::all();
@@ -69,15 +67,13 @@ class HomeController extends Controller
         }
 
         return view('dashboard')->with([
-            'avisos' => $avisos, 
-            'titulos' => $titulos, 
+            'avisos' => $avisos,
+            'titulos' => $titulos,
             'importacoes' => $importacoes,
             'totalAzuis' => $totalAzuis,
             'totalVerdes' => $totalVerdes,
             'totalAmarelos' => $totalAmarelos,
-            'totalVermelhos' => $totalVermelhos
+            'totalVermelhos' => $totalVermelhos,
         ]);
     }
-
-
 }
