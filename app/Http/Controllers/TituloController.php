@@ -33,6 +33,11 @@ class TituloController extends AppBaseController
         $this->middleware('auth');
     }
 
+    
+    public function titulosModulo(TituloDataTable $tituloDataTable,$estado) {
+        return $tituloDataTable->porEstado($estado)->render('titulos.index');
+    }
+
     /**
      * Display a listing of the Titulo.
      *
@@ -40,7 +45,7 @@ class TituloController extends AppBaseController
      * @return Response
      */
     public function index(TituloDataTable $tituloDataTable)
-    {
+    {       
         return $tituloDataTable->render('titulos.index');
     }
 

@@ -46,3 +46,6 @@ Route::post('envialote', 'AvisosController@enviarLoteAviso');
 
 Route::get('avisos/sms/{aviso_id}', 'AvisosController@enviaSMS');
 Route::post('avisos/ligacao/', 'AvisosController@salvaLigacao');
+
+Route::get('titulos/modulo/{estado}', 'TituloController@titulosModulo');
+

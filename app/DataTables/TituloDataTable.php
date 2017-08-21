@@ -7,6 +7,13 @@ use Yajra\Datatables\Services\DataTable;
 
 class TituloDataTable extends DataTable
 {
+    protected $estado;
+
+    public function porEstado($estado) {
+        $this->estado = $estado;
+        return $this;
+    }
+
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -25,7 +32,7 @@ class TituloDataTable extends DataTable
      */
     public function query()
     {
-        $titulos = Titulo::query()->with('empresa')->with('cliente');
+        $titulos = Titulo::query()->where('estado',$this->estado)->with('empresa')->with('cliente');
 
         return $this->applyScopes($titulos);
     }
@@ -100,4 +107,5 @@ class TituloDataTable extends DataTable
     {
         return 'titulos';
     }
+
 }
