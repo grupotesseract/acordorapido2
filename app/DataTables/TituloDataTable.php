@@ -45,9 +45,15 @@ class TituloDataTable extends DataTable
                 'dom' => 'Bfrtip',
                 'scrollX' => false,
                 'buttons' => [
-                    'print',
-                    'reset',
-                    'reload',
+                    [
+                        'extend' => 'print',
+                        'text'    => '<i class="fa fa-print"></i> Imprimir',
+                    ],
+                    
+                    [
+                        'extend' => 'reload',
+                        'text'    => '<i class="fa fa-refresh"></i> Atualizar',
+                    ],
                     [
                          'extend'  => 'collection',
                          'text'    => '<i class="fa fa-download"></i> Exportar',
@@ -57,7 +63,10 @@ class TituloDataTable extends DataTable
                              'pdf',
                          ],
                     ],
-                    'colvis',
+                    [
+                        'extend' => 'colvis',
+                        'text'    => 'Filtrar Colunas',
+                    ],
                 ],
                 'language' => ['url' => '//cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json']
             ]);
