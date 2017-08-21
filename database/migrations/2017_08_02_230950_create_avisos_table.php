@@ -14,7 +14,7 @@ class CreateAvisosTable extends Migration
     {
         Schema::create('avisos', function (Blueprint $table) {
             $table->integer('id', true);
-            $table->string('titulo');
+            $table->string('tituloaviso');
             $table->text('texto');
             $table->integer('user_id', false);
             $table->integer('cliente_id', false);

@@ -36,3 +36,13 @@ Route::resource('avisosEnviados', 'AvisosEnviadoController', ['middleware' => 'a
 Route::resource('importacaos', 'ImportacaoController', ['middleware' => 'auth']);
 
 Route::resource('modeloAvisos', 'ModeloAvisoController', ['middleware' => 'auth']);
+
+Route::get('importacao/{id}/titulos', 'TituloController@titulos');
+Route::get('importacao/{estado}', 'TituloController@importacao');
+Route::post('importa/{estado}', 'TituloController@importa');
+
+Route::post('sms', 'AvisosController@enviarAviso');
+Route::post('envialote', 'AvisosController@enviarLoteAviso');
+
+Route::get('avisos/sms/{aviso_id}', 'AvisosController@enviaSMS');
+Route::post('avisos/ligacao/', 'AvisosController@salvaLigacao');
