@@ -22,6 +22,7 @@ class TituloDataTable extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', 'titulos.datatables_actions')
+            ->addColumn('pago', 'titulos.pago')
             ->make(true);
     }
 
