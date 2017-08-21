@@ -65,7 +65,7 @@ class Importacao extends Model
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(\App\Models\User::class);
     }
 
     /**
@@ -74,7 +74,7 @@ class Importacao extends Model
      */
     public function empresa()
     {
-        return $this->belongsTo('App\Empresa');
+        return $this->belongsTo(\App\Models\Empresa::class);
     }
 
     /**
@@ -82,7 +82,7 @@ class Importacao extends Model
      */
     public function titulos()
     {
-        return $this->belongsToMany('App\Titulo');
+        return $this->belongsToMany(\App\Models\Titulo::class);
     }
 
     /**
@@ -91,7 +91,7 @@ class Importacao extends Model
      */
     public function titulosCount()
     {
-        return $this->hasMany('App\Titulo')
+        return $this->hasMany(\App\Models\Titulo::class)
         ->selectRaw('importacao_id, count(*) as aggregate')
         ->groupBy('importacao_id');
     }

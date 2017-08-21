@@ -8,7 +8,7 @@
     <ul class="treeview-menu">
         <li><a href="{{ url('escolas') }}"><i class='glyphicon glyphicon-education'></i>Escolas</a></li>
         <li>
-            <a href="{{ url('alunos') }}"><i class='glyphicon glyphicon-user'></i> <span>Alunos</span></a>
+            <a href="{{ url('clientes') }}"><i class='glyphicon glyphicon-user'></i> <span>Alunos</span></a>
         </li>
         <li class="treeview">
             <a href="{{ url('avisospendentes') }}"><i class='glyphicon glyphicon-user'></i><span>Usuários</span><i class="fa fa-angle-left pull-right"></i></a>
