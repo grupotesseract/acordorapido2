@@ -9,8 +9,10 @@ class TituloDataTable extends DataTable
 {
     protected $estado;
 
-    public function porEstado($estado) {
+    public function porEstado($estado)
+    {
         $this->estado = $estado;
+
         return $this;
     }
 
@@ -32,7 +34,7 @@ class TituloDataTable extends DataTable
      */
     public function query()
     {
-        $titulos = Titulo::query()->where('estado',$this->estado)->with('empresa')->with('cliente');
+        $titulos = Titulo::query()->where('estado', $this->estado)->with('empresa')->with('cliente');
 
         return $this->applyScopes($titulos);
     }
@@ -56,7 +58,7 @@ class TituloDataTable extends DataTable
                         'extend' => 'print',
                         'text'    => '<i class="fa fa-print"></i> Imprimir',
                     ],
-                    
+
                     [
                         'extend' => 'reload',
                         'text'    => '<i class="fa fa-refresh"></i> Atualizar',
@@ -75,7 +77,7 @@ class TituloDataTable extends DataTable
                         'text'    => 'Filtrar Colunas',
                     ],
                 ],
-                'language' => ['url' => '//cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json']
+                'language' => ['url' => '//cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json'],
             ]);
     }
 
@@ -107,5 +109,4 @@ class TituloDataTable extends DataTable
     {
         return 'titulos';
     }
-
 }
