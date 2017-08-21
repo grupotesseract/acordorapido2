@@ -72,7 +72,7 @@ class Titulo extends Model
      **/
     public function importacoes()
     {
-        return $this->belongsTo(\App\Models\Importacao::class);
+        return $this->belongsToMany(\App\Models\Importacao::class);
     }
 
     /**

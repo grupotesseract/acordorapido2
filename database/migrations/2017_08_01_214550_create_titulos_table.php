@@ -21,7 +21,6 @@ class CreateTitulosTable extends Migration
             $table->date('vencimento');
             $table->decimal('valor', 18, 2);
             $table->string('titulo');
-            $table->integer('importacao_id', false);
             $table->timestamps();
             $table->softDeletes();
         });
