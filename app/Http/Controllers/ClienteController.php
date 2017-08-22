@@ -53,7 +53,7 @@ class ClienteController extends AppBaseController
 
         $cliente = $this->clienteRepository->create($input);
 
-        Flash::success('Cliente saved successfully.');
+        Flash::success('Cliente salvo com sucesso.');
 
         return redirect(route('clientes.index'));
     }
@@ -70,7 +70,7 @@ class ClienteController extends AppBaseController
         $cliente = $this->clienteRepository->findWithoutFail($id);
 
         if (empty($cliente)) {
-            Flash::error('Cliente not found');
+            Flash::error('Cliente não encontrado');
 
             return redirect(route('clientes.index'));
         }
@@ -90,7 +90,7 @@ class ClienteController extends AppBaseController
         $cliente = $this->clienteRepository->findWithoutFail($id);
 
         if (empty($cliente)) {
-            Flash::error('Cliente not found');
+            Flash::error('Cliente não encontrado');
 
             return redirect(route('clientes.index'));
         }
@@ -111,14 +111,14 @@ class ClienteController extends AppBaseController
         $cliente = $this->clienteRepository->findWithoutFail($id);
 
         if (empty($cliente)) {
-            Flash::error('Cliente not found');
+            Flash::error('Cliente não encontrado');
 
             return redirect(route('clientes.index'));
         }
 
         $cliente = $this->clienteRepository->update($request->all(), $id);
 
-        Flash::success('Cliente updated successfully.');
+        Flash::success('Cliente atualizado com sucesso.');
 
         return redirect(route('clientes.index'));
     }
@@ -135,14 +135,14 @@ class ClienteController extends AppBaseController
         $cliente = $this->clienteRepository->findWithoutFail($id);
 
         if (empty($cliente)) {
-            Flash::error('Cliente not found');
+            Flash::error('Cliente não encontrado');
 
             return redirect(route('clientes.index'));
         }
 
         $this->clienteRepository->delete($id);
 
-        Flash::success('Cliente deleted successfully.');
+        Flash::success('Cliente excluído com sucesso.');
 
         return redirect(route('clientes.index'));
     }

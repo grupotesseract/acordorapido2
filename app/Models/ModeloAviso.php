@@ -18,7 +18,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class ModeloAviso extends Model
 {
-    use SoftDeletes;
 
     public $table = 'modelo_avisos';
 
@@ -27,7 +26,7 @@ class ModeloAviso extends Model
      *
      * @var array
      */
-    protected $dates = ['deleted_at', 'created_at', 'updated_at'];
+    protected $dates = ['created_at', 'updated_at'];
 
     /**
      * The attributes that are mass assignable.

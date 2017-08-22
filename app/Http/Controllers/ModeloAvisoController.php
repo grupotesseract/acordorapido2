@@ -60,7 +60,7 @@ class ModeloAvisoController extends AppBaseController
 
         $modeloAviso = $this->modeloAvisoRepository->create($input);
 
-        Flash::success('Modelo Aviso saved successfully.');
+        Flash::success('Modelo de Aviso criado com sucesso');
 
         return redirect(route('modeloAvisos.index'));
     }
@@ -77,7 +77,7 @@ class ModeloAvisoController extends AppBaseController
         $modeloAviso = $this->modeloAvisoRepository->findWithoutFail($id);
 
         if (empty($modeloAviso)) {
-            Flash::error('Modelo Aviso not found');
+            Flash::error('Modelo de Aviso não encontrado');
 
             return redirect(route('modeloAvisos.index'));
         }
@@ -98,7 +98,7 @@ class ModeloAvisoController extends AppBaseController
         $escolas = $this->empresaRepository->all();
 
         if (empty($modeloAviso)) {
-            Flash::error('Modelo Aviso not found');
+            Flash::error('Modelo de Aviso não encontrado');
 
             return redirect(route('modeloAvisos.index'));
         }
@@ -119,14 +119,14 @@ class ModeloAvisoController extends AppBaseController
         $modeloAviso = $this->modeloAvisoRepository->findWithoutFail($id);
 
         if (empty($modeloAviso)) {
-            Flash::error('Modelo Aviso not found');
+            Flash::error('Modelo de Aviso não encontrado');
 
             return redirect(route('modeloAvisos.index'));
         }
 
         $modeloAviso = $this->modeloAvisoRepository->update($request->all(), $id);
 
-        Flash::success('Modelo Aviso updated successfully.');
+        Flash::success('Modelo de Aviso atualizado com sucesso');
 
         return redirect(route('modeloAvisos.index'));
     }
@@ -143,14 +143,14 @@ class ModeloAvisoController extends AppBaseController
         $modeloAviso = $this->modeloAvisoRepository->findWithoutFail($id);
 
         if (empty($modeloAviso)) {
-            Flash::error('Modelo Aviso not found');
+            Flash::error('Modelo de Aviso não encontrado');
 
             return redirect(route('modeloAvisos.index'));
         }
 
         $this->modeloAvisoRepository->delete($id);
 
-        Flash::success('Modelo Aviso deleted successfully.');
+        Flash::success('Modelo de Aviso excluído com sucesso');
 
         return redirect(route('modeloAvisos.index'));
     }

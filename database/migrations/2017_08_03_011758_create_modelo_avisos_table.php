@@ -20,7 +20,6 @@ class CreateModeloAvisosTable extends Migration
             $table->string('mensagem');
             $table->string('tipo');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

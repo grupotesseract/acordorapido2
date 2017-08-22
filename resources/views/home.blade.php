@@ -1,11 +1,8 @@
-@extends('adminlte::layouts.app')
-
-@section('htmlheader_title')
-        {{ trans('adminlte_lang::message.home') }}
-@endsection
+@extends('layouts.app')
 
 
-@section('main-content')
+
+@section('content')
     <div class="container-fluid spark-screen" style="background-image:url('{{URL::asset('/img/logoacordorapido.png')}}');background-position:center;background-repeat:no-repeat;filter:grayscale(100%) opacity(50%)">
 
         <!-- Main content -->

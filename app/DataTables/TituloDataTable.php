@@ -47,7 +47,7 @@ class TituloDataTable extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->addAction(['width' => '10%'])
+            ->addAction(['width' => '10%','title' => 'Ação'])
             ->ajax('')
             ->parameters([
                 'dom' => 'Bfrtip',
