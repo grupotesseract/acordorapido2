@@ -9,8 +9,10 @@ class TituloDataTable extends DataTable
 {
     protected $estado;
 
-    public function porEstado($estado) {
+    public function porEstado($estado)
+    {
         $this->estado = $estado;
+
         return $this;
     }
 
@@ -33,7 +35,7 @@ class TituloDataTable extends DataTable
      */
     public function query()
     {
-        $titulos = Titulo::query()->where('estado',$this->estado)->with('empresa')->with('cliente');
+        $titulos = Titulo::query()->where('estado', $this->estado)->with('empresa')->with('cliente');
 
         return $this->applyScopes($titulos);
     }
@@ -108,5 +110,4 @@ class TituloDataTable extends DataTable
     {
         return 'titulos';
     }
-
 }
