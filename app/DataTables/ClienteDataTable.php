@@ -39,7 +39,7 @@ class ClienteDataTable extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->addAction(['width' => '10%','title' => 'Ação'])
+            ->addAction(['width' => '10%', 'title' => 'Ação'])
             ->ajax('')
             ->parameters([
                 'dom' => 'Bfrtip',

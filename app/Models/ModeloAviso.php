@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Eloquent as Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class ModeloAviso.
@@ -18,7 +17,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class ModeloAviso extends Model
 {
-
     public $table = 'modelo_avisos';
 
     /**
