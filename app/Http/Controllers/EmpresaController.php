@@ -53,7 +53,7 @@ class EmpresaController extends AppBaseController
 
         $empresa = $this->empresaRepository->create($input);
 
-        Flash::success('Empresa saved successfully.');
+        Flash::success('Empresa criada com sucesso.');
 
         return redirect(route('empresas.index'));
     }
@@ -70,7 +70,7 @@ class EmpresaController extends AppBaseController
         $empresa = $this->empresaRepository->findWithoutFail($id);
 
         if (empty($empresa)) {
-            Flash::error('Empresa not found');
+            Flash::error('Empresa não encontrada');
 
             return redirect(route('empresas.index'));
         }
@@ -90,7 +90,7 @@ class EmpresaController extends AppBaseController
         $empresa = $this->empresaRepository->findWithoutFail($id);
 
         if (empty($empresa)) {
-            Flash::error('Empresa not found');
+            Flash::error('Empresa não encontrada');
 
             return redirect(route('empresas.index'));
         }
@@ -111,14 +111,14 @@ class EmpresaController extends AppBaseController
         $empresa = $this->empresaRepository->findWithoutFail($id);
 
         if (empty($empresa)) {
-            Flash::error('Empresa not found');
+            Flash::error('Empresa não encontrada');
 
             return redirect(route('empresas.index'));
         }
 
         $empresa = $this->empresaRepository->update($request->all(), $id);
 
-        Flash::success('Empresa updated successfully.');
+        Flash::success('Empresa atualizada com sucesso.');
 
         return redirect(route('empresas.index'));
     }
@@ -135,14 +135,14 @@ class EmpresaController extends AppBaseController
         $empresa = $this->empresaRepository->findWithoutFail($id);
 
         if (empty($empresa)) {
-            Flash::error('Empresa not found');
+            Flash::error('Empresa não encontrada');
 
             return redirect(route('empresas.index'));
         }
 
         $this->empresaRepository->delete($id);
 
-        Flash::success('Empresa deleted successfully.');
+        Flash::success('Empresa excluída com sucesso.');
 
         return redirect(route('empresas.index'));
     }

@@ -25,7 +25,7 @@ Route::resource('clientes', 'ClienteController', ['middleware' => 'auth']);
 Route::resource('alunos', 'ClienteController', ['middleware' => 'auth']);
 
 Route::resource('empresas', 'EmpresaController', ['middleware' => 'auth']);
-Route::resource('escolas', 'EmpresaController', ['middleware' => 'auth']);
+//Route::resource('escolas', 'EmpresaController', ['middleware' => 'auth']);
 
 Route::resource('titulos', 'TituloController', ['middleware' => 'auth']);
 
@@ -46,3 +46,5 @@ Route::post('envialote', 'AvisosController@enviarLoteAviso');
 
 Route::get('avisos/sms/{aviso_id}', 'AvisosController@enviaSMS');
 Route::post('avisos/ligacao/', 'AvisosController@salvaLigacao');
+
+Route::get('titulos/modulo/{estado}', 'TituloController@titulosModulo');

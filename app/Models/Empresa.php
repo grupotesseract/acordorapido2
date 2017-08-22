@@ -68,4 +68,9 @@ class Empresa extends Model
     {
         return $this->hasMany(\App\Models\Titulo::class);
     }
+
+    public function importacoes()
+    {
+        return $this->hasMany(\App\Models\Importacao::class);
+    }
 }

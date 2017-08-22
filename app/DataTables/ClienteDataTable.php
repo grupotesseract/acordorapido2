@@ -39,26 +39,36 @@ class ClienteDataTable extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->addAction(['width' => '10%'])
+            ->addAction(['width' => '10%', 'title' => 'Ação'])
             ->ajax('')
             ->parameters([
                 'dom' => 'Bfrtip',
                 'scrollX' => false,
                 'buttons' => [
-                    'print',
-                    'reset',
-                    'reload',
+                    [
+                        'extend' => 'print',
+                        'text'    => '<i class="fa fa-print"></i> Imprimir',
+                    ],
+
+                    [
+                        'extend' => 'reload',
+                        'text'    => '<i class="fa fa-refresh"></i> Atualizar',
+                    ],
                     [
                          'extend'  => 'collection',
-                         'text'    => '<i class="fa fa-download"></i> Export',
+                         'text'    => '<i class="fa fa-download"></i> Exportar',
                          'buttons' => [
                              'csv',
                              'excel',
                              'pdf',
                          ],
                     ],
-                    'colvis',
+                    [
+                        'extend' => 'colvis',
+                        'text'    => 'Filtrar Colunas',
+                    ],
                 ],
+                'language' => ['url' => '//cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json'],
             ]);
     }
 
@@ -71,15 +81,15 @@ class ClienteDataTable extends DataTable
     {
         return [
             'nome' => ['name' => 'nome', 'data' => 'nome'],
-            'user_id' => ['name' => 'user_id', 'data' => 'user_id'],
+            //'user_id' => ['name' => 'user_id', 'data' => 'user_id'],
             'turma' => ['name' => 'turma', 'data' => 'turma'],
-            'periodo' => ['name' => 'periodo', 'data' => 'periodo'],
-            'responsavel' => ['name' => 'responsavel', 'data' => 'responsavel'],
+            'período' => ['name' => 'periodo', 'data' => 'periodo'],
+            'responsável' => ['name' => 'responsavel', 'data' => 'responsavel'],
             'celular' => ['name' => 'celular', 'data' => 'celular'],
-            'telefone' => ['name' => 'telefone', 'data' => 'telefone'],
+            /*'telefone' => ['name' => 'telefone', 'data' => 'telefone'],
             'telefone2' => ['name' => 'telefone2', 'data' => 'telefone2'],
-            'celular2' => ['name' => 'celular2', 'data' => 'celular2'],
-            'rg' => ['name' => 'rg', 'data' => 'rg'],
+            'celular2' => ['name' => 'celular2', 'data' => 'celular2'],*/
+            'RG' => ['name' => 'rg', 'data' => 'rg'],
         ];
     }
 

@@ -33,6 +33,11 @@ class TituloController extends AppBaseController
         $this->middleware('auth');
     }
 
+    public function titulosModulo(TituloDataTable $tituloDataTable, $estado)
+    {
+        return $tituloDataTable->porEstado($estado)->render('titulos.index');
+    }
+
     /**
      * Display a listing of the Titulo.
      *
