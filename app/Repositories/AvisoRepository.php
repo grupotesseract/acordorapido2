@@ -3,8 +3,8 @@
 namespace App\Repositories;
 
 use App\Models\Aviso;
-use InfyOm\Generator\Common\BaseRepository;
 use GuzzleHttp\Client as Client;
+use InfyOm\Generator\Common\BaseRepository;
 
 /**
  * Class AvisoRepository.
@@ -38,7 +38,7 @@ class AvisoRepository extends BaseRepository
     }
 
     /**
-     * Enviar o AVISO e conecta na API
+     * Enviar o AVISO e conecta na API.
      * @param  [type] $aviso [description]
      * @return [type]        [description]
      */
@@ -65,7 +65,6 @@ class AvisoRepository extends BaseRepository
                 ],
             ]
         );
-
 
         $result->getStatusCode();
         $response = $result->getBody();
