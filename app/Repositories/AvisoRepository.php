@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Aviso;
 use InfyOm\Generator\Common\BaseRepository;
+use GuzzleHttp\Client as Client;
 
 /**
  * Class AvisoRepository.
@@ -34,5 +35,41 @@ class AvisoRepository extends BaseRepository
     public function model()
     {
         return Aviso::class;
+    }
+
+    /**
+     * Enviar o AVISO e conecta na API
+     * @param  [type] $aviso [description]
+     * @return [type]        [description]
+     */
+    public function enviarAviso($aviso)
+    {
+        $client = new Client(['base_uri' => 'https://api-rest.zenvia360.com.br/services/']); //GuzzleHttp\Client
+
+        $result = $client->request('POST', 'send-sms',
+
+            [
+                'headers' => [
+                    'Content-Type'  => 'application/json',
+                    'Authorization' => 'Basic YnJpdHRvOkpCM0R1T1lCbnc=',
+                    'Accept'        => 'application/json',
+                ],
+                'json' => [
+                    'sendSmsRequest' => [
+                        'from'           => $aviso['titulo'],
+                        'to'             => '55'.$aviso['to'],
+                        'msg'            => $aviso['texto'],
+                        'callbackOption' => 'NONE',
+                        'aggregateId'    => $aviso['id'],
+                    ],
+                ],
+            ]
+        );
+
+
+        $result->getStatusCode();
+        $response = $result->getBody();
+
+        return $result->getStatusCode();
     }
 }

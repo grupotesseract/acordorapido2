@@ -1,5 +1,8 @@
 {!! Form::open(['route' => ['avisos.destroy', $id], 'method' => 'delete']) !!}
 <div class='btn-group'>
+    <a href="avisos/sms/{{$id}}" class='btn btn-default btn-xs'>
+        <i class="glyphicon glyphicon-comment"></i>
+    </a>
     <a href="{{ route('avisos.show', $id) }}" class='btn btn-default btn-xs'>
         <i class="glyphicon glyphicon-eye-open"></i>
     </a>

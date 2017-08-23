@@ -1,12 +1,12 @@
 <!-- Tituloaviso Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('tituloaviso', 'Tituloaviso:') !!}
+    {!! Form::label('tituloaviso', 'Título da Mensagem:') !!}
     {!! Form::text('tituloaviso', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Texto Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('texto', 'Texto:') !!}
+    {!! Form::label('texto', 'Mensagem:') !!}
     {!! Form::textarea('texto', null, ['class' => 'form-control']) !!}
 </div>
 

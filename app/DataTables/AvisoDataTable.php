@@ -41,26 +41,36 @@ class AvisoDataTable extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->addAction(['width' => '10%'])
+            ->addAction(['width' => '20%', 'title' => 'Ação'])
             ->ajax('')
             ->parameters([
                 'dom' => 'Bfrtip',
                 'scrollX' => false,
                 'buttons' => [
-                    'print',
-                    'reset',
-                    'reload',
+                    [
+                        'extend' => 'print',
+                        'text'    => '<i class="fa fa-print"></i> Imprimir',
+                    ],
+
+                    [
+                        'extend' => 'reload',
+                        'text'    => '<i class="fa fa-refresh"></i> Atualizar',
+                    ],
                     [
                          'extend'  => 'collection',
-                         'text'    => '<i class="fa fa-download"></i> Export',
+                         'text'    => '<i class="fa fa-download"></i> Exportar',
                          'buttons' => [
                              'csv',
                              'excel',
                              'pdf',
                          ],
                     ],
-                    'colvis'
-                ]
+                    [
+                        'extend' => 'colvis',
+                        'text'    => 'Filtrar Colunas',
+                    ],
+                ],
+                'language' => ['url' => '//cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json'],
             ]);
     }
 
@@ -72,9 +82,9 @@ class AvisoDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'tituloaviso' => ['name' => 'tituloaviso', 'data' => 'tituloaviso'],
+            'título' => ['name' => 'tituloaviso', 'data' => 'tituloaviso'],
 
-            'texto' => ['name' => 'texto', 'data' => 'texto']
+            'mensagem' => ['name' => 'texto', 'data' => 'texto']
         ];
     }
 
