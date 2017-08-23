@@ -103,6 +103,17 @@
 <!-- AdminLTE App -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/js/app.min.js"></script>
 
+<script>
+    function checkAll() {
+        var checkboxes = document.getElementsByTagName('input');
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].type == 'checkbox') {
+                checkboxes[i].checked = !checkboxes[i].checked;
+            }
+        }         
+    }
+</script>
+
 @yield('scripts')
 </body>
 </html>

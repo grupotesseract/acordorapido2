@@ -42,7 +42,7 @@ Route::get('importacao/{estado}', 'TituloController@importacao');
 Route::post('importa/{estado}', 'TituloController@importa');
 
 Route::post('sms', 'AvisosController@enviarAviso');
-Route::post('envialote', 'AvisosController@enviarLoteAviso');
+Route::post('envialote', 'AvisoController@enviarLoteAviso');
 
 Route::get('avisos/sms/{aviso_id}', 'AvisosController@enviaSMS');
 Route::post('avisos/ligacao/', 'AvisosController@salvaLigacao');

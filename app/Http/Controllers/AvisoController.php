@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\DataTables\AvisoDataTable;
 use App\Http\Requests;
+use Illuminate\Http\Request;
+
 use App\Http\Requests\CreateAvisoRequest;
 use App\Http\Requests\UpdateAvisoRequest;
 use App\Repositories\AvisoRepository;
@@ -188,5 +190,42 @@ class AvisoController extends AppBaseController
 
         return redirect(route('avisos.index'));
 
+    }
+
+    public function enviarLoteAviso(Request $request) 
+    {
+        foreach ($request->id as $key => $value) {
+            $aviso = $this->avisoRepository->find($value);
+            $retorno = $this->avisoRepository->enviarAviso([
+                'to'     => $aviso->cliente->celular,
+                'titulo' => $aviso->tituloaviso,
+                'texto'  => $aviso->texto,
+                'id'     => $aviso->cliente->id,
+            ]);
+
+            if ($retorno == '200') {
+                $aviso->status = $aviso->status + 1;
+            }
+            else
+                $houveerro = 'true';
+
+            $this->avisoEnviadoRepository->create([
+                'user_id' => Auth::id(),
+                'aviso_id' => $aviso->id,
+                'estado' => $aviso->estado,
+                'tipodeaviso' => 0,
+                'status' => $retorno            
+            ]);    
+
+            $aviso->save();            
+        }
+
+        if (!isset($houveerro)) {
+            Flash::success('Avisos enviados com sucesso.');
+        }
+        else
+            Flash::error('Um ou mais avisos não foram enviados! Verifique os números de celular dos Alunos');
+       
+        return redirect(route('avisos.index'));
     }
 }
