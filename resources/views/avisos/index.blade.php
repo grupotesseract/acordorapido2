@@ -1,13 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-{!! Form::open(array('url'=>'envialote/','method'=>'POST','name'=>'avisoform')) !!}
     <section class="content-header">
-        <h1 class="pull-left">Avisos</h1>
+        <h1 class="pull-left">Avisos</h1>  
+        <h1 class="pull-right">
+            <button class="btn btn-primary pull-left" style="margin-top: -10px;margin-bottom: 5px" onclick="checkAll()">Selecionar Todos</button>
+        </h1> 
         <h1 class="pull-right">
            <!-- <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{!! route('avisos.create') !!}">Incluir</a> -->
-            {!! Form::submit('Enviar SMS Marcados', array('class'=>'btn btn-primary pull-right', 'style'=>'margin-top: -10px;margin-bottom: 5px')) !!}
-           
+            
+            {!! Form::open(array('url'=>'envialote/','method'=>'POST','name'=>'avisoform')) !!}
+                {!! Form::submit('Enviar SMS Marcados', array('class'=>'btn btn-primary pull-right', 'style'=>'margin-top: -10px;margin-bottom: 5px')) !!}           
         </h1>
     </section>
     <div class="content">
