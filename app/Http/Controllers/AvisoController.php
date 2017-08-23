@@ -2,20 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use Flash;
+use Response;
 use App\DataTables\AvisoDataTable;
-use App\Http\Requests;
+use App\Repositories\AvisoRepository;
 use App\Http\Requests\CreateAvisoRequest;
 use App\Http\Requests\UpdateAvisoRequest;
-use App\Repositories\AvisoRepository;
 use App\Repositories\AvisosEnviadoRepository;
-use Flash;
-use App\Http\Controllers\AppBaseController;
-use Response;
-use Auth;
 
 class AvisoController extends AppBaseController
 {
-    /** @var  AvisoRepository */
+    /** @var AvisoRepository */
     private $avisoRepository;
 
     public function __construct(AvisoRepository $avisoRepo, AvisosEnviadoRepository $avisoEnviadoRepo)
@@ -153,8 +151,8 @@ class AvisoController extends AppBaseController
     }
 
     /**
-     * Envia SMS
-     * @param  integer $aviso_id id do aviso
+     * Envia SMS.
+     * @param  int $aviso_id id do aviso
      * @return Response           volta a página anterior
      */
     public function enviaSMS($aviso_id)
@@ -171,10 +169,9 @@ class AvisoController extends AppBaseController
         if ($retorno == '200') {
             $aviso->status = $aviso->status + 1;
             Flash::success('Aviso enviado com sucesso.');
-        }
-        else
+        } else {
             Flash::error('O Aviso não foi enviado. Verifique o número do celular do Aluno');
-                
+        }
 
         $aviso->save();
         $this->avisoEnviadoRepository->create([
@@ -182,11 +179,9 @@ class AvisoController extends AppBaseController
             'aviso_id' => $aviso->id,
             'estado' => $aviso->estado,
             'tipodeaviso' => 0,
-            'status' => $retorno            
+            'status' => $retorno,
         ]);
 
-
         return redirect(route('avisos.index'));
-
     }
 }
