@@ -115,6 +115,19 @@
     }
 </script>
 
+
+<script>
+   
+
+    $(document).on("click", ".enviarligacao", function () {
+         var id = $(this).data('id');
+         $("#aviso_id").val(id);
+         
+    });         
+
+</script>
+
+
 @yield('scripts')
 </body>
 </html>

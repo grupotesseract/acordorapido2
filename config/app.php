@@ -192,6 +192,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Barryvdh\Snappy\ServiceProvider::class,
 
     ],
 
@@ -247,6 +248,7 @@ return [
 
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'StateMachine' => Sebdesign\SM\Facade::class,
+
     ],
 
 ];

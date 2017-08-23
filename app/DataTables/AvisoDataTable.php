@@ -14,10 +14,10 @@ class AvisoDataTable extends DataTable
     {
         return $this->datatables
             ->eloquent($this->query())
-            ->addColumn('checkbox', 'avisos.checkbox')
-            ->addColumn('totalavisos', 'avisos.totalavisos')
+            ->addColumn('selecionar', 'avisos.checkbox')
+            ->addColumn('total', 'avisos.totalavisos')
             ->addColumn('action', 'avisos.datatables_actions')
-            ->rawColumns(['checkbox', 'action'])
+            ->rawColumns(['selecionar', 'action'])
             ->make(true);
     }
 
@@ -84,10 +84,10 @@ class AvisoDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'checkbox' => ['name' => 'checkbox'],
+            'selecionar' => ['name' => 'selecionar'],
             'título' => ['name' => 'tituloaviso', 'data' => 'tituloaviso'],
             'mensagem' => ['name' => 'texto', 'data' => 'texto'],
-            'totalavisos' => ['name' => 'texto'],
+            'total' => ['name' => 'totalavisos'],
 
         ];
     }

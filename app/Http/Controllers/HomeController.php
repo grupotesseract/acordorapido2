@@ -26,7 +26,7 @@ class HomeController extends Controller
             if (! $cliente) {
                 dd('aluno não encontrado');
             }
-            $titulos = Titulo::where('cliente_id', $cliente->id);
+            $titulos = Titulo::where('cliente_id', $cliente->id)->take(10);
             $totalAzuis = $titulos->azuis()->count();
             $totalVerdes = $titulos->verdes()->count();
             $totalAmarelos = $titulos->amarelos()->count();
@@ -38,7 +38,7 @@ class HomeController extends Controller
             if (! $empresa) {
                 dd('empresa não encontrado');
             }
-            $titulos = Titulo::where('empresa_id', $empresa->id);
+            $titulos = Titulo::where('empresa_id', $empresa->id)->take(10);
             $totalAzuis = $titulos->azuis()->count();
             $totalVerdes = $titulos->verdes()->count();
             $totalAmarelos = $titulos->amarelos()->count();
@@ -48,7 +48,7 @@ class HomeController extends Controller
             $importacoes = Importacao::where('empresa_id', $empresa->id);
         }
         if ($u->hasRole('admin')) {
-            $titulos = Titulo::all();
+            $titulos = Titulo::all()->take(10);
             $avisos = Aviso::all();
             $importacoes = Importacao::all();
             $totalAzuis = Titulo::azuis()->count();
@@ -80,7 +80,7 @@ class HomeController extends Controller
             if (! $cliente) {
                 dd('aluno não encontrado');
             }
-            $titulos = Titulo::where('cliente_id', $cliente->id);
+            $titulos = Titulo::where('cliente_id', $cliente->id)->take(10);
             $totalAzuis = $titulos->azuis()->count();
             $totalVerdes = $titulos->verdes()->count();
             $totalAmarelos = $titulos->amarelos()->count();
@@ -92,7 +92,7 @@ class HomeController extends Controller
             if (! $empresa) {
                 dd('empresa não encontrado');
             }
-            $titulos = Titulo::where('empresa_id', $empresa->id);
+            $titulos = Titulo::where('empresa_id', $empresa->id)->take(10);
             $totalAzuis = $titulos->azuis()->count();
             $totalVerdes = $titulos->verdes()->count();
             $totalAmarelos = $titulos->amarelos()->count();
@@ -102,7 +102,7 @@ class HomeController extends Controller
             $importacoes = Importacao::where('empresa_id', $empresa->id);
         }
         if ($u->hasRole('admin')) {
-            $titulos = Titulo::all();
+            $titulos = Titulo::all()->take(10);
             $avisos = Aviso::all();
             $importacoes = Importacao::all();
             $totalAzuis = Titulo::azuis()->count();
