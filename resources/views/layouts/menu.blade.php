@@ -64,7 +64,7 @@
 
     <hr/>
 
-    <li class="{{ Request::is('clientes*') ? 'active' : '' }}">
+    <!-- <li class="{{ Request::is('clientes*') ? 'active' : '' }}">
         <a href="{!! route('clientes.index') !!}"><i class="fa fa-edit"></i><span>Clientes</span></a>
     </li>
 
@@ -90,5 +90,5 @@
 
     <li class="{{ Request::is('modeloAvisos*') ? 'active' : '' }}">
         <a href="{!! route('modeloAvisos.index') !!}"><i class="fa fa-edit"></i><span>ModeloAvisos</span></a>
-    </li>
+    </li> -->
 
