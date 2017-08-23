@@ -111,16 +111,16 @@
                             <div class="box-body">
                                     <table class="table table-striped table-hovered">
                                             <thead>
-<tr>
-<th>Módulo</th>
-<th>Número</th>
-<th>Cliente</th>
-<th>Vencimento</th>
-<th>Valor</th>
-<th>Importado em</th>
-<th>Ações Tomadas</th>
-<th></th>
-</tr>
+    <tr>
+    <th>Módulo</th>
+    <th>Número</th>
+    <th>Cliente</th>
+    <th>Vencimento</th>
+    <th>Valor</th>
+    <th>Importado em</th>
+    <th>Ações Tomadas</th>
+    <th></th>
+    </tr>
                                             </thead>
                                             <tbody>
 @foreach ($titulos as $titulo)
