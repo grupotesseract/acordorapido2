@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
-use Illuminate\Http\Request;
-use App\Repositories\AvisoRepository;
+use App\DataTables\AvisoDataTable;
+use App\Http\Requests;
 use App\Http\Requests\CreateAvisoRequest;
 use App\Http\Requests\UpdateAvisoRequest;
-use Prettus\Repository\Criteria\RequestCriteria;
+use App\Repositories\AvisoRepository;
+use Flash;
+use App\Http\Controllers\AppBaseController;
+use Response;
 
 class AvisoController extends AppBaseController
 {
-    /** @var AvisoRepository */
+    /** @var  AvisoRepository */
     private $avisoRepository;
 
     public function __construct(AvisoRepository $avisoRepo)
@@ -23,16 +24,12 @@ class AvisoController extends AppBaseController
     /**
      * Display a listing of the Aviso.
      *
-     * @param Request $request
+     * @param AvisoDataTable $avisoDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(AvisoDataTable $avisoDataTable)
     {
-        $this->avisoRepository->pushCriteria(new RequestCriteria($request));
-        $avisos = $this->avisoRepository->all();
-
-        return view('avisos.index')
-            ->with('avisos', $avisos);
+        return $avisoDataTable->render('avisos.index');
     }
 
     /**
