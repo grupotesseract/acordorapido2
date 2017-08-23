@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Flash;
+use Response;
 use App\DataTables\AvisoDataTable;
-use App\Http\Requests;
+use App\Repositories\AvisoRepository;
 use App\Http\Requests\CreateAvisoRequest;
 use App\Http\Requests\UpdateAvisoRequest;
-use App\Repositories\AvisoRepository;
-use Flash;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 class AvisoController extends AppBaseController
 {
-    /** @var  AvisoRepository */
+    /** @var AvisoRepository */
     private $avisoRepository;
 
     public function __construct(AvisoRepository $avisoRepo)

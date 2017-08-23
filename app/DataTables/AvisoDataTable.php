@@ -3,12 +3,10 @@
 namespace App\DataTables;
 
 use App\Models\Aviso;
-use Form;
 use Yajra\Datatables\Services\DataTable;
 
 class AvisoDataTable extends DataTable
 {
-
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -59,8 +57,8 @@ class AvisoDataTable extends DataTable
                              'pdf',
                          ],
                     ],
-                    'colvis'
-                ]
+                    'colvis',
+                ],
             ]);
     }
 
@@ -74,7 +72,7 @@ class AvisoDataTable extends DataTable
         return [
             'tituloaviso' => ['name' => 'tituloaviso', 'data' => 'tituloaviso'],
 
-            'texto' => ['name' => 'texto', 'data' => 'texto']
+            'texto' => ['name' => 'texto', 'data' => 'texto'],
         ];
     }
 
