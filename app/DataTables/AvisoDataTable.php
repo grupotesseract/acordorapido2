@@ -3,12 +3,10 @@
 namespace App\DataTables;
 
 use App\Models\Aviso;
-use Form;
 use Yajra\Datatables\Services\DataTable;
 
 class AvisoDataTable extends DataTable
 {
-
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -19,7 +17,7 @@ class AvisoDataTable extends DataTable
             ->addColumn('checkbox', 'avisos.checkbox')
             ->addColumn('totalavisos', 'avisos.totalavisos')
             ->addColumn('action', 'avisos.datatables_actions')
-            ->rawColumns(['checkbox' , 'action'])
+            ->rawColumns(['checkbox', 'action'])
             ->make(true);
     }
 
@@ -93,7 +91,6 @@ class AvisoDataTable extends DataTable
             'título' => ['name' => 'tituloaviso', 'data' => 'tituloaviso'],
             'mensagem' => ['name' => 'texto', 'data' => 'texto'],
             'totalavisos' => ['name' => 'texto'],
-
 
         ];
     }
