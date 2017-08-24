@@ -94,9 +94,9 @@ class Aviso extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function clientes()
+    public function cliente()
     {
-        return $this->hasMany(\App\Models\Cliente::class);
+        return $this->belongsTo(\App\Models\Cliente::class);
     }
 
     /**

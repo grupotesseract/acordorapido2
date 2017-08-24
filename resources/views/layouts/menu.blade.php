@@ -43,7 +43,7 @@
 <li class="{{ Request::is('avisos*') ? 'active' : '' }} treeview">
     <a href="#"><i class='glyphicon glyphicon-comment'></i> <span>Avisos</span><i class="fa fa-angle-left pull-right"></i></a>
     <ul class="treeview-menu">
-        <li><a href="{{ url('avisos') }}"><span aria-hidden="true" class="glyphicon glyphicon-inbox"></span>Avisos</a></li>
+        <li><a href="{{ url('avisos') }}"><span aria-hidden="true" class="glyphicon glyphicon-comment"></span>Avisos</a></li>
         <!-- <li><a href="{{ url('avisospendentes') }}">Avisos Pendentes</a></li> -->
         <li class="{{ Request::is('modeloAvisos*') ? 'active' : '' }}">
             <a href="{!! route('modeloAvisos.index') !!}"><i class="fa fa-edit"></i><span>Modelo de Avisos</span></a>
@@ -78,5 +78,5 @@
 
     <li class="{{ Request::is('modeloAvisos*') ? 'active' : '' }}">
         <a href="{!! route('modeloAvisos.index') !!}"><i class="fa fa-edit"></i><span>ModeloAvisos</span></a>
-    </li>
+    </li> -->
 

@@ -13,7 +13,7 @@ class CreateAvisosEnviadosTable extends Migration
     public function up()
     {
         Schema::create('avisos_enviados', function (Blueprint $table) {
-            $table->integer('id');
+            $table->increments('id');
             $table->integer('user_id');
             $table->integer('aviso_id');
             $table->integer('tipodeaviso')->default(0);

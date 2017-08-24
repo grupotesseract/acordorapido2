@@ -90,7 +90,7 @@
 
     <!-- Main Footer -->
     <footer class="main-footer" style="max-height: 100px;text-align: center">
-        <strong>Copyleft 2018 <a href="http://grupotesseract.com.br" target="_blank">Grupo Tesseract</a>.</strong> 
+        <strong>Desenvolvido por <a href="http://grupotesseract.com.br" target="_blank">Grupo Tesseract</a></strong> 
     </footer>
 
 </div>
@@ -103,6 +103,30 @@
 
 <!-- AdminLTE App -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/js/app.min.js"></script>
+
+<script>
+    function checkAll() {
+        var checkboxes = document.getElementsByTagName('input');
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].type == 'checkbox') {
+                checkboxes[i].checked = !checkboxes[i].checked;
+            }
+        }         
+    }
+</script>
+
+
+<script>
+   
+
+    $(document).on("click", ".enviarligacao", function () {
+         var id = $(this).data('id');
+         $("#aviso_id").val(id);
+         
+    });         
+
+</script>
+
 
 @yield('scripts')
 </body>

@@ -2,20 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\Titulo;
+use App\Models\Aviso;
 use Yajra\Datatables\Services\DataTable;
 
-class TituloDataTable extends DataTable
+class AvisoDataTable extends DataTable
 {
-    protected $estado;
-
-    public function porEstado($estado)
-    {
-        $this->estado = $estado;
-
-        return $this;
-    }
-
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -23,9 +14,10 @@ class TituloDataTable extends DataTable
     {
         return $this->datatables
             ->eloquent($this->query())
-            ->addColumn('action', 'titulos.datatables_actions')
-            ->addColumn('avisos', 'titulos.operacoes')
-            ->rawColumns(['avisos', 'action'])
+            ->addColumn('selecionar', 'avisos.checkbox')
+            ->addColumn('total', 'avisos.totalavisos')
+            ->addColumn('action', 'avisos.datatables_actions')
+            ->rawColumns(['selecionar', 'action'])
             ->make(true);
     }
 
@@ -36,11 +28,9 @@ class TituloDataTable extends DataTable
      */
     public function query()
     {
-        $titulos = Titulo::query()->where('estado', $this->estado)->with('empresa')->with('cliente')->with(['avisos.avisosenviados' => function ($query) {
-            $query->where('status', '>=', 1);
-        }]);
+        $avisos = Aviso::query();
 
-        return $this->applyScopes($titulos);
+        return $this->applyScopes($avisos);
     }
 
     /**
@@ -52,7 +42,7 @@ class TituloDataTable extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->addAction(['width' => '10%', 'title' => 'Ação'])
+            ->addAction(['width' => '20%', 'title' => 'Ação'])
             ->ajax('')
             ->parameters([
                 'dom' => 'Bfrtip',
@@ -80,6 +70,7 @@ class TituloDataTable extends DataTable
                         'extend' => 'colvis',
                         'text'    => 'Filtrar Colunas',
                     ],
+
                 ],
                 'language' => ['url' => '//cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json'],
             ]);
@@ -93,14 +84,10 @@ class TituloDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'titulo' => ['name' => 'titulo', 'data' => 'titulo'],
-            'aluno' => ['name' => 'cliente_id', 'data' => 'cliente.nome'],
-            'estado' => ['name' => 'estado', 'data' => 'estado'],
-            'empresa' => ['name' => 'empresa_id', 'data' => 'empresa.nome'],
-            'pago' => ['name' => 'pago', 'data' => 'pago'],
-            'vencimento' => ['name' => 'vencimento', 'data' => 'vencimento'],
-            'valor' => ['name' => 'valor', 'data' => 'valor'],
-            'avisos' => ['name' => 'avisos', 'title' => 'Operações Efetuadas'],
+            'selecionar' => ['name' => 'selecionar'],
+            'título' => ['name' => 'tituloaviso', 'data' => 'tituloaviso'],
+            'mensagem' => ['name' => 'texto', 'data' => 'texto'],
+            'total' => ['name' => 'totalavisos'],
 
         ];
     }
@@ -112,6 +99,6 @@ class TituloDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'titulos';
+        return 'avisos';
     }
 }
