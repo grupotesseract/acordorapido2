@@ -24,7 +24,8 @@ class TituloDataTable extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', 'titulos.datatables_actions')
-            ->addColumn('pago', 'titulos.pago')
+            ->addColumn('avisos', 'titulos.operacoes')
+            ->rawColumns(['avisos', 'action'])
             ->make(true);
     }
 
@@ -35,7 +36,9 @@ class TituloDataTable extends DataTable
      */
     public function query()
     {
-        $titulos = Titulo::query()->where('estado', $this->estado)->with('empresa')->with('cliente');
+        $titulos = Titulo::query()->where('estado', $this->estado)->with('empresa')->with('cliente')->with(['avisos.avisosenviados' => function ($query) {
+            $query->where('status','>=',1);
+        }]);
 
         return $this->applyScopes($titulos);
     }
@@ -90,13 +93,14 @@ class TituloDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'estado' => ['name' => 'estado', 'data' => 'estado'],
+            'titulo' => ['name' => 'titulo', 'data' => 'titulo'],
             'aluno' => ['name' => 'cliente_id', 'data' => 'cliente.nome'],
+            'estado' => ['name' => 'estado', 'data' => 'estado'],
             'empresa' => ['name' => 'empresa_id', 'data' => 'empresa.nome'],
             'pago' => ['name' => 'pago', 'data' => 'pago'],
             'vencimento' => ['name' => 'vencimento', 'data' => 'vencimento'],
             'valor' => ['name' => 'valor', 'data' => 'valor'],
-            'titulo' => ['name' => 'titulo', 'data' => 'titulo'],
+            'avisos' => ['name' => 'avisos', 'title' => 'Operações Efetuadas'],
 
         ];
     }
