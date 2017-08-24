@@ -50,7 +50,7 @@ class HomeController extends Controller
         if ($u->hasRole('admin')) {
             $titulos = Titulo::all()->take(10);
             $avisos = Aviso::all();
-            $importacoes = Importacao::all();
+            $importacoes = Importacao::orderBy('id','desc')->take(5)->get();
             $totalAzuis = Titulo::azuis()->count();
             $totalVerdes = Titulo::verdes()->count();
             $totalAmarelos = Titulo::amarelos()->count();
@@ -104,7 +104,7 @@ class HomeController extends Controller
         if ($u->hasRole('admin')) {
             $titulos = Titulo::all()->take(10);
             $avisos = Aviso::all();
-            $importacoes = Importacao::all();
+            $importacoes = Importacao::orderBy('id','desc')->take(5)->get();
             $totalAzuis = Titulo::azuis()->count();
             $totalVerdes = Titulo::verdes()->count();
             $totalAmarelos = Titulo::amarelos()->count();

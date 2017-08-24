@@ -186,6 +186,11 @@ class AvisoController extends AppBaseController
         return redirect(route('avisos.index'));
     }
 
+    /**
+     * Envia lote de avisos de uma só vez
+     * @param  Request $request Request contendo os ID´s dos avisos
+     * @return Response           Volta para a tela de avisos
+     */
     public function enviarLoteAviso(Request $request)
     {
         foreach ($request->id as $key => $value) {
@@ -221,5 +226,28 @@ class AvisoController extends AppBaseController
         }
 
         return redirect(route('avisos.index'));
+    }
+
+    public function salvaLigacao(Request $request) {
+        $aviso = $this->avisoRepository->find($request->aviso_id);
+
+        $this->avisoEnviadoRepository->create([
+                'user_id' => Auth::id(),
+                'aviso_id' => $aviso->id,
+                'estado' => $aviso->estado,
+                'tipodeaviso' => 1,
+                'status' => '1',
+                'observacaoligacao' => $request->observacaoligacao,
+                'tempoligacao' => $request->tempoligacao[0]
+            ]);      
+
+        $aviso->status = $aviso->status + 1;
+        $aviso->save();
+
+        Flash::success('Ligação telefônica salva com sucesso');
+        
+        return redirect(route('avisos.index'));
+        
+
     }
 }

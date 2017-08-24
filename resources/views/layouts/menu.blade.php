@@ -49,7 +49,7 @@
             <a href="{!! route('modeloAvisos.index') !!}"><i class="fa fa-edit"></i><span>Modelo de Avisos</span></a>
         </li>
 
-        <li><a href="{{ url('avisos/create') }}">Enviar SMS para um Número</a></li>
+        <li><a href="{{ url('avisos/create') }}"><i class="glyphicon glyphicon-pencil"></i><span>Enviar SMS para um Número</span></a></li>
     </ul>
 </li>
 @endrole
