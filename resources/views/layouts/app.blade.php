@@ -90,7 +90,7 @@
 
     <!-- Main Footer -->
     <footer class="main-footer" style="max-height: 100px;text-align: center">
-        <strong>Copyleft 2018 <a href="http://grupotesseract.com.br" target="_blank">Grupo Tesseract</a>.</strong> 
+        <strong>Desenvolvido por <a href="http://grupotesseract.com.br" target="_blank">Grupo Tesseract</a></strong> 
     </footer>
 
 </div>
@@ -114,6 +114,19 @@
         }         
     }
 </script>
+
+
+<script>
+   
+
+    $(document).on("click", ".enviarligacao", function () {
+         var id = $(this).data('id');
+         $("#aviso_id").val(id);
+         
+    });         
+
+</script>
+
 
 @yield('scripts')
 </body>
