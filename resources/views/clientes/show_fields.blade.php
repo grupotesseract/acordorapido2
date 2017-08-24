@@ -1,7 +1,13 @@
 <!-- Nome Field -->
-<div class="form-group">
-    {!! Form::label('nome', 'Nome:') !!}
-    <p>{!! $cliente->nome !!}</p>
+<div class="row">
+    <div class="form-group col-sm-6">
+        {!! Form::label('nome', 'Nome:') !!}
+        <p>{!! $cliente->nome !!}</p>
+    </div>
+
+    <div class="form-group col-sm-6">
+        <h3><span class="glyphicon glyphicon-earphone"></span> {!! $cliente->contato !!}</h3>
+    </div>
 </div>
 
 <!-- Rg Field -->
@@ -58,11 +64,5 @@
         <p>{!! $cliente->telefone2 !!}</p>
     </div>
     @endif
-</div>
-
-<!-- Created At Field -->
-<div class="form-group">
-    {!! Form::label('created_at', 'Criado em:') !!}
-    <p>{!! $cliente->created_at !!}</p>
 </div>
 
