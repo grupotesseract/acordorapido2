@@ -75,15 +75,15 @@ class ClienteController extends AppBaseController
             return redirect(route('alunos.index'));
         }
 
-        $cliente->titulos; 
+        $cliente->titulos;
 
-        if($cliente->celular) {
+        if ($cliente->celular) {
             $cliente->contato = $cliente->celular;
-        } else if ($cliente->telefone) {
+        } elseif ($cliente->telefone) {
             $cliente->contato = $cliente->telefone;
-        } else if ($cliente->celular2) {
+        } elseif ($cliente->celular2) {
             $cliente->contato = $cliente->celular2;
-        } else if ($cliente->telefone2) {
+        } elseif ($cliente->telefone2) {
             $cliente->contato = $cliente->telefone2;
         } else {
             $cliente->contato = 'Não possui telefone para contato';
