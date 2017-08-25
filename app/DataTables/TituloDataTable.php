@@ -37,7 +37,7 @@ class TituloDataTable extends DataTable
     public function query()
     {
         $titulos = Titulo::query()->where('estado', $this->estado)->with('empresa')->with('cliente')->with(['avisos.avisosenviados' => function ($query) {
-            $query->where('status','>=',1);
+            $query->where('status', '>=', 1);
         }]);
 
         return $this->applyScopes($titulos);
