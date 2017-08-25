@@ -1,19 +1,7 @@
-<!-- Id Field -->
-<div class="form-group">
-    {!! Form::label('id', 'Id:') !!}
-    <p>{!! $titulo->id !!}</p>
-</div>
-
 <!-- Estado Field -->
 <div class="form-group">
-    {!! Form::label('estado', 'Estado:') !!}
+    {!! Form::label('estado', 'Módulo:') !!}
     <p>{!! $titulo->estado !!}</p>
-</div>
-
-<!-- Cliente Id Field -->
-<div class="form-group">
-    {!! Form::label('cliente_id', 'Cliente Id:') !!}
-    <p>{!! $titulo->cliente_id !!}</p>
 </div>
 
 <!-- Empresa Id Field -->
@@ -45,22 +33,3 @@
     {!! Form::label('titulo', 'Titulo:') !!}
     <p>{!! $titulo->titulo !!}</p>
 </div>
-
-<!-- Created At Field -->
-<div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{!! $titulo->created_at !!}</p>
-</div>
-
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{!! $titulo->updated_at !!}</p>
-</div>
-
-<!-- Importacao Id Field -->
-<div class="form-group">
-    {!! Form::label('importacao_id', 'Importacao Id:') !!}
-    <p>{!! $titulo->importacao_id !!}</p>
-</div>
-

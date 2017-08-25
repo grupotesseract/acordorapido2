@@ -55,7 +55,7 @@ class ClienteController extends AppBaseController
 
         Flash::success('Cliente salvo com sucesso.');
 
-        return redirect(route('clientes.index'));
+        return redirect(route('alunos.index'));
     }
 
     /**
@@ -72,7 +72,21 @@ class ClienteController extends AppBaseController
         if (empty($cliente)) {
             Flash::error('Cliente não encontrado');
 
-            return redirect(route('clientes.index'));
+            return redirect(route('alunos.index'));
+        }
+
+        $cliente->titulos;
+
+        if ($cliente->celular) {
+            $cliente->contato = $cliente->celular;
+        } elseif ($cliente->telefone) {
+            $cliente->contato = $cliente->telefone;
+        } elseif ($cliente->celular2) {
+            $cliente->contato = $cliente->celular2;
+        } elseif ($cliente->telefone2) {
+            $cliente->contato = $cliente->telefone2;
+        } else {
+            $cliente->contato = 'Não possui telefone para contato';
         }
 
         return view('clientes.show')->with('cliente', $cliente);
@@ -92,7 +106,7 @@ class ClienteController extends AppBaseController
         if (empty($cliente)) {
             Flash::error('Cliente não encontrado');
 
-            return redirect(route('clientes.index'));
+            return redirect(route('alunos.index'));
         }
 
         return view('clientes.edit')->with('cliente', $cliente);
@@ -113,14 +127,14 @@ class ClienteController extends AppBaseController
         if (empty($cliente)) {
             Flash::error('Cliente não encontrado');
 
-            return redirect(route('clientes.index'));
+            return redirect(route('alunos.index'));
         }
 
         $cliente = $this->clienteRepository->update($request->all(), $id);
 
         Flash::success('Cliente atualizado com sucesso.');
 
-        return redirect(route('clientes.index'));
+        return redirect(route('alunos.index'));
     }
 
     /**
@@ -137,13 +151,13 @@ class ClienteController extends AppBaseController
         if (empty($cliente)) {
             Flash::error('Cliente não encontrado');
 
-            return redirect(route('clientes.index'));
+            return redirect(route('alunos.index'));
         }
 
         $this->clienteRepository->delete($id);
 
         Flash::success('Cliente excluído com sucesso.');
 
-        return redirect(route('clientes.index'));
+        return redirect(route('alunos.index'));
     }
 }
