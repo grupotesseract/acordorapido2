@@ -55,7 +55,7 @@ class EmpresaController extends AppBaseController
 
         Flash::success('Empresa criada com sucesso.');
 
-        return redirect(route('empresas.index'));
+        return redirect(route('escolas.index'));
     }
 
     /**
@@ -72,7 +72,7 @@ class EmpresaController extends AppBaseController
         if (empty($empresa)) {
             Flash::error('Empresa não encontrada');
 
-            return redirect(route('empresas.index'));
+            return redirect(route('escolas.index'));
         }
 
         return view('empresas.show')->with('empresa', $empresa);
@@ -92,7 +92,7 @@ class EmpresaController extends AppBaseController
         if (empty($empresa)) {
             Flash::error('Empresa não encontrada');
 
-            return redirect(route('empresas.index'));
+            return redirect(route('escolas.index'));
         }
 
         return view('empresas.edit')->with('empresa', $empresa);
@@ -113,14 +113,14 @@ class EmpresaController extends AppBaseController
         if (empty($empresa)) {
             Flash::error('Empresa não encontrada');
 
-            return redirect(route('empresas.index'));
+            return redirect(route('escolas.index'));
         }
 
         $empresa = $this->empresaRepository->update($request->all(), $id);
 
         Flash::success('Empresa atualizada com sucesso.');
 
-        return redirect(route('empresas.index'));
+        return redirect(route('escolas.index'));
     }
 
     /**
@@ -137,13 +137,13 @@ class EmpresaController extends AppBaseController
         if (empty($empresa)) {
             Flash::error('Empresa não encontrada');
 
-            return redirect(route('empresas.index'));
+            return redirect(route('escolas.index'));
         }
 
         $this->empresaRepository->delete($id);
 
         Flash::success('Empresa excluída com sucesso.');
 
-        return redirect(route('empresas.index'));
+        return redirect(route('escolas.index'));
     }
 }

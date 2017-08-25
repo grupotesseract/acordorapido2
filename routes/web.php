@@ -21,11 +21,9 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('/dashboard', 'HomeController@dashboard')->middleware('auth');
 
-Route::resource('clientes', 'ClienteController', ['middleware' => 'auth']);
 Route::resource('alunos', 'ClienteController', ['middleware' => 'auth']);
 
-Route::resource('empresas', 'EmpresaController', ['middleware' => 'auth']);
-//Route::resource('escolas', 'EmpresaController', ['middleware' => 'auth']);
+Route::resource('escolas', 'EmpresaController', ['middleware' => 'auth']);
 
 Route::resource('titulos', 'TituloController', ['middleware' => 'auth']);
 
