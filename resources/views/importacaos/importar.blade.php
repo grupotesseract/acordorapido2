@@ -1,9 +1,5 @@
 @extends('layouts.app')
 
-@section('htmlheader_title', 'Importação XLS')
-
-@section('contentheader_title', 'Importar Planilha - Módulo '.ucfirst($estado))
-
 @section('content')    
     
     <div class="row">
@@ -71,6 +67,7 @@
             <div class="box box-default">
                 <div class="box-header with-border">
                     <h3 class="box-title">Títulos Importados</h3>
+                    <a class="btn btn-sm btn-default" href="{{ url('titulos/modulo/'.$importacao->modulo) }}"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> ver todos </a>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                         </button>

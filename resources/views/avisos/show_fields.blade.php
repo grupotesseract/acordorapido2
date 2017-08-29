@@ -6,7 +6,7 @@
 
 <!-- Tituloaviso Field -->
 <div class="form-group">
-    {!! Form::label('tituloaviso', 'Tituloaviso:') !!}
+    {!! Form::label('tituloaviso', 'Título:') !!}
     <p>{!! $aviso->tituloaviso !!}</p>
 </div>
 
@@ -18,13 +18,13 @@
 
 <!-- Created At Field -->
 <div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
+    {!! Form::label('created_at', 'Criado em:') !!}
     <p>{!! $aviso->created_at !!}</p>
 </div>
 
 <!-- Updated At Field -->
 <div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
+    {!! Form::label('updated_at', 'Atualizado em:') !!}
     <p>{!! $aviso->updated_at !!}</p>
 </div>
 

@@ -17,10 +17,10 @@
         <div class="box box-primary">
             <div class="box-body">
                     @include('avisos.table')
+                <h1 class="pull-right">        
+                    {!! Form::submit('Enviar SMS Marcados', array('class'=>'btn btn-primary pull-right', 'style'=>'margin-top: -10px;margin-bottom: 5px')) !!}           
+                </h1>
             </div>
-            <h1 class="pull-right">        
-                {!! Form::submit('Enviar SMS Marcados', array('class'=>'btn btn-primary pull-right', 'style'=>'margin-top: -10px;margin-bottom: 5px')) !!}           
-            </h1>
         </div>
     </div>
     

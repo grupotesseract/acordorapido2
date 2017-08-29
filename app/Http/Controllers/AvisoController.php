@@ -162,7 +162,7 @@ class AvisoController extends AppBaseController
 
         $retorno = $this->avisoRepository->enviarAviso([
             'to'     => $aviso->cliente->celular,
-            'titulo' => $aviso->tituloaviso,
+            'tituloaviso' => $aviso->tituloaviso,
             'texto'  => $aviso->texto,
             'id'     => $aviso->cliente->id,
         ]);
@@ -197,7 +197,7 @@ class AvisoController extends AppBaseController
             $aviso = $this->avisoRepository->find($value);
             $retorno = $this->avisoRepository->enviarAviso([
                 'to'     => $aviso->cliente->celular,
-                'titulo' => $aviso->tituloaviso,
+                'tituloaviso' => $aviso->tituloaviso,
                 'texto'  => $aviso->texto,
                 'id'     => $aviso->cliente->id,
             ]);
@@ -248,6 +248,36 @@ class AvisoController extends AppBaseController
         
         return redirect(route('avisos.index'));
         
+
+    }
+
+    /**
+     * Envia SMS manualmente
+     * @param  Request $request Conteúdo da Mensagem
+     * @return Response Volta para página anterior
+    */
+    public function enviarAviso(Request $request)
+    {
+        $aviso = $this->avisoRepository->create($request->all());
+
+        $request->request->add(['id' => $aviso->id]);
+
+        $retorno = $this->avisoRepository->enviarAviso($request->all());
+
+        $this->avisoEnviadoRepository->create([
+            'user_id' => Auth::id(),
+            'aviso_id' => $aviso->id,
+            'estado' => 'nenhum',
+            'tipodeaviso' => 1,
+            'status' => $retorno,                
+        ]);
+
+        //TRATAR RETORNO
+        if ($retorno = '200') {
+            return redirect()->back()->with('message', 'SMS enviado com sucesso!');
+        }
+        else
+            return redirect()->back()->with('message', 'Houve algum erro ao enviar o SMS. Código do erro '.$retorno);
 
     }
 }

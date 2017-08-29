@@ -8,6 +8,7 @@ use App\DataTables\EmpresaDataTable;
 use App\Repositories\EmpresaRepository;
 use App\Http\Requests\CreateEmpresaRequest;
 use App\Http\Requests\UpdateEmpresaRequest;
+use Auth;
 
 class EmpresaController extends AppBaseController
 {
@@ -49,7 +50,9 @@ class EmpresaController extends AppBaseController
      */
     public function store(CreateEmpresaRequest $request)
     {
+        $request->request->add(['user_id' => Auth::id()]);
         $input = $request->all();
+
 
         $empresa = $this->empresaRepository->create($input);
 

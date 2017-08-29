@@ -6,8 +6,8 @@
 
 <!-- Empresa Id Field -->
 <div class="form-group">
-    {!! Form::label('empresa_id', 'Empresa Id:') !!}
-    <p>{!! $titulo->empresa_id !!}</p>
+    {!! Form::label('empresa', 'Escola:') !!}
+    <p>{!! $titulo->empresa->nome !!}</p>
 </div>
 
 <!-- Pago Field -->
@@ -19,7 +19,7 @@
 <!-- Vencimento Field -->
 <div class="form-group">
     {!! Form::label('vencimento', 'Vencimento:') !!}
-    <p>{!! $titulo->vencimento !!}</p>
+    <p>{!! $titulo->vencimento->format('d/m/Y') !!}</p>
 </div>
 
 <!-- Valor Field -->
@@ -30,6 +30,6 @@
 
 <!-- Titulo Field -->
 <div class="form-group">
-    {!! Form::label('titulo', 'Titulo:') !!}
+    {!! Form::label('titulo', 'Número do título:') !!}
     <p>{!! $titulo->titulo !!}</p>
 </div>

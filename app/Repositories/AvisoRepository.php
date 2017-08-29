@@ -56,7 +56,7 @@ class AvisoRepository extends BaseRepository
                 ],
                 'json' => [
                     'sendSmsRequest' => [
-                        'from'           => $aviso['titulo'],
+                        'from'           => $aviso['tituloaviso'],
                         'to'             => '55'.$aviso['to'],
                         'msg'            => $aviso['texto'],
                         'callbackOption' => 'NONE',

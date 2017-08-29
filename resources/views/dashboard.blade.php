@@ -56,10 +56,10 @@
                                     @forelse($importacoes as $importacao)
                                     <tr>
                                         <td>{{ Carbon\Carbon::parse($importacao->created_at)->format('d/m/Y h:i:s A') }}</td>
-                                        <td><a href="{{ url('titulos/modulo/'.$importacao->modulo)}}" class="label label-{{ $importacao->modulo }}">{{ ucfirst($importacao->modulo) }}</a></td>
+                                        <td><a href="{{ url('titulos/modulo/'.$importacao->modulo)}}">{{ ucfirst($importacao->modulo) }}</a></td>
                                         <td>{{ $importacao->empresa->nome }}</td>
                                         <td>
-                                            @if($importacao->titulos->count() > 0)
+                                            @if($importacao->titulos->count() > 0 AND $importacao->temerro == null)
                                                 <a href="{{ url('importacao/'.$importacao->id.'/titulos') }}">{{ $importacao->titulos->count() }} Títulos</a>
                                             @else
                                                 <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
@@ -100,7 +100,7 @@
 
                     <div class="box box-success">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Ultimos Títulos Importados</h3>
+                            <h3 class="box-title">Ultimos Títulos Importados</h3>                            
 
                             <div class="box-tools pull-right">
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -118,35 +118,19 @@
     <th>Vencimento</th>
     <th>Valor</th>
     <th>Importado em</th>
-    <th>Ações Tomadas</th>
     <th></th>
     </tr>
                                             </thead>
                                             <tbody>
 @foreach ($titulos as $titulo)
 <tr>
-<td><a href="{{ url('titulos/modulo/'.$titulo->estado)}}" class="label label-{{ $titulo->estado }}">{{ ucfirst($titulo->estado) }}</a></td>
+<td><a href="{{ url('titulos/modulo/'.$titulo->estado)}}">{{ ucfirst($titulo->estado) }}</a></td>
 <td>{{ ucwords(strtolower($titulo->titulo)) }}</td>
 <td> {{ $titulo->cliente->nome }}</td>
-<td> {{ $titulo->created_at->format('d/m/Y H:i') }}</td>
+<td> {{ $titulo->vencimento->format('d/m/Y') }}</td>
 
 <td> {{ $titulo->valor }}</td>
 <td> {{ $titulo->created_at->format('d/m/Y H:i') }}</td>
-<td>  
-
-@foreach ($titulo->avisos as $aviso)
-@if (isset($aviso))
-@forelse  ($aviso->avisosenviados->where('tipodeaviso', 0) as $avisoenviado)            
-<span class="label label-{{ $aviso->estado }}"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
-@empty
-@endforelse
-@endif
-
-
-@endforeach
-
-
-</td>
 <td>
 <!-- <a href="/avisos/create" class="btn btn-sm btn-default"> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Enviar SMS</a> -->
 <a class="btn btn-sm btn-default" href="{{ url('titulos/'.$titulo->id) }}"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> mais detalhes </a>
