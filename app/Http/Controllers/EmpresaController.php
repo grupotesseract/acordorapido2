@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Flash;
 use Response;
 use App\DataTables\EmpresaDataTable;
 use App\Repositories\EmpresaRepository;
 use App\Http\Requests\CreateEmpresaRequest;
 use App\Http\Requests\UpdateEmpresaRequest;
-use Auth;
 
 class EmpresaController extends AppBaseController
 {
@@ -52,7 +52,6 @@ class EmpresaController extends AppBaseController
     {
         $request->request->add(['user_id' => Auth::id()]);
         $input = $request->all();
-
 
         $empresa = $this->empresaRepository->create($input);
 

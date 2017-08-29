@@ -34,7 +34,7 @@ class TituloController extends AppBaseController
     }
 
     /**
-     * Agrupa títulos por módulo na DataTable
+     * Agrupa títulos por módulo na DataTable.
      * @param  TituloDataTable $tituloDataTable Instancia da DataTable
      * @param  string          $estado          Estado desejado
      * @return DataTable       DataTable renderizada com as infos
@@ -45,7 +45,7 @@ class TituloController extends AppBaseController
     }
 
     /**
-     * Traz títulos agrupados por importação
+     * Traz títulos agrupados por importação.
      * @param  [type] $id_importacao [description]
      * @return [type]                [description]
      */
@@ -235,8 +235,8 @@ class TituloController extends AppBaseController
                 $cliente->turma = $sheet->turma;
                 $cliente->periodo = $sheet->periodo;
                 $cliente->responsavel = $sheet->responsavel;
-                
-                if (!$sheet->celular OR strlen($sheet->celular) == 0) {
+
+                if (! $sheet->celular or strlen($sheet->celular) == 0) {
                     $importacao->temerro = true;
                     $importacao->save();
                 }

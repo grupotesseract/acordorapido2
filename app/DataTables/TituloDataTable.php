@@ -14,7 +14,7 @@ class TituloDataTable extends DataTable
         $this->estado = $estado;
 
         return $this;
-    }    
+    }
 
     /**
      * @return \Illuminate\Http\JsonResponse
