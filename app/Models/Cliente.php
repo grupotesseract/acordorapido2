@@ -64,7 +64,11 @@ class Cliente extends Model
      * @var array
      */
     public static $rules = [
-
+        'nome' => 'required',
+        'turma' => 'required',
+        'periodo' => 'required',
+        'responsavel' => 'required',
+        'rg' => 'required'
     ];
 
     /**

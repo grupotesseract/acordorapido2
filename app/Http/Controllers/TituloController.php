@@ -245,6 +245,12 @@ class TituloController extends AppBaseController
                 $cliente->telefone = $sheet->telefone;
                 $cliente->telefone2 = $sheet->telefone2;
                 $cliente->celular2 = $sheet->celular2;
+
+                if (!$sheet->rg OR strlen($sheet->rg) == 0) {
+                    $importacao->temerro = true;
+                    $importacao->save();
+                }
+
                 $cliente->rg = $sheet->rg;
                 $cliente->save();
                 $cliente_id = $cliente->id;
@@ -255,6 +261,12 @@ class TituloController extends AppBaseController
                 $titulo->pago = false;
                 $titulo->vencimento = $sheet->vencimento;
                 $titulo->valor = $sheet->valor;
+                
+                if (!$sheet->titulo OR strlen($sheet->titulo) == 0) {
+                    $importacao->temerro = true;
+                    $importacao->save();
+                }
+
                 $titulo->titulo = $sheet->titulo;
                 $titulo->estado = $estado;
                 $titulo->save();

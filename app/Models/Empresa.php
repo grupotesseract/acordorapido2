@@ -50,7 +50,9 @@ class Empresa extends Model
      * @var array
      */
     public static $rules = [
-
+        'nome' => 'required',
+        'cidade' => 'required',
+        'estado' => 'required'
     ];
 
     /**

@@ -18,7 +18,7 @@
       <td> {{ $titulo->vencimento }}</td>
       <td> {{ $titulo->valor }}</td>
       <td> {{ $importacao->user->name }}</td>
-      <td> {{ $titulo->created_at->format('d/m/Y H:i') }}</td>
+      <td> {{ $importacao->created_at->format('d/m/Y H:i') }}</td>
       
       <td>
       <!-- <a href="/avisos/create" class="btn btn-sm btn-default"> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Enviar SMS</a> -->
