@@ -49,6 +49,7 @@
             <a href="{!! route('modeloAvisos.index') !!}"><i class="fa fa-edit"></i><span>Modelo de Avisos</span></a>
         </li>
 
+
         <li><a href="{{ url('avisos/create') }}"><span aria-hidden="true" class="glyphicon glyphicon-envelope"></span>Enviar SMS para um Número</a></li>
     </ul>
 </li>
@@ -56,7 +57,7 @@
 <!-- <li>
     <a href="{{ url('titulos') }}"><i class='glyphicon glyphicon-list-alt'></i> <span>Títulos</span></a>
     </li> -->
-    @role('escola')
+   <!--  @role('escola')
     <li>
         <a href="{{ url('alunos/2') }}"><i class='glyphicon glyphicon-user'></i> <span>Alunos</span></a>
     </li>

@@ -17,10 +17,10 @@ class CreateAvisosTable extends Migration
             $table->string('tituloaviso');
             $table->text('texto');
             $table->integer('user_id', false);
-            $table->integer('cliente_id', false);
-            $table->integer('titulo_id', false);
+            $table->integer('cliente_id', false)->nullable();
+            $table->integer('titulo_id', false)->nullable();
             $table->integer('status')->default(0);
-            $table->string('estado');
+            $table->string('estado')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

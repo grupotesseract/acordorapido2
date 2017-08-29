@@ -33,9 +33,31 @@ class TituloController extends AppBaseController
         $this->middleware('auth');
     }
 
+    /**
+     * Agrupa títulos por módulo na DataTable.
+     * @param  TituloDataTable $tituloDataTable Instancia da DataTable
+     * @param  string          $estado          Estado desejado
+     * @return DataTable       DataTable renderizada com as infos
+     */
     public function titulosModulo(TituloDataTable $tituloDataTable, $estado)
     {
         return $tituloDataTable->porEstado($estado)->render('titulos.index');
+    }
+
+    /**
+     * Traz títulos agrupados por importação.
+     * @param  [type] $id_importacao [description]
+     * @return [type]                [description]
+     */
+    public function titulos($id_importacao)
+    {
+        //$titulos = Titulo::where('importacao_id', $id_importacao)->get();
+
+        $importacao = Importacao::find($id_importacao);
+
+        $titulos = $importacao->titulos->all();
+
+        return view('importacaos.titulos')->with(['titulos'=> $titulos, 'importacao'=> $importacao]);
     }
 
     /**
@@ -194,6 +216,8 @@ class TituloController extends AppBaseController
         $retorno = $this->modeloAvisoRepository->parametrizaAviso($estado, $empresa_id);
 
         if (! $retorno) {
+            $importacao->temerro = true;
+            $importacao->save();
             \Session::flash('flash_message_error', true);
             \Session::flash('flash_message', 'Antes de efetuar uma importação, você deve cadastrar os avisos que serão enviados para essa escola! Vá em Avisos->Modelo de Avisos');
 
@@ -203,14 +227,20 @@ class TituloController extends AppBaseController
 
         $titulos_importados = [];
 
-        Excel::load($request->file('excel'), function ($reader) use ($estado,$empresa_id,$importacao_id,&$titulos_importados,$retorno) {
-            $reader->each(function ($sheet) use ($estado,$empresa_id,$importacao_id,&$titulos_importados,$retorno) {
+        Excel::load($request->file('excel'), function ($reader) use ($estado,$empresa_id,$importacao_id,&$titulos_importados,$retorno,$importacao) {
+            $reader->each(function ($sheet) use ($estado,$empresa_id,$importacao_id,&$titulos_importados,$retorno,$importacao) {
                 $cliente = Cliente::firstOrNew(['rg' => $sheet->rg]);
                 $cliente->nome = $sheet->nome;
                 $cliente->user_id = Auth::id();
                 $cliente->turma = $sheet->turma;
                 $cliente->periodo = $sheet->periodo;
                 $cliente->responsavel = $sheet->responsavel;
+
+                if (! $sheet->celular or strlen($sheet->celular) == 0) {
+                    $importacao->temerro = true;
+                    $importacao->save();
+                }
+
                 $cliente->celular = $sheet->celular;
                 $cliente->telefone = $sheet->telefone;
                 $cliente->telefone2 = $sheet->telefone2;
@@ -263,9 +293,9 @@ class TituloController extends AppBaseController
         \Session::flash('flash_message_success', true);
         \Session::flash('flash_message', 'Títulos importados com sucesso!');
 
-        $titulos = Titulo::whereIn('id', $titulos_importados)->with('avisos')->get();
+        $titulos = Titulo::whereIn('id', $titulos_importados)->with('avisos')->get()->take(10);
         $escolas = Empresa::all();
 
-        return view('importacaos.importar')->with(['estado'=> $estado, 'escolas' => $escolas, 'titulos' => $titulos]);
+        return view('importacaos.importar')->with(['estado'=> $estado, 'escolas' => $escolas, 'titulos' => $titulos, 'importacao' => $importacao]);
     }
 }

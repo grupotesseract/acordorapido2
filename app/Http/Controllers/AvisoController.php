@@ -162,7 +162,7 @@ class AvisoController extends AppBaseController
 
         $retorno = $this->avisoRepository->enviarAviso([
             'to'     => $aviso->cliente->celular,
-            'titulo' => $aviso->tituloaviso,
+            'tituloaviso' => $aviso->tituloaviso,
             'texto'  => $aviso->texto,
             'id'     => $aviso->cliente->id,
         ]);
@@ -186,13 +186,18 @@ class AvisoController extends AppBaseController
         return redirect(route('avisos.index'));
     }
 
+    /**
+     * Envia lote de avisos de uma só vez.
+     * @param  Request $request Request contendo os ID´s dos avisos
+     * @return Response           Volta para a tela de avisos
+     */
     public function enviarLoteAviso(Request $request)
     {
         foreach ($request->id as $key => $value) {
             $aviso = $this->avisoRepository->find($value);
             $retorno = $this->avisoRepository->enviarAviso([
                 'to'     => $aviso->cliente->celular,
-                'titulo' => $aviso->tituloaviso,
+                'tituloaviso' => $aviso->tituloaviso,
                 'texto'  => $aviso->texto,
                 'id'     => $aviso->cliente->id,
             ]);
@@ -221,5 +226,56 @@ class AvisoController extends AppBaseController
         }
 
         return redirect(route('avisos.index'));
+    }
+
+    public function salvaLigacao(Request $request)
+    {
+        $aviso = $this->avisoRepository->find($request->aviso_id);
+
+        $this->avisoEnviadoRepository->create([
+                'user_id' => Auth::id(),
+                'aviso_id' => $aviso->id,
+                'estado' => $aviso->estado,
+                'tipodeaviso' => 1,
+                'status' => '1',
+                'observacaoligacao' => $request->observacaoligacao,
+                'tempoligacao' => $request->tempoligacao[0],
+            ]);
+
+        $aviso->status = $aviso->status + 1;
+        $aviso->save();
+
+        Flash::success('Ligação telefônica salva com sucesso');
+
+        return redirect(route('avisos.index'));
+    }
+
+    /**
+     * Envia SMS manualmente.
+     * @param  Request $request Conteúdo da Mensagem
+     * @return Response Volta para página anterior
+     */
+    public function enviarAviso(Request $request)
+    {
+        $aviso = $this->avisoRepository->create($request->all());
+
+        $request->request->add(['id' => $aviso->id]);
+
+        $retorno = $this->avisoRepository->enviarAviso($request->all());
+
+        $this->avisoEnviadoRepository->create([
+            'user_id' => Auth::id(),
+            'aviso_id' => $aviso->id,
+            'estado' => 'nenhum',
+            'tipodeaviso' => 1,
+            'status' => $retorno,
+        ]);
+
+        //TRATAR RETORNO
+        if ($retorno = '200') {
+            return redirect()->back()->with('message', 'SMS enviado com sucesso!');
+        } else {
+            return redirect()->back()->with('message', 'Houve algum erro ao enviar o SMS. Código do erro '.$retorno);
+        }
     }
 }

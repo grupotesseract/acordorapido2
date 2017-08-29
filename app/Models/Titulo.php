@@ -168,4 +168,11 @@ class Titulo extends Model
     {
         return $query->where('estado', 'cinza');
     }
+
+    public function getPagoAttribute($value)
+    {
+        $pago = ($value) ? 'Pago' : 'Pendente';
+
+        return $pago;
+    }
 }

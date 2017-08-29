@@ -78,9 +78,9 @@ class Aviso extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function titulos()
+    public function titulo()
     {
-        return $this->hasMany(\App\Models\Titulo::class);
+        return $this->belongsTo(\App\Models\Titulo::class);
     }
 
     /**

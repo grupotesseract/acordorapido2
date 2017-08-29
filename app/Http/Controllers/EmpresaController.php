@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Flash;
 use Response;
 use App\DataTables\EmpresaDataTable;
@@ -49,6 +50,7 @@ class EmpresaController extends AppBaseController
      */
     public function store(CreateEmpresaRequest $request)
     {
+        $request->request->add(['user_id' => Auth::id()]);
         $input = $request->all();
 
         $empresa = $this->empresaRepository->create($input);

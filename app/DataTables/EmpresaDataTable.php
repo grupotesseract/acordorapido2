@@ -81,7 +81,6 @@ class EmpresaDataTable extends DataTable
     {
         return [
             'nome' => ['name' => 'nome', 'data' => 'nome'],
-            'user_id' => ['name' => 'user_id', 'data' => 'user_id'],
             'cidade' => ['name' => 'cidade', 'data' => 'cidade'],
             'estado' => ['name' => 'estado', 'data' => 'estado'],
         ];

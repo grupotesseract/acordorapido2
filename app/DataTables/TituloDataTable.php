@@ -36,9 +36,11 @@ class TituloDataTable extends DataTable
      */
     public function query()
     {
-        $titulos = Titulo::query()->where('estado', $this->estado)->with('empresa')->with('cliente')->with(['avisos.avisosenviados' => function ($query) {
-            $query->where('status', '>=', 1);
-        }]);
+        /*$titulos = Titulo::query()->where('estado', $this->estado)->with('empresa')->with('cliente')->with(['avisos.avisosenviados' => function ($query) {
+            $query->where('status', '>=', 1)->with('user');
+        }]);*/
+
+        $titulos = Titulo::query()->where('estado', $this->estado)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
 
         return $this->applyScopes($titulos);
     }
@@ -93,10 +95,10 @@ class TituloDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'titulo' => ['name' => 'titulo', 'data' => 'titulo'],
-            'aluno' => ['name' => 'cliente_id', 'data' => 'cliente.nome'],
-            'estado' => ['name' => 'estado', 'data' => 'estado'],
             'empresa' => ['name' => 'empresa_id', 'data' => 'empresa.nome'],
+            'titulo' => ['name' => 'titulo', 'data' => 'titulo'],
+            'aluno' => ['name' => 'cliente_id', 'data' => 'cliente.nome', 'searchable' => true],
+            'estado' => ['name' => 'estado', 'data' => 'estado'],
             'pago' => ['name' => 'pago', 'data' => 'pago'],
             'vencimento' => ['name' => 'vencimento', 'data' => 'vencimento'],
             'valor' => ['name' => 'valor', 'data' => 'valor'],

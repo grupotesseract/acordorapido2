@@ -17,6 +17,7 @@ class CreateImportacoesTable extends Migration
             $table->integer('user_id');
             $table->integer('empresa_id');
             $table->string('modulo');
+            $table->boolean('temerro')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
