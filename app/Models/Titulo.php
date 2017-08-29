@@ -177,7 +177,8 @@ class Titulo extends Model
      */
     public function getPagoAttribute($value)
     {
-        $pago = ($value) ? 'Pago' : 'Pendente'; 
+        $pago = ($value) ? 'Pago' : 'Pendente';
+
         return $pago;
     }
 

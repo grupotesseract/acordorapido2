@@ -251,10 +251,10 @@ class AvisoController extends AppBaseController
     }
 
     /**
-     * Envia SMS manualmente
+     * Envia SMS manualmente.
      * @param  Request $request Conteúdo da Mensagem
      * @return Response Volta para página anterior
-    */
+     */
     public function enviarAviso(Request $request)
     {
         $aviso = $this->avisoRepository->create($request->all());
@@ -268,15 +268,14 @@ class AvisoController extends AppBaseController
             'aviso_id' => $aviso->id,
             'estado' => 'nenhum',
             'tipodeaviso' => 1,
-            'status' => $retorno,                
+            'status' => $retorno,
         ]);
 
         //TRATAR RETORNO
         if ($retorno = '200') {
             return redirect()->back()->with('message', 'SMS enviado com sucesso!');
-        }
-        else
+        } else {
             return redirect()->back()->with('message', 'Houve algum erro ao enviar o SMS. Código do erro '.$retorno);
-
+        }
     }
 }
