@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Models;
-use \Carbon\Carbon as Carbon;
 
 use Eloquent as Model;
+use Carbon\Carbon as Carbon;
 
 /**
  * Class Titulo.
@@ -171,8 +171,8 @@ class Titulo extends Model
     }
 
     /**
-     * Accessor pra converter o campo Pago pra string
-     * @param  boolean $value Situação do título
+     * Accessor pra converter o campo Pago pra string.
+     * @param  bool $value Situação do título
      * @return string        Descritivo dá situação do título
      */
     public function getPagoAttribute($value)
@@ -183,7 +183,7 @@ class Titulo extends Model
     }
 
     public function getVencimentoAttribute($value)
-    {        
+    {
         return Carbon::parse($value)->format('d/m/Y');
     }
 }
