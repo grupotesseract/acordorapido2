@@ -208,18 +208,15 @@ class TituloController extends AppBaseController
      */
     public function importa(CreateTituloRequest $request, $estado)
     {
-        
         if ($request->mensagem) {
             $retorno = $this->modeloAvisoRepository->find($request->mensagem);
-        }
-        else {
+        } else {
             \Session::flash('flash_message_error', true);
             \Session::flash('flash_message', 'Antes de efetuar uma importação, você deve cadastrar os avisos que serão enviados para essa escola! Vá em Avisos->Modelo de Avisos');
 
             return Redirect::to('/importacao/'.$estado);
             exit;
-        }            
-        
+        }
 
         $importacao = Importacao::create(['user_id' => Auth::id(), 'modulo' => $estado, 'empresa_id' => $request->escola]);
         $importacao_id = $importacao->id;
@@ -246,7 +243,7 @@ class TituloController extends AppBaseController
                 $cliente->telefone2 = $sheet->telefone2;
                 $cliente->celular2 = $sheet->celular2;
 
-                if (!$sheet->rg OR strlen($sheet->rg) == 0) {
+                if (! $sheet->rg or strlen($sheet->rg) == 0) {
                     $importacao->temerro = true;
                     $importacao->save();
                 }
@@ -261,8 +258,8 @@ class TituloController extends AppBaseController
                 $titulo->pago = false;
                 $titulo->vencimento = $sheet->vencimento;
                 $titulo->valor = $sheet->valor;
-                
-                if (!$sheet->titulo OR strlen($sheet->titulo) == 0) {
+
+                if (! $sheet->titulo or strlen($sheet->titulo) == 0) {
                     $importacao->temerro = true;
                     $importacao->save();
                 }

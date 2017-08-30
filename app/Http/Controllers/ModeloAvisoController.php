@@ -22,8 +22,9 @@ class ModeloAvisoController extends AppBaseController
         $this->empresaRepository = $empresaRepository;
     }
 
-    public function modeloPorEscola ($escola, $tipo) {
-        return $this->modeloAvisoRepository->findWhere(['empresa_id' => $escola,'tipo' => ucfirst($tipo)])  ;
+    public function modeloPorEscola($escola, $tipo)
+    {
+        return $this->modeloAvisoRepository->findWhere(['empresa_id' => $escola, 'tipo' => ucfirst($tipo)]);
     }
 
     /**

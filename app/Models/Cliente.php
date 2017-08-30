@@ -68,7 +68,7 @@ class Cliente extends Model
         'turma' => 'required',
         'periodo' => 'required',
         'responsavel' => 'required',
-        'rg' => 'required'
+        'rg' => 'required',
     ];
 
     /**

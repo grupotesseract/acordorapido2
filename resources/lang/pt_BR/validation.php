@@ -123,7 +123,7 @@ return [
         'responsavel' => 'Responsável',
         'rg' => 'RG',
         'cidade' => 'Cidade',
-        'estado' => 'Estado'
+        'estado' => 'Estado',
     ],
 
 ];
