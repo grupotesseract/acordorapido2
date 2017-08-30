@@ -1,7 +1,32 @@
 @extends('layouts.app')
 
-@section('content')    
-    
+@section('content')   
+
+<script>
+    function carregaMensagens (sel,estado) {
+        if (sel != 0) {
+            $.ajax({
+                type: 'GET',
+                url: '/mensagens/'+sel+'/'+estado,
+                
+                success: function (data) {
+                    // the next thing you want to do 
+                    var $mensagens = $('#mensagens');
+                    $mensagens.empty();
+
+                    $.each(data, function (i, item) {
+                        $mensagens.append($('<option>', { 
+                            value: item.id,
+                            text : item.titulo + ': '+item.mensagem
+                        }));
+                    });    
+                }
+            });
+        }
+    }
+</script> 
+
+<div class="container">   
     <div class="row">
 
     <?php 
@@ -43,12 +68,20 @@
             {!! Form::open(array('url'=>'importa/'.$estado,'method'=>'POST', 'files'=>true)) !!}
             <div class="form-group ">        
                 <label for="sel1">Escolha a escola:</label>
-                <select class="form-control" name="escola" id="escola">
+                <select class="form-control" name="escola" id="{{$estado}}" onchange="carregaMensagens(this.value,this.id);">
+                    <option value="0"></option>
                     @forelse($escolas as $escola)
                     <option value="{{$escola->id}}">{{$escola->nome}}</option>
                     @empty 
                     <p>Sem escolas cadastradas</p>
                     @endforelse
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="sel2">Escolha a mensagem:</label>
+                <select class="form-control" name="mensagens" id="mensagens">
+
                 </select>
             </div>
                  
@@ -81,5 +114,8 @@
         </div>
         @endif
     </div>
+</div>
 @endsection
+
+
 

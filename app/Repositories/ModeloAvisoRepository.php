@@ -35,7 +35,7 @@ class ModeloAvisoRepository extends BaseRepository
 
     public function parametrizaAviso($estado, $empresa, $vencimento = null)
     {
-        $modeloaviso = ModeloAviso::where('tipo', ucfirst($estado))->where('empresa_id', $empresa)->get()->first();
+        $modeloaviso = ModeloAviso::where('tipo', ucfirst($estado))->where('empresa_id', $empresa)->get();
 
         if (! $modeloaviso) {
             return false;
