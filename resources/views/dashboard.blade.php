@@ -127,7 +127,7 @@
 <td><a href="{{ url('titulos/modulo/'.$titulo->estado)}}">{{ ucfirst($titulo->estado) }}</a></td>
 <td>{{ ucwords(strtolower($titulo->titulo)) }}</td>
 <td> {{ $titulo->cliente->nome }}</td>
-<td> {{ $titulo->vencimento->format('d/m/Y') }}</td>
+<td> {{ $titulo->vencimento }}</td>
 
 <td> {{ $titulo->valor }}</td>
 <td> {{ $titulo->created_at->format('d/m/Y H:i') }}</td>

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Eloquent as Model;
+use Carbon\Carbon as Carbon;
 
 /**
  * Class Titulo.
@@ -169,10 +170,20 @@ class Titulo extends Model
         return $query->where('estado', 'cinza');
     }
 
+    /**
+     * Accessor pra converter o campo Pago pra string.
+     * @param  bool $value Situação do título
+     * @return string        Descritivo dá situação do título
+     */
     public function getPagoAttribute($value)
     {
         $pago = ($value) ? 'Pago' : 'Pendente';
 
         return $pago;
+    }
+
+    public function getVencimentoAttribute($value)
+    {
+        return Carbon::parse($value)->format('d/m/Y');
     }
 }

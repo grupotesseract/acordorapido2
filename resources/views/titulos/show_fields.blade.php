@@ -19,7 +19,7 @@
 <!-- Vencimento Field -->
 <div class="form-group">
     {!! Form::label('vencimento', 'Vencimento:') !!}
-    <p>{!! $titulo->vencimento->format('d/m/Y') !!}</p>
+    <p>{!! $titulo->vencimento !!}</p>
 </div>
 
 <!-- Valor Field -->

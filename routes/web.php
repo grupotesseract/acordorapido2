@@ -35,6 +35,8 @@ Route::resource('importacaos', 'ImportacaoController', ['middleware' => 'auth'])
 
 Route::resource('modeloAvisos', 'ModeloAvisoController', ['middleware' => 'auth']);
 
+Route::get('mensagens/{escola}/{tipo}', 'ModeloAvisoController@modeloPorEscola');
+
 Route::get('importacao/{id}/titulos', 'TituloController@titulos');
 Route::get('importacao/{estado}', 'TituloController@importacao');
 Route::post('importa/{estado}', 'TituloController@importa');

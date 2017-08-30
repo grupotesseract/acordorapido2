@@ -19,7 +19,7 @@
       <td> {{ $titulo->empresa->nome }}</td>
       <td>{{ ucwords(strtolower($titulo->titulo)) }}</td>
       <td> {{ $titulo->cliente->nome }}</td>
-      <td> {{ $titulo->created_at->format('d/m/Y H:i') }}</td>
+      <td> {{ $titulo->vencimento }}</td>
 
       <td> {{ $titulo->valor }}</td>
       <td> {{ $titulo->created_at->format('d/m/Y H:i') }}</td>
