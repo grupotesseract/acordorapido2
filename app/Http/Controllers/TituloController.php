@@ -208,22 +208,22 @@ class TituloController extends AppBaseController
      */
     public function importa(CreateTituloRequest $request, $estado)
     {
-        $importacao = Importacao::create(['user_id' => Auth::id(), 'modulo' => $estado, 'empresa_id' => $request->escola]);
-        $importacao_id = $importacao->id;
-        $empresa_id = $request->escola;
-
-        //TODO - AQUI DEVE SER PARAMETRIZADO A MENSAGEM POR ESTADO E ESCOLA
-        $retorno = $this->modeloAvisoRepository->parametrizaAviso($estado, $empresa_id);
-
-        if (! $retorno) {
-            $importacao->temerro = true;
-            $importacao->save();
+        
+        if ($request->mensagem) {
+            $retorno = $this->modeloAvisoRepository->find($request->mensagem);
+        }
+        else {
             \Session::flash('flash_message_error', true);
             \Session::flash('flash_message', 'Antes de efetuar uma importação, você deve cadastrar os avisos que serão enviados para essa escola! Vá em Avisos->Modelo de Avisos');
 
             return Redirect::to('/importacao/'.$estado);
             exit;
-        }
+        }            
+        
+
+        $importacao = Importacao::create(['user_id' => Auth::id(), 'modulo' => $estado, 'empresa_id' => $request->escola]);
+        $importacao_id = $importacao->id;
+        $empresa_id = $request->escola;
 
         $titulos_importados = [];
 

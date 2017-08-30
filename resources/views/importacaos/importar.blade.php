@@ -80,7 +80,7 @@
 
             <div class="form-group">
                 <label for="sel2">Escolha a mensagem:</label>
-                <select class="form-control" name="mensagens" id="mensagens">
+                <select class="form-control" name="mensagem" id="mensagens">
 
                 </select>
             </div>
