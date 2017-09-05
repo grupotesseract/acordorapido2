@@ -53,7 +53,7 @@ class ImportacaoDataTable extends DataTable
                          'text'    => '<i class="fa fa-download"></i> Export',
                          'buttons' => [
                              'csv',
-                             'excel'
+                             'excel',
                          ],
                     ],
                     'colvis',
