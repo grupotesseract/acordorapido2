@@ -54,7 +54,6 @@ class ImportacaoDataTable extends DataTable
                          'buttons' => [
                              'csv',
                              'excel',
-                             'pdf',
                          ],
                     ],
                     'colvis',

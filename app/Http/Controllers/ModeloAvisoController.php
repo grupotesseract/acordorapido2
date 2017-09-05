@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Flash;
 use Response;
+use App\Repositories\EmpresaRepository;
 use App\DataTables\ModeloAvisoDataTable;
 use App\Repositories\ModeloAvisoRepository;
 use App\Http\Requests\CreateModeloAvisoRequest;
@@ -14,9 +16,15 @@ class ModeloAvisoController extends AppBaseController
     /** @var ModeloAvisoRepository */
     private $modeloAvisoRepository;
 
-    public function __construct(ModeloAvisoRepository $modeloAvisoRepo)
+    public function __construct(ModeloAvisoRepository $modeloAvisoRepo, EmpresaRepository $empresaRepository)
     {
         $this->modeloAvisoRepository = $modeloAvisoRepo;
+        $this->empresaRepository = $empresaRepository;
+    }
+
+    public function modeloPorEscola($escola, $tipo)
+    {
+        return $this->modeloAvisoRepository->findWhere(['empresa_id' => $escola, 'tipo' => ucfirst($tipo)]);
     }
 
     /**
@@ -37,7 +45,9 @@ class ModeloAvisoController extends AppBaseController
      */
     public function create()
     {
-        return view('modelo_avisos.create');
+        $escolas = $this->empresaRepository->all();
+
+        return view('modelo_avisos.create', compact('escolas'));
     }
 
     /**
@@ -49,11 +59,13 @@ class ModeloAvisoController extends AppBaseController
      */
     public function store(CreateModeloAvisoRequest $request)
     {
+        $request->request->add(['user_id' => Auth::id()]);
+
         $input = $request->all();
 
         $modeloAviso = $this->modeloAvisoRepository->create($input);
 
-        Flash::success('Modelo Aviso saved successfully.');
+        Flash::success('Modelo de Aviso criado com sucesso');
 
         return redirect(route('modeloAvisos.index'));
     }
@@ -70,7 +82,7 @@ class ModeloAvisoController extends AppBaseController
         $modeloAviso = $this->modeloAvisoRepository->findWithoutFail($id);
 
         if (empty($modeloAviso)) {
-            Flash::error('Modelo Aviso not found');
+            Flash::error('Modelo de Aviso não encontrado');
 
             return redirect(route('modeloAvisos.index'));
         }
@@ -88,14 +100,15 @@ class ModeloAvisoController extends AppBaseController
     public function edit($id)
     {
         $modeloAviso = $this->modeloAvisoRepository->findWithoutFail($id);
+        $escolas = $this->empresaRepository->all();
 
         if (empty($modeloAviso)) {
-            Flash::error('Modelo Aviso not found');
+            Flash::error('Modelo de Aviso não encontrado');
 
             return redirect(route('modeloAvisos.index'));
         }
 
-        return view('modelo_avisos.edit')->with('modeloAviso', $modeloAviso);
+        return view('modelo_avisos.edit')->with('modeloAviso', $modeloAviso)->with(compact('escolas'));
     }
 
     /**
@@ -111,14 +124,14 @@ class ModeloAvisoController extends AppBaseController
         $modeloAviso = $this->modeloAvisoRepository->findWithoutFail($id);
 
         if (empty($modeloAviso)) {
-            Flash::error('Modelo Aviso not found');
+            Flash::error('Modelo de Aviso não encontrado');
 
             return redirect(route('modeloAvisos.index'));
         }
 
         $modeloAviso = $this->modeloAvisoRepository->update($request->all(), $id);
 
-        Flash::success('Modelo Aviso updated successfully.');
+        Flash::success('Modelo de Aviso atualizado com sucesso');
 
         return redirect(route('modeloAvisos.index'));
     }
@@ -135,14 +148,14 @@ class ModeloAvisoController extends AppBaseController
         $modeloAviso = $this->modeloAvisoRepository->findWithoutFail($id);
 
         if (empty($modeloAviso)) {
-            Flash::error('Modelo Aviso not found');
+            Flash::error('Modelo de Aviso não encontrado');
 
             return redirect(route('modeloAvisos.index'));
         }
 
         $this->modeloAvisoRepository->delete($id);
 
-        Flash::success('Modelo Aviso deleted successfully.');
+        Flash::success('Modelo de Aviso excluído com sucesso');
 
         return redirect(route('modeloAvisos.index'));
     }

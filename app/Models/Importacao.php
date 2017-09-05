@@ -59,4 +59,57 @@ class Importacao extends Model
     public static $rules = [
 
     ];
+
+    /**
+     * Pega o usuário que realizou a importação.
+     */
+    public function user()
+    {
+        return $this->belongsTo(\App\Models\User::class);
+    }
+
+    /**
+     * Traz empresa a qual a importação está associada.
+     * @return \App\Empresa Model de Empresa
+     */
+    public function empresa()
+    {
+        return $this->belongsTo(\App\Models\Empresa::class);
+    }
+
+    /**
+     * Pega os titulos da importação.
+     */
+    public function titulos()
+    {
+        return $this->belongsToMany(\App\Models\Titulo::class);
+    }
+
+    /**
+     * Traz contagem de títulos de uma Importação.
+     * @return Collection Títulos agrupados por Importação
+     */
+    public function titulosCount()
+    {
+        return $this->hasMany(\App\Models\Titulo::class)
+        ->selectRaw('importacao_id, count(*) as aggregate')
+        ->groupBy('importacao_id');
+    }
+
+    /**
+     * TODO - Explicar o que é isso.
+     * @return [type] [description]
+     */
+    public function getTitulosCountAttribute()
+    {
+        // if relation is not loaded already, let's do it first
+        if (! array_key_exists('titulosCount', $this->relations)) {
+            $this->load('titulosCount');
+        }
+
+        $related = $this->getRelation('titulosCount');
+
+        // then return the count directly
+        return ($related) ? (int) $related->aggregate : 0;
+    }
 }

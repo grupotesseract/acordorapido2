@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Sao_Paulo',
 
     /*
     |--------------------------------------------------------------------------
@@ -77,7 +77,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'pt_BR',
 
     /*
     |--------------------------------------------------------------------------
@@ -181,6 +181,9 @@ return [
         //Entrust
         Zizaco\Entrust\EntrustServiceProvider::class,
 
+        //FSM - Finite State Machine
+        Sebdesign\SM\ServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -189,6 +192,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Barryvdh\Snappy\ServiceProvider::class,
 
     ],
 
@@ -243,6 +247,8 @@ return [
         'Flash'     => Laracasts\Flash\Flash::class,
 
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
+        'StateMachine' => Sebdesign\SM\Facade::class,
+
     ],
 
 ];

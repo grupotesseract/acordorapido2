@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Flash;
 use Response;
 use App\DataTables\EmpresaDataTable;
@@ -49,13 +50,14 @@ class EmpresaController extends AppBaseController
      */
     public function store(CreateEmpresaRequest $request)
     {
+        $request->request->add(['user_id' => Auth::id()]);
         $input = $request->all();
 
         $empresa = $this->empresaRepository->create($input);
 
-        Flash::success('Empresa saved successfully.');
+        Flash::success('Empresa criada com sucesso.');
 
-        return redirect(route('empresas.index'));
+        return redirect(route('escolas.index'));
     }
 
     /**
@@ -70,9 +72,9 @@ class EmpresaController extends AppBaseController
         $empresa = $this->empresaRepository->findWithoutFail($id);
 
         if (empty($empresa)) {
-            Flash::error('Empresa not found');
+            Flash::error('Empresa não encontrada');
 
-            return redirect(route('empresas.index'));
+            return redirect(route('escolas.index'));
         }
 
         return view('empresas.show')->with('empresa', $empresa);
@@ -90,9 +92,9 @@ class EmpresaController extends AppBaseController
         $empresa = $this->empresaRepository->findWithoutFail($id);
 
         if (empty($empresa)) {
-            Flash::error('Empresa not found');
+            Flash::error('Empresa não encontrada');
 
-            return redirect(route('empresas.index'));
+            return redirect(route('escolas.index'));
         }
 
         return view('empresas.edit')->with('empresa', $empresa);
@@ -111,16 +113,16 @@ class EmpresaController extends AppBaseController
         $empresa = $this->empresaRepository->findWithoutFail($id);
 
         if (empty($empresa)) {
-            Flash::error('Empresa not found');
+            Flash::error('Empresa não encontrada');
 
-            return redirect(route('empresas.index'));
+            return redirect(route('escolas.index'));
         }
 
         $empresa = $this->empresaRepository->update($request->all(), $id);
 
-        Flash::success('Empresa updated successfully.');
+        Flash::success('Empresa atualizada com sucesso.');
 
-        return redirect(route('empresas.index'));
+        return redirect(route('escolas.index'));
     }
 
     /**
@@ -135,15 +137,15 @@ class EmpresaController extends AppBaseController
         $empresa = $this->empresaRepository->findWithoutFail($id);
 
         if (empty($empresa)) {
-            Flash::error('Empresa not found');
+            Flash::error('Empresa não encontrada');
 
-            return redirect(route('empresas.index'));
+            return redirect(route('escolas.index'));
         }
 
         $this->empresaRepository->delete($id);
 
-        Flash::success('Empresa deleted successfully.');
+        Flash::success('Empresa excluída com sucesso.');
 
-        return redirect(route('empresas.index'));
+        return redirect(route('escolas.index'));
     }
 }

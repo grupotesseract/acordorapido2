@@ -4,12 +4,6 @@
     {!! Form::text('nome', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- User Id Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('user_id', 'User Id:') !!}
-    {!! Form::number('user_id', null, ['class' => 'form-control']) !!}
-</div>
-
 <!-- Cidade Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('cidade', 'Cidade:') !!}
@@ -25,5 +19,5 @@
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('empresas.index') !!}" class="btn btn-default">Cancel</a>
+    <a href="{!! route('escolas.index') !!}" class="btn btn-default">Cancel</a>
 </div>

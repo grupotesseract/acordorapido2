@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Eloquent as Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Cliente.
@@ -10,6 +11,7 @@ use Eloquent as Model;
  */
 class Cliente extends Model
 {
+    use SoftDeletes;
     public $table = 'clientes';
 
     /**
@@ -62,7 +64,11 @@ class Cliente extends Model
      * @var array
      */
     public static $rules = [
-
+        'nome' => 'required',
+        'turma' => 'required',
+        'periodo' => 'required',
+        'responsavel' => 'required',
+        'rg' => 'required',
     ];
 
     /**

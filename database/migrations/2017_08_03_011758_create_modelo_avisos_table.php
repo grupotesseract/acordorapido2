@@ -18,8 +18,8 @@ class CreateModeloAvisosTable extends Migration
             $table->integer('empresa_id');
             $table->string('titulo');
             $table->string('mensagem');
+            $table->string('tipo');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

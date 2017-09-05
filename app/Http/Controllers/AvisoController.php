@@ -2,37 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Flash;
 use Response;
 use Illuminate\Http\Request;
+use App\DataTables\AvisoDataTable;
 use App\Repositories\AvisoRepository;
 use App\Http\Requests\CreateAvisoRequest;
 use App\Http\Requests\UpdateAvisoRequest;
-use Prettus\Repository\Criteria\RequestCriteria;
+use App\Repositories\AvisosEnviadoRepository;
 
 class AvisoController extends AppBaseController
 {
     /** @var AvisoRepository */
     private $avisoRepository;
 
-    public function __construct(AvisoRepository $avisoRepo)
+    public function __construct(AvisoRepository $avisoRepo, AvisosEnviadoRepository $avisoEnviadoRepo)
     {
         $this->avisoRepository = $avisoRepo;
+        $this->avisoEnviadoRepository = $avisoEnviadoRepo;
     }
 
     /**
      * Display a listing of the Aviso.
      *
-     * @param Request $request
+     * @param AvisoDataTable $avisoDataTable
      * @return Response
      */
-    public function index(Request $request)
+    public function index(AvisoDataTable $avisoDataTable)
     {
-        $this->avisoRepository->pushCriteria(new RequestCriteria($request));
-        $avisos = $this->avisoRepository->all();
-
-        return view('avisos.index')
-            ->with('avisos', $avisos);
+        return $avisoDataTable->render('avisos.index');
     }
 
     /**
@@ -58,7 +57,7 @@ class AvisoController extends AppBaseController
 
         $aviso = $this->avisoRepository->create($input);
 
-        Flash::success('Aviso saved successfully.');
+        Flash::success('Aviso salvo com sucesso.');
 
         return redirect(route('avisos.index'));
     }
@@ -75,7 +74,7 @@ class AvisoController extends AppBaseController
         $aviso = $this->avisoRepository->findWithoutFail($id);
 
         if (empty($aviso)) {
-            Flash::error('Aviso not found');
+            Flash::error('Aviso não encontrado');
 
             return redirect(route('avisos.index'));
         }
@@ -95,7 +94,7 @@ class AvisoController extends AppBaseController
         $aviso = $this->avisoRepository->findWithoutFail($id);
 
         if (empty($aviso)) {
-            Flash::error('Aviso not found');
+            Flash::error('Aviso não encontrado');
 
             return redirect(route('avisos.index'));
         }
@@ -116,14 +115,14 @@ class AvisoController extends AppBaseController
         $aviso = $this->avisoRepository->findWithoutFail($id);
 
         if (empty($aviso)) {
-            Flash::error('Aviso not found');
+            Flash::error('Aviso não encontrado');
 
             return redirect(route('avisos.index'));
         }
 
         $aviso = $this->avisoRepository->update($request->all(), $id);
 
-        Flash::success('Aviso updated successfully.');
+        Flash::success('Aviso atualizado com sucesso.');
 
         return redirect(route('avisos.index'));
     }
@@ -140,15 +139,143 @@ class AvisoController extends AppBaseController
         $aviso = $this->avisoRepository->findWithoutFail($id);
 
         if (empty($aviso)) {
-            Flash::error('Aviso not found');
+            Flash::error('Aviso não encontrado');
 
             return redirect(route('avisos.index'));
         }
 
         $this->avisoRepository->delete($id);
 
-        Flash::success('Aviso deleted successfully.');
+        Flash::success('Aviso apagado com sucesso.');
 
         return redirect(route('avisos.index'));
+    }
+
+    /**
+     * Envia SMS.
+     * @param  int $aviso_id id do aviso
+     * @return Response           volta a página anterior
+     */
+    public function enviaSMS($aviso_id)
+    {
+        $aviso = $this->avisoRepository->find($aviso_id);
+
+        $retorno = $this->avisoRepository->enviarAviso([
+            'to'     => $aviso->cliente->celular,
+            'tituloaviso' => $aviso->tituloaviso,
+            'texto'  => $aviso->texto,
+            'id'     => $aviso->cliente->id,
+        ]);
+
+        if ($retorno == '200') {
+            $aviso->status = $aviso->status + 1;
+            Flash::success('Aviso enviado com sucesso.');
+        } else {
+            Flash::error('O Aviso não foi enviado. Verifique o número do celular do Aluno');
+        }
+
+        $aviso->save();
+        $this->avisoEnviadoRepository->create([
+            'user_id' => Auth::id(),
+            'aviso_id' => $aviso->id,
+            'estado' => $aviso->estado,
+            'tipodeaviso' => 0,
+            'status' => $retorno,
+        ]);
+
+        return redirect(route('avisos.index'));
+    }
+
+    /**
+     * Envia lote de avisos de uma só vez.
+     * @param  Request $request Request contendo os ID´s dos avisos
+     * @return Response           Volta para a tela de avisos
+     */
+    public function enviarLoteAviso(Request $request)
+    {
+        foreach ($request->id as $key => $value) {
+            $aviso = $this->avisoRepository->find($value);
+            $retorno = $this->avisoRepository->enviarAviso([
+                'to'     => $aviso->cliente->celular,
+                'tituloaviso' => $aviso->tituloaviso,
+                'texto'  => $aviso->texto,
+                'id'     => $aviso->cliente->id,
+            ]);
+
+            if ($retorno == '200') {
+                $aviso->status = $aviso->status + 1;
+            } else {
+                $houveerro = 'true';
+            }
+
+            $this->avisoEnviadoRepository->create([
+                'user_id' => Auth::id(),
+                'aviso_id' => $aviso->id,
+                'estado' => $aviso->estado,
+                'tipodeaviso' => 0,
+                'status' => $retorno,
+            ]);
+
+            $aviso->save();
+        }
+
+        if (! isset($houveerro)) {
+            Flash::success('Avisos enviados com sucesso.');
+        } else {
+            Flash::error('Um ou mais avisos não foram enviados! Verifique os números de celular dos Alunos');
+        }
+
+        return redirect(route('avisos.index'));
+    }
+
+    public function salvaLigacao(Request $request)
+    {
+        $aviso = $this->avisoRepository->find($request->aviso_id);
+
+        $this->avisoEnviadoRepository->create([
+                'user_id' => Auth::id(),
+                'aviso_id' => $aviso->id,
+                'estado' => $aviso->estado,
+                'tipodeaviso' => 1,
+                'status' => '1',
+                'observacaoligacao' => $request->observacaoligacao,
+                'tempoligacao' => $request->tempoligacao[0],
+            ]);
+
+        $aviso->status = $aviso->status + 1;
+        $aviso->save();
+
+        Flash::success('Ligação telefônica salva com sucesso');
+
+        return redirect(route('avisos.index'));
+    }
+
+    /**
+     * Envia SMS manualmente.
+     * @param  Request $request Conteúdo da Mensagem
+     * @return Response Volta para página anterior
+     */
+    public function enviarAviso(Request $request)
+    {
+        $aviso = $this->avisoRepository->create($request->all());
+
+        $request->request->add(['id' => $aviso->id]);
+
+        $retorno = $this->avisoRepository->enviarAviso($request->all());
+
+        $this->avisoEnviadoRepository->create([
+            'user_id' => Auth::id(),
+            'aviso_id' => $aviso->id,
+            'estado' => 'nenhum',
+            'tipodeaviso' => 1,
+            'status' => $retorno,
+        ]);
+
+        //TRATAR RETORNO
+        if ($retorno = '200') {
+            return redirect()->back()->with('message', 'SMS enviado com sucesso!');
+        } else {
+            return redirect()->back()->with('message', 'Houve algum erro ao enviar o SMS. Código do erro '.$retorno);
+        }
     }
 }

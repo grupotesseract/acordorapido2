@@ -1,18 +1,35 @@
 <!-- User Id Field -->
-<div class="form-group col-sm-6">
+<!-- <div class="form-group col-sm-6">
     {!! Form::label('user_id', 'User Id:') !!}
     {!! Form::text('user_id', null, ['class' => 'form-control']) !!}
-</div>
+</div> -->
 
 <!-- Empresa Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('empresa_id', 'Empresa Id:') !!}
-    {!! Form::text('empresa_id', null, ['class' => 'form-control']) !!}
+  <label for="sel1">Escolha a escola:</label>
+  <select class="form-control" name="empresa_id" id="escola">
+    @forelse($escolas as $escola)
+      <option value="{{$escola->id}}">{{$escola->nome}}</option>
+    @empty 
+      <p>Sem escolas cadastradas</p>
+    @endforelse
+  </select>
+</div>
+
+<div class="form-group col-sm-6">
+  <label for="sel1">Escolha a qual módulo a mensagem será enviada</label>
+  <select class="form-control" name="tipo" id="escola">
+      <option value="Nenhum">Nenhum</option>              
+      <option value="Azul">Azul</option>
+      <option value="Verde">Verde</option>
+      <option value="Amarelo">Amarelo</option>
+      <option value="Vermelho">Vermelho</option>
+  </select>
 </div>
 
 <!-- Titulo Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('titulo', 'Titulo:') !!}
+    {!! Form::label('titulo', 'Titulo da Mensagem:') !!}
     {!! Form::text('titulo', null, ['class' => 'form-control']) !!}
 </div>
 

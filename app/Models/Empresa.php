@@ -50,7 +50,9 @@ class Empresa extends Model
      * @var array
      */
     public static $rules = [
-
+        'nome' => 'required',
+        'cidade' => 'required',
+        'estado' => 'required',
     ];
 
     /**
@@ -67,5 +69,10 @@ class Empresa extends Model
     public function titulos()
     {
         return $this->hasMany(\App\Models\Titulo::class);
+    }
+
+    public function importacoes()
+    {
+        return $this->hasMany(\App\Models\Importacao::class);
     }
 }

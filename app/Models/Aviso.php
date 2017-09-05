@@ -41,7 +41,7 @@ class Aviso extends Model
      * @var array
      */
     public $fillable = [
-        'titulo',
+        'tituloaviso',
         'texto',
         'user_id',
         'cliente_id',
@@ -57,7 +57,7 @@ class Aviso extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'titulo' => 'string',
+        'tituloaviso' => 'string',
         'texto' => 'string',
         'user_id' => 'integer',
         'cliente_id' => 'integer',
@@ -78,9 +78,9 @@ class Aviso extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function titulos()
+    public function titulo()
     {
-        return $this->hasMany(\App\Models\Titulo::class);
+        return $this->belongsTo(\App\Models\Titulo::class);
     }
 
     /**
@@ -94,9 +94,9 @@ class Aviso extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function clientes()
+    public function cliente()
     {
-        return $this->hasMany(\App\Models\Cliente::class);
+        return $this->belongsTo(\App\Models\Cliente::class);
     }
 
     /**
@@ -104,6 +104,6 @@ class Aviso extends Model
      **/
     public function avisosenviados()
     {
-        return $this->hasMany(\App\Models\AvisoEnviado::class);
+        return $this->hasMany(\App\Models\AvisosEnviado::class);
     }
 }
