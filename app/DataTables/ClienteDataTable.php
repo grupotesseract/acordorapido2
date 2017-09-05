@@ -59,8 +59,7 @@ class ClienteDataTable extends DataTable
                          'text'    => '<i class="fa fa-download"></i> Exportar',
                          'buttons' => [
                              'csv',
-                             'excel',
-                             'pdf',
+                             'excel'
                          ],
                     ],
                     [
