@@ -81,8 +81,7 @@
             </div>
         </form>
 
-        <a href="{{ url('/password/reset') }}">{{ trans('message.forgotpassword') }}</a><br>
-        <a href="{{ url('/register') }}" class="text-center">{{ trans('message.registermember') }}</a>
+        
 
     </div>
     <!-- /.login-box-body -->

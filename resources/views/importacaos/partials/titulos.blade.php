@@ -1,74 +1,77 @@
-<table class="table table-striped table-hovered">
-  <thead>
-    <tr>
-      <th>Módulo</th>
-      <th>Escola</th>
-      <th>Número</th>
-      <th>Cliente</th>
-      <th>Vencimento</th>
-      <th>Valor</th>
-      <th>Importado em</th>
-      <th>Ações Tomadas</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    @foreach ($titulos as $titulo)
-    <tr>
-      <td> <span>{{ ucfirst($titulo->estado) }}</span></td>
-      <td> {{ $titulo->empresa->nome }}</td>
-      <td>{{ ucwords(strtolower($titulo->titulo)) }}</td>
-      <td> {{ $titulo->cliente->nome }}</td>
-      <td> {{ $titulo->vencimento }}</td>
+<div class="container">
 
-      <td> {{ $titulo->valor }}</td>
-      <td> {{ $titulo->created_at->format('d/m/Y H:i') }}</td>
-      <td>  
+  <table class="table table-striped table-hovered">
+    <thead>
+      <tr>
+        <th>Módulo</th>
+        <th>Escola</th>
+        <th>Número</th>
+        <th>Cliente</th>
+        <th>Vencimento</th>
+        <th>Valor</th>
+        <th>Importado em</th>
+        <th>Ações Tomadas</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($titulos as $titulo)
+      <tr>
+        <td> <span>{{ ucfirst($titulo->estado) }}</span></td>
+        <td> {{ $titulo->empresa->nome }}</td>
+        <td>{{ ucwords(strtolower($titulo->titulo)) }}</td>
+        <td> {{ $titulo->cliente->nome }}</td>
+        <td> {{ $titulo->vencimento }}</td>
 
-        @foreach ($titulo->avisos as $aviso)
-          @if (isset($aviso))
-            <?php 
-              switch ($aviso->estado) {
-                case 'azul':
-                  $bootStrapClass = 'primary';
-                  break;
-                case 'verde':
-                  $bootStrapClass = 'success';
-                  break;
-                case 'amarelo':
-                  $bootStrapClass = 'warning';
-                  break;
-                case 'vermelho':
-                  $bootStrapClass = 'danger';
-                  break;
-              }    
-            ?>
-            @forelse  ($aviso->avisosenviados->where('tipodeaviso', 0) as $avisoenviado)            
-              <span class="label label-{{ $bootStrapClass }}"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
-            @empty
-            @endforelse
-            
-            @forelse  ($aviso->avisosenviados->where('tipodeaviso', 1) as $avisoenviado)            
-              <span class="label label-{{ $bootStrapClass }}"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></span>
-            @empty
-            @endforelse
-          @endif
+        <td> {{ $titulo->valor }}</td>
+        <td> {{ $titulo->created_at->format('d/m/Y H:i') }}</td>
+        <td>  
 
-        
-        @endforeach
+          @foreach ($titulo->avisos as $aviso)
+            @if (isset($aviso))
+              <?php 
+                switch ($aviso->estado) {
+                  case 'azul':
+                    $bootStrapClass = 'primary';
+                    break;
+                  case 'verde':
+                    $bootStrapClass = 'success';
+                    break;
+                  case 'amarelo':
+                    $bootStrapClass = 'warning';
+                    break;
+                  case 'vermelho':
+                    $bootStrapClass = 'danger';
+                    break;
+                }    
+              ?>
+              @forelse  ($aviso->avisosenviados->where('tipodeaviso', 0) as $avisoenviado)            
+                <span class="label label-{{ $bootStrapClass }}"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></span>
+              @empty
+              @endforelse
+              
+              @forelse  ($aviso->avisosenviados->where('tipodeaviso', 1) as $avisoenviado)            
+                <span class="label label-{{ $bootStrapClass }}"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span></span>
+              @empty
+              @endforelse
+            @endif
+
+          
+          @endforeach
 
 
-      </td>
-      <td>
-      <!-- <a href="/avisos/create" class="btn btn-sm btn-default"> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Enviar SMS</a> -->
-      <a class="btn btn-sm btn-default" href="{{ url('titulos/'.$titulo->id) }}"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> mais detalhes </a>
+        </td>
+        <td>
+        <!-- <a href="/avisos/create" class="btn btn-sm btn-default"> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Enviar SMS</a> -->
+        <a class="btn btn-sm btn-default" href="{{ url('titulos/'.$titulo->id) }}"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> mais detalhes </a>
 
-      </td>
-    </tr>
-    @endforeach
-  </tbody>
-
-</table>
+        </td>
+      </tr>
+      @endforeach
+    </tbody>
+ 
+  </table>
+</div>
 
 
 
