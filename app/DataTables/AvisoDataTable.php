@@ -63,7 +63,6 @@ class AvisoDataTable extends DataTable
                          'buttons' => [
                              'csv',
                              'excel',
-                             'pdf',
                          ],
                     ],
                     [

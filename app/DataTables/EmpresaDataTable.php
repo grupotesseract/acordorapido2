@@ -60,7 +60,6 @@ class EmpresaDataTable extends DataTable
                          'buttons' => [
                              'csv',
                              'excel',
-                             'pdf',
                          ],
                     ],
                     [

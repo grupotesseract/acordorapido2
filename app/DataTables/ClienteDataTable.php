@@ -60,7 +60,6 @@ class ClienteDataTable extends DataTable
                          'buttons' => [
                              'csv',
                              'excel',
-                             'pdf',
                          ],
                     ],
                     [

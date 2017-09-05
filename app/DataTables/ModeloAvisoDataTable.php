@@ -60,7 +60,6 @@ class ModeloAvisoDataTable extends DataTable
                          'buttons' => [
                              'csv',
                              'excel',
-                             'pdf',
                          ],
                     ],
                     [

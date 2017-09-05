@@ -75,7 +75,6 @@ class TituloDataTable extends DataTable
                          'buttons' => [
                              'csv',
                              'excel',
-                             'pdf',
                          ],
                     ],
                     [
