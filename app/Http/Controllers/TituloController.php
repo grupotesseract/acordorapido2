@@ -300,7 +300,6 @@ class TituloController extends AppBaseController
             });
         });
 
-        
         if ($estado == 'verde' or $estado == 'azul') {
             $this->tituloRepository->atualizaPagantes($estado, $empresa_id, $titulos_importados);
         }
