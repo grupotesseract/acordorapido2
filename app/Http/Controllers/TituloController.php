@@ -239,6 +239,12 @@ class TituloController extends AppBaseController
                 }
 
                 $cliente->celular = $sheet->celular;
+
+                if (! $sheet->celular or strlen($sheet->celular) == 0) {
+                    $importacao->temerro = true;
+                    $importacao->save();
+                }
+
                 $cliente->telefone = $sheet->telefone;
                 $cliente->telefone2 = $sheet->telefone2;
                 $cliente->celular2 = $sheet->celular2;
@@ -294,7 +300,7 @@ class TituloController extends AppBaseController
             });
         });
 
-        //TODO: CONFIRMAR COM EDILSON
+        
         if ($estado == 'verde' or $estado == 'azul') {
             $this->tituloRepository->atualizaPagantes($estado, $empresa_id, $titulos_importados);
         }
