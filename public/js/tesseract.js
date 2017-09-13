@@ -63,37 +63,22 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-//Incluindo libs custom
-
-__webpack_require__(2);
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 2 */
 /***/ (function(module, exports) {
 
 //Quando ready...
 $(function () {
 
-    //span que contem o data-target 
     var contadorCaracteres = $('#contador-caracteres');
 
     //Se existir um contador de caracteres na tela, binda o contador ao seu target
     if (contadorCaracteres.length) {
         bindContadorCaracteres(contadorCaracteres);
+        contadorCaracteres.trigger("keypress");
     }
 });
 
@@ -109,13 +94,16 @@ var bindContadorCaracteres = function bindContadorCaracteres(contador) {
             contador.text(caracteresSobrando);
         });
     }
-
-    //Chamando evento para atualizando quando no onload ja existir algum valor na textarea
-    $('#' + idTarget).trigger("keydown");
 };
 
 /***/ }),
-/* 3 */
+/* 1 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(0);
