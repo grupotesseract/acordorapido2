@@ -104,6 +104,9 @@
 <!-- AdminLTE App -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/js/app.min.js"></script>
 
+<!-- JS Custom -->
+<script src="{{ asset('js/app.js') }}"></script>
+
 <script>
     function checkAll() {
         var checkboxes = document.getElementsByTagName('input');

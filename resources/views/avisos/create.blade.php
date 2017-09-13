@@ -41,9 +41,9 @@
 
               <div class="input-group">
                 <span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-pencil"></i></span>
-                <textarea placeholder="Digite aqui a sua mensagem" class="form-control" name="texto" id="texto" rows="3"></textarea>
+                <textarea placeholder="Digite aqui a sua mensagem" maxlength="160" class="form-control" name="texto" id="texto" rows="3"></textarea>
               </div>                            
-
+    <p class="pull-right"> <span id="contador-caracteres" data-target="texto">160</span> caracteres disponiveis..  </p>
                             
             </div>
           </div>

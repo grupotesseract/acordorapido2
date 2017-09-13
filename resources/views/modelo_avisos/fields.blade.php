@@ -35,8 +35,9 @@
 
 <!-- Mensagem Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('mensagem', 'Mensagem:') !!}
-    {!! Form::textarea('mensagem', null, ['class' => 'form-control']) !!}
+    {!! Form::label('mensagem', 'Mensagem (máx 160 caracteres):') !!}
+    {!! Form::textarea('mensagem', null, ['class' => 'form-control', "id"=>"corpo-sms", "maxlength"=>"160"]) !!}
+    <p class="pull-right"> <span id="contador-caracteres" data-target="corpo-sms">160</span> caracteres disponiveis..  </p>
 </div>
 
 <!-- Submit Field -->
