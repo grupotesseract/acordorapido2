@@ -94,10 +94,10 @@ class TituloDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'empresa' => ['name' => 'empresa_id', 'data' => 'empresa.nome'],
             'titulo' => ['name' => 'titulo', 'data' => 'titulo'],
             'aluno' => ['name' => 'cliente_id', 'data' => 'cliente.nome', 'searchable' => true],
             'estado' => ['name' => 'estado', 'data' => 'estado'],
+            'escola' => ['name' => 'empresa.nome', 'data' => 'empresa.nome'],
             'pago' => ['name' => 'pago', 'data' => 'pago'],
             'vencimento' => ['name' => 'vencimento', 'data' => 'vencimento'],
             'valor' => ['name' => 'valor', 'data' => 'valor'],

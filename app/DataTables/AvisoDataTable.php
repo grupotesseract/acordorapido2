@@ -84,7 +84,7 @@ class AvisoDataTable extends DataTable
     {
         return [
             'selecionar' => ['name' => 'selecionar'],
-            'estado' => ['name' => 'estado', 'data' => 'estado'],
+            'módulo' => ['name' => 'estado', 'data' => 'estado'],
             'escola' => ['name' => 'titulo.empresa.nome', 'data' => 'titulo.empresa.nome'],
             'título' => ['name' => 'tituloaviso', 'data' => 'tituloaviso'],
             'mensagem' => ['name' => 'texto', 'data' => 'texto'],

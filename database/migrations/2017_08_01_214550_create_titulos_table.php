@@ -18,7 +18,7 @@ class CreateTitulosTable extends Migration
             $table->integer('cliente_id', false);
             $table->integer('empresa_id', false);
             $table->boolean('pago');
-            $table->date('vencimento');
+            $table->date('vencimento')->nullable();
             $table->decimal('valor', 18, 2)->nullable();
             $table->string('titulo');
             $table->timestamps();
