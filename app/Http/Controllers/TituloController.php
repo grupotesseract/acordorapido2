@@ -263,7 +263,7 @@ class TituloController extends AppBaseController
                 $titulo->empresa_id = $empresa_id;
                 $titulo->pago = false;
                 $titulo->vencimento = $sheet->vencimento;
-                $titulo->valor = $sheet->valor;
+                $titulo->valor = str_replace(',', '.', $sheet->valor);
 
                 if (! $sheet->titulo or strlen($sheet->titulo) == 0) {
                     $importacao->temerro = true;
