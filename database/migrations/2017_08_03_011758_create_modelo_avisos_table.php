@@ -16,7 +16,7 @@ class CreateModeloAvisosTable extends Migration
             $table->integer('id', true);
             $table->integer('user_id');
             $table->integer('empresa_id');
-            $table->string('titulo');
+            $table->string('titulo')->nullable();
             $table->string('mensagem');
             $table->string('tipo');
             $table->timestamps();
