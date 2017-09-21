@@ -16,6 +16,9 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:700" rel="stylesheet"> 
+
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
@@ -29,13 +32,14 @@
             }
             html, body {
                 background-color: #fff;
+                font-family: 'Open Sans', sans-serif;
                 margin: 0;
             }
+            h1, h2, h3, h4, h5 { font-family: 'Merriweather', serif; }
 
             .full-width {
                 width: 100%;
             }
-
             .font-right {
                 text-align: right;
             }
@@ -43,7 +47,7 @@
             .verde,
             a.verde,
             .verde a {
-                color:green;
+                color:#7cd000;
                 text-decoration: none; 
             }
 
@@ -51,6 +55,7 @@
                 text-align:center;
                 font-size: 2em;
                 text-transform: uppercase;
+                padding: 2em 0 2em;
             }
         
             .titulo-centralizado span {
@@ -59,10 +64,10 @@
             .titulo-centralizado span:after {
                 content: ' ';
                 position: absolute;
-                width:90%;
+                width:94%;
                 top: 100%;
-                left:5%;
-                border-top: 6px solid blue;
+                left:3%;
+                border-top: 6px solid #005daa;
             }
 
             .modulos {
@@ -74,32 +79,74 @@
                 padding-top:1em;
                 font-size: 1.5em;
             }
-            
+            .modulo { height: 18em; }
             .modulo p {
                 padding: 1em 0.8em 2em;
             }
             .modulo-azul {
-                background-color: blue;
+                background-color: #005daa;
             }
             .modulo-verde {
-                background-color: green;
+                background-color: #7cd000;
             }
             .modulo-amarelo {
-                background-color: yellow;
+                background-color: #ff8800;
             }
             .modulo-vermelho {
-                background-color: red;
+                background-color: #ff0020;
             }
 
+            .width100 {
+                width:100%;
+                line-height: 1.8em;
+            }
+            .width60-fixo {
+                width: 60%;
+                float:left;
+            }
+            .width60-fixo img {
+                width:100%;
+                margin: 10% 0 10%;
+            }
+            .width40-fixo {
+                float:left;
+                width: 40%;
+                padding: 2.5em 4em 6em 3.5em;
+            }
+            .width40-fixo h5 {
+                font-size: 2em;
+                padding-top:2.5em;
+            }
+            .width40-fixo p {
+                padding-top:1em;
+                font-size: 0.95em;
+                line-height: 1.7em;
+            }
+            .borda-60 {
+                margin-top:12.5%;
+                position:relative;
+            }
+            .borda-60:after {
+                content:' ';
+                position:absolute;
+                right: 0;
+                top:0;
+                width:128%;
+                height:100%;
+                border: 0.8em solid #005ea8;
+            }
             #barra-superior {
                 background-color: rgba(0,0,0,0.5);
                 position: fixed;
                 top:0px;
                 width:100%;
                 left:0;
+                font-size: 1.5em;
+                padding-top: 0.5em;
+                padding-bottom: 0.5em;
             }
             #barra-superior a ~ a {
-                border-left: 2px solid green;
+                border-left: 2px solid #7cd000;
                 padding-left: 1em;
                 margin-left: 1em;
             }
@@ -108,6 +155,9 @@
                 background-color: blue;
                 height: 90vh;
                 color: white;
+                background-image: url('/img/inicio.jpg');
+                background-size: cover;
+                background-position: center center;
             }
             #inicio h3 {
                 margin-top: 6em;
@@ -115,22 +165,65 @@
             }
             #inicio p {
                 font-size: 1.4em;
-                margin-top:1em;
+                margin-top:1.7em;
             }
 
             #empresa {
+                padding-bottom: 2em;
             }
 
             #modulos {
-                background-color: lightblue;
+                background-color: rgb(100,170,230);
+                background-image: url('/img/modulosbg.jpg');
+                background-size: cover;
+                background-position: center center;
+                background-blend-mode: screen;
+                padding-bottom: 2em;
             }
             #modulos .container {
-             max-width: 60em;
+             max-width: 70em;
             }
             
             #contato {
-                background-color: lightgreen;
+                background-color: #d1e6ad;
+                padding-bottom: 5em;
             }
+            .margint3 {
+                margin-top: 3em;
+            }
+            #contato .dados {
+                font-size:1.2em;
+                color: #005daa;
+                text-align: center;
+            }
+            #contato .col-sm-6 {
+                padding: 0 5em 0;
+            }
+            #contato h5 {
+                color: black;
+                text-align: center;
+                font-size: 1.3em;
+            }
+            #contato form {
+                margin-top: 2em;
+            }
+            #contato form input,
+            #contato form textarea {
+                width: 100%;
+                border: 0px solid transparent;
+                background-color: white;
+                margin-top: 0.5em;
+                color:black;
+                padding: 0.3em 0.5em 0.5em;
+            }
+            #contato form input[type="submit"] {
+                width:auto;
+                float:right;
+                background-color: #005daa;
+                color:white;
+                padding: 0.3em 1em 0.4em;
+            }
+        
         </style>
         <script>
 $(document).ready(function(){
@@ -155,20 +248,7 @@ $(document).ready(function() {
                 <li><a href="#contato">Contato</a></li>
             </ul>
         </nav>
-        <div class="full-width verde" id="barra-superior">
-            <div class="container font-right">
-                @if (Auth::check())
-                    <a href="{{ url('/home') }}">Home</a>
-                @else
-                    <a href="{{ url('/login') }}">Login</a>
-                @endif
-                <a href="tel:+55 14 991 765 678">
-                    <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
-                    (14) 991 765 678
-                </a>
-            </div>
-        </div>
-
+    
         <div class="full-width" id="inicio">
             <div class="container">
                 <h3>
@@ -187,10 +267,16 @@ $(document).ready(function() {
 
         <div class="full-width" id="empresa">
             <div class="container">
-                <div class="col-sm-7">
-                </div>
-                <div class="col-sm-5">
-                    <h5> O Acordo Rápido é uma forma inovadora e inteligente de recuperar créditos </h5>
+                <div class="width100">
+                    <div class="width60-fixo">
+                        <img src="/img/empresa.jpg">
+                    </div>
+                    <div class="width40-fixo borda-60">
+                        <h5> O Acordo Rápido é uma forma inovadora e inteligente de recuperar créditos </h5>
+                        <p>
+                            Alinhado com a modernidade e a tecnologia, o Acordo Rápido elimina o estresse da relação de cobrança, oferecendo total privacidade ao usuário. Você pode regularizar seus débitos com a instituição de ensino estando em qualquer lugar, através da internet, até mesmo no conforto da sua casa
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -209,11 +295,11 @@ $(document).ready(function() {
                     </div>
                     <div class="modulo col-sm-3 modulo-amarelo">
                         <h5>Intensiva</h5>
-                        <p>Enviamos SMS para os clientes sobre a data de pagamento</p>
+                        <p>Incentivo para que os clientes paguem suas mensalidades atrasadas</p>
                     </div>
                     <div class="modulo col-sm-3 modulo-vermelho">
                         <h5>Cobrança</h5>
-                        <p>Enviamos SMS para os clientes sobre a data de pagamento</p>
+                        <p>Cobramos os clientes inadimplentes recuperando o seu crédito</p>
                     </div>
                 </div>
             </div>
@@ -222,27 +308,43 @@ $(document).ready(function() {
         <div class="full-width" id="contato">
             <div class="container">
                 <h4 class="titulo-centralizado"><span>Contato</span></h4>
-                <div class="row">
+                <div class="row dados">
                     <div class="col-sm-6">
-                    Endereço:
-                    Rua Senhorinha Felicia Aparecida, Pres. Geisel, Bauru - SP
+                    <h5>Endereço:</h5>
+                    R. Senhorinha Felícia Aparecida, Nucleo Hab. Pres. Geisel, Bauru - SP
     
-                    Telefone:
+                    <h5 class="margint3">Telefone:</h5>
                     <a href="tel:+55 14 991 765 678">
-                       (14) 991 765 678
+                       (14) 99176-5678
                     </a>
                     </div>
                     <div class="col-sm-6">
-                    Fale conosco:
-                    Lorem ispum theo vai as compras que irão encher seu coração de amor e de ilusão
-                    <form>
-                        <input type="text" name="nome" placeholder="Nome">
-                        <input type="text" name="nome" placeholder="Nome">
-                        <textarea placholder="Mensagem"></textarea>
-                    </form>
+                        <h5>Fale conosco:</h5>
+                        Preencha o formulário abaixo e um dos nossos consultores estará em contato
+                        <form>
+                            <input type="text" name="nome" placeholder="Nome">
+                            <input type="email" name="email" placeholder="Email">
+                            <input type="text" name="assunto" placeholder="Assunto">
+                            <textarea placeholder="Mensagem"></textarea>
+                            <input type="submit" value="Enviar">
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="full-width verde" id="barra-superior">
+            <div class="container font-right">
+                @if (Auth::check())
+                    <a href="{{ url('/home') }}">Home</a>
+                @else
+                    <a href="{{ url('/login') }}">Login</a>
+                @endif
+                <a href="tel:+55 14 991 765 678">
+                    <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                    (14) 991 765 678
+                </a>
+            </div>
+        </div>
+
     </body>
 </html>
