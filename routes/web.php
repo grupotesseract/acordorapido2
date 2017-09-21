@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/paginainicial', function () {
+    return view('welcome');
+});
+
 Route::get('/', function () {
     return redirect('home');
 });
