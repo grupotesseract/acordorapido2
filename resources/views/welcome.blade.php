@@ -380,13 +380,15 @@ $(document).ready(function() {
                     <div class="col-sm-6">
                         <h5>Fale conosco:</h5>
                         Preencha o formulário abaixo e um dos nossos consultores estará em contato
-                        <form>
+
+                        {!! Form::open(array('url'=>'contatos/','method'=>'POST','name'=>'contatoform')) !!}
                             <input type="text" name="nome" placeholder="Nome">
                             <input type="email" name="email" placeholder="Email">
-                            <input type="text" name="assunto" placeholder="Assunto">
-                            <textarea placeholder="Mensagem"></textarea>
+                            <input type="text" name="escola" placeholder="Escola">
+                            <textarea placeholder="Mensagem" name="mensagem"></textarea>
                             <input type="submit" value="Enviar">
-                        </form>
+                        {!! Form::close() !!}
+
                     </div>
                 </div>
             </div>
