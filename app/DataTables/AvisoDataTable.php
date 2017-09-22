@@ -28,7 +28,7 @@ class AvisoDataTable extends DataTable
      */
     public function query()
     {
-        $avisos = Aviso::query()->where('cliente_id', '<>', null)->with('titulo.empresa');
+        $avisos = Aviso::query()->where('cliente_id', '<>', null)->with(['titulo.empresa', 'cliente']);
 
         return $this->applyScopes($avisos);
     }
@@ -86,6 +86,9 @@ class AvisoDataTable extends DataTable
             'selecionar' => ['name' => 'selecionar'],
             'módulo' => ['name' => 'estado', 'data' => 'estado'],
             'escola' => ['name' => 'titulo.empresa.nome', 'data' => 'titulo.empresa.nome'],
+            'nomealuno' => ['name' => 'cliente.nome', 'data' => 'cliente.nome', 'title' => 'Aluno'],
+            'telaluno' => ['name' => 'cliente.telefone', 'data' => 'cliente.telefone', 'title' => 'Telefone'],
+            'respaluno' => ['name' => 'cliente.responsavel', 'data' => 'cliente.responsavel', 'title' => 'Responsavel'],
             'título' => ['name' => 'tituloaviso', 'data' => 'tituloaviso'],
             'mensagem' => ['name' => 'texto', 'data' => 'texto'],
             'total' => ['name' => 'status'],
