@@ -208,6 +208,7 @@
             
             #inicio {
                 height: 90vh;
+                min-height: 50em;
                 color: white;
                 background-image: url('/img/inicio.jpg');
                 background-size: cover;
