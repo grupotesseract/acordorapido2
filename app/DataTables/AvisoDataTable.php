@@ -52,7 +52,6 @@ class AvisoDataTable extends DataTable
                         'extend' => 'print',
                         'text'    => '<i class="fa fa-print"></i> Imprimir',
                     ],
-
                     [
                         'extend' => 'reload',
                         'text'    => '<i class="fa fa-refresh"></i> Atualizar',
@@ -64,6 +63,9 @@ class AvisoDataTable extends DataTable
                              'csv',
                              'excel',
                          ],
+                    ],
+                    [
+                        'enviarMarcados',
                     ],
                     [
                         'extend' => 'colvis',
@@ -104,5 +106,11 @@ class AvisoDataTable extends DataTable
     protected function filename()
     {
         return 'avisos';
+    }
+
+
+    public function enviaMarcados()
+    {
+	return 'test';
     }
 }

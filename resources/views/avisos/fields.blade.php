@@ -8,6 +8,8 @@
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('texto', 'Mensagem:') !!}
     {!! Form::textarea('texto', null, ['class' => 'form-control']) !!}
+              <p class="pull-left"> <span id="contador-caracteres" data-target="texto">160</span> caracteres disponiveis..  </p>
+
 </div>
 
 <!-- Submit Field -->

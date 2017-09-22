@@ -28,5 +28,12 @@ let bindContadorCaracteres = function(contador) {
     $('#'+idTarget).trigger("keydown");
 };
 
+let chamaSweetAlertErroDisparoEmail = function() {
+    swal(
+      'Oops...',
+      'Something went wrong!',
+      'error'
+    );
+};
 
 

@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,9 +71,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 
-//Incluindo libs custom
-
-__webpack_require__(2);
+__webpack_require__(3);
 
 /***/ }),
 /* 1 */
@@ -82,7 +80,8 @@ __webpack_require__(2);
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 2 */
+/* 2 */,
+/* 3 */
 /***/ (function(module, exports) {
 
 //Quando ready...
@@ -114,8 +113,13 @@ var bindContadorCaracteres = function bindContadorCaracteres(contador) {
     $('#' + idTarget).trigger("keydown");
 };
 
+var chamaSweetAlertErroDisparoEmail = function chamaSweetAlertErroDisparoEmail() {
+    swal('Oops...', 'Something went wrong!', 'error');
+};
+
 /***/ }),
-/* 3 */
+/* 4 */,
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(0);
