@@ -3,12 +3,10 @@
 namespace App\DataTables;
 
 use App\Models\Contato;
-use Form;
 use Yajra\Datatables\Services\DataTable;
 
 class ContatoDataTable extends DataTable
 {
-
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -84,7 +82,7 @@ class ContatoDataTable extends DataTable
             'nome' => ['name' => 'nome', 'data' => 'nome'],
             'email' => ['name' => 'email', 'data' => 'email'],
             'escola' => ['name' => 'escola', 'data' => 'escola'],
-            'mensagem' => ['name' => 'mensagem', 'data' => 'mensagem']
+            'mensagem' => ['name' => 'mensagem', 'data' => 'mensagem'],
         ];
     }
 
