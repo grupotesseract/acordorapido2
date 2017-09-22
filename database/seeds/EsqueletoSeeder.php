@@ -37,7 +37,7 @@ class EsqueletoSeeder extends Seeder
             // Criando entidades de aluno e escola e associando o user
             $c = new App\Models\Cliente();
             $c->nome = 'Evandro Barbosa Carreira';
-            $c->rg = '46.755.061-2';
+            $c->ra = '46.755.061-2';
             $c->user()->associate($userAluno);
             $c->save();
 
