@@ -396,7 +396,7 @@ $(document).ready(function() {
         <div class="full-width verde" id="barra-superior">
             <div class="container font-right">
                 @if (Auth::check())
-                    <a href="{{ url('/home') }}">Home</a>
+                    <a href="{{ url('/home') }}">Admin</a>
                 @else
                     <a href="{{ url('/login') }}">Login</a>
                 @endif
