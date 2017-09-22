@@ -9,7 +9,9 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
+<link rel="icon" 
+      type="image/png" 
+      href="img/favicon.png">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -30,6 +32,41 @@
                 right: 0px;
                 top: 20%;
             }
+            nav ul {
+                list-style: none;
+                text-align: right;
+            }
+            nav a {
+                color:#7cd000;
+                opacity: 0.5;
+                padding-right: 4em;
+                font-size: 1.8em;
+                text-transform: uppercase;
+                transition: opacity 0.2s;
+            }
+            nav a:after {
+                content: ' ';
+                position: absolute;
+                margin-top: 0.3em;
+                margin-left: 1em;
+                width: 0.8em;
+                height: 0.8em;
+                border-radius: 2em;
+                border: 1px solid #7cd000;
+            }
+            nav a:hover,
+            nav a:active,
+            nav a:focus {
+                text-decoration: none;
+                color:#7cd000;
+                opacity: 1;
+            }
+            nav a:hover:after,
+            nav a:active:after,
+            nav a:focus:after {
+
+                background-color: #7cd000;
+            }
             html, body {
                 background-color: #fff;
                 font-family: 'Open Sans', sans-serif;
@@ -44,6 +81,15 @@
                 text-align: right;
             }
             
+            .links {
+                margin-top: 1em;
+            }
+            .links a {
+                text-decoration: none;
+            }
+            .links a:hover {
+                color:#7cd000;
+            }
             .verde,
             a.verde,
             .verde a {
@@ -94,6 +140,17 @@
             }
             .modulo-vermelho {
                 background-color: #ff0020;
+            }
+            .menu {
+                padding-top: 6em;
+            }
+            .menu a {
+                color: white;
+                text-transform: uppercase;
+                font-size: 1.4em;
+                font-weight: bold;
+                margin: 0em 1em 0;
+                padding-top: 1em;
             }
 
             .width100 {
@@ -152,15 +209,15 @@
             }
             
             #inicio {
-                background-color: blue;
                 height: 90vh;
+                min-height: 50em;
                 color: white;
                 background-image: url('/img/inicio.jpg');
                 background-size: cover;
                 background-position: center center;
             }
             #inicio h3 {
-                margin-top: 6em;
+                margin-top: 5em;
                 font-size: 3em;
             }
             #inicio p {
@@ -239,18 +296,20 @@ $(document).ready(function() {
         </script>
     </head>
     <body> 
-
-        <nav>
-            <ul>
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#empresa">A Empresa</a></li>
-                <li><a href="#modulos">Módulos</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
     
         <div class="full-width" id="inicio">
             <div class="container">
+                <div class="menu row">
+                    <div class="col-sm-3">
+                        <img src="/img/logoacordorapido.png" alt="Acordo Rápido">
+                    </div>
+                    <div class="col-sm-9 links font-right">
+                        <a href="#inicio">Início</a>
+                        <a href="#empresa">A Empresa</a>
+                        <a href="#modulos">Módulos</a>
+                        <a href="#contato">Contato</a>
+                    </div>
+                </div>
                 <h3>
                     Monitoramento de crédito<br>
                     escolar. Sem stress, sem complicações, <br>
@@ -321,13 +380,15 @@ $(document).ready(function() {
                     <div class="col-sm-6">
                         <h5>Fale conosco:</h5>
                         Preencha o formulário abaixo e um dos nossos consultores estará em contato
-                        <form>
+
+                        {!! Form::open(array('url'=>'contatos/','method'=>'POST','name'=>'contatoform')) !!}
                             <input type="text" name="nome" placeholder="Nome">
                             <input type="email" name="email" placeholder="Email">
-                            <input type="text" name="assunto" placeholder="Assunto">
-                            <textarea placeholder="Mensagem"></textarea>
+                            <input type="text" name="escola" placeholder="Escola">
+                            <textarea placeholder="Mensagem" name="mensagem"></textarea>
                             <input type="submit" value="Enviar">
-                        </form>
+                        {!! Form::close() !!}
+
                     </div>
                 </div>
             </div>
@@ -335,7 +396,7 @@ $(document).ready(function() {
         <div class="full-width verde" id="barra-superior">
             <div class="container font-right">
                 @if (Auth::check())
-                    <a href="{{ url('/home') }}">Home</a>
+                    <a href="{{ url('/home') }}">Admin</a>
                 @else
                     <a href="{{ url('/login') }}">Login</a>
                 @endif
@@ -346,5 +407,14 @@ $(document).ready(function() {
             </div>
         </div>
 
+     <!--   <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#empresa">Empresa</a></li>
+                <li><a href="#modulos">Módulos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+-->
     </body>
 </html>
