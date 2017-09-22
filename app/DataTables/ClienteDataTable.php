@@ -88,7 +88,7 @@ class ClienteDataTable extends DataTable
             /*'telefone' => ['name' => 'telefone', 'data' => 'telefone'],
             'telefone2' => ['name' => 'telefone2', 'data' => 'telefone2'],
             'celular2' => ['name' => 'celular2', 'data' => 'celular2'],*/
-            'RG' => ['name' => 'rg', 'data' => 'rg'],
+            'RA' => ['name' => 'ra', 'data' => 'ra'],
         ];
     }
 
