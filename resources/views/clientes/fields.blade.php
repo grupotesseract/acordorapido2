@@ -49,8 +49,8 @@
 
 <!-- Rg Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('rg', 'RG:') !!}
-    {!! Form::text('rg', null, ['class' => 'form-control']) !!}
+    {!! Form::label('ra', 'RA:') !!}
+    {!! Form::text('ra', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->
