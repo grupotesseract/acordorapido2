@@ -111,9 +111,8 @@ class AvisoDataTable extends DataTable
         return 'avisos';
     }
 
-
     public function enviaMarcados()
     {
-	return 'test';
+        return 'test';
     }
 }
