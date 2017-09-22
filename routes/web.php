@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/paginainicial', function () {
+    return view('welcome');
+});
+
 Route::get('/', function () {
     return redirect('home');
 });
@@ -51,3 +55,5 @@ Route::get('titulos/modulo/{estado}', 'TituloController@titulosModulo');
 
 Route::get('avisos/sms/{aviso_id}', 'AvisoController@enviaSMS');
 Route::post('avisos/ligacao/', 'AvisoController@salvaLigacao');
+
+Route::resource('contatos', 'ContatoController');

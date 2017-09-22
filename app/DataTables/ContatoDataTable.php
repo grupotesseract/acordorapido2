@@ -2,10 +2,10 @@
 
 namespace App\DataTables;
 
-use App\Models\Aviso;
+use App\Models\Contato;
 use Yajra\Datatables\Services\DataTable;
 
-class AvisoDataTable extends DataTable
+class ContatoDataTable extends DataTable
 {
     /**
      * @return \Illuminate\Http\JsonResponse
@@ -14,10 +14,7 @@ class AvisoDataTable extends DataTable
     {
         return $this->datatables
             ->eloquent($this->query())
-            ->addColumn('selecionar', 'avisos.checkbox')
-            ->addColumn('total', 'avisos.totalavisos')
-            ->addColumn('action', 'avisos.datatables_actions')
-            ->rawColumns(['selecionar', 'action'])
+            ->addColumn('action', 'contatos.datatables_actions')
             ->make(true);
     }
 
@@ -28,9 +25,9 @@ class AvisoDataTable extends DataTable
      */
     public function query()
     {
-        $avisos = Aviso::query()->where('cliente_id', '<>', null)->with(['titulo.empresa', 'cliente']);
+        $contatos = Contato::query();
 
-        return $this->applyScopes($avisos);
+        return $this->applyScopes($contatos);
     }
 
     /**
@@ -42,7 +39,7 @@ class AvisoDataTable extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->addAction(['width' => '20%', 'title' => 'Ação'])
+            ->addAction(['width' => '10%', 'title' => 'Ação'])
             ->ajax('')
             ->parameters([
                 'dom' => 'Bfrtip',
@@ -52,6 +49,7 @@ class AvisoDataTable extends DataTable
                         'extend' => 'print',
                         'text'    => '<i class="fa fa-print"></i> Imprimir',
                     ],
+
                     [
                         'extend' => 'reload',
                         'text'    => '<i class="fa fa-refresh"></i> Atualizar',
@@ -65,16 +63,9 @@ class AvisoDataTable extends DataTable
                          ],
                     ],
                     [
-                        'selecionarTodos',
-                    ],
-                    [
-                        'enviarMarcados',
-                    ],
-                    [
                         'extend' => 'colvis',
                         'text'    => 'Filtrar Colunas',
                     ],
-
                 ],
                 'language' => ['url' => '//cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json'],
             ]);
@@ -88,16 +79,10 @@ class AvisoDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'selecionar' => ['name' => 'selecionar'],
-            'módulo' => ['name' => 'estado', 'data' => 'estado'],
-            'escola' => ['name' => 'titulo.empresa.nome', 'data' => 'titulo.empresa.nome'],
-            'nomealuno' => ['name' => 'cliente.nome', 'data' => 'cliente.nome', 'title' => 'Aluno'],
-            'telaluno' => ['name' => 'cliente.telefone', 'data' => 'cliente.telefone', 'title' => 'Telefone'],
-            'respaluno' => ['name' => 'cliente.responsavel', 'data' => 'cliente.responsavel', 'title' => 'Responsavel'],
-            'título' => ['name' => 'tituloaviso', 'data' => 'tituloaviso'],
-            'mensagem' => ['name' => 'texto', 'data' => 'texto'],
-            'total' => ['name' => 'status'],
-
+            'nome' => ['name' => 'nome', 'data' => 'nome'],
+            'email' => ['name' => 'email', 'data' => 'email'],
+            'escola' => ['name' => 'escola', 'data' => 'escola'],
+            'mensagem' => ['name' => 'mensagem', 'data' => 'mensagem'],
         ];
     }
 
@@ -108,11 +93,6 @@ class AvisoDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'avisos';
-    }
-
-    public function enviaMarcados()
-    {
-        return 'test';
+        return 'contatos';
     }
 }
