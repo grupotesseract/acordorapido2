@@ -35,11 +35,12 @@
                 text-align: right;
             }
             nav a {
-                color: transparent;
+                color:#7cd000;
+                opacity: 0.5;
                 padding-right: 4em;
                 font-size: 1.8em;
                 text-transform: uppercase;
-                transition: color 0.5s;
+                transition: opacity 0.2s;
             }
             nav a:after {
                 content: ' ';
@@ -56,6 +57,13 @@
             nav a:focus {
                 text-decoration: none;
                 color:#7cd000;
+                opacity: 1;
+            }
+            nav a:hover:after,
+            nav a:active:after,
+            nav a:focus:after {
+
+                background-color: #7cd000;
             }
             html, body {
                 background-color: #fff;
