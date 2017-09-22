@@ -193,8 +193,9 @@ class AvisoController extends AppBaseController
      */
     public function enviarLoteAviso(Request $request)
     {
-        if ( !$request->id ) {
+        if (! $request->id) {
             Flash::error('Nenhum Aviso selecionado.');
+
             return redirect()->back();
         }
 
