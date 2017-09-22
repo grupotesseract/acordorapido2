@@ -293,15 +293,6 @@ $(document).ready(function() {
         </script>
     </head>
     <body> 
-
-        <nav>
-            <ul>
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#empresa">Empresa</a></li>
-                <li><a href="#modulos">Módulos</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
     
         <div class="full-width" id="inicio">
             <div class="container">
@@ -411,5 +402,14 @@ $(document).ready(function() {
             </div>
         </div>
 
+     <!--   <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#empresa">Empresa</a></li>
+                <li><a href="#modulos">Módulos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+-->
     </body>
 </html>
