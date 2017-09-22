@@ -65,6 +65,9 @@ class AvisoDataTable extends DataTable
                          ],
                     ],
                     [
+                        'selecionarTodos',
+                    ],
+                    [
                         'enviarMarcados',
                     ],
                     [

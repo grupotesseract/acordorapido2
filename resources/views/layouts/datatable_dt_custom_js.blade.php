@@ -8,6 +8,18 @@
 (function ($, DataTable) {
     "use strict";
 
+    DataTable.ext.buttons.selecionarTodos = {
+        className: 'buttons-selecionar-todos',
+
+        text: function (dt) {
+            return '<i class="fa fa-check"></i> Selecionar Todos';
+        },
+
+        action: function (e, dt, button, config) {
+            checkAll();
+        }
+    };
+
     DataTable.ext.buttons.enviarMarcados = {
         className: 'buttons-enviar-marcados',
 
