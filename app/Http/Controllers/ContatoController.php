@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Flash;
+use Response;
 use App\DataTables\ContatoDataTable;
-use App\Http\Requests;
+use App\Repositories\ContatoRepository;
 use App\Http\Requests\CreateContatoRequest;
 use App\Http\Requests\UpdateContatoRequest;
-use App\Repositories\ContatoRepository;
-use Flash;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 class ContatoController extends AppBaseController
 {
-    /** @var  ContatoRepository */
+    /** @var ContatoRepository */
     private $contatoRepository;
 
     public function __construct(ContatoRepository $contatoRepo)

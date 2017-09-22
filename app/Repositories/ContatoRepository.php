@@ -6,14 +6,13 @@ use App\Models\Contato;
 use InfyOm\Generator\Common\BaseRepository;
 
 /**
- * Class ContatoRepository
- * @package App\Repositories
+ * Class ContatoRepository.
  * @version September 21, 2017, 10:43 pm BRT
  *
  * @method Contato findWithoutFail($id, $columns = ['*'])
  * @method Contato find($id, $columns = ['*'])
  * @method Contato first($columns = ['*'])
-*/
+ */
 class ContatoRepository extends BaseRepository
 {
     /**
@@ -23,11 +22,11 @@ class ContatoRepository extends BaseRepository
         'nome',
         'email',
         'escola',
-        'mensagem'
+        'mensagem',
     ];
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {
