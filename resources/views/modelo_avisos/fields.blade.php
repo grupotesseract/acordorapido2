@@ -37,11 +37,11 @@
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('mensagem', 'Mensagem (máx 160 caracteres):') !!}
     {!! Form::textarea('mensagem', null, ['class' => 'form-control', "id"=>"corpo-sms", "maxlength"=>"160"]) !!}
-    <p class="pull-right"> <span id="contador-caracteres" data-target="corpo-sms">160</span> caracteres disponiveis..  </p>
+    <p class="pull-left"> <span id="contador-caracteres" data-target="corpo-sms">160</span> caracteres disponiveis..  </p>
 </div>
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('modeloAvisos.index') !!}" class="btn btn-default">Cancel</a>
+    {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
+    <a href="{!! route('modeloAvisos.index') !!}" class="btn btn-default">Cancelar</a>
 </div>

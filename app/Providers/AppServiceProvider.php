@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Contato;
+use App\Observers\ContatoObserver;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //Disparando emails das tentativas de Contato
+        Contato::observe(ContatoObserver::class);
     }
 
     /**
