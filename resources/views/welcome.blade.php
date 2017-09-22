@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Acordo Rápido</title>
 
         <!-- Fonts -->
@@ -25,6 +25,9 @@
         <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.scrollto/2.1.2/jquery.scrollTo.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
         <!-- Styles -->
         <style>
             nav {
@@ -381,7 +384,7 @@ $(document).ready(function() {
                         <h5>Fale conosco:</h5>
                         Preencha o formulário abaixo e um dos nossos consultores estará em contato
 
-                        {!! Form::open(array('url'=>'contatos/','method'=>'POST','name'=>'contatoform')) !!}
+                        {!! Form::open(array('url'=>'contatos/','method'=>'POST','name'=>'contatoform', 'id'=>'form-contato')) !!}
                             <input type="text" name="nome" placeholder="Nome">
                             <input type="email" name="email" placeholder="Email">
                             <input type="text" name="escola" placeholder="Escola">
@@ -416,5 +419,46 @@ $(document).ready(function() {
             </ul>
         </nav>
 -->
+
+<script>
+$(function () {
+    
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $('#form-contato').submit(function (ev) {
+        ev.preventDefault();
+
+        $.ajax({
+            url: 'contatos',
+            type: 'POST',
+            dataType: 'json',
+            data: $('#form-contato').serialize() ,
+            complete: function (jqXHR, textStatus) {
+                // callback
+            },
+            success: function (data, textStatus, jqXHR) {
+                console.log(data);
+                console.log(textStatus);
+                console.log(jqXHR);
+                if (data.success) {
+                    swal ( "Obrigado" ,  "Seu contato foi enviado com sucesso, entraremos em contato!" ,  "success" )
+                }
+
+                else {
+                    swal ( "Oops" ,  "Ocorreu um erro na requisição, tente novamente!" ,  "error" )
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                    swal ( "Oops" ,  "Ocorreu um erro na requisição, tente novamente!" ,  "error" )
+            }
+        });
+    });
+});
+</script>
+
     </body>
 </html>

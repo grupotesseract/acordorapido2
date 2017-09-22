@@ -15,7 +15,7 @@ mix.js([
         'resources/assets/js/app.js',
     ], 'public/js')
     .js([
-        'node_modules/sweetalert2/dist/sweetalert2.min.js',
+        'node_modules/sweetalert2/dist/sweetalert2.js',
     ], 'public/js/sweetalert2.min.js')
    .sass('resources/assets/sass/app.scss', 'public/css')
    .styles('node_modules/sweetalert2/dist/sweetalert2.min.css', 'public/css/sweetalert2.css');

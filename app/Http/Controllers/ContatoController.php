@@ -55,10 +55,10 @@ class ContatoController extends AppBaseController
 
         $contato = $this->contatoRepository->create($input);
 
-        //Flash::success('Mensagem enviada com sucesso!');
+        if ( $contato ) {
+            return ['success' => true];
+        }
 
-        //return redirect(route('contatos.index'));
-        return redirect()->back();
     }
 
     /**

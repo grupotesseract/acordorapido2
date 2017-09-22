@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/css/AdminLTE.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/sweetalert2.css">
     <link rel="icon" type="image/png" href="img/favicon.png">
 
     <!-- Ionicons -->
@@ -104,6 +105,8 @@
 
 <!-- AdminLTE App -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/js/app.min.js"></script>
+
+<script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 
 <!-- JS Custom -->
 <script src="{{ asset('js/app.js') }}"></script>
