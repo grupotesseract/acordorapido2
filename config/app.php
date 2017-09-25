@@ -178,9 +178,6 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         Yajra\Datatables\ButtonsServiceProvider::class,
 
-        //Entrust
-        Zizaco\Entrust\EntrustServiceProvider::class,
-
         //FSM - Finite State Machine
         Sebdesign\SM\ServiceProvider::class,
 
@@ -245,8 +242,6 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'Flash'     => Laracasts\Flash\Flash::class,
-
-        'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'StateMachine' => Sebdesign\SM\Facade::class,
 
     ],
