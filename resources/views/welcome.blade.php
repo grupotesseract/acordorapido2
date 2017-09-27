@@ -309,7 +309,10 @@
             }
             .width40-fixo.responsivo {
                 width: 100%;
-                padding: 0;
+                float: none;
+                text-align: center;
+                margin: 0;
+                padding: 1em;
             }
             .width40-fixo h5 {
                 font-size: 2em;
@@ -329,7 +332,7 @@
                 position:absolute;
                 right: 0;
                 top:0;
-                width:128%;
+                width:100%;
                 height:100%;
                 border: 0.8em solid #005ea8;
             }
@@ -360,16 +363,8 @@ $(document).ready(function() {
                     </div>
                 </div>
                 <h3>
-                    Monitoramento de crédito<br>
-                    escolar. Sem stress, sem complicações, <br>
-                    sem surpresas.
+                    Monitoramento de crédito escolar de forma inteligente
                 </h3>
-                <p>
-                    Não é fácil conciliar estudos, casa, trabalho e finanças. O Acordo Rápido <br>
-                    chegou pra te ajudar! Deixe suas mensalidades em dia, sem sair de <br>
-                    casa. Tudo de uma maneira bem simples e rápida! Veja todos os <br>
-                    benefícios e venha você também colocar em dia seus débitos! <br>
-                </p>
             </div>
         </div>
 
@@ -381,7 +376,7 @@ $(document).ready(function() {
                 <div class="width40-fixo borda-60 responsivo">
                     <h5> O Acordo Rápido é uma forma inovadora e inteligente de recuperar créditos </h5>
                     <p>
-                    Alinhado com a modernidade e a tecnologia, o Acordo Rápido elimina o estresse da relação de cobrança, oferecendo total privacidade ao usuário. Você pode regularizar seus débitos com a instituição de ensino estando em qualquer lugar, através da internet, até mesmo no conforto da sua casa
+                        Alinhado com a modernidade e a tecnologia, o Acordo Rápido elimina o estresse da relação de cobrança, oferecendo total privacidade ao cliente.
                     </p>
                 </div>
             </div>
