@@ -470,7 +470,7 @@
             <div class="container">
                 <h4 class="titulo-centralizado"><span>Contato</span></h4>
                 <div class="row dados">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 col-md-offset-3">
                         Preencha o formulário abaixo e um dos nossos consultores estará em contato
 
                         {!! Form::open(array('url'=>'contatos/','method'=>'POST','name'=>'contatoform', 'id'=>'form-contato')) !!}
