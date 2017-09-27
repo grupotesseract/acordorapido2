@@ -121,7 +121,7 @@
                 padding-top:1em;
                 font-size: 1.5em;
             }
-            .modulo { height: 18em; }
+            .modulo { height: 15em; }
             .modulo p {
                 padding: 1em 0.8em 2em;
             }
@@ -204,7 +204,6 @@
                 padding-left: 1em;
                 margin-left: 1em;
             }
-
             
             #inicio {
                 height: 90vh;
@@ -228,12 +227,10 @@
             }
 
             #modulos {
-                background-color: rgb(100,170,230);
-                background-image: url('/img/modulosbg.jpg');
+                background-color: rgb(179, 213, 243);
                 background-size: cover;
                 background-position: center center;
                 background-blend-mode: screen;
-                padding-bottom: 2em;
             }
             #modulos .container {
              max-width: 70em;
@@ -294,8 +291,30 @@
                 height:32px;
             }
 
+            .container-fases {
+                padding: 1.5em;
+                margin: 1em 0
+            }
 
-@media (max-width:768px) {
+            .container-fases > h5 {
+                color: #333;
+                margin-bottom: 1em;
+                font-size: 1.8em;
+            }
+
+            .container-fases:after {
+                content:' ';
+                position:absolute;
+                right: 0;
+                top:0;
+                width:100%;
+                height:100%;
+                border: 0.8em solid #005ea8;
+            }
+
+
+
+        @media (max-width:768px) {
             .width100 {
                 width:100%;
                 line-height: 1.8em;
@@ -337,20 +356,47 @@
                 border: 0.8em solid #005ea8;
             }
 
-    #barra-superior li ~ li {
-        border-left: 0px solid rgba(124, 208, 0, 0.6);
-    }
-}
+            .container-fases {
+                padding: 1em;
+                margin: 1em 0;
+            }
+
+            .container-fases > h5 {
+                color: #333;
+                margin-bottom: 1em;
+            }
+
+            .container-fases:after {
+                content:' ';
+                position:absolute;
+                right: 0;
+                top:0;
+                width:100%;
+                height:100%;
+                border: 0.8em solid #005ea8;
+            }
+
+            #barra-superior li ~ li {
+                border-left: 0px solid rgba(124, 208, 0, 0.6);
+            }
+
+            #inicio h3 {
+                margin-top: 3.5em;
+                font-size: 2.5em;
+            }
+
+
+        }
 
         </style>
         <script>
-$(document).ready(function() {
-  // Bind to the click of all links with a #hash in the href
-  $('a[href^="#"]').click(function(e) {
-    e.preventDefault();
-    $(window).stop(true).scrollTo(this.hash, {duration:1000, interrupt:true});
-  });
-});
+            $(document).ready(function() {
+              // Bind to the click of all links with a #hash in the href
+              $('a[href^="#"]').click(function(e) {
+                e.preventDefault();
+                $(window).stop(true).scrollTo(this.hash, {duration:1000, interrupt:true});
+              });
+            });
         </script>
     </head>
     <body> 
@@ -387,22 +433,35 @@ $(document).ready(function() {
             <div class="container">
                 <h4 class="titulo-centralizado"><span>Módulos</span></h4>
                 <div class="row modulos">
-                    <div class="modulo col-sm-3 modulo-azul">
-                        <h5>Prevenção</h5>
-                        <p>Enviamos SMS para os clientes sobre a data de pagamento</p>
+                    
+                    <div class="col-xs-12 col-md-5 container-fases">
+                        <h5>FASE I</h5>
+
+                        <div class="modulo col-sm-6 modulo-azul">
+                            <h5>Prevenção</h5>
+                            <p>Enviamos SMS para os clientes sobre a data de pagamento</p>
+                        </div>
+                        <div class="modulo col-sm-6 modulo-verde">
+                            <h5>Recuperação</h5>
+                            <p>Lembrete para os que atrasaram a data estipulada</p>
+                        </div>
                     </div>
-                    <div class="modulo col-sm-3 modulo-verde">
-                        <h5>Recuperação</h5>
-                        <p>Lembrete para os que atrasaram a data estipulada</p>
+
+                    <div class="col-xs-hidden col-md-2"></div>
+                    
+                    <div class="col-xs-12 col-md-5 container-fases">
+                        <h5>FASE II</h5>
+
+                        <div class="modulo col-sm-6 modulo-amarelo">
+                            <h5>Intensiva</h5>
+                            <p>Incentivo para que os clientes paguem suas mensalidades atrasadas</p>
+                        </div>
+                        <div class="modulo col-sm-6 modulo-vermelho">
+                            <h5>Cobrança</h5>
+                            <p>Cobramos os clientes inadimplentes recuperando o seu crédito</p>
+                        </div>
                     </div>
-                    <div class="modulo col-sm-3 modulo-amarelo">
-                        <h5>Intensiva</h5>
-                        <p>Incentivo para que os clientes paguem suas mensalidades atrasadas</p>
-                    </div>
-                    <div class="modulo col-sm-3 modulo-vermelho">
-                        <h5>Cobrança</h5>
-                        <p>Cobramos os clientes inadimplentes recuperando o seu crédito</p>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -412,16 +471,6 @@ $(document).ready(function() {
                 <h4 class="titulo-centralizado"><span>Contato</span></h4>
                 <div class="row dados">
                     <div class="col-sm-6">
-                    <h5>Endereço:</h5>
-                    R. Senhorinha Felícia Aparecida, Nucleo Hab. Pres. Geisel, Bauru - SP
-    
-                    <h5 class="margint3">Telefone:</h5>
-                    <a href="tel:+55 14 991 765 678">
-                       (14) 99176-5678
-                    </a>
-                    </div>
-                    <div class="col-sm-6">
-                        <h5>Fale conosco:</h5>
                         Preencha o formulário abaixo e um dos nossos consultores estará em contato
 
                         {!! Form::open(array('url'=>'contatos/','method'=>'POST','name'=>'contatoform', 'id'=>'form-contato')) !!}
@@ -469,21 +518,6 @@ $(document).ready(function() {
               </div>
             </nav>
         </div>
-
-
-
-
-
-
-     <!--   <nav>
-            <ul>
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#empresa">Empresa</a></li>
-                <li><a href="#modulos">Módulos</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
--->
 
 <script>
 $(function () {
