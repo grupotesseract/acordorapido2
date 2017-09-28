@@ -16,7 +16,7 @@ Route::get('/paginainicial', function () {
 });
 
 Route::get('/', function () {
-    return redirect('home');
+    return view('welcome');
 });
 
 Auth::routes();
@@ -57,3 +57,4 @@ Route::get('avisos/sms/{aviso_id}', 'AvisoController@enviaSMS');
 Route::post('avisos/ligacao/', 'AvisoController@salvaLigacao');
 
 Route::resource('contatos', 'ContatoController');
+Route::resource('users', 'UserController');
