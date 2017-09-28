@@ -312,6 +312,16 @@
                 border: 0.8em solid #005ea8;
             }
 
+            #itenslista > li {
+                display: inline-block;
+                /* You can also add some margins here to make it look prettier */
+                zoom:1;
+                *display:inline;
+                /* this fix is needed for IE7- */
+                padding:10px 1%;
+                width: 30%;
+            }
+
 
 
         @media (max-width:768px) {
@@ -431,7 +441,14 @@
 
         <div class="full-width" id="modulos">
             <div class="container">
-                <h4 class="titulo-centralizado"><span>Módulos</span></h4>
+                <h4 class="titulo-centralizado"><span>Ferramenta de Ação Contínua</span></h4>
+
+                <!-- <ul id="itenslista">
+                    <li>PREVINE ATRASOS</li>
+                    <li>DIMINUI A IMPONTUALIDADE</li>
+                    <li>RECUPERA MENSALIDADES ATRASADAS</li>
+                </ul> -->                
+
                 <div class="row modulos">
                     
                     <div class="col-xs-12 col-md-5 container-fases">
@@ -439,11 +456,17 @@
 
                         <div class="modulo col-sm-6 modulo-azul">
                             <h5>Prevenção</h5>
-                            <p>Enviamos SMS para os clientes sobre a data de pagamento</p>
+                            <ul>
+                                <li class="pull-left">Todos os clientes</li>
+                                <li class="pull-left">Pontualidade</li>
+                            </ul>                            
                         </div>
                         <div class="modulo col-sm-6 modulo-verde">
                             <h5>Recuperação</h5>
-                            <p>Lembrete para os que atrasaram a data estipulada</p>
+                            <ul>
+                                <li class="pull-left">Atrasos</li>
+                                <li class="pull-left">Impontualidade</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -454,11 +477,17 @@
 
                         <div class="modulo col-sm-6 modulo-amarelo">
                             <h5>Intensiva</h5>
-                            <p>Incentivo para que os clientes paguem suas mensalidades atrasadas</p>
+                            
+                            <ul>
+                                <li class="pull-left">Inadimplentes</li>
+                                <li class="pull-left">Recuperação</li>
+                            </ul>
                         </div>
                         <div class="modulo col-sm-6 modulo-vermelho">
                             <h5>Cobrança</h5>
-                            <p>Cobramos os clientes inadimplentes recuperando o seu crédito</p>
+                            <ul>
+                                <li class="pull-left">Inadimplência</li>
+                            </ul>
                         </div>
                     </div>
 
@@ -511,7 +540,7 @@
                   <ul class="nav navbar-nav navbar-right">
                     <li><a href="#inicio">Início</a></li>
                     <li><a href="#empresa">A Empresa</a></li>
-                    <li><a href="#modulos">Módulos</a></li>
+                    <li><a href="#modulos">Como Funciona</a></li>
                     <li><a href="#contato">Contato</a></li>
                   </ul>
                 </div>
