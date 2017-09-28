@@ -57,3 +57,4 @@ Route::get('avisos/sms/{aviso_id}', 'AvisoController@enviaSMS');
 Route::post('avisos/ligacao/', 'AvisoController@salvaLigacao');
 
 Route::resource('contatos', 'ContatoController');
+Route::resource('users', 'UserController');

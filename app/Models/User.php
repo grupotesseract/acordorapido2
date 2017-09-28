@@ -37,6 +37,16 @@ class User extends Authenticatable
     ];
 
     /**
+     * Validation rules.
+     *
+     * @var array
+     */
+    public static $rules = [
+        'name' => 'required',
+        'email' => 'required:email',
+    ];
+
+    /**
      * Pega a empresa do user.
      */
     public function empresa()
