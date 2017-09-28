@@ -6,14 +6,13 @@ use App\Models\User;
 use InfyOm\Generator\Common\BaseRepository;
 
 /**
- * Class UserRepository
- * @package App\Repositories
+ * Class UserRepository.
  * @version September 27, 2017, 11:23 pm BRT
  *
  * @method User findWithoutFail($id, $columns = ['*'])
  * @method User find($id, $columns = ['*'])
  * @method User first($columns = ['*'])
-*/
+ */
 class UserRepository extends BaseRepository
 {
     /**
@@ -21,11 +20,11 @@ class UserRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'name',
-        'email'
+        'email',
     ];
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {

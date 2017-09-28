@@ -3,12 +3,10 @@
 namespace App\DataTables;
 
 use App\Models\User;
-use Form;
 use Yajra\Datatables\Services\DataTable;
 
 class UserDataTable extends DataTable
 {
-
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -82,7 +80,7 @@ class UserDataTable extends DataTable
     {
         return [
             'nome' => ['name' => 'name', 'data' => 'name'],
-            'email' => ['name' => 'email', 'data' => 'email']
+            'email' => ['name' => 'email', 'data' => 'email'],
         ];
     }
 
