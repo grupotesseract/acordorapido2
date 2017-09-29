@@ -56,11 +56,11 @@ class Empresa extends Model
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      **/
-    public function user()
+    public function usuarios()
     {
-        return $this->belongsTo(\App\Models\User::class);
+        return $this->belongsToMany(\App\Models\User::class);
     }
 
     /**

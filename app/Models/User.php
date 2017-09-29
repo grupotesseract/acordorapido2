@@ -47,11 +47,11 @@ class User extends Authenticatable
     ];
 
     /**
-     * Pega a empresa do user.
-     */
-    public function empresa()
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     **/
+    public function empresas()
     {
-        return $this->hasOne('App\Empresa');
+        return $this->belongsToMany(\App\Models\Empresa::class);
     }
 
     /**
