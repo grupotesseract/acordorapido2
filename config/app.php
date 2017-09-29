@@ -178,6 +178,9 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         Yajra\Datatables\ButtonsServiceProvider::class,
 
+        //Laratrust - controle de permissões
+        Laratrust\LaratrustServiceProvider::class,
+
         //FSM - Finite State Machine
         Sebdesign\SM\ServiceProvider::class,
 
@@ -243,7 +246,8 @@ return [
         'Html'      => Collective\Html\HtmlFacade::class,
         'Flash'     => Laracasts\Flash\Flash::class,
         'StateMachine' => Sebdesign\SM\Facade::class,
-
+        //Laratrust - controle de permissões
+        'Laratrust'   => Laratrust\LaratrustFacade::class,
     ],
 
 ];

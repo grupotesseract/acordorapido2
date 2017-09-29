@@ -47,15 +47,15 @@ class HomeController extends Controller
             $avisos = Aviso::where('empresa_id', $empresa->id);
             $importacoes = Importacao::where('empresa_id', $empresa->id);
         }
-        if ($u->hasRole('admin')) {
-            $titulos = Titulo::all()->take(10);
-            $avisos = Aviso::all();
-            $importacoes = Importacao::orderBy('id', 'desc')->take(5)->get();
-            $totalAzuis = Titulo::azuis()->count();
-            $totalVerdes = Titulo::verdes()->count();
-            $totalAmarelos = Titulo::amarelos()->count();
-            $totalVermelhos = Titulo::vermelhos()->count();
-        }
+
+        $titulos = Titulo::all()->take(10);
+        // TODO filtrar por escola/cliente que o usuario pode ver
+        $avisos = Aviso::all();
+        $importacoes = Importacao::orderBy('id', 'desc')->take(5)->get();
+        $totalAzuis = Titulo::azuis()->count();
+        $totalVerdes = Titulo::verdes()->count();
+        $totalAmarelos = Titulo::amarelos()->count();
+        $totalVermelhos = Titulo::vermelhos()->count();
 
         return view('home')->with([
             'avisos' => $avisos,
