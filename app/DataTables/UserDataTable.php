@@ -2,10 +2,10 @@
 
 namespace App\DataTables;
 
-use App\Models\Cliente;
+use App\Models\User;
 use Yajra\Datatables\Services\DataTable;
 
-class ClienteDataTable extends DataTable
+class UserDataTable extends DataTable
 {
     /**
      * @return \Illuminate\Http\JsonResponse
@@ -14,7 +14,7 @@ class ClienteDataTable extends DataTable
     {
         return $this->datatables
             ->eloquent($this->query())
-            ->addColumn('action', 'clientes.datatables_actions')
+            ->addColumn('action', 'users.datatables_actions')
             ->make(true);
     }
 
@@ -25,9 +25,9 @@ class ClienteDataTable extends DataTable
      */
     public function query()
     {
-        $clientes = Cliente::query();
+        $users = User::query();
 
-        return $this->applyScopes($clientes);
+        return $this->applyScopes($users);
     }
 
     /**
@@ -79,16 +79,8 @@ class ClienteDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'nome' => ['name' => 'nome', 'data' => 'nome'],
-            //'user_id' => ['name' => 'user_id', 'data' => 'user_id'],
-            'turma' => ['name' => 'turma', 'data' => 'turma'],
-            'período' => ['name' => 'periodo', 'data' => 'periodo'],
-            'responsável' => ['name' => 'responsavel', 'data' => 'responsavel'],
-            'celular' => ['name' => 'celular', 'data' => 'celular'],
-            /*'telefone' => ['name' => 'telefone', 'data' => 'telefone'],
-            'telefone2' => ['name' => 'telefone2', 'data' => 'telefone2'],
-            'celular2' => ['name' => 'celular2', 'data' => 'celular2'],*/
-            'RA' => ['name' => 'ra', 'data' => 'ra'],
+            'nome' => ['name' => 'name', 'data' => 'name'],
+            'email' => ['name' => 'email', 'data' => 'email'],
         ];
     }
 
@@ -99,6 +91,6 @@ class ClienteDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'clientes';
+        return 'users';
     }
 }

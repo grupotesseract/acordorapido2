@@ -226,7 +226,7 @@ class TituloController extends AppBaseController
 
         Excel::load($request->file('excel'), function ($reader) use ($estado,$empresa_id,$importacao_id,&$titulos_importados,$retorno,$importacao) {
             $reader->each(function ($sheet) use ($estado,$empresa_id,$importacao_id,&$titulos_importados,$retorno,$importacao) {
-                $cliente = Cliente::firstOrNew(['rg' => $sheet->rg]);
+                $cliente = Cliente::firstOrNew(['ra' => $sheet->ra]);
                 $cliente->nome = $sheet->nome;
                 $cliente->user_id = Auth::id();
                 $cliente->turma = $sheet->turma;
@@ -249,12 +249,12 @@ class TituloController extends AppBaseController
                 $cliente->telefone2 = $sheet->telefone2;
                 $cliente->celular2 = $sheet->celular2;
 
-                if (! $sheet->rg or strlen($sheet->rg) == 0) {
+                if (! $sheet->ra or strlen($sheet->ra) == 0) {
                     $importacao->temerro = true;
                     $importacao->save();
                 }
 
-                $cliente->rg = $sheet->rg;
+                $cliente->ra = $sheet->ra;
                 $cliente->save();
                 $cliente_id = $cliente->id;
 

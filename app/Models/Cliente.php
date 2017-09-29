@@ -36,7 +36,7 @@ class Cliente extends Model
         'telefone',
         'telefone2',
         'celular2',
-        'rg',
+        'ra',
     ];
 
     /**
@@ -55,7 +55,7 @@ class Cliente extends Model
         'telefone' => 'string',
         'telefone2' => 'string',
         'celular2' => 'string',
-        'rg' => 'string',
+        'ra' => 'string',
     ];
 
     /**
@@ -68,7 +68,7 @@ class Cliente extends Model
         'turma' => 'required',
         'periodo' => 'required',
         'responsavel' => 'required',
-        'rg' => 'required',
+        'ra' => 'required',
     ];
 
     /**

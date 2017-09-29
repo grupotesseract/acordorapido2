@@ -41,34 +41,27 @@
             }
             nav a {
                 color:#7cd000;
-                opacity: 0.5;
                 padding-right: 4em;
-                font-size: 1.8em;
+                font-size: 1.45em!important;
                 text-transform: uppercase;
                 transition: opacity 0.2s;
-            }
-            nav a:after {
-                content: ' ';
-                position: absolute;
-                margin-top: 0.3em;
-                margin-left: 1em;
-                width: 0.8em;
-                height: 0.8em;
-                border-radius: 2em;
-                border: 1px solid #7cd000;
+                padding-top: 5px!important;
+                padding-bottom: 5px!important;
             }
             nav a:hover,
             nav a:active,
             nav a:focus {
-                text-decoration: none;
-                color:#7cd000;
-                opacity: 1;
+                text-decoration: none!important;
+                background-color: transparent!important;
+                color:#7cd000!important;
+                opacity: .6!important;
+                border-radius: 20px!important;
             }
             nav a:hover:after,
             nav a:active:after,
             nav a:focus:after {
-
-                background-color: #7cd000;
+                background-color: #7cd000!important;
+                border-radius: 20px!important;
             }
             html, body {
                 background-color: #fff;
@@ -128,7 +121,7 @@
                 padding-top:1em;
                 font-size: 1.5em;
             }
-            .modulo { height: 18em; }
+            .modulo { height: 15em; }
             .modulo p {
                 padding: 1em 0.8em 2em;
             }
@@ -155,8 +148,8 @@
                 margin: 0em 1em 0;
                 padding-top: 1em;
             }
-
             .width100 {
+                display: inline-block;
                 width:100%;
                 line-height: 1.8em;
             }
@@ -200,13 +193,14 @@
                 position: fixed;
                 top:0px;
                 width:100%;
-                left:0;
-                font-size: 1.5em;
                 padding-top: 0.5em;
                 padding-bottom: 0.5em;
             }
-            #barra-superior a ~ a {
-                border-left: 2px solid #7cd000;
+            #barra-superior .navbar-toggle .icon-bar {
+                background-color: rgba(124, 208, 0, 0.6);
+            }
+            #barra-superior li ~ li {
+                border-left: 2px solid rgba(124, 208, 0, 0.6);
                 padding-left: 1em;
                 margin-left: 1em;
             }
@@ -215,7 +209,7 @@
                 height: 90vh;
                 min-height: 50em;
                 color: white;
-                background-image: url('/img/inicio.jpg');
+                background-image: url('http://res.cloudinary.com/tesseract/image/upload/c_scale,q_80,w_1920/v1506449792/acordo_rapido_home_inicio.jpg');
                 background-size: cover;
                 background-position: center center;
             }
@@ -233,12 +227,10 @@
             }
 
             #modulos {
-                background-color: rgb(100,170,230);
-                background-image: url('/img/modulosbg.jpg');
+                background-color: rgb(179, 213, 243);
                 background-size: cover;
                 background-position: center center;
                 background-blend-mode: screen;
-                padding-bottom: 2em;
             }
             #modulos .container {
              max-width: 70em;
@@ -283,19 +275,138 @@
                 color:white;
                 padding: 0.3em 1em 0.4em;
             }
-        
+
+            .vertical-helper {
+                height: 100%;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            
+            .center-vertical {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            .link-icon {
+                height:32px;
+            }
+
+            .container-fases {
+                padding: 1.5em;
+                margin: 1em 0
+            }
+
+            .container-fases > h5 {
+                color: #333;
+                margin-bottom: 1em;
+                font-size: 1.8em;
+            }
+
+            .container-fases:after {
+                content:' ';
+                position:absolute;
+                right: 0;
+                top:0;
+                width:100%;
+                height:100%;
+                border: 0.8em solid #005ea8;
+            }
+
+            #itenslista > li {
+                display: inline-block;
+                /* You can also add some margins here to make it look prettier */
+                zoom:1;
+                *display:inline;
+                /* this fix is needed for IE7- */
+                padding:10px 1%;
+                width: 30%;
+            }
+
+
+
+        @media (max-width:768px) {
+            .width100 {
+                width:100%;
+                line-height: 1.8em;
+            }
+            .width60-fixo.responsivo {
+                width: 100%;
+            }
+            .width60-fixo img {
+                width:100%;
+                margin: 10% 0 10%;
+            }
+            .width40-fixo.responsivo {
+                width: 100%;
+                float: none;
+                text-align: center;
+                margin: 0;
+                padding: 1em;
+            }
+            .width40-fixo h5 {
+                font-size: 2em;
+                padding-top:2.5em;
+            }
+            .width40-fixo p {
+                padding-top:1em;
+                font-size: 0.95em;
+                line-height: 1.7em;
+            }
+            .borda-60 {
+                margin-top:12.5%;
+                position:relative;
+            }
+            .borda-60:after {
+                content:' ';
+                position:absolute;
+                right: 0;
+                top:0;
+                width:100%;
+                height:100%;
+                border: 0.8em solid #005ea8;
+            }
+
+            .container-fases {
+                padding: 1em;
+                margin: 1em 0;
+            }
+
+            .container-fases > h5 {
+                color: #333;
+                margin-bottom: 1em;
+            }
+
+            .container-fases:after {
+                content:' ';
+                position:absolute;
+                right: 0;
+                top:0;
+                width:100%;
+                height:100%;
+                border: 0.8em solid #005ea8;
+            }
+
+            #barra-superior li ~ li {
+                border-left: 0px solid rgba(124, 208, 0, 0.6);
+            }
+
+            #inicio h3 {
+                margin-top: 3.5em;
+                font-size: 2.5em;
+            }
+
+
+        }
+
         </style>
         <script>
-$(document).ready(function(){
-
-$(document).ready(function() {
-  // Bind to the click of all links with a #hash in the href
-  $('a[href^="#"]').click(function(e) {
-    e.preventDefault();
-    $(window).stop(true).scrollTo(this.hash, {duration:1000, interrupt:true});
-  });
-});
-});
+            $(document).ready(function() {
+              // Bind to the click of all links with a #hash in the href
+              $('a[href^="#"]').click(function(e) {
+                e.preventDefault();
+                $(window).stop(true).scrollTo(this.hash, {duration:1000, interrupt:true});
+              });
+            });
         </script>
     </head>
     <body> 
@@ -306,63 +417,80 @@ $(document).ready(function() {
                     <div class="col-sm-3">
                         <img src="/img/logoacordorapido.png" alt="Acordo Rápido">
                     </div>
-                    <div class="col-sm-9 links font-right">
-                        <a href="#inicio">Início</a>
-                        <a href="#empresa">A Empresa</a>
-                        <a href="#modulos">Módulos</a>
-                        <a href="#contato">Contato</a>
-                    </div>
                 </div>
                 <h3>
-                    Monitoramento de crédito<br>
-                    escolar. Sem stress, sem complicações, <br>
-                    sem surpresas.
+                    Monitoramento de crédito escolar de forma inteligente
                 </h3>
-                <p>
-                    Não é fácil conciliar estudos, casa, trabalho e finanças. O Acordo Rápido <br>
-                    chegou pra te ajudar! Deixe suas mensalidades em dia, sem sair de <br>
-                    casa. Tudo de uma maneira bem simples e rápida! Veja todos os <br>
-                    benefícios e venha você também colocar em dia seus débitos! <br>
-                </p>
             </div>
         </div>
 
         <div class="full-width" id="empresa">
-            <div class="container">
-                <div class="width100">
-                    <div class="width60-fixo">
-                        <img src="/img/empresa.jpg">
-                    </div>
-                    <div class="width40-fixo borda-60">
-                        <h5> O Acordo Rápido é uma forma inovadora e inteligente de recuperar créditos </h5>
-                        <p>
-                            Alinhado com a modernidade e a tecnologia, o Acordo Rápido elimina o estresse da relação de cobrança, oferecendo total privacidade ao usuário. Você pode regularizar seus débitos com a instituição de ensino estando em qualquer lugar, através da internet, até mesmo no conforto da sua casa
-                        </p>
-                    </div>
+            <div class="width100">
+                <div class="width60-fixo responsivo">
+                    <img src="http://res.cloudinary.com/tesseract/image/upload/c_scale,q_80,w_1920/v1506449790/acordo_rapido_home_empresa.jpg">
+                </div>
+                <div class="width40-fixo borda-60 responsivo">
+                    <h5> O Acordo Rápido é uma forma inovadora e inteligente de recuperar créditos </h5>
+                    <p>
+                        Alinhado com a modernidade e a tecnologia, o Acordo Rápido elimina o estresse da relação de cobrança, oferecendo total privacidade ao cliente.
+                    </p>
                 </div>
             </div>
+
         </div>
 
         <div class="full-width" id="modulos">
             <div class="container">
-                <h4 class="titulo-centralizado"><span>Módulos</span></h4>
+                <h4 class="titulo-centralizado"><span>Ferramenta de Ação Contínua</span></h4>
+
+                <!-- <ul id="itenslista">
+                    <li>PREVINE ATRASOS</li>
+                    <li>DIMINUI A IMPONTUALIDADE</li>
+                    <li>RECUPERA MENSALIDADES ATRASADAS</li>
+                </ul> -->                
+
                 <div class="row modulos">
-                    <div class="modulo col-sm-3 modulo-azul">
-                        <h5>Prevenção</h5>
-                        <p>Enviamos SMS para os clientes sobre a data de pagamento</p>
+                    
+                    <div class="col-xs-12 col-md-5 container-fases">
+                        <h5>FASE I</h5>
+
+                        <div class="modulo col-sm-6 modulo-azul">
+                            <h5>Prevenção</h5>
+                            <ul>
+                                <li class="pull-left">Todos os clientes</li>
+                                <li class="pull-left">Pontualidade</li>
+                            </ul>                            
+                        </div>
+                        <div class="modulo col-sm-6 modulo-verde">
+                            <h5>Recuperação</h5>
+                            <ul>
+                                <li class="pull-left">Atrasos</li>
+                                <li class="pull-left">Impontualidade</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="modulo col-sm-3 modulo-verde">
-                        <h5>Recuperação</h5>
-                        <p>Lembrete para os que atrasaram a data estipulada</p>
+
+                    <div class="col-xs-hidden col-md-2"></div>
+                    
+                    <div class="col-xs-12 col-md-5 container-fases">
+                        <h5>FASE II</h5>
+
+                        <div class="modulo col-sm-6 modulo-amarelo">
+                            <h5>Intensiva</h5>
+                            
+                            <ul>
+                                <li class="pull-left">Inadimplentes</li>
+                                <li class="pull-left">Recuperação</li>
+                            </ul>
+                        </div>
+                        <div class="modulo col-sm-6 modulo-vermelho">
+                            <h5>Cobrança</h5>
+                            <ul>
+                                <li class="pull-left">Inadimplência</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="modulo col-sm-3 modulo-amarelo">
-                        <h5>Intensiva</h5>
-                        <p>Incentivo para que os clientes paguem suas mensalidades atrasadas</p>
-                    </div>
-                    <div class="modulo col-sm-3 modulo-vermelho">
-                        <h5>Cobrança</h5>
-                        <p>Cobramos os clientes inadimplentes recuperando o seu crédito</p>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -371,17 +499,7 @@ $(document).ready(function() {
             <div class="container">
                 <h4 class="titulo-centralizado"><span>Contato</span></h4>
                 <div class="row dados">
-                    <div class="col-sm-6">
-                    <h5>Endereço:</h5>
-                    R. Senhorinha Felícia Aparecida, Nucleo Hab. Pres. Geisel, Bauru - SP
-    
-                    <h5 class="margint3">Telefone:</h5>
-                    <a href="tel:+55 14 991 765 678">
-                       (14) 99176-5678
-                    </a>
-                    </div>
-                    <div class="col-sm-6">
-                        <h5>Fale conosco:</h5>
+                    <div class="col-sm-6 col-md-offset-3">
                         Preencha o formulário abaixo e um dos nossos consultores estará em contato
 
                         {!! Form::open(array('url'=>'contatos/','method'=>'POST','name'=>'contatoform', 'id'=>'form-contato')) !!}
@@ -396,29 +514,39 @@ $(document).ready(function() {
                 </div>
             </div>
         </div>
-        <div class="full-width verde" id="barra-superior">
-            <div class="container font-right">
-                @if (Auth::check())
-                    <a href="{{ url('/home') }}">Admin</a>
-                @else
-                    <a href="{{ url('/login') }}">Login</a>
-                @endif
-                <a href="tel:+55 14 991 765 678">
-                    <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
-                    (14) 991 765 678
-                </a>
-            </div>
+        <div class="row">
+            <nav class="navbar verde" id="barra-superior">
+              <div class="container">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> 
+                  </button>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                  <ul class="nav navbar-nav navbar-left">
+                    @if (Auth::check())
+                        <li><a href="{{ url('/home') }}">Admin</a></li>
+                    @else
+                        <li><a href="{{ url('/login') }}">Login</a></li>
+                    @endif
+                    <li><a class="link-icon" href="tel:+55 14 991 765 678">
+                        <span class="vertical-helper"></span>
+                        <span class="glyphicon glyphicon-earphone vertical-helper" aria-hidden="true"></span>
+                        <span class="center-vertical">(14) 991 765 678</span>
+                    </a> </li>      
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#empresa">A Empresa</a></li>
+                    <li><a href="#modulos">Como Funciona</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
         </div>
-
-     <!--   <nav>
-            <ul>
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#empresa">Empresa</a></li>
-                <li><a href="#modulos">Módulos</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
--->
 
 <script>
 $(function () {

@@ -3,19 +3,19 @@
 
 @role('admin')
 <li class="{{ Request::is('dashboard*') ? 'active' : '' }}"><a href="{{ url('dashboard') }}"><i class='glyphicon glyphicon-dashboard'></i> <span>Estatísticas</span></a></li>
-<li class="{{ Request::is('escolas*') || Request::is('alunos*') ? 'active' : '' }} treeview">
+<li class="{{ Request::is('escolas*') || Request::is('alunos*') || Request::is('users*') ? 'active' : '' }} treeview">
     <a href="#"><i class='glyphicon glyphicon-th-list'></i> <span>Cadastros</span><i class="fa fa-angle-left pull-right"></i></a>
     <ul class="treeview-menu">
         <li class="{{ Request::is('escolas*') ? 'active' : '' }}"><a href="{{ url('escolas') }}"><i class='glyphicon glyphicon-education'></i>Escolas</a></li>
         <li class="{{ Request::is('alunos*') ? 'active' : '' }}">
             <a href="{{ url('alunos') }}"><i class='glyphicon glyphicon-user'></i> <span>Alunos</span></a>
         </li>
-        <li class="treeview">
-            <a href="#"><i class='glyphicon glyphicon-user'></i><span>Usuários</span><i class="fa fa-angle-left pull-right"></i></a>
+        <li class="{{ Request::is('users*') ? 'active' : '' }} treeview">
+            <a href="#"><i class='glyphicon glyphicon-user'></i><span>Acessos</span><i class="fa fa-angle-left pull-right"></i></a>
             <ul class="treeview-menu">
-                <li> <a href="#"><i class='glyphicon glyphicon-user'></i> <span>Operadores</span> </a> </li>
-                <li> <a href="#"><i class='glyphicon glyphicon-eye-open'></i> <span>Administradores</span> </a></li>
-                <li> <a href="#"><i class='glyphicon glyphicon-education'></i> <span>Escolas</span></a> </li>
+                <li class="{{ Request::is('users*') ? 'active' : '' }}">
+                    <a href="{!! route('users.index') !!}"><i class="fa fa-edit"></i><span>Usuários</span></a>
+                </li>                
                 <li> <a href="#"><i class='glyphicon glyphicon-lock'></i> <span>Permissões</span> </a></li>
             </ul>
         </li>
@@ -82,7 +82,8 @@
     </li> -->
 
 <li class="{{ Request::is('contatos*') ? 'active' : '' }}">
-    <a href="{!! route('contatos.index') !!}"><i class="fa fa-edit"></i><span>Contatos</span></a>
+    <a href="{!! route('contatos.index') !!}"><i class="fa fa-edit"></i><span>Contatos - Formulário Site</span></a>
 </li>
+
 
 

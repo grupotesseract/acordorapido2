@@ -121,7 +121,7 @@ return [
         'turma' => 'Turma',
         'periodo' => 'Período',
         'responsavel' => 'Responsável',
-        'rg' => 'RG',
+        'ra' => 'RA',
         'cidade' => 'Cidade',
         'estado' => 'Estado',
     ],
