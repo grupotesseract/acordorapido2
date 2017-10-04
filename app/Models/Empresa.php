@@ -51,7 +51,7 @@ class Empresa extends Model
         'multadiariaporc' => 'float',
         'multavalor' => 'float',
         'multadiariavalor' => 'float',
-        'moraporc' => 'float'
+        'moraporc' => 'float',
     ];
 
     /**
