@@ -6,26 +6,23 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Acordo
- * @package App\Models
+ * Class Acordo.
  * @version October 3, 2017, 11:16 pm BRT
  *
  * @property decimal valoracordado
  * @property decimal valororiginal
  * @property string observacao
- * @property integer user_id
- * @property integer cliente_id
- * @property integer empresa_id
+ * @property int user_id
+ * @property int cliente_id
+ * @property int empresa_id
  */
 class Acordo extends Model
 {
     use SoftDeletes;
 
     public $table = 'acordos';
-    
 
     protected $dates = ['deleted_at'];
-
 
     public $fillable = [
         'valoracordado',
@@ -33,7 +30,7 @@ class Acordo extends Model
         'observacao',
         'user_id',
         'cliente_id',
-        'empresa_id'
+        'empresa_id',
     ];
 
     /**
@@ -45,18 +42,18 @@ class Acordo extends Model
         'observacao' => 'string',
         'user_id' => 'integer',
         'cliente_id' => 'integer',
-        'empresa_id' => 'integer'
+        'empresa_id' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
         'valoracordado' => 'required:min:1',
         'valororiginal' => 'required',
-        'observacao' => 'required'
+        'observacao' => 'required',
     ];
 
     /**
@@ -82,6 +79,4 @@ class Acordo extends Model
     {
         return $this->belongsTo(\App\Models\Empresa::class);
     }
-
-    
 }
