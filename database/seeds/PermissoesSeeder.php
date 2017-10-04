@@ -67,8 +67,8 @@ class PermissoesSeeder extends Seeder
         $criarAcordo->save();
 
         $admin = new App\Models\Role();
-        $admin->name         = 'admin';
-        $admin->display_name = 'Administrador geral'; 
+        $admin->name = 'admin';
+        $admin->display_name = 'Administrador geral';
         $admin->save();
     }
 }

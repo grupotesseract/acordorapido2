@@ -47,7 +47,6 @@ class EsqueletoSeeder extends Seeder
             $e->estado = 'SP';
             $e->user()->associate($userEscola);
             $e->save();
-
         } catch (\Illuminate\Database\QueryException $exception) {
             dd($exception->getMessage());
             echo 'erro';
