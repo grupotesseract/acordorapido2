@@ -29,6 +29,11 @@ class Empresa extends Model
         'user_id',
         'cidade',
         'estado',
+        'multaporc',
+        'multadiariaporc',
+        'multavalor',
+        'multadiariavalor',
+        'moraporc',
     ];
 
     /**
@@ -42,6 +47,11 @@ class Empresa extends Model
         'user_id' => 'integer',
         'cidade' => 'string',
         'estado' => 'string',
+        'multaporc' => 'integer',
+        'multadiariaporc' => 'float',
+        'multavalor' => 'float',
+        'multadiariavalor' => 'float',
+        'moraporc' => 'float'
     ];
 
     /**

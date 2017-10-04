@@ -21,7 +21,7 @@
 
 <div class="row">
 	<div class="col-sm-12">
-		<h6>h6. Bootstrap heading</h6>
+		<h3>Valores de Multas</h6>
 	</div>
 
 	<!-- MultaPorc Field -->
