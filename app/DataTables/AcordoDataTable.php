@@ -3,12 +3,10 @@
 namespace App\DataTables;
 
 use App\Models\Acordo;
-use Form;
 use Yajra\Datatables\Services\DataTable;
 
 class AcordoDataTable extends DataTable
 {
-
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -41,7 +39,7 @@ class AcordoDataTable extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->addAction(['width' => '10%','title'=> 'Ação'])
+            ->addAction(['width' => '10%', 'title'=> 'Ação'])
             ->ajax('')
             ->parameters([
                 'dom' => 'Bfrtip',
@@ -86,7 +84,7 @@ class AcordoDataTable extends DataTable
             'observação' => ['name' => 'observacao', 'data' => 'observacao'],
             'operador' => ['name' => 'user_id', 'data' => 'user.name'],
             'aluno' => ['name' => 'cliente_id', 'data' => 'cliente.nome'],
-            'empresa' => ['name' => 'empresa_id', 'data' => 'empresa.nome']
+            'empresa' => ['name' => 'empresa_id', 'data' => 'empresa.nome'],
         ];
     }
 
