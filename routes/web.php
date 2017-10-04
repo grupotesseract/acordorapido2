@@ -58,3 +58,6 @@ Route::post('avisos/ligacao/', 'AvisoController@salvaLigacao');
 
 Route::resource('contatos', 'ContatoController');
 Route::resource('users', 'UserController');
+
+
+Route::resource('acordos', 'AcordoController');
