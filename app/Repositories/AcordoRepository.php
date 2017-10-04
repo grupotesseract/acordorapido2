@@ -6,14 +6,13 @@ use App\Models\Acordo;
 use InfyOm\Generator\Common\BaseRepository;
 
 /**
- * Class AcordoRepository
- * @package App\Repositories
+ * Class AcordoRepository.
  * @version October 3, 2017, 11:16 pm BRT
  *
  * @method Acordo findWithoutFail($id, $columns = ['*'])
  * @method Acordo find($id, $columns = ['*'])
  * @method Acordo first($columns = ['*'])
-*/
+ */
 class AcordoRepository extends BaseRepository
 {
     /**
@@ -25,11 +24,11 @@ class AcordoRepository extends BaseRepository
         'observacao',
         'user_id',
         'cliente_id',
-        'empresa_id'
+        'empresa_id',
     ];
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {
