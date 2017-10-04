@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
+use Flash;
+use Response;
 use App\DataTables\AcordoDataTable;
-use App\Http\Requests;
+use App\Repositories\AcordoRepository;
 use App\Http\Requests\CreateAcordoRequest;
 use App\Http\Requests\UpdateAcordoRequest;
-use App\Repositories\AcordoRepository;
-use Flash;
-use App\Http\Controllers\AppBaseController;
-use Response;
-use Auth;
 
 class AcordoController extends AppBaseController
 {
-    /** @var  AcordoRepository */
+    /** @var AcordoRepository */
     private $acordoRepository;
 
     public function __construct(AcordoRepository $acordoRepo)
