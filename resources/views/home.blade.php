@@ -9,7 +9,6 @@
         <section class="content">
             <div class="row">
             <!-- MÓDULOS -->
-                @role('escola')
                <div class="col-md-5">
                     <div class="box box-default">
                         <div class="box-header with-border">
@@ -29,9 +28,7 @@
                             <!-- /.box-body -->
                     </div>
                 </div>
-                @endrole
 
-                @role('escola')
                 <div class="col-md-7">
                     <div class="box box-info">
                         <div class="box-header with-border">
@@ -70,9 +67,7 @@
                         <!-- /.box-body -->
                     </div>
                 </div>
-                @endrole
 
-                @role('escola')
                 <div class="col-sm-12">
                     <div class="box box-success">
                         <div class="box-header with-border">
@@ -136,7 +131,6 @@
                             <!-- /.box-body -->
                     </div>
                 </div>
-                @endrole
             </div>
         </section>
     </div>

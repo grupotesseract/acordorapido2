@@ -3,13 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
-use Zizaco\Entrust\Traits\EntrustUserTrait;
+use Laratrust\Traits\LaratrustUserTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    use LaratrustUserTrait;
     use Notifiable;
-    use EntrustUserTrait;
 
     /**
      * The attributes that should be treated as \Carbon\Carbon instances.
