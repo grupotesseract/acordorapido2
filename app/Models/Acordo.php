@@ -59,5 +59,29 @@ class Acordo extends Model
         'observacao' => 'required'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function cliente()
+    {
+        return $this->belongsTo(\App\Models\Cliente::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function user()
+    {
+        return $this->belongsTo(\App\Models\User::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
+    public function empresa()
+    {
+        return $this->belongsTo(\App\Models\Empresa::class);
+    }
+
     
 }

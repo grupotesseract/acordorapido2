@@ -94,4 +94,12 @@ class Cliente extends Model
     {
         return $this->hasMany(\App\Models\Aviso::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function acordos()
+    {
+        return $this->hasMany(\App\Models\Acordo::class);
+    }
 }

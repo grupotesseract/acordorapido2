@@ -27,7 +27,7 @@ class AcordoDataTable extends DataTable
      */
     public function query()
     {
-        $acordos = Acordo::query();
+        $acordos = Acordo::query()->with('cliente')->with('empresa')->with('user');
 
         return $this->applyScopes($acordos);
     }
@@ -41,26 +41,35 @@ class AcordoDataTable extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->addAction(['width' => '10%'])
+            ->addAction(['width' => '10%','title'=> 'Ação'])
             ->ajax('')
             ->parameters([
                 'dom' => 'Bfrtip',
                 'scrollX' => false,
                 'buttons' => [
-                    'print',
-                    'reset',
-                    'reload',
+                    [
+                        'extend' => 'print',
+                        'text'    => '<i class="fa fa-print"></i> Imprimir',
+                    ],
+
+                    [
+                        'extend' => 'reload',
+                        'text'    => '<i class="fa fa-refresh"></i> Atualizar',
+                    ],
                     [
                          'extend'  => 'collection',
-                         'text'    => '<i class="fa fa-download"></i> Export',
+                         'text'    => '<i class="fa fa-download"></i> Exportar',
                          'buttons' => [
                              'csv',
                              'excel',
-                             'pdf',
                          ],
                     ],
-                    'colvis'
-                ]
+                    [
+                        'extend' => 'colvis',
+                        'text'    => 'Filtrar Colunas',
+                    ],
+                ],
+                'language' => ['url' => '//cdn.datatables.net/plug-ins/1.10.15/i18n/Portuguese-Brasil.json'],
             ]);
     }
 
@@ -72,12 +81,12 @@ class AcordoDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'valoracordado' => ['name' => 'valoracordado', 'data' => 'valoracordado'],
-            'valororiginal' => ['name' => 'valororiginal', 'data' => 'valororiginal'],
-            'observacao' => ['name' => 'observacao', 'data' => 'observacao'],
-            'user_id' => ['name' => 'user_id', 'data' => 'user_id'],
-            'cliente_id' => ['name' => 'cliente_id', 'data' => 'cliente_id'],
-            'empresa_id' => ['name' => 'empresa_id', 'data' => 'empresa_id']
+            'valoracordado' => ['name' => 'valoracordado', 'data' => 'valoracordado', 'title' => 'Valor Negociado'],
+            'valororiginal' => ['name' => 'valororiginal', 'data' => 'valororiginal', 'title' => 'Valor Original'],
+            'observação' => ['name' => 'observacao', 'data' => 'observacao'],
+            'operador' => ['name' => 'user_id', 'data' => 'user.name'],
+            'aluno' => ['name' => 'cliente_id', 'data' => 'cliente.nome'],
+            'empresa' => ['name' => 'empresa_id', 'data' => 'empresa.nome']
         ];
     }
 

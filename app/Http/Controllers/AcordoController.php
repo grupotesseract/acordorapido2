@@ -10,6 +10,7 @@ use App\Repositories\AcordoRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use Auth;
 
 class AcordoController extends AppBaseController
 {
@@ -51,11 +52,12 @@ class AcordoController extends AppBaseController
      */
     public function store(CreateAcordoRequest $request)
     {
+        $request->request->add(['user_id' => Auth::id()]);
         $input = $request->all();
 
         $acordo = $this->acordoRepository->create($input);
 
-        Flash::success('Acordo saved successfully.');
+        Flash::success('Acordo salvo com sucesso.');
 
         return redirect(route('acordos.index'));
     }
