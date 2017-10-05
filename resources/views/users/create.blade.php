@@ -16,6 +16,10 @@
 
                         @include('users.fields')
 
+                        <hr>
+
+                        @include('users.table')
+
                     {!! Form::close() !!}
                 </div>
             </div>

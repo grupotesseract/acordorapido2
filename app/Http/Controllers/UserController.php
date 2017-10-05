@@ -1,21 +1,14 @@
 <?php
 
-/*
- * Desenvolvedores:
- * Fernando Fernandes
- * Evandro Carreira
- * Renato Gomes
- *
- */
-
 namespace App\Http\Controllers;
 
-use Flash;
-use Response;
+use App\DataTables\EmpresaDataTable;
 use App\DataTables\UserDataTable;
-use App\Repositories\UserRepository;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\Repositories\UserRepository;
+use Flash;
+use Response;
 
 class UserController extends AppBaseController
 {
@@ -39,13 +32,13 @@ class UserController extends AppBaseController
     }
 
     /**
-     * Show the form for creating a new User.
+     * Serve a view do Crud de usuarios com a Datatable embutida
      *
-     * @return Response
+     * @param UserDataTable $userDataTable
      */
-    public function create()
+    public function create(EmpresaDataTable $empresaDataTable)
     {
-        return view('users.create');
+        return $empresaDataTable->render('users.create');
     }
 
     /**
