@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * Desenvolvedores:
+ * Fernando Fernandes
+ * Evandro Carreira
+ * Renato Gomes
+ *
+ */
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -15,7 +23,6 @@ class RemoveRelacaoEmpresaUser extends Migration
     {
         Schema::table('empresas', function (Blueprint $table) {
             $table->dropColumn('user_id');
-            
         });
     }
 
