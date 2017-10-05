@@ -38,7 +38,7 @@ class CriarColunasEmpresas extends Migration
     public function down()
     {
         Schema::table('empresas', function (Blueprint $table) {
-            $table->dropColumn('multadiariavalor', 10, 2);
+            $table->dropColumn('multadiariavalor');
             $table->dropColumn('multadiariaporc');
             $table->dropColumn('multaporc');
             $table->dropColumn('moraporc');
