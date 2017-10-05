@@ -15,7 +15,6 @@ class RemoveRelacaoEmpresaUser extends Migration
     {
         Schema::table('empresas', function (Blueprint $table) {
             $table->dropColumn('user_id');
-            
         });
     }
 
