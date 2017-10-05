@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\EmpresaDataTable;
-use App\DataTables\UserDataTable;
-use App\Http\Requests\CreateUserRequest;
-use App\Http\Requests\UpdateUserRequest;
-use App\Repositories\UserRepository;
 use Flash;
 use Response;
+use App\DataTables\UserDataTable;
+use App\DataTables\EmpresaDataTable;
+use App\Repositories\UserRepository;
+use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 
 class UserController extends AppBaseController
 {
@@ -32,7 +32,7 @@ class UserController extends AppBaseController
     }
 
     /**
-     * Serve a view do Crud de usuarios com a Datatable embutida
+     * Serve a view do Crud de usuarios com a Datatable embutida.
      *
      * @param UserDataTable $userDataTable
      */
