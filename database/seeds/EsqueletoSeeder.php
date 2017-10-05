@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * Desenvolvedores:
+ * Fernando Fernandes
+ * Evandro Carreira
+ * Renato Gomes
+ *
+ */
+
 use Illuminate\Database\Seeder;
 
 /**
@@ -48,29 +56,36 @@ class EsqueletoSeeder extends Seeder
             $Empresa->save();
             $Empresa->usuarios()->attach($userEscola);
 
-            // Criando funções dentro do sistema
-            $Escola = new App\Models\Role();
-            $Escola->name = 'escola';
-            $Escola->display_name = 'Instituição de ensino';
-            $Escola->description = 'Usuário autorizado a visualizar os dados referentes à sua escola';
-            $Escola->save();
+            // Cria permissões de usuários
+            $usuarioIncluir = new App\Models\Permission();
+            $usuarioIncluir->name = 'usuarios-incluir';
+            $usuarioIncluir->display_name = 'Incluir Usuários';
+            $usuarioIncluir->description = 'Usuários'; // Usando como grupo de permissões
+            $usuarioIncluir->save();
 
-            $Admin = new App\Models\Role();
-            $Admin->name = 'admin';
-            $Admin->display_name = 'Admin do sistema';
-            $Admin->description = 'Usuário autorizado a excluir, editar e incluir alunos, escolas e novos usuários';
-            $Admin->save();
+            $usuarioEditar = new App\Models\Permission();
+            $usuarioEditar->name = 'usuarios-editar';
+            $usuarioEditar->display_name = 'Editar Usuários';
+            $usuarioEditar->description = 'Usuários'; // Usando como grupo de permissões
+            $usuarioEditar->save();
 
-            $Aluno = new App\Models\Role();
-            $Aluno->name = 'aluno';
-            $Aluno->display_name = 'Usuário Aluno';
-            $Aluno->description = 'Usuário autorizado a visualizar somente seus títulos e infos pessoais';
-            $Aluno->save();
+            $usuarioVisualizar = new App\Models\Permission();
+            $usuarioVisualizar->name = 'usuarios-visualizar';
+            $usuarioVisualizar->display_name = 'Visualizar Usuários';
+            $usuarioVisualizar->description = 'Usuários'; // Usando como grupo de permissões
+            $usuarioVisualizar->save();
 
-            // associando as funções aos usuários
-            $userAluno->attachRole($Aluno);
-            $userEscola->attachRole($Escola);
-            $userAdmin->attachRole($Admin);
+            $usuarioRemover = new App\Models\Permission();
+            $usuarioRemover->name = 'usuarios-remover';
+            $usuarioRemover->display_name = 'Remover Usuários';
+            $usuarioRemover->description = 'Usuários'; // Usando como grupo de permissões
+            $usuarioRemover->save();
+
+            $usuarioPermissoes = new App\Models\Permission();
+            $usuarioPermissoes->name = 'usuarios-permissoes';
+            $usuarioPermissoes->display_name = 'Definir Permissões dos usuários';
+            $usuarioPermissoes->description = 'Usuários'; // Usando como grupo de permissões
+            $usuarioPermissoes->save();
         } catch (\Illuminate\Database\QueryException $exception) {
             dd($exception->getMessage());
             echo 'erro';

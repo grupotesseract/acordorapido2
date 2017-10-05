@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * Desenvolvedores:
+ * Fernando Fernandes
+ * Evandro Carreira
+ * Renato Gomes
+ *
+ */
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

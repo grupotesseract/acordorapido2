@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * Desenvolvedores:
+ * Fernando Fernandes
+ * Evandro Carreira
+ * Renato Gomes
+ *
+ */
+
 namespace App\Http\Controllers;
 
 use Auth;

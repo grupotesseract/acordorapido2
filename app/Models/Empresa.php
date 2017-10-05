@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * Desenvolvedores:
+ * Fernando Fernandes
+ * Evandro Carreira
+ * Renato Gomes
+ *
+ */
+
 namespace App\Models;
 
 use Eloquent as Model;
@@ -29,6 +37,11 @@ class Empresa extends Model
         'user_id',
         'cidade',
         'estado',
+        'multaporc',
+        'multadiariaporc',
+        'multavalor',
+        'multadiariavalor',
+        'moraporc',
     ];
 
     /**
@@ -42,6 +55,11 @@ class Empresa extends Model
         'user_id' => 'integer',
         'cidade' => 'string',
         'estado' => 'string',
+        'multaporc' => 'integer',
+        'multadiariaporc' => 'float',
+        'multavalor' => 'float',
+        'multadiariavalor' => 'float',
+        'moraporc' => 'float',
     ];
 
     /**
@@ -74,5 +92,10 @@ class Empresa extends Model
     public function importacoes()
     {
         return $this->hasMany(\App\Models\Importacao::class);
+    }
+
+    public function acordos()
+    {
+        return $this->hasMany(\App\Models\Acordo::class);
     }
 }
