@@ -1,10 +1,11 @@
 <?php
 
-/**
- * This file is part of Laratrust,
- * a role & permission management solution for Laravel.
+/*
+ * Desenvolvedores:
+ * Fernando Fernandes
+ * Evandro Carreira
+ * Renato Gomes
  *
- * @license MIT
  */
 
 return [

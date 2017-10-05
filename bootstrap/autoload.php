@@ -1,5 +1,13 @@
 <?php
 
+/*
+ * Desenvolvedores:
+ * Fernando Fernandes
+ * Evandro Carreira
+ * Renato Gomes
+ *
+ */
+
 define('LARAVEL_START', microtime(true));
 
 /*

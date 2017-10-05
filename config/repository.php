@@ -1,11 +1,13 @@
 <?php
+
 /*
-|--------------------------------------------------------------------------
-| Prettus Repository Config
-|--------------------------------------------------------------------------
-|
-|
-*/
+ * Desenvolvedores:
+ * Fernando Fernandes
+ * Evandro Carreira
+ * Renato Gomes
+ *
+ */
+
 return [
 
     /*

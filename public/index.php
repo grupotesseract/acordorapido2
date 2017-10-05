@@ -1,9 +1,11 @@
 <?php
 
-/**
- * Laravel - A PHP Framework For Web Artisans.
+/*
+ * Desenvolvedores:
+ * Fernando Fernandes
+ * Evandro Carreira
+ * Renato Gomes
  *
- * @author   Taylor Otwell <taylor@laravel.com>
  */
 
 /*
