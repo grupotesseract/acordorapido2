@@ -14,13 +14,11 @@ class CreateTabelaPivoRelacaoEmpresaUser extends Migration
     public function up()
     {
         Schema::create('empresa_user', function (Blueprint $table) {
-            
             $table->integer('empresa_id')->unsigned()->nullable();
             $table->foreign('empresa_id')->references('id')->on('empresas');
 
             $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
-            
         });
     }
 
