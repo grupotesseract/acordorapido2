@@ -16,7 +16,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $dates = ['deleted_at', 'created_at', 'updated_at'];
+    protected $dates = ['deleted_at', 'created_at', 'updated_at', 'deleted_at'];
 
     /**
      * The attributes that are mass assignable.
@@ -37,11 +37,21 @@ class User extends Authenticatable
     ];
 
     /**
-     * Pega a empresa do user.
+     * Validation rules.
+     *
+     * @var array
      */
-    public function empresa()
+    public static $rules = [
+        'name' => 'required',
+        'email' => 'required:email',
+    ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     **/
+    public function empresas()
     {
-        return $this->hasOne('App\Empresa');
+        return $this->belongsToMany(\App\Models\Empresa::class);
     }
 
     /**
