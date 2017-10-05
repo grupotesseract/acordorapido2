@@ -11,7 +11,9 @@
                <div class="row">
                    {!! Form::model($empresa, ['route' => ['escolas.update', $empresa->id], 'method' => 'patch']) !!}
 
-                        @include('empresas.fields')
+                        <div class="container-fluid">
+                          @include('empresas.fields')
+                        </div>
 
                    {!! Form::close() !!}
                </div>
