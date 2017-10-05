@@ -83,3 +83,7 @@
 
 
 
+<li class="{{ Request::is('acordos*') ? 'active' : '' }}">
+    <a href="{!! route('acordos.index') !!}"><i class="fa fa-edit"></i><span>Acordos</span></a>
+</li>
+

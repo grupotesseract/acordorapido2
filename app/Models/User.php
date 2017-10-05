@@ -71,6 +71,14 @@ class User extends Authenticatable
     }
 
     /**
+     * Pega os Acordos desse usuario.
+     */
+    public function acordos()
+    {
+        return $this->hasMany('App\Models\Acordo');
+    }
+
+    /**
      * Importacoes feitas por esse usuario.
      */
     public function importacoes()
