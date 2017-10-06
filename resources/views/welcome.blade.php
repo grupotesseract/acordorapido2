@@ -28,6 +28,37 @@
 
 </div>
 
+<div class="modulos-box" id="modulos">
+    <h4 class="titulo-centralizado"><span>Ferramenta de Ação Contínua</span></h4>
+
+    <div class="modulo-principal">
+        <div>
+            <img src="/img/bola-1.png">
+            <h3>Acordo Rápido</h3>
+        </div>
+    </div>
+
+    <div class="modulos">
+        <div class="modulo">
+            <img src="/img/bola-2.png">
+            <h3>Prevenção</h3>
+        </div>
+        <div class="modulo">
+            <img src="/img/bola-3.png">
+            <h3>Recuperação</h3>
+        </div>
+        <div class="modulo">
+            <img src="/img/bola-4.png">
+            <h3>Intensiva</h3>
+        </div>
+        <div class="modulo">
+            <img src="/img/bola-5.png">
+            <h3>Cobrança</h3>
+        </div>
+    </div>
+</div>
+
+{{--
 <div class="full-width" id="modulos">
     <div class="container">
         <h4 class="titulo-centralizado"><span>Ferramenta de Ação Contínua</span></h4>
@@ -78,6 +109,7 @@
                     </ul>
                 </div>
             </div>
-        </div> {{-- END row modulos --}}
+        </div>
     </div>
 </div>
+--}}

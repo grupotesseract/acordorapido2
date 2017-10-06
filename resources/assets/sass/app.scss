@@ -94,6 +94,69 @@ a.verde,
 	}
 }
 
+.modulos-box {
+	background-color: rgb(179, 213, 243);
+	color: #363636;
+
+	h4 {
+		margin: 0 0 40px;
+		padding: 60px 0px 0px;
+	}
+}
+
+.modulo-principal {
+	display: flex;
+
+	div {
+		margin: auto;
+		text-align: center;
+
+		img {
+			box-sizing: content-box;
+			padding: 0px 0px 0px;
+			height: 150px;
+			width: 150px;
+		}
+
+		h3 {
+			text-align: center;
+			margin: 20px 0px 20px;
+		}
+	}
+}
+
+.modulos {
+	display: flex;
+	justify-content: center;
+}
+
+.modulo {
+
+	img {
+		box-sizing: content-box;
+		padding: 20px 30px 0px;
+		height: 150px;
+		width: 150px;
+	}
+
+	h3 {
+		text-align: center;
+		margin: 20px 0px 60px;
+	}
+}
+
+/*
+#modulos {
+    background-color: rgb(179, 213, 243);
+    background-size: cover;
+    background-position: center center;
+    background-blend-mode: screen;
+
+    .container {
+		max-width: 70em;
+	}
+}
+
 .modulos {
     color: white;
     text-align:center;
@@ -115,6 +178,7 @@ a.verde,
 .modulo-verde { background-color: #7cd000; }
 .modulo-amarelo { background-color: #ff8800; }
 .modulo-vermelho { background-color: #ff0020; }
+*/
 
 .menu {
 	padding-top: 6em;
@@ -214,17 +278,6 @@ a.verde,
 
 #empresa {
     padding-bottom: 2em;
-}
-
-#modulos {
-    background-color: rgb(179, 213, 243);
-    background-size: cover;
-    background-position: center center;
-    background-blend-mode: screen;
-
-    .container {
-		max-width: 70em;
-	}
 }
 
 #contato {
