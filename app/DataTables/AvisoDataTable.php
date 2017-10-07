@@ -110,5 +110,4 @@ class AvisoDataTable extends DataTable
     {
         return 'avisos';
     }
-    
 }
