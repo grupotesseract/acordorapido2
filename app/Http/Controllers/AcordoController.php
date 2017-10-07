@@ -14,6 +14,7 @@ use Auth;
 use Flash;
 use Response;
 use App\DataTables\AcordoDataTable;
+use App\DataTables\ClienteDataTableModal;
 use App\Repositories\AcordoRepository;
 use App\Http\Requests\CreateAcordoRequest;
 use App\Http\Requests\UpdateAcordoRequest;
@@ -44,9 +45,9 @@ class AcordoController extends AppBaseController
      *
      * @return Response
      */
-    public function create()
+    public function create(ClienteDataTableModal $clienteDataTable)
     {
-        return view('acordos.create');
+        return $clienteDataTable->render('acordos.create');
     }
 
     /**

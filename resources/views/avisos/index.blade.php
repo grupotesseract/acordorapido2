@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="content-header">
-        <h1>Avisos</h1>  
+        <h1>Controle de Disparos e Ligações Telefônicas</h1>  
     </section>
     {!! Form::open(array('url'=>'envialote/','method'=>'POST','name'=>'avisoform', 'id' => 'avisoform')) !!}
     <div class="content">

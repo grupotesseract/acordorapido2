@@ -3,22 +3,23 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Acordo
+            Criar Acordo
         </h1>
     </section>
     <div class="content">
         @include('adminlte-templates::common.errors')
         <div class="box box-primary">
 
-            <div class="box-body">
-                <div class="row">
-                    {!! Form::open(['route' => 'acordos.store']) !!}
+            <div class="box-body">                    
+                {!! Form::open(['route' => 'acordos.store']) !!}
 
-                        @include('acordos.fields')
+                    @include('acordos.fields')
 
-                    {!! Form::close() !!}
-                </div>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>
+
+    @include('acordos.modalalunos')
+
 @endsection

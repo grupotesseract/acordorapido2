@@ -35,7 +35,7 @@
         <nav class="navbar navbar-static-top" role="navigation">
             <!-- Sidebar toggle button-->
             <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                <span class="sr-only">Toggle navigation</span>
+                <span class="sr-only">Navegar</span>
             </a>
             <!-- Navbar Right Menu -->
             <div class="navbar-custom-menu">
@@ -110,6 +110,7 @@
 
 <!-- JS Custom -->
 <script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/tesseract.js') }}"></script>
 
 <script>
     function checkAll() {
@@ -121,7 +122,6 @@
         }         
     }
 </script>
-
 
 <script>   
 
