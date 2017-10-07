@@ -53,12 +53,12 @@ class ClienteDataTableModal extends DataTable
                 'dom' => 'Bfrtip',
                 'scrollX' => false,
                 'buttons' => [
-                    
+
                     [
                         'extend' => 'reload',
                         'text'    => '<i class="fa fa-refresh"></i> Atualizar',
                     ],
-                    
+
                     [
                         'extend' => 'colvis',
                         'text'    => 'Filtrar Colunas',
@@ -76,7 +76,7 @@ class ClienteDataTableModal extends DataTable
     private function getColumns()
     {
         return [
-            'selecionar' => ['name' => 'selecionar'],            
+            'selecionar' => ['name' => 'selecionar'],
             'nome' => ['name' => 'nome', 'data' => 'nome'],
             //'user_id' => ['name' => 'user_id', 'data' => 'user_id'],
             'turma' => ['name' => 'turma', 'data' => 'turma'],
