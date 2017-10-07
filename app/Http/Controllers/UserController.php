@@ -103,7 +103,9 @@ class UserController extends AppBaseController
             return redirect(route('users.index'));
         }
 
-        return view('users.edit')->with('user', $user);
+        $perms = \App\Models\Permission::all();
+
+        return view('users.edit')->with('user', $user)->with('perms', $perms);
     }
 
     /**
@@ -125,6 +127,7 @@ class UserController extends AppBaseController
         }
 
         $user = $this->userRepository->update($request->all(), $id);
+        $user->syncPermissions($request->permissoes);
 
         Flash::success('User updated successfully.');
 

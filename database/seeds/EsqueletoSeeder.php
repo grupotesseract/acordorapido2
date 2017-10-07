@@ -55,37 +55,6 @@ class EsqueletoSeeder extends Seeder
             $e->estado = 'SP';
             $e->user()->associate($userEscola);
             $e->save();
-
-            // Cria permissões de usuários
-            $usuarioIncluir = new App\Models\Permission();
-            $usuarioIncluir->name = 'usuarios-incluir';
-            $usuarioIncluir->display_name = 'Incluir Usuários';
-            $usuarioIncluir->description = 'Usuários'; // Usando como grupo de permissões
-            $usuarioIncluir->save();
-
-            $usuarioEditar = new App\Models\Permission();
-            $usuarioEditar->name = 'usuarios-editar';
-            $usuarioEditar->display_name = 'Editar Usuários';
-            $usuarioEditar->description = 'Usuários'; // Usando como grupo de permissões
-            $usuarioEditar->save();
-
-            $usuarioVisualizar = new App\Models\Permission();
-            $usuarioVisualizar->name = 'usuarios-visualizar';
-            $usuarioVisualizar->display_name = 'Visualizar Usuários';
-            $usuarioVisualizar->description = 'Usuários'; // Usando como grupo de permissões
-            $usuarioVisualizar->save();
-
-            $usuarioRemover = new App\Models\Permission();
-            $usuarioRemover->name = 'usuarios-remover';
-            $usuarioRemover->display_name = 'Remover Usuários';
-            $usuarioRemover->description = 'Usuários'; // Usando como grupo de permissões
-            $usuarioRemover->save();
-
-            $usuarioPermissoes = new App\Models\Permission();
-            $usuarioPermissoes->name = 'usuarios-permissoes';
-            $usuarioPermissoes->display_name = 'Definir Permissões dos usuários';
-            $usuarioPermissoes->description = 'Usuários'; // Usando como grupo de permissões
-            $usuarioPermissoes->save();
         } catch (\Illuminate\Database\QueryException $exception) {
             dd($exception->getMessage());
             echo 'erro';

@@ -8,6 +8,7 @@
         <!-- Main content -->
         <section class="content">
             <div class="row">
+            @role('escola')
             <!-- MÓDULOS -->
                <div class="col-md-5">
                     <div class="box box-default">
@@ -131,6 +132,7 @@
                             <!-- /.box-body -->
                     </div>
                 </div>
+            @endrole
             </div>
         </section>
     </div>
