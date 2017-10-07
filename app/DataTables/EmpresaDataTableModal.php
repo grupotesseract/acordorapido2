@@ -13,7 +13,7 @@ namespace App\DataTables;
 use App\Models\Empresa;
 use Yajra\Datatables\Services\DataTable;
 
-class EmpresaDataTable extends DataTable
+class EmpresaDataTableModal extends DataTable
 {
     /**
      * @return \Illuminate\Http\JsonResponse
@@ -54,12 +54,12 @@ class EmpresaDataTable extends DataTable
                 'dom' => 'Bfrtip',
                 'scrollX' => false,
                 'buttons' => [
-                    
+
                     [
                         'extend' => 'reload',
                         'text'    => '<i class="fa fa-refresh"></i> Atualizar',
                     ],
-                    
+
                     [
                         'extend' => 'colvis',
                         'text'    => 'Filtrar Colunas',
