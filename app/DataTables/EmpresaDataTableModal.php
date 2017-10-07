@@ -10,10 +10,10 @@
 
 namespace App\DataTables;
 
-use App\Models\Cliente;
+use App\Models\Empresa;
 use Yajra\Datatables\Services\DataTable;
 
-class ClienteDataTableModal extends DataTable
+class EmpresaDataTable extends DataTable
 {
     /**
      * @return \Illuminate\Http\JsonResponse
@@ -22,7 +22,7 @@ class ClienteDataTableModal extends DataTable
     {
         return $this->datatables
             ->eloquent($this->query())
-            ->addColumn('selecionar', 'clientes.radio')
+            ->addColumn('selecionar', 'empresas.radio')
             ->rawColumns(['selecionar'])
             ->make(true);
     }
@@ -34,9 +34,9 @@ class ClienteDataTableModal extends DataTable
      */
     public function query()
     {
-        $clientes = Cliente::query();
+        $empresas = Empresa::query();
 
-        return $this->applyScopes($clientes);
+        return $this->applyScopes($empresas);
     }
 
     /**
@@ -48,6 +48,7 @@ class ClienteDataTableModal extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
+            ->addAction(['width' => '10%', 'title' => 'Ação'])
             ->ajax('')
             ->parameters([
                 'dom' => 'Bfrtip',
@@ -76,17 +77,9 @@ class ClienteDataTableModal extends DataTable
     private function getColumns()
     {
         return [
-            'selecionar' => ['name' => 'selecionar'],            
             'nome' => ['name' => 'nome', 'data' => 'nome'],
-            //'user_id' => ['name' => 'user_id', 'data' => 'user_id'],
-            'turma' => ['name' => 'turma', 'data' => 'turma'],
-            'período' => ['name' => 'periodo', 'data' => 'periodo'],
-            'responsável' => ['name' => 'responsavel', 'data' => 'responsavel'],
-            'celular' => ['name' => 'celular', 'data' => 'celular'],
-            /*'telefone' => ['name' => 'telefone', 'data' => 'telefone'],
-            'telefone2' => ['name' => 'telefone2', 'data' => 'telefone2'],
-            'celular2' => ['name' => 'celular2', 'data' => 'celular2'],*/
-            'RA' => ['name' => 'ra', 'data' => 'ra'],
+            'cidade' => ['name' => 'cidade', 'data' => 'cidade'],
+            'estado' => ['name' => 'estado', 'data' => 'estado'],
         ];
     }
 
@@ -97,6 +90,6 @@ class ClienteDataTableModal extends DataTable
      */
     protected function filename()
     {
-        return 'clientes';
+        return 'empresas';
     }
 }
