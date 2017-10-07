@@ -1,6 +1,7 @@
 <!-- Optionally, you can add icons to the links -->
 <li class="{{ Request::is('home*') ? 'active' : '' }}"><a href="{{ url('home') }}"><i class='glyphicon glyphicon-home'></i> <span>{{ trans('message.home') }}</span></a></li>
 
+@role('admin')
 <li class="{{ Request::is('dashboard*') ? 'active' : '' }}"><a href="{{ url('dashboard') }}"><i class='glyphicon glyphicon-dashboard'></i> <span>Estatísticas</span></a></li>
 <li class="{{ Request::is('escolas*') || Request::is('alunos*') || Request::is('users*') ? 'active' : '' }} treeview">
     <a href="#"><i class='glyphicon glyphicon-th-list'></i> <span>Cadastros</span><i class="fa fa-angle-left pull-right"></i></a>
@@ -52,6 +53,7 @@
         <li><a href="{{ url('avisos/create') }}"><span aria-hidden="true" class="glyphicon glyphicon-envelope"></span>Enviar SMS para um Número</a></li>
     </ul>
 </li>
+@endrole
 <!-- <li>
     <a href="{{ url('titulos') }}"><i class='glyphicon glyphicon-list-alt'></i> <span>Títulos</span></a>
     </li> -->

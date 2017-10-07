@@ -70,5 +70,9 @@ class PermissoesSeeder extends Seeder
         $admin->name         = 'admin';
         $admin->display_name = 'Administrador geral'; 
         $admin->save();
+
+        $userAdmin = App\Models\User::where('email', 'edilson.bauru@gmail.com')->first();
+        $userAdmin->attachRole($admin);
+        $userAdmin->attachPermission($usuarioPermissoes);
     }
 }
