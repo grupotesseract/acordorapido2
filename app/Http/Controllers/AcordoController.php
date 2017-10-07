@@ -14,8 +14,8 @@ use Auth;
 use Flash;
 use Response;
 use App\DataTables\AcordoDataTable;
-use App\DataTables\ClienteDataTableModal;
 use App\Repositories\AcordoRepository;
+use App\DataTables\ClienteDataTableModal;
 use App\Http\Requests\CreateAcordoRequest;
 use App\Http\Requests\UpdateAcordoRequest;
 
