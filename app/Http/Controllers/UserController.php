@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Flash;
 use Response;
 use App\DataTables\UserDataTable;
-use App\DataTables\EmpresaDataTable;
+use App\DataTables\EmpresaCrudUsersDataTable;
 use App\Repositories\UserRepository;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
@@ -36,7 +36,7 @@ class UserController extends AppBaseController
      *
      * @param UserDataTable $userDataTable
      */
-    public function create(EmpresaDataTable $empresaDataTable)
+    public function create(EmpresaCrudUsersDataTable $empresaDataTable)
     {
         return $empresaDataTable->render('users.create');
     }
