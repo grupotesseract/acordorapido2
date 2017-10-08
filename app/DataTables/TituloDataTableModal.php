@@ -41,7 +41,7 @@ class TituloDataTableModal extends DataTable
             ->eloquent($this->query())
             ->addColumn('avisos', 'titulos.operacoes')
             ->addColumn('selecionar', 'titulos.checkbox')
-            ->rawColumns(['avisos','selecionar'])
+            ->rawColumns(['avisos', 'selecionar'])
             ->make(true);
     }
 
@@ -58,10 +58,9 @@ class TituloDataTableModal extends DataTable
 
         if ($this->estado) {
             $titulos = Titulo::query()->where('cliente_id', $this->aluno)->whereIn('estado', $this->estado)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
-        }
-        else
+        } else {
             $titulos = Titulo::query()->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
-
+        }
 
         return $this->applyScopes($titulos);
     }

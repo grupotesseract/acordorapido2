@@ -82,16 +82,16 @@ class AcordoController extends AppBaseController
     public function storealuno(Request $request)
     {
         $input = $request->all();
-        return redirect(route('acordofinal',['aluno' => $input['aluno']]));
+
+        return redirect(route('acordofinal', ['aluno' => $input['aluno']]));
     }
 
     public function finalizarAcordo(TituloDataTableModal $titulosDataTable, $aluno)
     {
-
         $aluno = Cliente::find($aluno);
         $titulos = $aluno->titulos;
-        return $titulosDataTable->porAluno($aluno->id)->porEstado(['amarelo','vermelho'])->render('acordos.create_final',['aluno' => $aluno, 'titulos' => $titulos]);        
 
+        return $titulosDataTable->porAluno($aluno->id)->porEstado(['amarelo', 'vermelho'])->render('acordos.create_final', ['aluno' => $aluno, 'titulos' => $titulos]);
     }
 
     /**
