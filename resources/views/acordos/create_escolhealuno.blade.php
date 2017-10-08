@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Passo 1/3 - Escolher Aluno
+            Passo 1/2 - Escolher Aluno
         </h1>
     </section>
     <div class="content">

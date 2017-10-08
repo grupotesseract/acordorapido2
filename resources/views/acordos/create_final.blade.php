@@ -14,7 +14,7 @@
                 <h3 class="box-title">Títulos Referentes ao Aluno: {{$aluno->nome}}</h3>
             </div>
 
-            <div class="box-primary-body">                    
+            <div class="box-body">                    
                 {!! Form::open(['route' => 'acordos.store']) !!}
 
                     @include('titulos.table')
