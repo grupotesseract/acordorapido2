@@ -13,11 +13,11 @@ namespace App\Http\Controllers;
 use Auth;
 use Flash;
 use Response;
-use \App\Models\Cliente as Cliente;
 use Illuminate\Http\Request;
+use App\Models\Cliente as Cliente;
 use App\DataTables\AcordoDataTable;
-use App\DataTables\TituloDataTableModal;
 use App\Repositories\AcordoRepository;
+use App\DataTables\TituloDataTableModal;
 use App\DataTables\ClienteDataTableModal;
 use App\Http\Requests\CreateAcordoRequest;
 use App\Http\Requests\UpdateAcordoRequest;
@@ -82,15 +82,18 @@ class AcordoController extends AppBaseController
     public function storealuno(Request $request)
     {
         $input = $request->all();
-        return redirect(route('acordofinal',['aluno' => $input['aluno']]));   
+        return redirect(route('acordofinal',['aluno' => $input['aluno']]));
     }
 
     public function finalizarAcordo(TituloDataTableModal $titulosDataTable, $aluno)
     {
+
         $aluno = Cliente::find($aluno);
         $titulos = $aluno->titulos;
         return $titulosDataTable->porAluno($aluno->id)->porEstado(['amarelo','vermelho'])->render('acordos.create_final',['aluno' => $aluno, 'titulos' => $titulos]);        
+
     }
+
     /**
      * Display the specified Acordo.
      *
