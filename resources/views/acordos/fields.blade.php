@@ -7,7 +7,7 @@
 <!-- Valororiginal Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('valororiginal', 'Valor Original:') !!}
-    {!! Form::number('valororiginal', null, ['class' => 'form-control', 'readonly']) !!}
+    {!! Form::number('valororiginal', null, ['class' => 'valororiginal form-control', 'readonly']) !!}
 </div>
 
 <!-- Observacao Field -->

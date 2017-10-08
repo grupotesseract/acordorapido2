@@ -6,4 +6,4 @@
     }
 </style>
 
-<input type="checkbox" name="titulos[]" value="{{$id}}" />
+<input type="checkbox" id="titulos" name="titulos[]" value="{{$valor}}" />
