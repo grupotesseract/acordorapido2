@@ -62,6 +62,8 @@ class Acordo extends Model
         'valoracordado' => 'required:min:1',
         'valororiginal' => 'required',
         'observacao' => 'required',
+        'cliente_id' => 'required',
+        'empresa_id' => 'required'
     ];
 
     /**

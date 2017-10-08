@@ -3,29 +3,29 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Empresa
+            Criar Acordo
         </h1>
     </section>
     <div class="content">
         @include('adminlte-templates::common.errors')
         <div class="box box-primary">
+            <div class="box-body">                    
+                {!! Form::open(['route' => 'acordos.store']) !!}
 
-            <div class="box-body">
-                {!! Form::open(['route' => 'escolas.store']) !!}
-
-                @include('empresas.fields')
+                    @include('titulos.table')
 
             </div>
         </div>
 
         <div class="box box-primary">
-
-            <div class="box-body">
-
-                @include('empresas.fields_multas')
+            <div class="box-body">                    
+                @include('acordos.fields')
 
                 {!! Form::close() !!}
             </div>
         </div>
     </div>
+
+    @include('acordos.modalalunos')
+
 @endsection

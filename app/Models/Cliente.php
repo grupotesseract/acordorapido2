@@ -110,4 +110,5 @@ class Cliente extends Model
     {
         return $this->hasMany(\App\Models\Acordo::class);
     }
+
 }

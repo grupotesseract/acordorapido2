@@ -13,7 +13,10 @@ namespace App\Http\Controllers;
 use Auth;
 use Flash;
 use Response;
+use \App\Models\Cliente as Cliente;
+use Illuminate\Http\Request;
 use App\DataTables\AcordoDataTable;
+use App\DataTables\TituloDataTableModal;
 use App\Repositories\AcordoRepository;
 use App\DataTables\ClienteDataTableModal;
 use App\Http\Requests\CreateAcordoRequest;
@@ -47,7 +50,7 @@ class AcordoController extends AppBaseController
      */
     public function create(ClienteDataTableModal $clienteDataTable)
     {
-        return $clienteDataTable->render('acordos.create');
+        return $clienteDataTable->render('acordos.create_escolhealuno');
     }
 
     /**
@@ -69,6 +72,25 @@ class AcordoController extends AppBaseController
         return redirect(route('acordos.index'));
     }
 
+    /**
+     * Store a newly created Acordo in storage.
+     *
+     * @param CreateAcordoRequest $request
+     *
+     * @return Response
+     */
+    public function storealuno(Request $request)
+    {
+        $input = $request->all();
+        $aluno = Cliente::find($input['aluno']);
+        $titulos = $aluno->titulos;
+        return redirect(route('acordofinal'));
+    }
+
+    public function finalizarAcordo(TituloDataTableModal $titulosDataTable)
+    {
+        return $titulosDataTable->render('acordos.create_final');        
+    }
     /**
      * Display the specified Acordo.
      *
