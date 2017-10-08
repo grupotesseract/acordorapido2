@@ -16,10 +16,18 @@ use Yajra\Datatables\Services\DataTable;
 class TituloDataTableModal extends DataTable
 {
     protected $estado;
+    protected $aluno;
 
     public function porEstado($estado)
     {
         $this->estado = $estado;
+
+        return $this;
+    }
+
+    public function porAluno($aluno)
+    {
+        $this->aluno = $aluno;
 
         return $this;
     }
@@ -32,7 +40,8 @@ class TituloDataTableModal extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('avisos', 'titulos.operacoes')
-            ->rawColumns(['avisos'])
+            ->addColumn('selecionar', 'titulos.checkbox')
+            ->rawColumns(['avisos','selecionar'])
             ->make(true);
     }
 
@@ -47,7 +56,12 @@ class TituloDataTableModal extends DataTable
             $query->where('status', '>=', 1)->with('user');
         }]);*/
 
-        $titulos = Titulo::query()->where('estado', $this->estado)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
+        if ($this->estado) {
+            $titulos = Titulo::query()->where('cliente_id', $this->aluno)->whereIn('estado', $this->estado)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
+        }
+        else
+            $titulos = Titulo::query()->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
+
 
         return $this->applyScopes($titulos);
     }
@@ -66,23 +80,12 @@ class TituloDataTableModal extends DataTable
                 'dom' => 'Bfrtip',
                 'scrollX' => false,
                 'buttons' => [
-                    [
-                        'extend' => 'print',
-                        'text'    => '<i class="fa fa-print"></i> Imprimir',
-                    ],
 
                     [
                         'extend' => 'reload',
                         'text'    => '<i class="fa fa-refresh"></i> Atualizar',
                     ],
-                    [
-                         'extend'  => 'collection',
-                         'text'    => '<i class="fa fa-download"></i> Exportar',
-                         'buttons' => [
-                             'csv',
-                             'excel',
-                         ],
-                    ],
+
                     [
                         'extend' => 'colvis',
                         'text'    => 'Filtrar Colunas',
@@ -100,6 +103,7 @@ class TituloDataTableModal extends DataTable
     private function getColumns()
     {
         return [
+            'selecionar' => ['name' => 'selecionar'],
             'titulo' => ['name' => 'titulo', 'data' => 'titulo'],
             'aluno' => ['name' => 'cliente_id', 'data' => 'cliente.nome', 'searchable' => true],
             'estado' => ['name' => 'estado', 'data' => 'estado'],

@@ -59,4 +59,4 @@ Route::resource('users', 'UserController');
 Route::resource('acordos', 'AcordoController');
 
 Route::post('storealuno', 'AcordoController@storealuno');
-Route::get('acordofinal', ['as' => 'acordofinal', 'uses' => 'AcordoController@finalizarAcordo']);
+Route::get('acordofinal/{aluno}', ['as' => 'acordofinal', 'uses' => 'AcordoController@finalizarAcordo']);
