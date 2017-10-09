@@ -11,7 +11,7 @@
             <div class="collapse navbar-collapse" id="myNavbar">
               <ul class="nav navbar-nav navbar-left">
                 @if (Auth::check())
-                    <li><a href="{{ url('/home') }}">Admin</a></li>
+                    <li><a href="{{ url('/home') }}">Área Administrativa</a></li>
                 @else
                     <li><a href="{{ url('/login') }}">Login</a></li>
                 @endif

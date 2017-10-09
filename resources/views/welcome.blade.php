@@ -3,14 +3,14 @@
 @section('content')
 
 <div class="full-width" id="inicio">
-    <div class="container">
+    <div class="container" style="text-align:center">
         <div class="menu row">
             <div class="col-sm-3">
                 <img src="/img/logoacordorapido.png" alt="Acordo Rápido">
             </div>
         </div>
-        <h3>Monitoramento de Crédito Escolar</h3>
-        <p>Controle de mensalidades atrasadas e recuperação de clientes inadimplentes</p>
+        <h3>Monitoramento e Recuperação de Créditos</h3>
+        
     </div>
 </div>
 
@@ -20,7 +20,7 @@
             <img src="http://res.cloudinary.com/tesseract/image/upload/v1507566012/acordorapidoimagem.jpg">
         </div>
         <div class="width40-fixo borda-60 responsivo">
-            <h5>O Acordo Rápido é uma forma inovadora e inteligente de recuperar créditos</h5>
+            <h5>O Acordo Rápido é uma ferramenta inovadora de monitorar e recuperar créditos</h5>
             <p>
                 Alinhado com a modernidade e a tecnologia, o Acordo Rápido elimina o estresse da relação de cobrança, oferecendo total privacidade ao cliente.
             </p>
@@ -35,7 +35,7 @@
     <div class="modulo-principal">
         <div>
             <img src="/img/bola-1.png">
-            <h3>Monitoramento de Crédito Escolar</h3>            
+            <h3>Monitoramento de Crédito</h3>            
         </div>
     </div>
 
