@@ -9,14 +9,15 @@
                 <img src="/img/logoacordorapido.png" alt="Acordo Rápido">
             </div>
         </div>
-        <h3>Monitoramento de crédito escolar de forma inteligente</h3>
+        <h3>Monitoramento de crédito escolar</h3>
+        <p>Algum texto aqui, pois o título apenas ficou esquisito.<br>Podemos falar brevemente sobre o Acordo Rapido, e a facilidade na hora da cobrança.<br>Se preferir ficar sem o texto mesmo, vamos pensar em outro lugar pra colocar o "Monitoramento de crédito escolar"</p>
     </div>
 </div>
 
 <div class="full-width" id="empresa">
     <div class="width100">
         <div class="width60-fixo responsivo">
-            <img src="http://res.cloudinary.com/tesseract/image/upload/c_scale,q_80,w_1920/v1506449790/acordo_rapido_home_empresa.jpg">
+            <img src="img/inicio.jpeg">
         </div>
         <div class="width40-fixo borda-60 responsivo">
             <h5>O Acordo Rápido é uma forma inovadora e inteligente de recuperar créditos</h5>
@@ -34,7 +35,7 @@
     <div class="modulo-principal">
         <div>
             <img src="/img/bola-1.png">
-            <h3>Acordo Rápido</h3>
+            <h3>Monitoramento de Crédito Escolar</h3>            
         </div>
     </div>
 
@@ -61,7 +62,7 @@
 {{--
 <div class="full-width" id="modulos">
     <div class="container">
-        <h4 class="titulo-centralizado"><span>Ferramenta de Ação Contínua</span></h4>
+        <h4 class="titulo-centralizado"><span>Ferramenta Modular de Ação Contínua</span></h4>
 
         <!-- <ul id="itenslista">
             <li>PREVINE ATRASOS</li>

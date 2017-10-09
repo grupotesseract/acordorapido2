@@ -1,9 +1,13 @@
 <div class="full-width" id="contato">
     <div class="container">
-        <h4 class="titulo-centralizado"><span>Contato</span></h4>
-        <div class="row dados">
-            <div class="col-sm-6 col-md-offset-3">
-                Preencha o formulário abaixo e um dos nossos consultores estará em contato
+        
+    <div class="col-sm-6">
+        <h4 class="titulo-centralizado"><span>Ficou interessado?</span></h4>
+        Preencha o formulário ao lado e um dos nossos consultores estará em contato        
+    </div>
+
+    <div class="col-sm-6">
+        <div class="row dados">               
 
                 {!! Form::open(array('url'=>'contatos/','method'=>'POST','name'=>'contatoform', 'id'=>'form-contato')) !!}
                     <input type="text" name="nome" placeholder="Nome">
@@ -13,9 +17,10 @@
                     <input type="submit" value="Enviar">
                 {!! Form::close() !!}
 
-            </div>
         </div>
     </div>
+
+
 </div>
 
 <!-- Javascript -->
