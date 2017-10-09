@@ -30,7 +30,7 @@
 </div>
 
 <div class="modulos-box" id="modulos">
-    <h4 class="titulo-centralizado"><span>Ferramenta de Ação Contínua</span></h4>
+    <h4 class="titulo-centralizado"><span>FERRAMENTA MODULAR DE AÇÃO CONTÍNUA</span></h4>
 
     <div class="modulo-principal">
         <div>

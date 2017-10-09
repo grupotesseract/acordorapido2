@@ -100,7 +100,7 @@ a.verde,
 
 	h4 {
 		margin: 0 0 40px;
-		padding: 60px 0px 0px;
+		padding: 80px 0px 0px;
 	}
 }
 
@@ -120,7 +120,7 @@ a.verde,
 
 		h3 {
 			text-align: center;
-			margin: 20px 0px 20px;
+			margin: 20px 0px 40px;
 		}
 	}
 }
@@ -128,57 +128,23 @@ a.verde,
 .modulos {
 	display: flex;
 	justify-content: center;
+	flex-wrap: wrap;
 }
 
 .modulo {
 
 	img {
 		box-sizing: content-box;
-		padding: 20px 30px 0px;
+		padding: 20px 50px 0px;
 		height: 150px;
 		width: 150px;
 	}
 
 	h3 {
 		text-align: center;
-		margin: 20px 0px 60px;
+		margin: 20px 0px 80px;
 	}
 }
-
-/*
-#modulos {
-    background-color: rgb(179, 213, 243);
-    background-size: cover;
-    background-position: center center;
-    background-blend-mode: screen;
-
-    .container {
-		max-width: 70em;
-	}
-}
-
-.modulos {
-    color: white;
-    text-align:center;
-    margin-bottom: 5rem;
-
-    h5 {
-	    padding-top:1em;
-	    font-size: 1.5em;
-	}
-}
-
-.modulo { 
-	height: 15em;
-
-	p { padding: 1em 0.8em 2em;	}
-}
-
-.modulo-azul { background-color: #005daa; }
-.modulo-verde { background-color: #7cd000; }
-.modulo-amarelo { background-color: #ff8800; }
-.modulo-vermelho { background-color: #ff0020; }
-*/
 
 .menu {
 	padding-top: 6em;
@@ -371,15 +337,25 @@ a.verde,
     width: 30%;
 }
 
-
-
 @media (max-width:768px) {
+	.modulos-box {
+		h4 {
+			padding-top: 40px;
+		}
+	}
+	.modulo {
+		h3 {
+			margin-bottom: 20px;
+		}
+	}
+	.modulo-principal div h3 {
+		margin-bottom: 20px;
+	}
+
 	.width100 {
 	    width:100%;
 	    line-height: 1.8em;
 	}
-
-
 
 	.width60-fixo {
 		.responsivo {
