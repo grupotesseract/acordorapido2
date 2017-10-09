@@ -17,7 +17,7 @@
 <div class="full-width" id="empresa">
     <div class="width100">
         <div class="width60-fixo responsivo">
-            <img src="img/inicio.jpeg">
+            <img src="http://res.cloudinary.com/tesseract/image/upload/c_scale,q_80,w_1920/v1506449790/acordo_rapido_home_empresa.jpg">
         </div>
         <div class="width40-fixo borda-60 responsivo">
             <h5>O Acordo Rápido é uma forma inovadora e inteligente de recuperar créditos</h5>
