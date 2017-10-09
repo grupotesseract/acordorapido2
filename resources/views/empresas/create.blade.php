@@ -11,13 +11,20 @@
         <div class="box box-primary">
 
             <div class="box-body">
-                <div class="row">
-                    {!! Form::open(['route' => 'escolas.store']) !!}
+                {!! Form::open(['route' => 'escolas.store']) !!}
 
-                        @include('empresas.fields')
+                @include('empresas.fields')
 
-                    {!! Form::close() !!}
-                </div>
+            </div>
+        </div>
+
+        <div class="box box-primary">
+
+            <div class="box-body">
+
+                @include('empresas.fields_multas')
+
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

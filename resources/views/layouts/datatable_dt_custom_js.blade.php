@@ -8,6 +8,15 @@
 (function ($, DataTable) {
     "use strict";
 
+    function checkAll() {
+      var checkboxes = document.getElementsByTagName('input');
+      for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].type == 'checkbox') {
+          checkboxes[i].checked = !checkboxes[i].checked;
+        }
+      }         
+    }
+
     DataTable.ext.buttons.selecionarTodos = {
         className: 'buttons-selecionar-todos',
 

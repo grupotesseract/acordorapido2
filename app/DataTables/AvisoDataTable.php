@@ -1,13 +1,5 @@
 <?php
 
-/*
- * Desenvolvedores:
- * Fernando Fernandes
- * Evandro Carreira
- * Renato Gomes
- *
- */
-
 namespace App\DataTables;
 
 use App\Models\Aviso;
@@ -117,10 +109,5 @@ class AvisoDataTable extends DataTable
     protected function filename()
     {
         return 'avisos';
-    }
-
-    public function enviaMarcados()
-    {
-        return 'test';
     }
 }
