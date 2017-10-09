@@ -3,7 +3,11 @@
         
     <div class="col-sm-6">
         <h4 class="titulo-centralizado"><span>Ficou interessado?</span></h4>
-        Preencha o formulário ao lado e um dos nossos consultores estará em contato        
+        <p>Preencha o formulário ao lado e um dos nossos consultores entrará em contato. </p>
+
+        <p>Ou entre em contato pelo telefone: </p>
+            <a class="link-icon" href="tel:+55 14 991 765 678">(14) 991 765 678
+            </a> 
     </div>
 
     <div class="col-sm-6">

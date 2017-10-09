@@ -9,8 +9,8 @@
                 <img src="/img/logoacordorapido.png" alt="Acordo Rápido">
             </div>
         </div>
-        <h3>Monitoramento de crédito escolar</h3>
-        <p>Algum texto aqui, pois o título apenas ficou esquisito.<br>Podemos falar brevemente sobre o Acordo Rapido, e a facilidade na hora da cobrança.<br>Se preferir ficar sem o texto mesmo, vamos pensar em outro lugar pra colocar o "Monitoramento de crédito escolar"</p>
+        <h3>Monitoramento de Crédito Escolar</h3>
+        <p>Controle de mensalidades atrasadas e recuperação de clientes inadimplentes</p>
     </div>
 </div>
 

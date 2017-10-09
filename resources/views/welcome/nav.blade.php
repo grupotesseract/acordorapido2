@@ -15,11 +15,7 @@
                 @else
                     <li><a href="{{ url('/login') }}">Login</a></li>
                 @endif
-                <li><a class="link-icon" href="tel:+55 14 991 765 678">
-                    <span class="vertical-helper"></span>
-                    <span class="glyphicon glyphicon-earphone vertical-helper" aria-hidden="true"></span>
-                    <span class="center-vertical">(14) 991 765 678</span>
-                </a> </li>      
+                      
               </ul>
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="#inicio">Início</a></li>
