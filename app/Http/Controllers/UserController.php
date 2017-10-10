@@ -105,7 +105,7 @@ class UserController extends AppBaseController
 
         $perms = \App\Models\Permission::all();
         $gruposPermissoes = [];
-        foreach($perms as $perm) {
+        foreach ($perms as $perm) {
             $gruposPermissoes[$perm->description][] = $perm;
         }
 
