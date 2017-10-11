@@ -104,8 +104,12 @@ class UserController extends AppBaseController
         }
 
         $perms = \App\Models\Permission::all();
+        $gruposPermissoes = [];
+        foreach ($perms as $perm) {
+            $gruposPermissoes[$perm->description][] = $perm;
+        }
 
-        return view('users.edit')->with('user', $user)->with('perms', $perms);
+        return view('users.edit')->with('user', $user)->with('gruposPermissoes', $gruposPermissoes);
     }
 
     /**
