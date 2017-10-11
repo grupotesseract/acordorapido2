@@ -6,8 +6,7 @@
         <p>Preencha o formulário ao lado e um dos nossos consultores entrará em contato. </p>
 
         <p>Ou entre em contato pelo telefone: </p>
-            <a class="link-icon" href="tel:+55 14 991 765 678">(14) 991 765 678
-            </a> 
+            <a class="link-icon" href="tel:+55 14 9 9164 6212">(14) 99164 6212</a> 
     </div>
 
     <div class="col-sm-6">
