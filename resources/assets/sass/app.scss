@@ -358,11 +358,18 @@ a.verde,
 	    line-height: 1.8em;
 	}
 
+        .width40-fixo {
+            &.responsivo {
+                width: 100%;
+                text-align: center;
+                margin: 0;
+            }
+        }
+
 	.width60-fixo {
-		.responsivo {
-			width: 100%;
-			float: none;
-			float: none;
+		&.responsivo {
+		    width: 100%;
+		    float: none;
 		    text-align: center;
 		    margin: 0;
 		    padding: 1em;
