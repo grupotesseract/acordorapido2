@@ -45,6 +45,7 @@ class Cliente extends Model
         'telefone2',
         'celular2',
         'ra',
+        'negativado',
     ];
 
     /**
@@ -64,6 +65,7 @@ class Cliente extends Model
         'telefone2' => 'string',
         'celular2' => 'string',
         'ra' => 'string',
+        'negativado' => 'boolean',
     ];
 
     /**
@@ -109,5 +111,11 @@ class Cliente extends Model
     public function acordos()
     {
         return $this->hasMany(\App\Models\Acordo::class);
+    }
+
+    public function getNegativadoAttribute ($value) 
+    {
+        $retorno = (true)? 'Sim' : 'Não';
+        return $retorno;
     }
 }
