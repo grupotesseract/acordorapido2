@@ -38,10 +38,7 @@ class Empresa extends Model
         'cidade',
         'estado',
         'multaporc',
-        'multadiariaporc',
-        'multavalor',
-        'multadiariavalor',
-        'moraporc',
+        'multadiariaporc'        
     ];
 
     /**
@@ -56,10 +53,7 @@ class Empresa extends Model
         'cidade' => 'string',
         'estado' => 'string',
         'multaporc' => 'integer',
-        'multadiariaporc' => 'float',
-        'multavalor' => 'float',
-        'multadiariavalor' => 'float',
-        'moraporc' => 'float',
+        'multadiariaporc' => 'float'        
     ];
 
     /**
