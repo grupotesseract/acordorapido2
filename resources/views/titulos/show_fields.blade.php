@@ -33,3 +33,15 @@
     {!! Form::label('titulo', 'Número do título:') !!}
     <p>{!! $titulo->titulo !!}</p>
 </div>
+
+<!-- Ano Field -->
+<div class="form-group">
+    {!! Form::label('ano', 'Ano:') !!}
+    <p>{!! $titulo->ano !!}</p>
+</div>
+
+<!-- Desconto Field -->
+<div class="form-group">
+    {!! Form::label('desconto', 'Desconto:') !!}
+    <p>{!! $titulo->desconto !!}</p>
+</div>
