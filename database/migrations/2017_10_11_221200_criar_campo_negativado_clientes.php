@@ -14,7 +14,7 @@ class CriarCampoNegativadoClientes extends Migration
     public function up()
     {
         Schema::table('clientes', function (Blueprint $table) {
-            $table->boolean("negativado")->nullable();
+            $table->boolean('negativado')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class CriarCampoNegativadoClientes extends Migration
     public function down()
     {
         Schema::table('clientes', function (Blueprint $table) {
-            $table->dropColumn("negativado");
+            $table->dropColumn('negativado');
         });
     }
 }
