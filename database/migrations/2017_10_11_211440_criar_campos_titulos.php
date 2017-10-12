@@ -15,7 +15,7 @@ class CriarCamposTitulos extends Migration
     {
         Schema::table('titulos', function (Blueprint $table) {
             $table->integer('ano')->nullable();
-            $table->decimal('desconto',10,2)->nullable();
+            $table->decimal('desconto', 10, 2)->nullable();
         });
     }
 
