@@ -31,15 +31,18 @@
 
     <?php 
         switch($estado) {
-          case "azul":
-            $bootstrapClass = "info";
-            break;
-          case "verde":
-            $bootstrapClass = "success";
-            break;
-          case "amarelo":
-            $bootstrapClass = "warning";
-            break;
+            case "azul":
+                $bootstrapClass = "info";
+                break;
+            case "verde":
+                $bootstrapClass = "success";
+                break;
+            case "amarelo":
+                $bootstrapClass = "warning";
+                break;
+            case "vermelho":
+                $bootstrapClass = "danger";
+                break;
         }
     ?>
     @if(Session::has('flash_message_success'))

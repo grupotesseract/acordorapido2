@@ -1,13 +1,5 @@
 <?php
 
-/*
- * Desenvolvedores:
- * Fernando Fernandes
- * Evandro Carreira
- * Renato Gomes
- *
- */
-
 use Illuminate\Database\Seeder;
 
 /**
@@ -86,6 +78,7 @@ class EsqueletoSeeder extends Seeder
             $usuarioPermissoes->display_name = 'Definir Permissões dos usuários';
             $usuarioPermissoes->description = 'Usuários'; // Usando como grupo de permissões
             $usuarioPermissoes->save();
+
         } catch (\Illuminate\Database\QueryException $exception) {
             dd($exception->getMessage());
             echo 'erro';

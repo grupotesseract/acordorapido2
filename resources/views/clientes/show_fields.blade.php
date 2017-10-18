@@ -34,6 +34,12 @@
     <p>{!! $cliente->responsavel !!}</p>
 </div>
 
+<!-- Negativo Field -->
+<div class="form-group">
+    {!! Form::label('negativado', 'Negativado:') !!}
+    <p>{!! $cliente->negativado !!}</p>
+</div>
+
 <div class="row">
     <!-- Celular Field -->
     <div class="form-group col-sm-3">

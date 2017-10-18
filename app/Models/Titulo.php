@@ -32,6 +32,7 @@ class Titulo extends Model
         'vencimento',
         'valor',
         'titulo',
+        'ano',
         'importacao_id',
     ];
 

@@ -10,6 +10,7 @@
     {!! Form::email('email', null, ['class' => 'form-control', 'type'=>'email' ]) !!}
 </div>
 
+
 <!-- Password Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('password', 'Senha:') !!}
@@ -21,5 +22,3 @@
     {!! Form::label('password_confirmed', 'Confirmar:') !!}
     {!! Form::password('password_confirmed', null, ['class' => 'form-control', 'type'=>'password' ]) !!}
 </div>
-
-

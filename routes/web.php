@@ -36,24 +36,27 @@ Route::resource('importacaos', 'ImportacaoController', ['middleware' => 'auth'])
 
 Route::resource('modeloAvisos', 'ModeloAvisoController', ['middleware' => 'auth']);
 
-Route::get('mensagens/{escola}/{tipo}', 'ModeloAvisoController@modeloPorEscola');
+Route::get('mensagens/{escola}/{tipo}', 'ModeloAvisoController@modeloPorEscola', ['middleware' => 'auth']);
 
-Route::get('importacao/{id}/titulos', 'TituloController@titulos');
-Route::get('importacao/{estado}', 'TituloController@importacao');
-Route::post('importa/{estado}', 'TituloController@importa');
+Route::get('importacao/{id}/titulos', 'TituloController@titulos', ['middleware' => 'auth']);
+Route::get('importacao/{estado}', 'TituloController@importacao', ['middleware' => 'auth']);
+Route::post('importa/{estado}', 'TituloController@importa', ['middleware' => 'auth']);
 
-Route::post('sms', 'AvisoController@enviarAviso');
-Route::post('envialote', 'AvisoController@enviarLoteAviso');
+Route::post('sms', 'AvisoController@enviarAviso', ['middleware' => 'auth']);
+Route::post('envialote', 'AvisoController@enviarLoteAviso', ['middleware' => 'auth']);
 
-Route::get('avisos/sms/{aviso_id}', 'AvisosController@enviaSMS');
-Route::post('avisos/ligacao/', 'AvisosController@salvaLigacao');
+Route::get('avisos/sms/{aviso_id}', 'AvisosController@enviaSMS', ['middleware' => 'auth']);
+Route::post('avisos/ligacao/', 'AvisosController@salvaLigacao', ['middleware' => 'auth']);
 
-Route::get('titulos/modulo/{estado}', 'TituloController@titulosModulo');
+Route::get('titulos/modulo/{estado}', 'TituloController@titulosModulo', ['middleware' => 'auth']);
 
 Route::get('avisos/sms/{aviso_id}', 'AvisoController@enviaSMS');
 Route::post('avisos/ligacao/', 'AvisoController@salvaLigacao');
 
 Route::resource('contatos', 'ContatoController');
-Route::resource('users', 'UserController');
+Route::resource('users', 'UserController', ['middleware' => 'auth']);
 
-Route::resource('acordos', 'AcordoController');
+Route::resource('acordos', 'AcordoController', ['middleware' => 'auth']);
+
+Route::post('storealuno', 'AcordoController@storealuno', ['middleware' => 'auth']);
+Route::get('acordofinal/{aluno}', ['as' => 'acordofinal', 'uses' => 'AcordoController@finalizarAcordo', 'middleware' => 'auth']);
