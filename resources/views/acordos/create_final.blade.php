@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Passo 2/2 - Assinalar Títulos a Serem Negociados e Inserir Acordo
+            Passo 3/3 - Assinalar Títulos a Serem Negociados e Inserir Acordo
         </h1>
     </section>
     <div class="content">
@@ -11,6 +11,7 @@
         <div class="box box-primary" data-widget="box-widget">
             
             <div class="box-header">
+                <h3 class="box-title">Escola: {{$empresa->nome}}</h3>
                 <h3 class="box-title">Títulos Referentes ao Aluno: {{$aluno->nome}}</h3>
             </div>
 

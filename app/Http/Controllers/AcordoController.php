@@ -107,12 +107,13 @@ class AcordoController extends AppBaseController
         return redirect(route('escolhealuno', ['empresa' => $input['empresa']]));        
     }
 
-    public function finalizarAcordo(TituloDataTableModal $titulosDataTable, $aluno)
+    public function finalizarAcordo(TituloDataTableModal $titulosDataTable, $aluno, $empresa)
     {
         $aluno = Cliente::find($aluno);
+        $empresa = Empresa::find($empresa);
         $titulos = $aluno->titulos;
 
-        return $titulosDataTable->porAluno($aluno->id)->porEstado(['amarelo', 'vermelho'])->render('acordos.create_final', ['aluno' => $aluno, 'titulos' => $titulos]);
+        return $titulosDataTable->porAluno($aluno->id)->porEstado(['amarelo', 'vermelho'])->render('acordos.create_final', ['aluno' => $aluno, 'titulos' => $titulos, 'empresa' => $empresa]);
     }
 
     /**

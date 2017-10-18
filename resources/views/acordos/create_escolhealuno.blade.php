@@ -12,6 +12,7 @@
 
             <div class="box-body">                    
                 {!! Form::open(['url' => 'storealuno']) !!}
+                    <input type="hidden" name="empresa" value="{{$empresa->id}}">
                     @include('acordos.alunos')
             </div>
         </div>
