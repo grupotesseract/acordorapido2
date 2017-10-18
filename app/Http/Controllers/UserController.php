@@ -51,10 +51,15 @@ class UserController extends AppBaseController
     public function store(CreateUserRequest $request)
     {
         $input = $request->all();
-
-        dd($input);
+        $password = bcrypt( $input['password'] );
+        $input['password'] = $password;
 
         $user = $this->userRepository->create($input);
+
+        //Se o user tiver sido criado com sucesso e existirem empresas a para serem associadas
+        if ( $user && $request->id_empresas ) {
+            $user->empresas()->sync( array_values($request->id_empresas) );
+        }
 
         Flash::success('User saved successfully.');
 
