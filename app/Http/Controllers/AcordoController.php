@@ -82,7 +82,7 @@ class AcordoController extends AppBaseController
     }
 
     /**
-     * Salva o aluno escolhido e passa para a tela final do acordo
+     * Salva o aluno escolhido e passa para a tela final do acordo.
      *
      * @param CreateAcordoRequest $request
      *
