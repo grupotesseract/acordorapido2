@@ -13,7 +13,7 @@
     {
         "name": "user_id",
         "dbType": "integer:unsigned:foreign,users,id",
-        relation: "mt1,User",
+        "relation": "mt1,User",
         "htmlType": "",
         "validations": "",
         "searchable": true,
