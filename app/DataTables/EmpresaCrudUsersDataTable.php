@@ -57,10 +57,10 @@ class EmpresaCrudUsersDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'selecionar' => ['name' => 'selecionar'],
-            'nome' => ['name' => 'nome', 'data' => 'nome'],
-            'cidade' => ['name' => 'cidade', 'data' => 'cidade'],
-            'estado' => ['name' => 'estado', 'data' => 'estado'],
+            'selecionar' => ['name' => 'selecionar', 'orderable'=>false, 'searchable' => false],
+            'nome' => ['name' => 'nome', 'data' => 'nome', 'orderable'=>false],
+            'cidade' => ['name' => 'cidade', 'data' => 'cidade', 'orderable'=>false],
+            'estado' => ['name' => 'estado', 'data' => 'estado', 'orderable'=>false],
         ];
     }
 

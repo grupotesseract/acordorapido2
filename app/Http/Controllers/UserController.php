@@ -52,6 +52,8 @@ class UserController extends AppBaseController
     {
         $input = $request->all();
 
+        dd($input);
+
         $user = $this->userRepository->create($input);
 
         Flash::success('User saved successfully.');

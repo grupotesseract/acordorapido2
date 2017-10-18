@@ -58,7 +58,6 @@ class EmpresaController extends AppBaseController
      */
     public function store(CreateEmpresaRequest $request)
     {
-        $request->request->add(['user_id' => Auth::id()]);
         $input = $request->all();
 
         $empresa = $this->empresaRepository->create($input);
