@@ -60,3 +60,6 @@ Route::resource('acordos', 'AcordoController', ['middleware' => 'auth']);
 
 Route::post('storealuno', 'AcordoController@storealuno', ['middleware' => 'auth']);
 Route::get('acordofinal/{aluno}', ['as' => 'acordofinal', 'uses' => 'AcordoController@finalizarAcordo', 'middleware' => 'auth']);
+
+
+Route::resource('permUserEmpresas', 'PermUserEmpresaController');

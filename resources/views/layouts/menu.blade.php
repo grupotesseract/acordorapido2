@@ -89,3 +89,7 @@
     <a href="{!! route('acordos.index') !!}"><i class="fa fa-edit"></i><span>Acordos</span></a>
 </li>
 
+<li class="{{ Request::is('permUserEmpresas*') ? 'active' : '' }}">
+    <a href="{!! route('permUserEmpresas.index') !!}"><i class="fa fa-edit"></i><span>PermUserEmpresas</span></a>
+</li>
+
