@@ -96,7 +96,7 @@ class AcordoController extends AppBaseController
     }
 
     /**
-     * Salva a empresa escolhida e passa pra próxima tela
+     * Salva a empresa escolhida e passa pra próxima tela.
      * @param  Request $request Empresa escolhida
      * @return Redirect           Vai pra próxima tela
      */
@@ -104,7 +104,7 @@ class AcordoController extends AppBaseController
     {
         $input = $request->all();
 
-        return redirect(route('escolhealuno', ['empresa' => $input['empresa']]));        
+        return redirect(route('escolhealuno', ['empresa' => $input['empresa']]));
     }
 
     public function finalizarAcordo(TituloDataTableModal $titulosDataTable, $aluno)
