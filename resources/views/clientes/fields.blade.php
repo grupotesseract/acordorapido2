@@ -53,6 +53,12 @@
     {!! Form::text('ra', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Negativado Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('negativado', 'Negativado:') !!}
+    {!! Form::checkbox('negativado', null, $cliente->negativado) !!}
+</div>
+
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
