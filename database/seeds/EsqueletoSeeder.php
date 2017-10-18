@@ -21,13 +21,11 @@ class EsqueletoSeeder extends Seeder
                 'email' => 'evandro.carreira@gmail.com',
                 'password' => bcrypt(env('ADMIN_PWD', '123321')),
             ]);
-
             $userEscola = factory(App\Models\User::class)->create([
                 'name' => 'Escola Teste',
                 'email' => 'toledo@ite.edu.br',
                 'password' => bcrypt(env('ADMIN_PWD', '123321')),
             ]);
-
             $userAdmin = factory(App\Models\User::class)->create([
                 'name' => 'Edilson Alexandre',
                 'email' => 'edilson.bauru@gmail.com',
@@ -35,56 +33,23 @@ class EsqueletoSeeder extends Seeder
             ]);
 
             // Criando entidades de aluno e escola e associando o user
-            $Cliente = new App\Models\Cliente();
-            $Cliente->nome = 'Evandro Barbosa Carreira';
-            $Cliente->ra = '46.755.061-2';
-            $Cliente->user()->associate($userAluno);
-            $Cliente->save();
+            $c = new App\Models\Cliente();
+            $c->nome = 'Evandro Barbosa Carreira';
+            $c->ra = '46.755.061-2';
+            $c->user_id = $userAluno->id;
+            $c->save();
 
-            $Empresa = new App\Models\Empresa();
-            $Empresa->nome = 'EscolaTeste';
-            $Empresa->cidade = 'Bauru';
-            $Empresa->estado = 'SP';
-            $Empresa->save();
-            $Empresa->usuarios()->attach($userEscola);
-
-            // Cria permissões de usuários
-            $usuarioIncluir = new App\Models\Permission();
-            $usuarioIncluir->name = 'usuarios-incluir';
-            $usuarioIncluir->display_name = 'Incluir Usuários';
-            $usuarioIncluir->description = 'Usuários'; // Usando como grupo de permissões
-            $usuarioIncluir->save();
-
-            $usuarioEditar = new App\Models\Permission();
-            $usuarioEditar->name = 'usuarios-editar';
-            $usuarioEditar->display_name = 'Editar Usuários';
-            $usuarioEditar->description = 'Usuários'; // Usando como grupo de permissões
-            $usuarioEditar->save();
-
-            $usuarioVisualizar = new App\Models\Permission();
-            $usuarioVisualizar->name = 'usuarios-visualizar';
-            $usuarioVisualizar->display_name = 'Visualizar Usuários';
-            $usuarioVisualizar->description = 'Usuários'; // Usando como grupo de permissões
-            $usuarioVisualizar->save();
-
-            $usuarioRemover = new App\Models\Permission();
-            $usuarioRemover->name = 'usuarios-remover';
-            $usuarioRemover->display_name = 'Remover Usuários';
-            $usuarioRemover->description = 'Usuários'; // Usando como grupo de permissões
-            $usuarioRemover->save();
-
-            $usuarioPermissoes = new App\Models\Permission();
-            $usuarioPermissoes->name = 'usuarios-permissoes';
-            $usuarioPermissoes->display_name = 'Definir Permissões dos usuários';
-            $usuarioPermissoes->description = 'Usuários'; // Usando como grupo de permissões
-            $usuarioPermissoes->save();
+            $e = new App\Models\Empresa();
+            $e->nome = 'EscolaTeste';
+            $e->cidade = 'Bauru';
+            $e->estado = 'SP';
+            $userEscola->empresas()->save($e);
 
         } catch (\Illuminate\Database\QueryException $exception) {
             dd($exception->getMessage());
             echo 'erro';
         }
     }
-
     private function seedUsers()
     {
     }
