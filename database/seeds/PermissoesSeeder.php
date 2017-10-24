@@ -11,7 +11,6 @@ class PermissoesSeeder extends Seeder
      */
     public function run()
     {
-
         $enviarSMS = new App\Models\Permission();
         $enviarSMS->name = 'enviar-sms';
         $enviarSMS->display_name = 'Enviar SMSs para os clientes';
@@ -89,13 +88,13 @@ class PermissoesSeeder extends Seeder
         $importarVerde->display_name = 'Importar planilhas módulo verde';
         $importarVerde->description = 'Importação'; // Usando como grupo de permissões
         $importarVerde->save();
-        
+
         $importarAmarelo = new App\Models\Permission();
         $importarAmarelo->name = 'importar-planilhas-amarelo';
         $importarAmarelo->display_name = 'Importar planilhas módulo amarelo';
         $importarAmarelo->description = 'Importação'; // Usando como grupo de permissões
         $importarAmarelo->save();
-        
+
         $importarVermelho = new App\Models\Permission();
         $importarVermelho->name = 'importar-planilhas-vermelho';
         $importarVermelho->display_name = 'Importar planilhas módulo vermelho';
