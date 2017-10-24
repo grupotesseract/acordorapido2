@@ -39,9 +39,6 @@ class Empresa extends Model
         'estado',
         'multaporc',
         'multadiariaporc',
-        'multavalor',
-        'multadiariavalor',
-        'moraporc',
     ];
 
     /**
@@ -57,9 +54,6 @@ class Empresa extends Model
         'estado' => 'string',
         'multaporc' => 'integer',
         'multadiariaporc' => 'float',
-        'multavalor' => 'float',
-        'multadiariavalor' => 'float',
-        'moraporc' => 'float',
     ];
 
     /**

@@ -15,9 +15,18 @@
                           @include('empresas.fields')
                         </div>
 
-                   {!! Form::close() !!}
                </div>
            </div>
+
+           <div class="box box-primary">
+
+            <div class="box-body">
+
+                @include('empresas.fields_multas')
+
+                {!! Form::close() !!}
+            </div>
+        </div>
        </div>
    </div>
 @endsection
