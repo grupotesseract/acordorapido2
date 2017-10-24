@@ -48,7 +48,6 @@ class EmpresaDataTableModal extends DataTable
     {
         return $this->builder()
             ->columns($this->getColumns())
-            ->addAction(['width' => '10%', 'title' => 'Ação'])
             ->ajax('')
             ->parameters([
                 'dom' => 'Bfrtip',
@@ -77,6 +76,7 @@ class EmpresaDataTableModal extends DataTable
     private function getColumns()
     {
         return [
+            'selecionar' => ['name' => 'selecionar'],
             'nome' => ['name' => 'nome', 'data' => 'nome'],
             'cidade' => ['name' => 'cidade', 'data' => 'cidade'],
             'estado' => ['name' => 'estado', 'data' => 'estado'],

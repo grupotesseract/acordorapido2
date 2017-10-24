@@ -15,10 +15,12 @@ use Flash;
 use Response;
 use Illuminate\Http\Request;
 use App\Models\Cliente as Cliente;
+use App\Models\Empresa as Empresa;
 use App\DataTables\AcordoDataTable;
 use App\Repositories\AcordoRepository;
 use App\DataTables\TituloDataTableModal;
 use App\DataTables\ClienteDataTableModal;
+use App\DataTables\EmpresaDataTableModal;
 use App\Http\Requests\CreateAcordoRequest;
 use App\Http\Requests\UpdateAcordoRequest;
 
@@ -48,9 +50,16 @@ class AcordoController extends AppBaseController
      *
      * @return Response
      */
-    public function create(ClienteDataTableModal $clienteDataTable)
+    public function create(EmpresaDataTableModal $empresaDataTable)
     {
-        return $clienteDataTable->render('acordos.create_escolhealuno');
+        return $empresaDataTable->render('acordos.create_escolheempresa');
+    }
+
+    public function escolheAluno(ClienteDataTableModal $clienteDataTable, $empresa)
+    {
+        $empresa = Empresa::find($empresa);
+
+        return $clienteDataTable->render('acordos.create_escolhealuno', ['empresa' => $empresa]);
     }
 
     /**
@@ -73,7 +82,7 @@ class AcordoController extends AppBaseController
     }
 
     /**
-     * Store a newly created Acordo in storage.
+     * Salva o aluno escolhido e passa para a tela final do acordo.
      *
      * @param CreateAcordoRequest $request
      *
@@ -83,15 +92,28 @@ class AcordoController extends AppBaseController
     {
         $input = $request->all();
 
-        return redirect(route('acordofinal', ['aluno' => $input['aluno']]));
+        return redirect(route('acordofinal', ['aluno' => $input['aluno'], 'empresa' => $input['empresa']]));
     }
 
-    public function finalizarAcordo(TituloDataTableModal $titulosDataTable, $aluno)
+    /**
+     * Salva a empresa escolhida e passa pra próxima tela.
+     * @param  Request $request Empresa escolhida
+     * @return Redirect           Vai pra próxima tela
+     */
+    public function storeempresa(Request $request)
+    {
+        $input = $request->all();
+
+        return redirect(route('escolhealuno', ['empresa' => $input['empresa']]));
+    }
+
+    public function finalizarAcordo(TituloDataTableModal $titulosDataTable, $aluno, $empresa)
     {
         $aluno = Cliente::find($aluno);
+        $empresa = Empresa::find($empresa);
         $titulos = $aluno->titulos;
 
-        return $titulosDataTable->porAluno($aluno->id)->porEstado(['amarelo', 'vermelho'])->render('acordos.create_final', ['aluno' => $aluno, 'titulos' => $titulos]);
+        return $titulosDataTable->porAluno($aluno->id)->porEstado(['amarelo', 'vermelho'])->render('acordos.create_final', ['aluno' => $aluno, 'titulos' => $titulos, 'empresa' => $empresa]);
     }
 
     /**

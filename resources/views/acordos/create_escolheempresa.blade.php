@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Passo 2/3 - Escolher Aluno
+            Passo 1/3 - Escolher Escola
         </h1>
     </section>
     <div class="content">
@@ -11,9 +11,8 @@
         <div class="box box-primary">
 
             <div class="box-body">                    
-                {!! Form::open(['url' => 'storealuno']) !!}
-                    <input type="hidden" name="empresa" value="{{$empresa->id}}">
-                    @include('acordos.alunos')
+                {!! Form::open(['url' => 'storeempresa']) !!}
+                    @include('acordos.empresas')
             </div>
         </div>
         <div class="box">                    
