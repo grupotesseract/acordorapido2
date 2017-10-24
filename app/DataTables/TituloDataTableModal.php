@@ -56,11 +56,8 @@ class TituloDataTableModal extends DataTable
             $query->where('status', '>=', 1)->with('user');
         }]);*/
 
-        if ($this->estado) {
-            $titulos = Titulo::query()->where('cliente_id', $this->aluno)->whereIn('estado', $this->estado)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
-        } else {
-            $titulos = Titulo::query()->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
-        }
+        $titulos = Titulo::query()->where('cliente_id', $this->aluno)->whereIn('estado', $this->estado)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
+
 
         return $this->applyScopes($titulos);
     }

@@ -1,16 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+
     <section class="content-header">
         <h1>
             Passo 3/3 - Assinalar Títulos a Serem Negociados e Inserir Acordo
         </h1>
     </section>
+
     <div class="content">
         @include('adminlte-templates::common.errors')
         
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-6 ">
                 <div class="box box-solid box-primary" data-widget="box-widget">
                     <div class="box-header">
                         <h3 class="box-title">{{$empresa->nome}}</h3>
