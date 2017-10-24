@@ -15,8 +15,8 @@ class RemoverCamposValoresfixosEmpresas extends Migration
     {
         Schema::table('empresas', function (Blueprint $table) {
             $table->dropColumn('multavalor');
-            $table->dropColumn('multadiariavalor');            
-            $table->dropColumn('moraporc');            
+            $table->dropColumn('multadiariavalor');
+            $table->dropColumn('moraporc');
         });
     }
 
