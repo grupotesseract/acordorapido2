@@ -33,6 +33,7 @@ class Titulo extends Model
         'valor',
         'titulo',
         'ano',
+        'desconto',
         'importacao_id',
     ];
 
@@ -50,6 +51,8 @@ class Titulo extends Model
         'vencimento' => 'date',
         'titulo' => 'string',
         'importacao_id' => 'integer',
+        'ano' => 'integer',
+        'desconto' => 'integer',
     ];
 
     /**

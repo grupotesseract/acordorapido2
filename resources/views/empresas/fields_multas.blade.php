@@ -6,18 +6,18 @@
 	<!-- MultaPorc Field -->
 	<div class="form-group col-sm-6">
 	    {!! Form::label('multaporc', 'Multa - Valor Fixo após vencimento (porcentagem):') !!}
-	    {!! Form::number('multaporc', null, ['class' => 'form-control']) !!}
+	    {!! Form::text('multaporc', null, ['class' => 'form-control']) !!}
 	</div>
 
 	<!-- MultaPorc Field -->
 	<div class="form-group col-sm-6">
 	    {!! Form::label('multavalor', 'Multa - Valor Fixo após vencimento:') !!}
-	    {!! Form::number('multavalor', null, ['class' => 'form-control']) !!}
+	    {!! Form::text('multavalor', null, ['class' => 'form-control']) !!}
 	</div>
 
 	<div class="form-group col-sm-6">
 	    {!! Form::label('multadiariaporc', 'Multa Diária - Valor Fixo após vencimento (porcentagem):') !!}
-	    {!! Form::number('multadiariaporc', null, ['class' => 'form-control']) !!}
+	    {!! Form::text('multadiariaporc', null, ['class' => 'form-control']) !!}
 	</div>
 
 	<!-- MultaPorc Field -->
