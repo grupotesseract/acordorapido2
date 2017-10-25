@@ -55,6 +55,7 @@ Route::post('avisos/ligacao/', 'AvisoController@salvaLigacao');
 
 Route::resource('contatos', 'ContatoController');
 Route::resource('users', 'UserController', ['middleware' => 'auth']);
+Route::get('users/{id}/permissoes', 'UserController@getPermissoesUsuario')->middleware('auth');
 
 Route::resource('acordos', 'AcordoController', ['middleware' => 'auth']);
 

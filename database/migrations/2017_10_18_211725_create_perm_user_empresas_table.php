@@ -14,14 +14,14 @@ class CreatePermUserEmpresasTable extends Migration
     public function up()
     {
         Schema::create('perm_user_empresas', function (Blueprint $table) {
-            $table->integer('id');
+            $table->integer('id', true);
             $table->integer('user_id')->unsigned();
             $table->integer('empresa_id')->unsigned();
             $table->integer('ano');
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('empresa_id')->references('id')->on('empresas');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
         });
     }
 

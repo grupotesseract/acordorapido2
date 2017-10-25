@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Flash;
 use Response;
 use App\DataTables\UserDataTable;
+use App\DataTables\PermUserEmpresaDataTable;
 use App\DataTables\EmpresaCrudUsersDataTable;
 use App\Repositories\UserRepository;
 use App\Http\Requests\CreateUserRequest;
@@ -56,15 +57,26 @@ class UserController extends AppBaseController
 
         $user = $this->userRepository->create($input);
 
+        if ( !$user ) {
+            Flash::error('Ocorreu um erro a criacao do usuário, tente novamente');
+            return redirect()->back();
+        }
+
         //Se o user tiver sido criado com sucesso e existirem empresas a para serem associadas
         if ( $user && $request->id_empresas ) {
             $user->empresas()->sync( array_values($request->id_empresas) );
+            return redirect("/users/".$user->id."/permissoes");
         }
 
-        Flash::success('User saved successfully.');
-
-        return redirect(route('users.index'));
     }
+
+
+    public function getPermissoesUsuario(PermUserEmpresaDatatable $permUserDataTable, $id) 
+    {
+        $user = $this->userRepository->findWithoutFail($id);
+        return $permUserDataTable->render('users.permissoes_escolas', compact('user'));
+    }
+
 
     /**
      * Display the specified User.

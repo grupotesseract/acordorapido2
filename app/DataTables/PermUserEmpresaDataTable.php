@@ -27,7 +27,7 @@ class PermUserEmpresaDataTable extends DataTable
      */
     public function query()
     {
-        $permUserEmpresas = PermUserEmpresa::query();
+        $permUserEmpresas = PermUserEmpresa::with('empresa');
 
         return $this->applyScopes($permUserEmpresas);
     }
@@ -46,21 +46,7 @@ class PermUserEmpresaDataTable extends DataTable
             ->parameters([
                 'dom' => 'Bfrtip',
                 'scrollX' => false,
-                'buttons' => [
-                    'print',
-                    'reset',
-                    'reload',
-                    [
-                         'extend'  => 'collection',
-                         'text'    => '<i class="fa fa-download"></i> Export',
-                         'buttons' => [
-                             'csv',
-                             'excel',
-                             'pdf',
-                         ],
-                    ],
-                    'colvis'
-                ]
+                'buttons' => []
             ]);
     }
 
@@ -72,8 +58,7 @@ class PermUserEmpresaDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'user_id' => ['name' => 'user_id', 'data' => 'user_id'],
-            'empresa_id' => ['name' => 'empresa_id', 'data' => 'empresa_id'],
+            'empresa' => ['name' => 'empresa.nome', 'data' => 'empresa.nome', 'title' => 'Empresa'],
             'ano' => ['name' => 'ano', 'data' => 'ano']
         ];
     }

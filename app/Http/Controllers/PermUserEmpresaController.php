@@ -55,9 +55,9 @@ class PermUserEmpresaController extends AppBaseController
 
         $permUserEmpresa = $this->permUserEmpresaRepository->create($input);
 
-        Flash::success('Perm User Empresa saved successfully.');
+        Flash::success('Permissao por ano criada com sucesso!');
 
-        return redirect(route('permUserEmpresas.index'));
+        return redirect()->back();
     }
 
     /**
