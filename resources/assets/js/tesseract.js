@@ -42,22 +42,6 @@ $(document).on("click", ".enviarligacao", function () {
      
 });
 
-$(document).on("click", "#titulos", function () {
-    let valor = parseFloat($(".valororiginal").val());
-    let valorasersomado = parseFloat($('#titulos').val());
-    var valorsomado = 0;
-
-    if($('#titulos').prop("checked")) {
-        valorsomado = valor + valorasersomado;
-    }
-    else {
-        valorsomado = valor - valorasersomado;
-    }
-
-
-    console.log(valorsomado);
-    $(".valororiginal").val(valorsomado);
-});
 
 $(document).ready(function(){ 
 

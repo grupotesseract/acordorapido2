@@ -113,6 +113,8 @@ class AcordoController extends AppBaseController
         $empresa = Empresa::find($empresa);
         $titulos = $aluno->titulos;
 
+        $valorTotalDivida = $this->acordoRepository->calculaValorDivida($empresa,$titulos);
+
         return $titulosDataTable->porAluno($aluno->id)->porEstado(['amarelo', 'vermelho'])->render('acordos.create_final', ['aluno' => $aluno, 'titulos' => $titulos, 'empresa' => $empresa]);
     }
 

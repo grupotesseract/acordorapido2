@@ -34,6 +34,7 @@ class Titulo extends Model
         'titulo',
         'ano',
         'desconto',
+        'valordescontado',
         'importacao_id',
     ];
 
@@ -52,7 +53,8 @@ class Titulo extends Model
         'titulo' => 'string',
         'importacao_id' => 'integer',
         'ano' => 'integer',
-        'desconto' => 'integer',
+        'desconto' => 'float',
+        'valordescontado' => 'float',
     ];
 
     /**

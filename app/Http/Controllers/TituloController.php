@@ -282,6 +282,7 @@ class TituloController extends AppBaseController
                 $titulo->estado = $estado;
                 $titulo->ano = $sheet->ano;
                 $titulo->desconto = $sheet->desconto;
+                $titulo->valordescontado = $sheet->valor_com_desconto;
                 
                 $titulo->save();
                 $titulos_importados[] = $titulo->id;

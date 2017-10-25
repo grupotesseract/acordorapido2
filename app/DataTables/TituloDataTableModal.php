@@ -99,7 +99,6 @@ class TituloDataTableModal extends DataTable
     private function getColumns()
     {
         return [
-            'selecionar' => ['name' => 'selecionar'],
             'titulo' => ['name' => 'titulo', 'data' => 'titulo'],
             'aluno' => ['name' => 'cliente_id', 'data' => 'cliente.nome', 'searchable' => true],
             'estado' => ['name' => 'estado', 'data' => 'estado'],
@@ -107,6 +106,7 @@ class TituloDataTableModal extends DataTable
             'pago' => ['name' => 'pago', 'data' => 'pago'],
             'vencimento' => ['name' => 'vencimento', 'data' => 'vencimento'],
             'valor' => ['name' => 'valor', 'data' => 'valor'],
+            'valordescontado' => ['name' => 'valordescontado', 'data' => 'valordescontado', 'title' => 'Valor com Desconto'],
             'ano' => ['name' => 'ano', 'data' => 'ano'],
             'desconto' => ['name' => 'desconto', 'data' => 'desconto'],
             'avisos' => ['name' => 'avisos', 'title' => 'Operações Efetuadas'],
