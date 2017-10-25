@@ -43,7 +43,8 @@ class AcordoRepository extends BaseRepository
         return Acordo::class;
     }
 
-    public function calculaValorDivida($empresa,$titulos) {
+    public function calculaValorDivida($empresa, $titulos)
+    {
         //
     }
 }

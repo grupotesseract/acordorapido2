@@ -283,10 +283,9 @@ class TituloController extends AppBaseController
                 $titulo->ano = $sheet->ano;
                 $titulo->desconto = $sheet->desconto;
                 $titulo->valordescontado = $sheet->valor_com_desconto;
-                
+
                 $titulo->save();
                 $titulos_importados[] = $titulo->id;
-
 
                 //criar registro na tabela pivot
                 $titulo->importacoes()->attach($importacao_id);
