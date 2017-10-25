@@ -1,3 +1,11 @@
+<style>
+    td input[type="radio"] {
+        float: left;
+        margin: 0 auto;
+        width: 100%;
+    }
+</style>
+
 @section('css')
     @include('layouts.datatables_css')
 @endsection

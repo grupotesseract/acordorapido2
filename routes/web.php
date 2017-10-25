@@ -60,7 +60,12 @@ Route::get('users/{id}/permissoes', 'UserController@getPermissoesUsuario')->midd
 Route::resource('acordos', 'AcordoController', ['middleware' => 'auth']);
 
 Route::post('storealuno', 'AcordoController@storealuno', ['middleware' => 'auth']);
-Route::get('acordofinal/{aluno}', ['as' => 'acordofinal', 'uses' => 'AcordoController@finalizarAcordo', 'middleware' => 'auth']);
 
+Route::post('storeempresa', 'AcordoController@storeempresa', ['middleware' => 'auth']);
+
+Route::get('acordofinal/{aluno}/{empresa}', ['as' => 'acordofinal', 'uses' => 'AcordoController@finalizarAcordo', 'middleware' => 'auth']);
+
+Route::get('escolhealuno/{empresa}', ['as' => 'escolhealuno', 'uses' => 'AcordoController@escolheAluno', 'middleware' => 'auth']);
 
 Route::resource('permUserEmpresas', 'PermUserEmpresaController');
+
