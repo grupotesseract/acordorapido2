@@ -38,5 +38,17 @@
        </div>
         @include('users.submit')
         {!! Form::close() !!}
+
+       <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Empresas</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    @include('users.permissions')
+                </div>
+            </div>
+       </div>
+
    </div>
 @endsection

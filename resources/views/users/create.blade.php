@@ -40,10 +40,9 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row">
-                        <div class="datatable-user-crud">
-                            @include('users.table')
-                        </div>
-
+                    <div class="datatable-user-crud">
+                        @include('users.table')
+                    </div>
                 </div>
             </div>
         </div>

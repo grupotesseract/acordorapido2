@@ -71,10 +71,26 @@ class UserController extends AppBaseController
     }
 
 
-    public function getPermissoesUsuario(PermUserEmpresaDatatable $permUserDataTable, $id) 
+    /**
+     * Rota para servir a view com o segundo passo da criacao de novos usuarios
+     *
+     * @param PermUserEmpresaDataTable $permUserDataTable
+     * @param mixed $id$
+     */
+    public function getPermissoesUsuario(PermUserEmpresaDataTable $permUserDataTable, $id) 
     {
         $user = $this->userRepository->findWithoutFail($id);
-        return $permUserDataTable->render('users.permissoes_escolas', compact('user'));
+        
+        if (empty($user)) {
+            Flash::error('Usuário não encontrado!');
+
+            return redirect(route('users.index'));
+        }
+
+
+        return $permUserDataTable
+            ->addScope(new \App\DataTables\Scopes\EmpresasPorUsuario($id))
+            ->render('users.permissoes_escolas', compact('user'));
     }
 
 
@@ -90,7 +106,7 @@ class UserController extends AppBaseController
         $user = $this->userRepository->findWithoutFail($id);
 
         if (empty($user)) {
-            Flash::error('User not found');
+            Flash::error('Usuário não encontrado!');
 
             return redirect(route('users.index'));
         }
@@ -110,7 +126,7 @@ class UserController extends AppBaseController
         $user = $this->userRepository->findWithoutFail($id);
 
         if (empty($user)) {
-            Flash::error('User not found');
+            Flash::error('Usuário não encontrado!');
 
             return redirect(route('users.index'));
         }
@@ -137,7 +153,7 @@ class UserController extends AppBaseController
         $user = $this->userRepository->findWithoutFail($id);
 
         if (empty($user)) {
-            Flash::error('User not found');
+            Flash::error('Usuário não encontrado!');
 
             return redirect(route('users.index'));
         }
@@ -162,7 +178,7 @@ class UserController extends AppBaseController
         $user = $this->userRepository->findWithoutFail($id);
 
         if (empty($user)) {
-            Flash::error('User not found');
+            Flash::error('Usuário não encontrado!');
 
             return redirect(route('users.index'));
         }
