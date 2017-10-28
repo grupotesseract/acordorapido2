@@ -167,6 +167,8 @@ class UserController extends AppBaseController
         //Atualizando empresas que tem acesso
         $empresas = $request->id_empresas ? array_values($request->id_empresas) : [];
         $user->empresas()->sync($empresas);
+        $user->permissoesPorAno()->whereNotIn('empresa_id', $empresas)->delete();
+            
 
         return redirect("/users/$id/permissoes");
     }

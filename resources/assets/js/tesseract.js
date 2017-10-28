@@ -17,9 +17,6 @@ $(function () {
         bindContadorCaracteres(contadorCaracteres);
     }
 
-    function habilitaCamposPassword() {
-        $('input[type="password"]').removeAttr('disabled');
-    }
 });
 
 //Funcao que faz o bind do contador com o target

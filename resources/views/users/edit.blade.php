@@ -58,3 +58,8 @@
    </div>
 @endsection
 
+<script>
+    function habilitaCamposPassword() {
+        $('input[type="password"]').removeAttr('disabled');
+    }
+</script>

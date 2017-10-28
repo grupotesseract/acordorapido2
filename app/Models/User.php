@@ -44,6 +44,7 @@ class User extends Authenticatable
     public static $rules = [
         'name' => 'required',
         'email' => 'required:email',
+        'password' => 'string|min:3',
     ];
 
     /**
@@ -85,4 +86,15 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Importacao');
     }
+
+    /**
+     * Permissoes por Empresa / Ano desse usuario
+     */
+    public function permissoesPorAno()
+    {
+        return $this->hasMany('App\Models\PermUserEmpresa');
+    }
+
+
+
 }

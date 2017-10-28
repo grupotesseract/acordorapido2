@@ -27,8 +27,12 @@ class PermUserEmpresaDataTable extends DataTable
      */
     public function query()
     {
-        $permUserEmpresas = PermUserEmpresa::with('empresa')
-            ->select('empresas.nome as nome', 'perm_user_empresas.id as id', 'perm_user_empresas.ano as ano');
+        $permUserEmpresas = PermUserEmpresa::with(['empresa', 'user'])
+            ->select('empresas.nome as nome', 'perm_user_empresas.id as id', 'perm_user_empresas.ano as ano', 'usuarios.id as user_id');
+
+        if ( !$permUserEmpresas->count() ){
+            $permUserEmpresas = PermUserEmpresa::with('empresa');
+        }
 
         return $this->applyScopes($permUserEmpresas);
     }
