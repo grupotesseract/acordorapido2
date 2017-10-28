@@ -11,60 +11,95 @@ class PermissoesSeeder extends Seeder
      */
     public function run()
     {
-        // Cria permissões de usuários
-        $usuarioIncluir = new App\Models\Permission();
-        $usuarioIncluir->name = 'usuarios-incluir';
-        $usuarioIncluir->display_name = 'Incluir Usuários';
-        $usuarioIncluir->description = 'Usuários'; // Usando como grupo de permissões
-        $usuarioIncluir->save();
-
-        $usuarioEditar = new App\Models\Permission();
-        $usuarioEditar->name = 'usuarios-editar';
-        $usuarioEditar->display_name = 'Editar Usuários';
-        $usuarioEditar->description = 'Usuários'; // Usando como grupo de permissões
-        $usuarioEditar->save();
-
-        $usuarioVisualizar = new App\Models\Permission();
-        $usuarioVisualizar->name = 'usuarios-visualizar';
-        $usuarioVisualizar->display_name = 'Visualizar Usuários';
-        $usuarioVisualizar->description = 'Usuários'; // Usando como grupo de permissões
-        $usuarioVisualizar->save();
-
-        $usuarioRemover = new App\Models\Permission();
-        $usuarioRemover->name = 'usuarios-remover';
-        $usuarioRemover->display_name = 'Remover Usuários';
-        $usuarioRemover->description = 'Usuários'; // Usando como grupo de permissões
-        $usuarioRemover->save();
-
-        $usuarioPermissoes = new App\Models\Permission();
-        $usuarioPermissoes->name = 'usuarios-permissoes';
-        $usuarioPermissoes->display_name = 'Definir Permissões dos usuários';
-        $usuarioPermissoes->description = 'Usuários'; // Usando como grupo de permissões
-        $usuarioPermissoes->save();
-
-        $importarPlanilhas = new App\Models\Permission();
-        $importarPlanilhas->name = 'importar-planilhas';
-        $importarPlanilhas->display_name = 'Importar planilhas para criar novos títulos e avisos';
-        $importarPlanilhas->description = 'Importações'; // Usando como grupo de permissões
-        $importarPlanilhas->save();
-
         $enviarSMS = new App\Models\Permission();
         $enviarSMS->name = 'enviar-sms';
         $enviarSMS->display_name = 'Enviar SMSs para os clientes';
-        $enviarSMS->description = 'SMS'; // Usando como grupo de permissões
+        $enviarSMS->description = 'Operadores'; // Usando como grupo de permissões
         $enviarSMS->save();
 
         $fazerLigacao = new App\Models\Permission();
         $fazerLigacao->name = 'fazer-ligacao';
         $fazerLigacao->display_name = 'Gravar tempo realizado de ligações telefônicas';
-        $fazerLigacao->description = 'Ligações'; // Usando como grupo de permissões
+        $fazerLigacao->description = 'Operadores'; // Usando como grupo de permissões
         $fazerLigacao->save();
 
         $criarAcordo = new App\Models\Permission();
         $criarAcordo->name = 'criar-acordo';
-        $criarAcordo->display_name = 'Criar novo acordo para transformar títulos antigos em novos';
-        $criarAcordo->description = 'Ligações'; // Usando como grupo de permissões
+        $criarAcordo->display_name = 'Criar novo acordo';
+        $criarAcordo->description = 'Operadores'; // Usando como grupo de permissões
         $criarAcordo->save();
+
+        $visualizarContatos = new App\Models\Permission();
+        $visualizarContatos->name = 'visualizar-contatos';
+        $visualizarContatos->display_name = 'Visualizar os contatos feitos pelo formulário do site';
+        $visualizarContatos->description = 'Outros'; // Usando como grupo de permissões
+        $visualizarContatos->save();
+
+        $visualizarModuloVerde = new App\Models\Permission();
+        $visualizarModuloVerde->name = 'visualizar-modulo-verde';
+        $visualizarModuloVerde->display_name = 'Visualizar títulos módulo verde';
+        $visualizarModuloVerde->description = 'Outros'; // Usando como grupo de permissões
+        $visualizarModuloVerde->save();
+
+        $visualizarModuloAzul = new App\Models\Permission();
+        $visualizarModuloAzul->name = 'visualizar-modulo-azul';
+        $visualizarModuloAzul->display_name = 'Visualizar títulos módulo azul';
+        $visualizarModuloAzul->description = 'Outros'; // Usando como grupo de permissões
+        $visualizarModuloAzul->save();
+
+        $visualizarModuloAmarelo = new App\Models\Permission();
+        $visualizarModuloAmarelo->name = 'visualizar-modulo-amarelo';
+        $visualizarModuloAmarelo->display_name = 'Visualizar títulos módulo amarelo';
+        $visualizarModuloAmarelo->description = 'Outros'; // Usando como grupo de permissões
+        $visualizarModuloAmarelo->save();
+
+        $visualizarModuloVermelho = new App\Models\Permission();
+        $visualizarModuloVermelho->name = 'visualizar-modulo-vermelho';
+        $visualizarModuloVermelho->display_name = 'Visualizar títulos módulo vermelho';
+        $visualizarModuloVermelho->description = 'Outros'; // Usando como grupo de permissões
+        $visualizarModuloVermelho->save();
+
+        $gerenciarEscolas = new App\Models\Permission();
+        $gerenciarEscolas->name = 'gerenciar-escolas';
+        $gerenciarEscolas->display_name = 'Gerenciar escolas';
+        $gerenciarEscolas->description = 'Cadastros'; // Usando como grupo de permissões
+        $gerenciarEscolas->save();
+
+        $gerenciarAlunos = new App\Models\Permission();
+        $gerenciarAlunos->name = 'gerenciar-alunos';
+        $gerenciarAlunos->display_name = 'Gerenciar alunos';
+        $gerenciarAlunos->description = 'Cadastros'; // Usando como grupo de permissões
+        $gerenciarAlunos->save();
+
+        $gerenciarUsuarios = new App\Models\Permission();
+        $gerenciarUsuarios->name = 'gerenciar-usuarios';
+        $gerenciarUsuarios->display_name = 'Gerenciar usuários';
+        $gerenciarUsuarios->description = 'Cadastros'; // Usando como grupo de permissões
+        $gerenciarUsuarios->save();
+
+        $importarAzul = new App\Models\Permission();
+        $importarAzul->name = 'importar-planilhas-azul';
+        $importarAzul->display_name = 'Importar planilhas módulo azul';
+        $importarAzul->description = 'Importação'; // Usando como grupo de permissões
+        $importarAzul->save();
+
+        $importarVerde = new App\Models\Permission();
+        $importarVerde->name = 'importar-planilhas-verde';
+        $importarVerde->display_name = 'Importar planilhas módulo verde';
+        $importarVerde->description = 'Importação'; // Usando como grupo de permissões
+        $importarVerde->save();
+
+        $importarAmarelo = new App\Models\Permission();
+        $importarAmarelo->name = 'importar-planilhas-amarelo';
+        $importarAmarelo->display_name = 'Importar planilhas módulo amarelo';
+        $importarAmarelo->description = 'Importação'; // Usando como grupo de permissões
+        $importarAmarelo->save();
+
+        $importarVermelho = new App\Models\Permission();
+        $importarVermelho->name = 'importar-planilhas-vermelho';
+        $importarVermelho->display_name = 'Importar planilhas módulo vermelho';
+        $importarVermelho->description = 'Importação'; // Usando como grupo de permissões
+        $importarVermelho->save();
 
         $admin = new App\Models\Role();
         $admin->name = 'admin';
@@ -73,6 +108,6 @@ class PermissoesSeeder extends Seeder
 
         $userAdmin = App\Models\User::where('email', 'edilson.bauru@gmail.com')->first();
         $userAdmin->attachRole($admin);
-        $userAdmin->attachPermission($usuarioPermissoes);
+        $userAdmin->attachPermission($gerenciarUsuarios);
     }
 }
