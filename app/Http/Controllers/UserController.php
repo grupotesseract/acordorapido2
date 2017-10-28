@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Flash;
 use Response;
 use App\DataTables\UserDataTable;
-use App\DataTables\PermUserEmpresaDataTable;
-use App\DataTables\EmpresaCrudUsersDataTable;
 use App\Repositories\UserRepository;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use App\DataTables\PermUserEmpresaDataTable;
+use App\DataTables\EmpresaCrudUsersDataTable;
 
 class UserController extends AppBaseController
 {
@@ -52,41 +52,41 @@ class UserController extends AppBaseController
     public function store(CreateUserRequest $request)
     {
         $input = $request->all();
-        $password = bcrypt( $input['password'] );
+        $password = bcrypt($input['password']);
         $input['password'] = $password;
 
         $user = $this->userRepository->create($input);
 
-        if ( !$user ) {
+        if (! $user) {
             Flash::error('Ocorreu um erro a criacao do usuário, tente novamente');
+
             return redirect()->back();
         }
 
         //Se o user tiver sido criado com sucesso e existirem empresas a para serem associadas
-        if ( $user && $request->id_empresas ) {
-            $user->empresas()->sync( array_values($request->id_empresas) );
-            return redirect("/users/".$user->id."/permissoes");
-        }
+        if ($user && $request->id_empresas) {
+            $user->empresas()->sync(array_values($request->id_empresas));
 
+            return redirect('/users/'.$user->id.'/permissoes');
+        }
     }
 
-
     /**
-     * Rota para servir a view com o segundo passo da criacao de novos usuarios
+     * Rota para servir a view com o segundo passo da criacao de novos usuarios.
      *
-     * Se encontrar o user, serve a DataTable de PermUserEmpresa, 
+     * Se encontrar o user, serve a DataTable de PermUserEmpresa,
      * aplicando a scope para filtrar apenas empresas que o usuário de $id tem acesso
      *
      * @param PermUserEmpresaDataTable $permUserDataTable
      * @param mixed $id - ID do User
      */
-    public function getPermissoesUsuario(PermUserEmpresaDataTable $permUserDataTable, $id) 
+    public function getPermissoesUsuario(PermUserEmpresaDataTable $permUserDataTable, $id)
     {
-
         $user = $this->userRepository->findWithoutFail($id);
-        
+
         if (empty($user)) {
             Flash::error('Usuário não encontrado!');
+
             return redirect(route('users.index'));
         }
 
@@ -94,7 +94,6 @@ class UserController extends AppBaseController
             ->addScope(new \App\DataTables\Scopes\EmpresasPorUsuario($id))
             ->render('users.permissoes_escolas', compact('user'));
     }
-
 
     /**
      * Display the specified User.
@@ -158,6 +157,7 @@ class UserController extends AppBaseController
 
         if (empty($user)) {
             Flash::error('Usuário não encontrado!');
+
             return redirect(route('users.index'));
         }
 
@@ -168,7 +168,6 @@ class UserController extends AppBaseController
         $empresas = $request->id_empresas ? array_values($request->id_empresas) : [];
         $user->empresas()->sync($empresas);
         $user->permissoesPorAno()->whereNotIn('empresa_id', $empresas)->delete();
-            
 
         return redirect("/users/$id/permissoes");
     }

@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Flash;
+use Response;
 use App\DataTables\PermUserEmpresaDataTable;
-use App\Http\Requests;
+use App\Repositories\PermUserEmpresaRepository;
 use App\Http\Requests\CreatePermUserEmpresaRequest;
 use App\Http\Requests\UpdatePermUserEmpresaRequest;
-use App\Repositories\PermUserEmpresaRepository;
-use Flash;
-use App\Http\Controllers\AppBaseController;
-use Response;
 
 class PermUserEmpresaController extends AppBaseController
 {
-    /** @var  PermUserEmpresaRepository */
+    /** @var PermUserEmpresaRepository */
     private $permUserEmpresaRepository;
 
     public function __construct(PermUserEmpresaRepository $permUserEmpresaRepo)
@@ -138,6 +136,7 @@ class PermUserEmpresaController extends AppBaseController
 
         if (empty($permUserEmpresa)) {
             Flash::error('Perm User Empresa not found');
+
             return redirect(route('permUserEmpresas.index'));
         }
 

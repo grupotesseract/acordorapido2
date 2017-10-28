@@ -6,30 +6,27 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class PermUserEmpresa
- * @package App\Models
+ * Class PermUserEmpresa.
  * @version October 18, 2017, 9:17 pm BRST
  *
  * @property \App\Models\User user
  * @property \App\Models\Empresa empresa
- * @property integer user_id
- * @property integer empresa_id
- * @property integer ano
+ * @property int user_id
+ * @property int empresa_id
+ * @property int ano
  */
 class PermUserEmpresa extends Model
 {
     use SoftDeletes;
 
     public $table = 'perm_user_empresas';
-    
 
     protected $dates = ['deleted_at'];
-
 
     public $fillable = [
         'user_id',
         'empresa_id',
-        'ano'
+        'ano',
     ];
 
     /**
@@ -41,16 +38,16 @@ class PermUserEmpresa extends Model
         'id' => 'integer',
         'user_id' => 'integer',
         'empresa_id' => 'integer',
-        'ano' => 'integer'
+        'ano' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     /**

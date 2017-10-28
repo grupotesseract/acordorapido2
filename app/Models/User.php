@@ -88,13 +88,10 @@ class User extends Authenticatable
     }
 
     /**
-     * Permissoes por Empresa / Ano desse usuario
+     * Permissoes por Empresa / Ano desse usuario.
      */
     public function permissoesPorAno()
     {
         return $this->hasMany('App\Models\PermUserEmpresa');
     }
-
-
-
 }

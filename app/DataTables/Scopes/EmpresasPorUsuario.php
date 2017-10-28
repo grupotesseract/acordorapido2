@@ -6,7 +6,6 @@ use Yajra\Datatables\Contracts\DataTableScopeContract;
 
 class EmpresasPorUsuario implements DataTableScopeContract
 {
-
     public $userId;
 
     public function __construct($userId)
