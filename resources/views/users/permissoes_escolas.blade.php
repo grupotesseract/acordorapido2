@@ -16,7 +16,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-           Passo 2 - Gerenciando as permissões para cada Empresa
+           Passo 2 - Gerenciando as permissões por ano
         </h1>
     </section>
     <div class="content">
@@ -37,10 +37,5 @@
         </div>
 
     </div>
-
-
-
     @include('perm_user_empresas.modal')
-
-
 @endsection

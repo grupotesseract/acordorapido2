@@ -76,13 +76,13 @@ class UserController extends AppBaseController
      *
      * Se encontrar o user, serve a DataTable de PermUserEmpresa, 
      * aplicando a scope para filtrar apenas empresas que o usuário de $id tem acesso
-     * 
      *
      * @param PermUserEmpresaDataTable $permUserDataTable
      * @param mixed $id - ID do User
      */
     public function getPermissoesUsuario(PermUserEmpresaDataTable $permUserDataTable, $id) 
     {
+
         $user = $this->userRepository->findWithoutFail($id);
         
         if (empty($user)) {
@@ -163,6 +163,10 @@ class UserController extends AppBaseController
 
         $user = $this->userRepository->update($request->all(), $id);
         $user->syncPermissions($request->permissoes);
+
+        //Atualizando empresas que tem acesso
+        $empresas = $request->id_empresas ? array_values($request->id_empresas) : [];
+        $user->empresas()->sync($empresas);
 
         return redirect("/users/$id/permissoes");
     }

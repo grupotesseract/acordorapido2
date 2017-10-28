@@ -27,7 +27,8 @@ class PermUserEmpresaDataTable extends DataTable
      */
     public function query()
     {
-        $permUserEmpresas = PermUserEmpresa::with('empresa');
+        $permUserEmpresas = PermUserEmpresa::with('empresa')
+            ->select('empresas.nome as nome', 'perm_user_empresas.id as id', 'perm_user_empresas.ano as ano');
 
         return $this->applyScopes($permUserEmpresas);
     }
@@ -58,7 +59,7 @@ class PermUserEmpresaDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'empresa' => ['name' => 'empresa.nome', 'data' => 'empresa.nome', 'title' => 'Empresa'],
+            'empresa' => ['name' => 'empresa.nome', 'data' => 'nome', 'title' => 'Empresa'],
             'ano' => ['name' => 'ano', 'data' => 'ano']
         ];
     }
