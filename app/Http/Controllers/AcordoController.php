@@ -113,9 +113,10 @@ class AcordoController extends AppBaseController
         $empresa = Empresa::find($empresa);
         $titulos = $aluno->titulos;
 
+        //TO-DO: validar com Edilson como será cobrado o honorário
         $valorTotalDivida = $this->acordoRepository->calculaValorDivida($empresa,$titulos);
 
-        return $titulosDataTable->porAluno($aluno->id)->porEstado(['amarelo', 'vermelho'])->render('acordos.create_final', ['aluno' => $aluno, 'titulos' => $titulos, 'empresa' => $empresa]);
+        return $titulosDataTable->porAluno($aluno->id)->porEstado(['amarelo'])->render('acordos.create_final', ['aluno' => $aluno, 'titulos' => $titulos, 'empresa' => $empresa, 'valorTotalDivida' => $valorTotalDivida]);
     }
 
     /**

@@ -64,6 +64,20 @@
             <div class="box-body">                    
                 @include('acordos.fields')
 
+            </div>
+        </div>
+
+        <div class="box box-primary">
+            <div class="box-body">                    
+                @include('acordos.parcelas')
+
+            </div>
+        </div>
+
+        <div class="box box-primary">
+            <div class="box-body">                    
+                @include('acordos.observacao')
+
                 {!! Form::close() !!}
             </div>
         </div>

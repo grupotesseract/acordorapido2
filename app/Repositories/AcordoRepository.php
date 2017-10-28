@@ -12,6 +12,7 @@ namespace App\Repositories;
 
 use App\Models\Acordo;
 use InfyOm\Generator\Common\BaseRepository;
+use \Carbon\Carbon as Carbon;
 
 /**
  * Class AcordoRepository.
@@ -43,7 +44,29 @@ class AcordoRepository extends BaseRepository
         return Acordo::class;
     }
 
+    public function calculaValor($valor, $taxa, $parcelas) {
+        $taxa = $taxa / 100;
+ 
+        $valParcela = $valor * pow((1 + $taxa), $parcelas);
+        $valParcela = number_format($valParcela / $parcelas, 2, ",", ".");
+ 
+        return $valParcela;
+    }
+
     public function calculaValorDivida($empresa,$titulos) {
-        //
+        $valortotal = 0;
+        foreach ($titulos as $titulo) {
+            //CALCULAR DIFERENÇA DE DIAS ENTRE HOJE E A DATA DE VENCIMENTO
+            $vencimento = Carbon::createFromFormat('d/m/Y', $titulo->vencimento);
+            $hoje = Carbon::now();
+            
+            $diff = $vencimento->diffInDays($hoje);
+            $taxa = ($empresa->multadiariaporc)/100;
+
+            $potencia = pow(1+$taxa,$diff);
+            $valortotal += str_replace(',', '.', str_replace('.', '', $titulo->valordescontado))*$potencia;                        
+        }
+
+        return number_format($valortotal,2,',','.');
     }
 }

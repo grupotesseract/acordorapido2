@@ -200,4 +200,24 @@ class Titulo extends Model
     {
         return Carbon::parse($value)->format('d/m/Y');
     }
+
+    public function setVencimentoAttribute($value)
+    {
+        $this->attributes['vencimento'] = Carbon::parse($value)->format('Y-m-d');
+    }
+
+    public function getValorAttribute($value)
+    {
+        return number_format ($value,2,',','.');
+    }
+
+    public function getValordescontadoAttribute($value)
+    {
+        return number_format ($value,2,',','.');
+    }
+
+    public function setValorAttribute($value)
+    {
+        $this->attributes['valor'] = str_replace(',', '.', $value);
+    }
 }
