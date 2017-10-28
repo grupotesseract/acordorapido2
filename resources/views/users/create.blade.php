@@ -1,17 +1,11 @@
 @extends('layouts.app')
 
-<style> 
 
-.datatable-user-crud {
-    padding: 1em;
-}
+@section('css')
 
-.dataTables_filter {
-    display: none;
-}
+<link rel="stylesheet" href="/css/tesseract.css">
 
-
-</style>
+@endsection
 
 @section('content')
     <section class="content-header">
@@ -33,7 +27,6 @@
                 </div>
             </div>
         </div>
-
     
         <h3>Selecione as escolas que esse usuário terá acesso</h3>
 
@@ -47,10 +40,10 @@
             </div>
         </div>
 
-        <!-- Submit Field -->
-        <div class="form-group col-sm-12">
-            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-            <a href="{!! route('users.index') !!}" class="btn btn-default">Cancel</a>
+        <div class="row">
+            <div class="text-center">
+                @include('users.submit')
+            </div>
         </div>
 
         {!! Form::close() !!}

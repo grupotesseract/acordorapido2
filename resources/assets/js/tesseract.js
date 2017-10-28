@@ -8,6 +8,18 @@ $(function () {
     if ( contadorCaracteres.length ) {
         bindContadorCaracteres(contadorCaracteres);
     }
+
+    //Botao de habilitar edicao do password
+    let btnTrocaSenha = $('#btn-trocar-senha');
+    
+     //Se existir um contador de caracteres na tela, binda o contador ao seu target
+    if ( contadorCaracteres.length ) {
+        bindContadorCaracteres(contadorCaracteres);
+    }
+
+    function habilitaCamposPassword() {
+        $('input[type="password"]').removeAttr('disabled');
+    }
 });
 
 //Funcao que faz o bind do contador com o target
@@ -127,3 +139,6 @@ $(document).ready(function(){
 
 
 });
+
+
+

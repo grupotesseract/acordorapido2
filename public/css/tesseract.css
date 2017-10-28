@@ -1,0 +1,13 @@
+.datatable-user-crud {
+  padding: 1em;
+}
+
+.datatable-user-crud .dataTables_filter {
+  display: none;
+}
+
+.fix-altura-variavel {
+  height: 5em;
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJlc291cmNlcy9hc3NldHMvc2Fzcy90ZXNzZXJhY3Quc2NzcyJdLCJzb3VyY2VzQ29udGVudCI6WyJcbi5kYXRhdGFibGUtdXNlci1jcnVkIHtcbiAgICBwYWRkaW5nOiAxZW07XG5cbiAgICAuZGF0YVRhYmxlc19maWx0ZXIge1xuICAgICAgICBkaXNwbGF5OiBub25lO1xuICAgIH1cblxufVxuXG4uZml4LWFsdHVyYS12YXJpYXZlbCB7XG4gICAgaGVpZ2h0OjVlbTtcbn1cblxuIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUNBLEFBQUEsb0JBQW9CLENBQUM7RUFDakIsT0FBTyxFQUFFLEdBQUc7Q0FNZjs7QUFQRCxBQUdJLG9CQUhnQixDQUdoQixrQkFBa0IsQ0FBQztFQUNmLE9BQU8sRUFBRSxJQUFJO0NBQ2hCOztBQUlMLEFBQUEsb0JBQW9CLENBQUM7RUFDakIsTUFBTSxFQUFDLEdBQUc7Q0FDYiJ9 */

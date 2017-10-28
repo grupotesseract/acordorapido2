@@ -18,4 +18,5 @@ mix.js([
         'node_modules/sweetalert2/dist/sweetalert2.js',
     ], 'public/js/sweetalert2.min.js')
    .sass('resources/assets/sass/app.scss', 'public/css')
+   .sass('resources/assets/sass/tesseract.scss', 'public/css')
    .styles('node_modules/sweetalert2/dist/sweetalert2.min.css', 'public/css/sweetalert2.css');

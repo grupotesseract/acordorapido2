@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,7 +71,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 
-__webpack_require__(3);
+__webpack_require__(4);
 
 /***/ }),
 /* 1 */
@@ -80,8 +80,14 @@ __webpack_require__(3);
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 2 */,
-/* 3 */
+/* 2 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 3 */,
+/* 4 */
 /***/ (function(module, exports) {
 
 //Quando ready...
@@ -93,6 +99,18 @@ $(function () {
   //Se existir um contador de caracteres na tela, binda o contador ao seu target
   if (contadorCaracteres.length) {
     bindContadorCaracteres(contadorCaracteres);
+  }
+
+  //Botao de habilitar edicao do password
+  var btnTrocaSenha = $('#btn-trocar-senha');
+
+  //Se existir um contador de caracteres na tela, binda o contador ao seu target
+  if (contadorCaracteres.length) {
+    bindContadorCaracteres(contadorCaracteres);
+  }
+
+  function habilitaCamposPassword() {
+    $('input[type="password"]').removeAttr('disabled');
   }
 });
 
@@ -219,12 +237,13 @@ $(document).ready(function () {
 });
 
 /***/ }),
-/* 4 */,
-/* 5 */
+/* 5 */,
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(0);
-module.exports = __webpack_require__(1);
+__webpack_require__(1);
+module.exports = __webpack_require__(2);
 
 
 /***/ })

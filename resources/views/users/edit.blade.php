@@ -1,54 +1,60 @@
 @extends('layouts.app')
 
+@section('css')
+
+<link rel="stylesheet" href="/css/tesseract.css">
+
+@endsection
+
+
 @section('content')
-    <section class="content-header">
-        <h1>
-            Usuário
-        </h1>
-   </section>
    <div class="content">
        @include('adminlte-templates::common.errors')
-        {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'patch']) !!}
+       <h3>Informações Gerais</h3>
+       {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'patch']) !!}
+
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                        @include('users.fields')
+                    @include('users.fields', ['editando' => true])
 
-                        <!-- Submit Field -->
-                        <div class="form-group col-sm-12">
-                            {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-                            <a href="{!! route('users.index') !!}" class="btn btn-default">Cancel</a>
-                        </div>
-
-
-                   {!! Form::close() !!}
+                    <div class="col-xs-12">
+                        <a id='btn-trocar-senha' class="btn btn-primary" href="javascript:habilitaCamposPassword()">
+                            <i class="fa fa-edit"></i> Trocar senha
+                        </a>
+                    </div>
                </div>
            </div>
        </div>
 
+       <h3>Permissões do usuário</h3>
        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title">Permissões</h3>
-            </div>
             <div class="box-body">
                 <div class="row">
                         @include('users.permissions')
                 </div>
             </div>
        </div>
-        @include('users.submit')
-        {!! Form::close() !!}
+
+       <h3>Empresas que tem acesso</h3>
 
        <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title">Empresas</h3>
-            </div>
             <div class="box-body">
                 <div class="row">
-                    @include('users.permissions')
+                    <div class="datatable-user-crud">
+                        @include('users.table')
+                    </div>
                 </div>
             </div>
        </div>
 
+        <div class="row">
+            <div class="text-center">
+                @include('users.submit')
+            </div>
+        </div>
+
+        {!! Form::close() !!}
    </div>
 @endsection
+

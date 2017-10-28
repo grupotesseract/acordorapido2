@@ -74,8 +74,12 @@ class UserController extends AppBaseController
     /**
      * Rota para servir a view com o segundo passo da criacao de novos usuarios
      *
+     * Se encontrar o user, serve a DataTable de PermUserEmpresa, 
+     * aplicando a scope para filtrar apenas empresas que o usuário de $id tem acesso
+     * 
+     *
      * @param PermUserEmpresaDataTable $permUserDataTable
-     * @param mixed $id$
+     * @param mixed $id - ID do User
      */
     public function getPermissoesUsuario(PermUserEmpresaDataTable $permUserDataTable, $id) 
     {
@@ -83,10 +87,8 @@ class UserController extends AppBaseController
         
         if (empty($user)) {
             Flash::error('Usuário não encontrado!');
-
             return redirect(route('users.index'));
         }
-
 
         return $permUserDataTable
             ->addScope(new \App\DataTables\Scopes\EmpresasPorUsuario($id))
@@ -117,11 +119,12 @@ class UserController extends AppBaseController
     /**
      * Show the form for editing the specified User.
      *
-     * @param  int $id
+     * @param EmpresaCrudUsersDataTable $empresaDataTable
+     * @param $id - ID do User
      *
      * @return Response
      */
-    public function edit($id)
+    public function edit(EmpresaCrudUsersDataTable $empresaDataTable, $id)
     {
         $user = $this->userRepository->findWithoutFail($id);
 
@@ -137,7 +140,8 @@ class UserController extends AppBaseController
             $gruposPermissoes[$perm->description][] = $perm;
         }
 
-        return view('users.edit')->with('user', $user)->with('gruposPermissoes', $gruposPermissoes);
+        return $empresaDataTable
+            ->render('users.edit', compact('user', 'gruposPermissoes'));
     }
 
     /**
@@ -154,16 +158,13 @@ class UserController extends AppBaseController
 
         if (empty($user)) {
             Flash::error('Usuário não encontrado!');
-
             return redirect(route('users.index'));
         }
 
         $user = $this->userRepository->update($request->all(), $id);
         $user->syncPermissions($request->permissoes);
 
-        Flash::success('User updated successfully.');
-
-        return redirect(route('users.index'));
+        return redirect("/users/$id/permissoes");
     }
 
     /**

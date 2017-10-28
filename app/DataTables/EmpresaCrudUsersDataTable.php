@@ -7,6 +7,7 @@ use Yajra\Datatables\Services\DataTable;
 
 class EmpresaCrudUsersDataTable extends DataTable
 {
+
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -27,7 +28,7 @@ class EmpresaCrudUsersDataTable extends DataTable
     public function query()
     {
         //aqui vamos precisar filtrar para nao ser todas as empresas, ou por scopes da datatable
-        $empresas = Empresa::query();
+        $empresas = Empresa::with('usuarios');
         return $this->applyScopes($empresas);
     }
 

@@ -74,7 +74,7 @@ class PermUserEmpresaController extends AppBaseController
         if (empty($permUserEmpresa)) {
             Flash::error('Perm User Empresa not found');
 
-            return redirect(route('permUserEmpresas.index'));
+            return redirect()->back();
         }
 
         return view('perm_user_empresas.show')->with('permUserEmpresa', $permUserEmpresa);
@@ -94,7 +94,7 @@ class PermUserEmpresaController extends AppBaseController
         if (empty($permUserEmpresa)) {
             Flash::error('Perm User Empresa not found');
 
-            return redirect(route('permUserEmpresas.index'));
+            return redirect()->back();
         }
 
         return view('perm_user_empresas.edit')->with('permUserEmpresa', $permUserEmpresa);
@@ -115,14 +115,14 @@ class PermUserEmpresaController extends AppBaseController
         if (empty($permUserEmpresa)) {
             Flash::error('Perm User Empresa not found');
 
-            return redirect(route('permUserEmpresas.index'));
+            return redirect()->back();
         }
 
         $permUserEmpresa = $this->permUserEmpresaRepository->update($request->all(), $id);
 
         Flash::success('Perm User Empresa updated successfully.');
 
-        return redirect(route('permUserEmpresas.index'));
+        return redirect()->back();
     }
 
     /**
@@ -139,13 +139,13 @@ class PermUserEmpresaController extends AppBaseController
         if (empty($permUserEmpresa)) {
             Flash::error('Perm User Empresa not found');
 
-            return redirect(route('permUserEmpresas.index'));
+            return redirect()->back();
         }
 
         $this->permUserEmpresaRepository->delete($id);
 
         Flash::success('Perm User Empresa deleted successfully.');
 
-        return redirect(route('permUserEmpresas.index'));
+        return redirect()->back();
     }
 }
