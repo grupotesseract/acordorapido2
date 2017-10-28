@@ -314,6 +314,7 @@ class TituloController extends AppBaseController
 
                         );
                     }
+
                 }
             });
         });

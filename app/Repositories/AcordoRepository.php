@@ -42,16 +42,7 @@ class AcordoRepository extends BaseRepository
     public function model()
     {
         return Acordo::class;
-    }
-
-    public function calculaValor($valor, $taxa, $parcelas) {
-        $taxa = $taxa / 100;
- 
-        $valParcela = $valor * pow((1 + $taxa), $parcelas);
-        $valParcela = number_format($valParcela / $parcelas, 2, ",", ".");
- 
-        return $valParcela;
-    }
+    }   
 
     public function calculaValorDivida($empresa,$titulos) {
         $valortotal = 0;
@@ -68,5 +59,5 @@ class AcordoRepository extends BaseRepository
         }
 
         return number_format($valortotal,2,',','.');
-    }
+
 }
