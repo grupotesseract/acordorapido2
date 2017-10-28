@@ -234,9 +234,7 @@ class TituloController extends AppBaseController
 
         Excel::load($request->file('excel'), function ($reader) use ($estado,$empresa_id,$importacao_id,&$titulos_importados,$retorno,$importacao) {
             $reader->each(function ($sheet) use ($estado,$empresa_id,$importacao_id,&$titulos_importados,$retorno,$importacao) {
-                
-                if ($sheet->nome <> '') {
-
+                if ($sheet->nome != '') {
                     $cliente = Cliente::firstOrNew(['ra' => $sheet->ra]);
                     $cliente->nome = $sheet->nome;
                     $cliente->user_id = Auth::id();
@@ -273,7 +271,7 @@ class TituloController extends AppBaseController
                     $titulo->cliente_id = $cliente_id;
                     $titulo->empresa_id = $empresa_id;
                     $titulo->pago = false;
-                    
+
                     $titulo->vencimento = $sheet->vencimento;
                     $titulo->valor = $sheet->valor;
 
@@ -287,10 +285,9 @@ class TituloController extends AppBaseController
                     $titulo->ano = $sheet->ano;
                     $titulo->desconto = $sheet->desconto;
                     $titulo->valordescontado = $sheet->valor_com_desconto;
-                    
+
                     $titulo->save();
                     $titulos_importados[] = $titulo->id;
-
 
                     //criar registro na tabela pivot
                     $titulo->importacoes()->attach($importacao_id);
@@ -314,7 +311,6 @@ class TituloController extends AppBaseController
 
                         );
                     }
-
                 }
             });
         });
