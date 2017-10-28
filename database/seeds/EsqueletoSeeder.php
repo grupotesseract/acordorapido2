@@ -44,12 +44,12 @@ class EsqueletoSeeder extends Seeder
             $e->cidade = 'Bauru';
             $e->estado = 'SP';
             $userEscola->empresas()->save($e);
-
         } catch (\Illuminate\Database\QueryException $exception) {
             dd($exception->getMessage());
             echo 'erro';
         }
     }
+
     private function seedUsers()
     {
     }

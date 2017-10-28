@@ -10,7 +10,6 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use Flash;
 use Response;
 use App\DataTables\EmpresaDataTable;

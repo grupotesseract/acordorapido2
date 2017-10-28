@@ -3,12 +3,10 @@
 namespace App\DataTables;
 
 use App\Models\PermUserEmpresa;
-use Form;
 use Yajra\Datatables\Services\DataTable;
 
 class PermUserEmpresaDataTable extends DataTable
 {
-
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -30,7 +28,7 @@ class PermUserEmpresaDataTable extends DataTable
         $permUserEmpresas = PermUserEmpresa::with(['empresa', 'user'])
             ->select('empresas.nome as nome', 'perm_user_empresas.id as id', 'perm_user_empresas.ano as ano', 'usuarios.id as user_id');
 
-        if ( !$permUserEmpresas->count() ){
+        if (! $permUserEmpresas->count()) {
             $permUserEmpresas = PermUserEmpresa::with('empresa');
         }
 
@@ -51,7 +49,7 @@ class PermUserEmpresaDataTable extends DataTable
             ->parameters([
                 'dom' => 'Bfrtip',
                 'scrollX' => false,
-                'buttons' => []
+                'buttons' => [],
             ]);
     }
 
@@ -64,7 +62,7 @@ class PermUserEmpresaDataTable extends DataTable
     {
         return [
             'empresa' => ['name' => 'empresa.nome', 'data' => 'nome', 'title' => 'Empresa'],
-            'ano' => ['name' => 'ano', 'data' => 'ano']
+            'ano' => ['name' => 'ano', 'data' => 'ano'],
         ];
     }
 
