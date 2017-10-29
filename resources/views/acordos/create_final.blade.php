@@ -50,7 +50,6 @@
         <div class="box box-primary">           
             <div class="box-header">
                 <h3 class="box-title">Títulos Referentes ao Aluno: {{$aluno->nome}}</h3>
-            </div>
 
             <div class="box-body">                    
                 {!! Form::open(['route' => 'acordos.store']) !!}
@@ -68,6 +67,9 @@
         </div>
 
         <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title">Parcelas</h3>
+            </div>
             <div class="box-body">                    
                 @include('acordos.parcelas')
 

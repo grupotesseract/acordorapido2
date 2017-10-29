@@ -59,5 +59,6 @@ class AcordoRepository extends BaseRepository
         }
 
         return number_format($valortotal,2,',','.');
+    }
 
 }

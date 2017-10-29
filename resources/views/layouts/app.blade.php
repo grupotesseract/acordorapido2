@@ -22,6 +22,10 @@
 <body class="skin-blue sidebar-mini">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment-with-locales.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="http://code.jquery.com/ui//1.12.1/themes/base/jquery-ui.css" />
 <div class="wrapper">
     <!-- Main Header -->
     <header class="main-header">
@@ -122,6 +126,53 @@
 </script> -->
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/tesseract.js') }}"></script>
+
+
+<script>
+    
+    $('#btnAdd').click(function() {
+        $('#btnRemove').prop('disabled', false);
+
+        var num = $('.clonedInput').length;
+        var newNum = new Number(num + 1);
+
+        var newElem = $('#input' + num).clone().attr('id', 'input' + newNum);
+
+        newElem.children('.parcela').attr('id', 'parcela' + newNum).attr('name', 'parcela' + newNum).attr('value',newNum);
+        newElem.children('.valor').attr('id', 'valor' + newNum).attr('name', 'valor' + newNum);
+
+        $('#input' + num).after(newElem);
+        $('#btnDel').attr('disabled', '');
+
+
+    });
+
+    $('#btnRemove').on('click', function() {
+        $('.clonedInput').last().remove();
+        var num = $('.clonedInput').length;
+        if (num == 1) $('#btnRemove').attr('disabled', 'disabled');
+    });
+
+</script>
+
+<script>
+$(function() {
+    $("#calendario").datepicker({
+        dateFormat: 'dd/mm/yy',
+        dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+        dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+        monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        nextText: 'Próximo',
+        prevText: 'Anterior'
+
+    });
+
+
+});
+</script>
+
 
 @yield('scripts')
 </body>
