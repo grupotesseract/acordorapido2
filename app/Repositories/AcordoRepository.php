@@ -11,8 +11,8 @@
 namespace App\Repositories;
 
 use App\Models\Acordo;
+use Carbon\Carbon as Carbon;
 use InfyOm\Generator\Common\BaseRepository;
-use \Carbon\Carbon as Carbon;
 
 /**
  * Class AcordoRepository.
@@ -42,23 +42,23 @@ class AcordoRepository extends BaseRepository
     public function model()
     {
         return Acordo::class;
-    }   
+    }
 
-    public function calculaValorDivida($empresa,$titulos) {
+    public function calculaValorDivida($empresa, $titulos)
+    {
         $valortotal = 0;
         foreach ($titulos as $titulo) {
             //CALCULAR DIFERENÇA DE DIAS ENTRE HOJE E A DATA DE VENCIMENTO
             $vencimento = Carbon::createFromFormat('d/m/Y', $titulo->vencimento);
             $hoje = Carbon::now();
-            
-            $diff = $vencimento->diffInDays($hoje);
-            $taxa = ($empresa->multadiariaporc)/100;
 
-            $potencia = pow(1+$taxa,$diff);
-            $valortotal += str_replace(',', '.', str_replace('.', '', $titulo->valordescontado))*$potencia;                        
+            $diff = $vencimento->diffInDays($hoje);
+            $taxa = ($empresa->multadiariaporc) / 100;
+
+            $potencia = pow(1 + $taxa, $diff);
+            $valortotal += str_replace(',', '.', str_replace('.', '', $titulo->valordescontado)) * $potencia;
         }
 
-        return number_format($valortotal,2,',','.');
+        return number_format($valortotal, 2, ',', '.');
     }
-
 }
