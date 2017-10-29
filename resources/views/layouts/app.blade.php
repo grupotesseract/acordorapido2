@@ -112,6 +112,9 @@
 
 <script src="{{ asset('js/sweetalert2.min.js') }}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.min.js"></script>
+
 <!-- JS Custom -->
 
 <!-- <script>
@@ -129,7 +132,25 @@
 
 
 <script>
-    
+    var handleMasks = function (){
+        $(function() {
+            $(".escolherData").datepicker({
+                dateFormat: 'dd/mm/yy',
+                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                nextText: 'Próximo',
+                prevText: 'Anterior'
+
+            });
+            $('.escolherData').mask('00/00/0000');
+            $('.valor').mask('000.000.000.000.000,00', {reverse: true});
+
+        });
+    };
+
     $('#btnAdd').click(function() {
         $('#btnRemove').prop('disabled', false);
 
@@ -138,12 +159,15 @@
 
         var newElem = $('#input' + num).clone().attr('id', 'input' + newNum);
 
-        newElem.children('.parcela').attr('id', 'parcela' + newNum).attr('name', 'parcela' + newNum).attr('value',newNum);
-        newElem.children('.valor').attr('id', 'valor' + newNum).attr('name', 'valor' + newNum);
+        newElem.children('#box').children('#parcela' + num).attr('id', 'parcela' + newNum).attr('value',newNum);
+        newElem.children('#box').children('#datetimepicker' + num).attr('id', 'datetimepicker' + newNum);
+        newElem.children('#box').children('#datetimepicker' + newNum).children('#calendario' + num).attr('id', 'calendario' + newNum).attr('class', 'form-control escolherData');       
+        
 
         $('#input' + num).after(newElem);
         $('#btnDel').attr('disabled', '');
 
+        $(this).trigger('mask-it');
 
     });
 
@@ -152,12 +176,17 @@
         var num = $('.clonedInput').length;
         if (num == 1) $('#btnRemove').attr('disabled', 'disabled');
     });
+    
+
+    $(document).on('mask-it', function(){
+        handleMasks();
+    }).trigger('mask-it');
 
 </script>
 
 <script>
 $(function() {
-    $("#calendario").datepicker({
+    $(".escolherData").datepicker({
         dateFormat: 'dd/mm/yy',
         dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
         dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
@@ -168,9 +197,19 @@ $(function() {
         prevText: 'Anterior'
 
     });
+    $('.escolherData').mask('00/00/0000');
+    $('.valor').mask('000.000.000.000.000,00', {reverse: true});
 
 
 });
+</script>
+
+<script>
+    $(document).ready(function(){
+      $('.valor').mask('000.000.000.000.000,00', {reverse: true});
+      $('.escolherData').mask('00/00/0000');
+      $('#valoracordado').mask('000.000.000.000.000,00', {reverse: true});
+    });
 </script>
 
 

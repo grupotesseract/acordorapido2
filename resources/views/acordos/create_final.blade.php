@@ -69,6 +69,15 @@
         <div class="box box-primary">
             <div class="box-header">
                 <h3 class="box-title">Parcelas</h3>
+
+                    <button type="button" class="btn btn-default" id="btnAdd">
+                      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+
+                    <button type="button" class="btn btn-default" id="btnRemove" disabled="disabled">
+                      <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                    </button>
+                    
             </div>
             <div class="box-body">                    
                 @include('acordos.parcelas')

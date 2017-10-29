@@ -1,7 +1,7 @@
 <!-- Valoracordado Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('valoracordado', 'Valor Acordado:') !!}
-    {!! Form::number('valoracordado', null, ['class' => 'form-control']) !!}
+    {!! Form::text('valoracordado', null, ['class' => 'form-control', 'id' => 'valoracordado']) !!}
 </div>
 
 <!-- Valororiginal Field -->
