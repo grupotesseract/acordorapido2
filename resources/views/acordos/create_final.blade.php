@@ -50,6 +50,7 @@
         <div class="box box-primary">           
             <div class="box-header">
                 <h3 class="box-title">Títulos Referentes ao Aluno: {{$aluno->nome}}</h3>
+                <a data-target="#ligacao" data-id="{{$aluno->id}}" class="enviarligacao btn btn-default btn-xs" data-toggle="modal"><i class="glyphicon glyphicon-earphone" alt="Efetuar Ligação Telefônica" aria-hidden="true"></i></a>
 
             <div class="box-body">                    
                 {!! Form::open(['route' => 'acordos.store']) !!}
@@ -94,5 +95,6 @@
         </div>
     </div>
 
+    @include('acordos.modaltelefone')
 
 @endsection
