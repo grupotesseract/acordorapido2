@@ -168,6 +168,8 @@
         $('#btnDel').attr('disabled', '');
 
         $(this).trigger('mask-it');
+        calculaParcelas();       
+        
 
     });
 
@@ -175,6 +177,8 @@
         $('.clonedInput').last().remove();
         var num = $('.clonedInput').length;
         if (num == 1) $('#btnRemove').attr('disabled', 'disabled');
+        calculaParcelas();       
+
     });
     
 
@@ -205,10 +209,30 @@ $(function() {
 </script>
 
 <script>
+    
+    var calculaParcelas = function () {
+        $(function() {        
+
+            var valor = $("input[name=valororiginal]").val(),
+                valor = valor.replace(",", ".");
+                num = $('.valor').length,
+                cadaParcela = (+valor/+num).toFixed(2);            
+            
+            $('.valor').each(function(i, obj) {
+                $(obj).attr('value',cadaParcela.replace('.',','));                
+            });
+
+        });
+
+    }
+
     $(document).ready(function(){
-      $('.valor').mask('000.000.000.000.000,00', {reverse: true});
-      $('.escolherData').mask('00/00/0000');
-      $('#valoracordado').mask('000.000.000.000.000,00', {reverse: true});
+        $('.valor').mask('000.000.000.000.000,00', {reverse: true});
+        $('.escolherData').mask('00/00/0000');
+        $('#valoracordado').mask('000.000.000.000.000,00', {reverse: true});
+
+        calculaParcelas();       
+
     });
 </script>
 

@@ -1,6 +1,6 @@
 <!-- Observacao Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('observacao', 'Observação:') !!}
+    {!! Form::label('observacao', 'Histórico do Contato:') !!}
     {!! Form::textarea('observacao', null, ['class' => 'form-control']) !!}
 </div>
 
