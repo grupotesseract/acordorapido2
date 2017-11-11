@@ -22,8 +22,8 @@ class CriarColunasEmpresas extends Migration
     public function up()
     {
         Schema::table('empresas', function (Blueprint $table) {
-            $table->decimal('multaporc',10,2)->nullable();
-            $table->decimal('multadiariaporc',10,2)->nullable();         
+            $table->decimal('multaporc', 10, 2)->nullable();
+            $table->decimal('multadiariaporc', 10, 2)->nullable();
         });
     }
 
@@ -36,7 +36,7 @@ class CriarColunasEmpresas extends Migration
     {
         Schema::table('empresas', function (Blueprint $table) {
             $table->dropColumn('multadiariaporc');
-            $table->dropColumn('multaporc');           
+            $table->dropColumn('multaporc');
         });
     }
 }
