@@ -6,12 +6,12 @@
 	<!-- MultaPorc Field -->
 	<div class="form-group col-sm-6">
 
-	    {!! Form::label('multaporc', 'Multa - Porcentagem após vencimento:') !!}
+	    {!! Form::label('multaporc', 'Multa - % após vencimento:') !!}
 	    {!! Form::text('multaporc', null, ['class' => 'form-control']) !!}
 	</div>
 	
 	<div class="form-group col-sm-6">
-	    {!! Form::label('multadiariaporc', 'Multa Diária - Porcentagem após vencimento:') !!}
+	    {!! Form::label('multadiariaporc', 'Multa Diária - % após vencimento:') !!}
 	    {!! Form::text('multadiariaporc', null, ['class' => 'form-control']) !!}
 	</div>
 	

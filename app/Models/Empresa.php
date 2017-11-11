@@ -92,4 +92,16 @@ class Empresa extends Model
     {
         return $this->hasMany(\App\Models\Acordo::class);
     }
+
+    public function setMultaporcAttribute($value)
+    {
+        $valorsemPonto = str_replace('.', '', $value);
+        $this->attributes['multaporc'] = str_replace(',', '.', $valorsemPonto);
+    }
+
+    public function setMultadiariaporcAttribute($value)
+    {
+        $valorsemPonto = str_replace('.', '', $value);
+        $this->attributes['multadiariaporc'] = str_replace(',', '.', $valorsemPonto);
+    }
 }

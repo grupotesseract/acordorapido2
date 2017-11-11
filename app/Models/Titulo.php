@@ -216,8 +216,14 @@ class Titulo extends Model
         return number_format($value, 2, ',', '.');
     }
 
+    public function getDescontoAttribute($value)
+    {
+        return number_format($value, 2, ',', '.');
+    }
+
     public function setValorAttribute($value)
     {
-        $this->attributes['valor'] = str_replace(',', '.', $value);
+        $valorsemPonto = str_replace('.', '', $value);
+        $this->attributes['valor'] = str_replace(',', '.', $valorsemPonto);
     }
 }

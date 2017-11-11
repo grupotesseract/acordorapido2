@@ -169,7 +169,7 @@
 
         $(this).trigger('mask-it');
         calculaParcelas();       
-        
+
 
     });
 
@@ -213,7 +213,8 @@ $(function() {
     var calculaParcelas = function () {
         $(function() {        
 
-            var valor = $("input[name=valororiginal]").val(),
+            var valor = $("input[name=valoracordado]").val(),
+                valor = valor.replace(".", "");
                 valor = valor.replace(",", ".");
                 num = $('.valor').length,
                 cadaParcela = (+valor/+num).toFixed(2);            
@@ -226,8 +227,14 @@ $(function() {
 
     }
 
+    $('input[name=valoracordado]').on('keypress', function() {        
+        calculaParcelas();       
+    });
+
     $(document).ready(function(){
         $('.valor').mask('000.000.000.000.000,00', {reverse: true});
+        $('input[name=multadiariaporc]').mask('#.##0,00', {reverse: true});
+        $('input[name=multaporc]').mask('000.000.000.000.000,00', {reverse: true});
         $('.escolherData').mask('00/00/0000');
         $('#valoracordado').mask('000.000.000.000.000,00', {reverse: true});
 

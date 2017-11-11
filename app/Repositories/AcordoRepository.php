@@ -54,9 +54,12 @@ class AcordoRepository extends BaseRepository
 
             $diff = $vencimento->diffInDays($hoje);
             $taxa = ($empresa->multadiariaporc) / 100;
+            $valorTitulo = str_replace(',', '.', str_replace('.', '', $titulo->valordescontado));
+
+            $valorAposVencimento = $valorTitulo * ($empresa->multaporc/100);
 
             $potencia = pow(1 + $taxa, $diff);
-            $valortotal += str_replace(',', '.', str_replace('.', '', $titulo->valordescontado)) * $potencia;
+            $valortotal += $valorAposVencimento + ($valorTitulo * $potencia);
         }
 
         return number_format($valortotal, 2, ',', '.');

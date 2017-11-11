@@ -90,11 +90,12 @@
             <div class="box-body">                    
                 @include('acordos.observacao')
 
-                {!! Form::close() !!}
             </div>
         </div>
     </div>
 
     @include('acordos.modaltelefone')
+    
+    {!! Form::close() !!}
 
 @endsection
