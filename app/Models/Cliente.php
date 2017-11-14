@@ -112,11 +112,5 @@ class Cliente extends Model
     {
         return $this->hasMany(\App\Models\Acordo::class);
     }
-
-    public function getNegativadoAttribute($value)
-    {
-        $retorno = (true) ? 'Sim' : 'Não';
-
-        return $retorno;
-    }
+    
 }

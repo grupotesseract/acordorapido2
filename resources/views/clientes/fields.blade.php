@@ -56,7 +56,7 @@
 <!-- Negativado Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('negativado', 'Negativado:') !!}
-    {!! Form::checkbox('negativado', null, $cliente->negativado) !!}
+    {!! Form::checkbox('negativado', 'value', $cliente->negativado) !!}
 </div>
 
 <!-- Submit Field -->

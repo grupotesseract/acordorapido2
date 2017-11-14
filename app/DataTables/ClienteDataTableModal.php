@@ -34,9 +34,16 @@ class ClienteDataTableModal extends DataTable
      */
     public function query()
     {
-        $clientes = Cliente::query();
+        $clientes = Cliente::query()->whereIn('id', $this->cliente)->where('negativado', true);
 
         return $this->applyScopes($clientes);
+    }
+
+    public function porCliente($cliente)
+    {
+        $this->cliente = $cliente;
+
+        return $this;
     }
 
     /**
