@@ -6,9 +6,9 @@
 <style>
     .content-wrapper, .right-side {
         @if ($estado == 'azul')
-            background-color: rgb(191, 213, 226);
+            background-color: #ecf0f5;
         @elseif ($estado == 'verde')
-            background-color: #74c39f;
+            background-color: #92c594;
         @elseif ($estado == 'amarelo')
             background-color: #e8af53;
         @elseif ($estado == 'vermelho')
