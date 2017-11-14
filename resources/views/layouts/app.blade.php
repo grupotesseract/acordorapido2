@@ -114,6 +114,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.12/jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+
 
 <!-- JS Custom -->
 
@@ -136,7 +138,7 @@
 
             });
             
-            $('.valor').mask('000.000.000.000.000,00', {reverse: true});
+            $('.valor').mask('#.##0,00', {reverse: true});
             $('input[name=multadiariaporc]').mask('#.##0,00', {reverse: true});
             $('input[name=multaporc]').mask('000.000.000.000.000,00', {reverse: true});
             $('.escolherData').mask('00/00/0000');
@@ -154,12 +156,14 @@
     $(document).on('change', '.valor', function(){
         var prev = $(this).data('val');
         var atual = $(this).val().replace(/\./g, "").replace(",", ".");
-        var diferenca = prev - atual;        
+        var diferenca = prev - atual;
+
 
         var valorAntigoUltimaParcela = $('.valor').last().val().replace(/\./g, "").replace(",", ".");
         
+        console.log((+valorAntigoUltimaParcela + diferenca).toFixed(2));
         
-        valorNovoUltimaParcela = (+valorAntigoUltimaParcela + +diferenca).toFixed(2);
+        valorNovoUltimaParcela = (+valorAntigoUltimaParcela + diferenca).toFixed(2);
         valorNovoUltimaParcela = valorNovoUltimaParcela.toString().replace(".", ",");  
 
         $('.valor').last().val(valorNovoUltimaParcela);
