@@ -49,7 +49,7 @@ class TituloController extends AppBaseController
      */
     public function titulosModulo(TituloDataTable $tituloDataTable, $estado)
     {
-        return $tituloDataTable->porEstado($estado)->render('titulos.index');
+        return $tituloDataTable->porEstado($estado)->render('titulos.index', ['estado' => $estado]);
     }
 
     /**

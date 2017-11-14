@@ -2,6 +2,21 @@
 
 @section('content')   
 
+
+<style>
+    .content-wrapper, .right-side {
+        @if ($estado == 'azul')
+            background-color: rgb(191, 213, 226);
+        @elseif ($estado == 'verde')
+            background-color: #74c39f;
+        @elseif ($estado == 'amarelo')
+            background-color: #e8af53;
+        @elseif ($estado == 'vermelho')
+            background-color: #e27676;
+        @endif
+    }
+</style>
+
 <script>
     function carregaMensagens (sel,estado) {
         if (sel != 0) {

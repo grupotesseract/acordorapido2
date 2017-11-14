@@ -117,16 +117,6 @@
 
 <!-- JS Custom -->
 
-<!-- <script>
-    function checkAll() {
-        var checkboxes = document.getElementsByTagName('input');
-        for (var i = 0; i < checkboxes.length; i++) {
-            if (checkboxes[i].type == 'checkbox') {
-                checkboxes[i].checked = !checkboxes[i].checked;
-            }
-        }         
-    }
-</script> -->
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/tesseract.js') }}"></script>
 
@@ -159,18 +149,7 @@
     $(document).on('focusin', '.valor', function(){
         $(this).data('val', $(this).val().replace(/\./g, "").replace(",", "."));
     });
-
-    function criaMilhar(nStr) {
-        nStr += '';
-        var x = nStr.split('.');
-        var x1 = x[0];
-        var x2 = x.length > 1 ? '.' + x[1] : '';
-        var rgx = /(\d+)(\d{3})/;
-        while (rgx.test(x1)) {
-            x1 = x1.replace(rgx, '$1' + '.' + '$2');
-        }
-        return x1 + x2;
-    }
+    
 
     $(document).on('change', '.valor', function(){
         var prev = $(this).data('val');

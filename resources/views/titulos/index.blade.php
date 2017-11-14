@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+
+
 @section('content')
     <section class="content-header">
         <h1 class="pull-left">Titulos</h1>
@@ -19,5 +21,18 @@
             </div>
         </div>
     </div>
+    <style>
+        .content-wrapper {
+            @if ($estado == 'azul')
+                background-color: #ecf0f5;
+            @elseif ($estado == 'verde')
+                background-color: #92c594;
+            @elseif ($estado == 'amarelo')
+                background-color: #e8af53;
+            @elseif ($estado == 'vermelho')
+                background-color: #e27676;
+            @endif
+        }
+    </style>
 @endsection
 
