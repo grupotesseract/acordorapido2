@@ -99,7 +99,7 @@ class TituloDataTableModal extends DataTable
     {
         return [
             'selecionar' => ['name' => 'selecionar', 'title' => 'Marcar'],
-            'titulo' => ['name' => 'titulo', 'data' => 'titulo'],            
+            'titulo' => ['name' => 'titulo', 'data' => 'titulo'],
             'estado' => ['name' => 'estado', 'data' => 'estado'],
             'escola' => ['name' => 'empresa.nome', 'data' => 'empresa.nome'],
             //'pago' => ['name' => 'pago', 'data' => 'pago'],
