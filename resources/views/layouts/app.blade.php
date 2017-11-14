@@ -19,7 +19,7 @@
     @yield('css')
 </head>
 
-<body class="skin-blue sidebar-mini">
+<body class="skin-purple sidebar-mini">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment-with-locales.js"></script> 
@@ -145,11 +145,68 @@
                 prevText: 'Anterior'
 
             });
-            $('.escolherData').mask('00/00/0000');
+            
             $('.valor').mask('000.000.000.000.000,00', {reverse: true});
+            $('input[name=multadiariaporc]').mask('#.##0,00', {reverse: true});
+            $('input[name=multaporc]').mask('000.000.000.000.000,00', {reverse: true});
+            $('.escolherData').mask('00/00/0000');
+            $('#valoracordado').mask('000.000.000.000.000,00', {reverse: true});
 
         });
     };
+
+    
+    $(document).on('focusin', '.valor', function(){
+        $(this).data('val', $(this).val().replace(/\./g, "").replace(",", "."));
+    });
+
+    function criaMilhar(nStr) {
+        nStr += '';
+        var x = nStr.split('.');
+        var x1 = x[0];
+        var x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + '.' + '$2');
+        }
+        return x1 + x2;
+    }
+
+    $(document).on('change', '.valor', function(){
+        var prev = $(this).data('val');
+        var atual = $(this).val().replace(/\./g, "").replace(",", ".");
+        var diferenca = prev - atual;        
+
+        var valorAntigoUltimaParcela = $('.valor').last().val().replace(/\./g, "").replace(",", ".");
+        
+        
+        valorNovoUltimaParcela = (+valorAntigoUltimaParcela + +diferenca).toFixed(2);
+        valorNovoUltimaParcela = valorNovoUltimaParcela.toString().replace(".", ",");  
+
+        $('.valor').last().val(valorNovoUltimaParcela);
+
+        $('.valor').trigger('input');
+    });
+
+    var calculaParcelas = function () {
+        $(function() {        
+
+            var valor = $("input[name=valoracordado]").val(),
+                valor = valor.replace(/\./g, ""),
+                valor = valor.replace(",", "."),
+                num = $('.valor').length,
+                cadaParcela = (+valor/+num).toFixed(2);            
+            
+            $('.valor').each(function(i, obj) {
+                $(obj).val(cadaParcela.replace('.',','));  
+                $(obj).trigger('input');
+            });     
+
+
+
+        });
+
+    }
 
     $('#btnAdd').click(function() {
         $('#btnRemove').prop('disabled', false);
@@ -166,9 +223,9 @@
 
         $('#input' + num).after(newElem);
         $('#btnDel').attr('disabled', '');
-
-        $(this).trigger('mask-it');
+        
         calculaParcelas();       
+        handleMasks();        
 
 
     });
@@ -178,69 +235,24 @@
         var num = $('.clonedInput').length;
         if (num == 1) $('#btnRemove').attr('disabled', 'disabled');
         calculaParcelas();       
+        handleMasks();       
 
-    });
+    }); 
     
 
-    $(document).on('mask-it', function(){
+    $('input[name=valoracordado]').on('keyup', function() {        
+        calculaParcelas();       
+    });
+
+    $(document).on('mask-it', function() {
         handleMasks();
     }).trigger('mask-it');
 
-</script>
-
-<script>
-$(function() {
-    $(".escolherData").datepicker({
-        dateFormat: 'dd/mm/yy',
-        dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
-        dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
-        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
-        monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-        monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-        nextText: 'Próximo',
-        prevText: 'Anterior'
-
-    });
-    $('.escolherData').mask('00/00/0000');
-    $('.valor').mask('000.000.000.000.000,00', {reverse: true});
-
-
-});
-</script>
-
-<script>
-    
-    var calculaParcelas = function () {
-        $(function() {        
-
-            var valor = $("input[name=valoracordado]").val(),
-                valor = valor.replace(".", "");
-                valor = valor.replace(",", ".");
-                num = $('.valor').length,
-                cadaParcela = (+valor/+num).toFixed(2);            
-            
-            $('.valor').each(function(i, obj) {
-                $(obj).attr('value',cadaParcela.replace('.',','));                
-            });
-
-        });
-
-    }
-
-    $('input[name=valoracordado]').on('keypress', function() {        
+    $(document).ready(function() {
+        $(this).trigger('mask-it');
         calculaParcelas();       
     });
 
-    $(document).ready(function(){
-        $('.valor').mask('000.000.000.000.000,00', {reverse: true});
-        $('input[name=multadiariaporc]').mask('#.##0,00', {reverse: true});
-        $('input[name=multaporc]').mask('000.000.000.000.000,00', {reverse: true});
-        $('.escolherData').mask('00/00/0000');
-        $('#valoracordado').mask('000.000.000.000.000,00', {reverse: true});
-
-        calculaParcelas();       
-
-    });
 </script>
 
 

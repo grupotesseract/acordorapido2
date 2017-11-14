@@ -103,7 +103,7 @@ class TituloDataTableModal extends DataTable
             'aluno' => ['name' => 'cliente_id', 'data' => 'cliente.nome', 'searchable' => true],
             'estado' => ['name' => 'estado', 'data' => 'estado'],
             'escola' => ['name' => 'empresa.nome', 'data' => 'empresa.nome'],
-            'pago' => ['name' => 'pago', 'data' => 'pago'],
+            //'pago' => ['name' => 'pago', 'data' => 'pago'],
             'vencimento' => ['name' => 'vencimento', 'data' => 'vencimento'],
             'valor' => ['name' => 'valor', 'data' => 'valor'],
             'valordescontado' => ['name' => 'valordescontado', 'data' => 'valordescontado', 'title' => 'Valor com Desconto'],
