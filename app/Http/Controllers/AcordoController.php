@@ -14,9 +14,9 @@ use Auth;
 use Flash;
 use Response;
 use Illuminate\Http\Request;
+use App\Models\Titulo as Titulo;
 use App\Models\Cliente as Cliente;
 use App\Models\Empresa as Empresa;
-use App\Models\Titulo as Titulo;
 use App\DataTables\AcordoDataTable;
 use App\Repositories\AcordoRepository;
 use App\DataTables\TituloDataTableModal;
@@ -60,7 +60,6 @@ class AcordoController extends AppBaseController
     {
         $empresa_model = Empresa::find($empresa);
         $clientes = Titulo::where('empresa_id', $empresa)->pluck('cliente_id')->toArray();
-
 
         return $clienteDataTable->porCliente($clientes)->render('acordos.create_escolhealuno', ['empresa' => $empresa_model]);
     }
