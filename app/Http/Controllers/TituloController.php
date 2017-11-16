@@ -324,7 +324,6 @@ class TituloController extends AppBaseController
                     }
                 });
             });
-            
         } catch (\Exception $e) {
             \Session::flash('flash_message_error', true);
             \Session::flash('flash_message', 'Erro ao importar planilha. Por favor, verifique as informações da linha! '.$linha);
@@ -332,7 +331,6 @@ class TituloController extends AppBaseController
             return Redirect::to('/importacao/'.$estado);
             exit;
         }
-
 
         if ($estado == 'verde' or $estado == 'azul') {
             $this->tituloRepository->atualizaPagantes($estado, $empresa_id, $titulos_importados);

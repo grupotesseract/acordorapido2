@@ -66,7 +66,6 @@ Route::get('acordofinal/{aluno}/{empresa}', ['as' => 'acordofinal', 'uses' => 'A
 
 Route::get('escolhealuno/{empresa}', ['as' => 'escolhealuno', 'uses' => 'AcordoController@escolheAluno', 'middleware' => 'auth']);
 
-
 Route::resource('parcelamentos', 'ParcelamentoController');
 
 Route::resource('parcelamentos', 'ParcelamentoController');
