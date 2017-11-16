@@ -232,94 +232,107 @@ class TituloController extends AppBaseController
 
         $titulos_importados = [];
 
-        Excel::load($request->file('excel'), function ($reader) use ($estado,$empresa_id,$importacao_id,&$titulos_importados,$retorno,$importacao) {
-            $reader->each(function ($sheet) use ($estado,$empresa_id,$importacao_id,&$titulos_importados,$retorno,$importacao) {
-                if ($sheet->nome != '') {
-                    $cliente = Cliente::firstOrNew(['ra' => $sheet->ra]);
-                    $cliente->nome = $sheet->nome;
-                    $cliente->user_id = Auth::id();
-                    $cliente->turma = $sheet->turma;
-                    $cliente->periodo = $sheet->periodo;
-                    $cliente->responsavel = $sheet->responsavel;
+        $linha = 0;
 
-                    if ($estado == 'amarelo' or $estado == 'vermelho') {
-                        $cliente->negativado = true;
-                    } else {
-                        $cliente->negativado = false;
+        try {
+            Excel::load($request->file('excel'), function ($reader) use ($estado,$empresa_id,$importacao_id,&$titulos_importados,$retorno,$importacao, &$linha) {
+                $reader->each(function ($sheet) use ($estado,$empresa_id,$importacao_id,&$titulos_importados,$retorno,$importacao, &$linha) {
+                    if ($sheet->nome != '') {
+                        $linha++;
+                        $cliente = Cliente::firstOrNew(['ra' => $sheet->ra], ['celular' => $sheet->celular]);
+                        $cliente->nome = $sheet->nome;
+                        $cliente->user_id = Auth::id();
+                        $cliente->turma = $sheet->turma;
+                        $cliente->periodo = $sheet->periodo;
+                        $cliente->responsavel = $sheet->responsavel;
+
+                        if ($estado == 'amarelo' or $estado == 'vermelho') {
+                            $cliente->negativado = true;
+                        } else {
+                            $cliente->negativado = false;
+                        }
+
+                        if (! $sheet->celular or strlen($sheet->celular) == 0) {
+                            $importacao->temerro = true;
+                            $importacao->save();
+                        }
+
+                        $cliente->celular = $sheet->celular;
+
+                        if (! $sheet->celular or strlen($sheet->celular) == 0) {
+                            $importacao->temerro = true;
+                            $importacao->save();
+                        }
+
+                        $cliente->telefone = $sheet->telefone;
+                        $cliente->telefone2 = $sheet->telefone2;
+                        $cliente->celular2 = $sheet->celular2;
+
+                        if (! $sheet->ra or strlen($sheet->ra) == 0) {
+                            $importacao->temerro = true;
+                            $importacao->save();
+                        }
+
+                        $cliente->ra = $sheet->ra;
+                        $cliente->save();
+                        $cliente_id = $cliente->id;
+
+                        $titulo = Titulo::firstOrNew(['titulo' => $sheet->titulo, 'empresa_id' => $empresa_id]);
+                        $titulo->cliente_id = $cliente_id;
+                        $titulo->empresa_id = $empresa_id;
+                        $titulo->pago = false;
+
+                        $titulo->vencimento = $sheet->vencimento;
+                        $titulo->valor = $sheet->valor;
+
+                        if (! $sheet->titulo or strlen($sheet->titulo) == 0) {
+                            $importacao->temerro = true;
+                            $importacao->save();
+                        }
+
+                        $titulo->titulo = $sheet->titulo;
+                        $titulo->estado = $estado;
+                        $titulo->ano = $sheet->ano;
+                        $titulo->desconto = $sheet->desconto;
+                        $titulo->valordescontado = $sheet->valor_com_desconto;
+
+                        $titulo->save();
+                        $titulos_importados[] = $titulo->id;
+
+                        //criar registro na tabela pivot
+                        $titulo->importacoes()->attach($importacao_id);
+
+                        $vencimento = date('d-m-Y', strtotime(str_replace('-', '/', $titulo->vencimento)));
+
+                        $user_id = Auth::id();
+                        $escola = Empresa::find($empresa_id)->nome;
+
+                        if (count($this->avisoRepository->findWhere(['titulo_id'  => $titulo->id, 'estado' => $estado])->toArray()) == 0) {
+                            $this->avisoRepository->create(
+                                [
+                                    'tituloaviso' => $retorno['titulo'],
+                                    'texto'      => str_replace('[vencimento]', $vencimento, $retorno['mensagem']),
+                                    'user_id'    => Auth::id(),
+                                    'cliente_id' => $cliente_id,
+                                    'status'     => 0,
+                                    'estado'     => $estado,
+                                    'titulo_id'  => $titulo->id,
+                                ]
+
+                            );
+                        }
                     }
-
-                    if (! $sheet->celular or strlen($sheet->celular) == 0) {
-                        $importacao->temerro = true;
-                        $importacao->save();
-                    }
-
-                    $cliente->celular = $sheet->celular;
-
-                    if (! $sheet->celular or strlen($sheet->celular) == 0) {
-                        $importacao->temerro = true;
-                        $importacao->save();
-                    }
-
-                    $cliente->telefone = $sheet->telefone;
-                    $cliente->telefone2 = $sheet->telefone2;
-                    $cliente->celular2 = $sheet->celular2;
-
-                    if (! $sheet->ra or strlen($sheet->ra) == 0) {
-                        $importacao->temerro = true;
-                        $importacao->save();
-                    }
-
-                    $cliente->ra = $sheet->ra;
-                    $cliente->save();
-                    $cliente_id = $cliente->id;
-
-                    $titulo = Titulo::firstOrNew(['titulo' => $sheet->titulo, 'empresa_id' => $empresa_id]);
-                    $titulo->cliente_id = $cliente_id;
-                    $titulo->empresa_id = $empresa_id;
-                    $titulo->pago = false;
-
-                    $titulo->vencimento = $sheet->vencimento;
-                    $titulo->valor = $sheet->valor;
-
-                    if (! $sheet->titulo or strlen($sheet->titulo) == 0) {
-                        $importacao->temerro = true;
-                        $importacao->save();
-                    }
-
-                    $titulo->titulo = $sheet->titulo;
-                    $titulo->estado = $estado;
-                    $titulo->ano = $sheet->ano;
-                    $titulo->desconto = $sheet->desconto;
-                    $titulo->valordescontado = $sheet->valor_com_desconto;
-
-                    $titulo->save();
-                    $titulos_importados[] = $titulo->id;
-
-                    //criar registro na tabela pivot
-                    $titulo->importacoes()->attach($importacao_id);
-
-                    $vencimento = date('d-m-Y', strtotime(str_replace('-', '/', $titulo->vencimento)));
-
-                    $user_id = Auth::id();
-                    $escola = Empresa::find($empresa_id)->nome;
-
-                    if (count($this->avisoRepository->findWhere(['titulo_id'  => $titulo->id, 'estado' => $estado])->toArray()) == 0) {
-                        $this->avisoRepository->create(
-                            [
-                                'tituloaviso' => $retorno['titulo'],
-                                'texto'      => str_replace('[vencimento]', $vencimento, $retorno['mensagem']),
-                                'user_id'    => Auth::id(),
-                                'cliente_id' => $cliente_id,
-                                'status'     => 0,
-                                'estado'     => $estado,
-                                'titulo_id'  => $titulo->id,
-                            ]
-
-                        );
-                    }
-                }
+                });
             });
-        });
+            
+        } catch (\Exception $e) {
+            \Session::flash('flash_message_error', true);
+            \Session::flash('flash_message', 'Erro ao importar planilha. Por favor, verifique as informações da linha! '.$linha);
+
+            return Redirect::to('/importacao/'.$estado);
+            exit;
+        }
+
 
         if ($estado == 'verde' or $estado == 'azul') {
             $this->tituloRepository->atualizaPagantes($estado, $empresa_id, $titulos_importados);

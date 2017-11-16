@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+{!! Form::open(['route' => 'acordos.store']) !!}
 
     <section class="content-header">
         <h1>
@@ -53,8 +54,8 @@
                 
 
             <div class="box-body">                    
-                {!! Form::open(['route' => 'acordos.store']) !!}
-
+                    <input type="hidden" name="cliente_id" value="{{$aluno->id}}" />
+                    <input type="hidden" name="empresa_id" value="{{$empresa->id}}" />
                     @include('titulos.table')
 
             </div>
@@ -107,12 +108,12 @@
         <div class="box box-primary">
             <div class="box-body">                    
                 @include('acordos.observacao')
+                {!! Form::close() !!}
             </div>
         </div>
     </div>
 
     @include('acordos.modaltelefone')
     
-    {!! Form::close() !!}
 
 @endsection

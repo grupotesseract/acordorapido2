@@ -25,6 +25,7 @@ class CreateAcordosTable extends Migration
             $table->decimal('valoracordado', 10, 2);
             $table->decimal('valororiginal', 10, 2);
             $table->text('observacao');
+            $table->string('situacao');
             $table->integer('user_id')->unsigned();
             $table->integer('cliente_id')->unsigned();
             $table->integer('empresa_id')->unsigned();

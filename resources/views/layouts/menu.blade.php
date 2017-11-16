@@ -17,7 +17,7 @@
 @endability
 @ability('admin', 'gerenciar-usuarios')
 <li class="{{ Request::is('users*') ? 'active' : '' }} treeview">
-    <a href="#"><i class='glyphicon glyphicon-user'></i><span>Acessos</span><i class="fa fa-angle-left pull-right"></i></a>
+    <a href="#"><i class='glyphicon glyphicon-user'></i><span> Acessos</span><i class="fa fa-angle-left pull-right"></i></a>
     <ul class="treeview-menu">
         <li class="{{ Request::is('users*') ? 'active' : '' }}">
             <a href="{!! route('users.index') !!}"><i class="fa fa-edit"></i><span>Usuários</span></a>
@@ -117,4 +117,5 @@
     <a href="{!! route('acordos.index') !!}"><i class="fa fa-edit"></i><span>Acordos</span></a>
 </li>
 @endability
+
 

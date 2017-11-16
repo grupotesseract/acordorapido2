@@ -10,7 +10,7 @@
 		  
 
 	    	<label class="sr-only" for="inlineFormInputGroup">Valor</label>
-	    	<div class="input-group mb-2 mr-sm-2 mb-sm-0">
+	    	<div class="input-group mb-2 mr-sm-2 mb-sm-0" id='valor1'>
 	    		<span class="input-group-addon">
 	                <span class="glyphicon glyphicon-usd"></span>
 	            </span>			    

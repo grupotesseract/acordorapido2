@@ -24,15 +24,20 @@ use App\DataTables\ClienteDataTableModal;
 use App\DataTables\EmpresaDataTableModal;
 use App\Http\Requests\CreateAcordoRequest;
 use App\Http\Requests\UpdateAcordoRequest;
+use App\Repositories\ParcelamentoRepository;
+use \Carbon\Carbon as Carbon;
+
 
 class AcordoController extends AppBaseController
 {
     /** @var AcordoRepository */
     private $acordoRepository;
+    private $parcelamentoRepository;
 
-    public function __construct(AcordoRepository $acordoRepo)
+    public function __construct(AcordoRepository $acordoRepo, ParcelamentoRepository $parcelamentoRepo)
     {
         $this->acordoRepository = $acordoRepo;
+        $this->parcelamentoRepository = $parcelamentoRepo;
     }
 
     /**
@@ -77,6 +82,16 @@ class AcordoController extends AppBaseController
         $input = $request->all();
 
         $acordo = $this->acordoRepository->create($input);
+
+        foreach ($input['parcela'] as $key => $valor) {
+            $parcela = $this->parcelamentoRepository->create([
+                'numparcela' => $valor,
+                'dataparcela' => Carbon::createFromFormat('d/m/Y', $input['data'][$key]),
+                'situacao' => 'Pendente',
+                'valorparcela' => $input['valor'][$key],
+                'acordo_id' => $acordo->id
+            ]);
+        }
 
         Flash::success('Acordo salvo com sucesso.');
 
@@ -181,7 +196,7 @@ class AcordoController extends AppBaseController
 
         $acordo = $this->acordoRepository->update($request->all(), $id);
 
-        Flash::success('Acordo updated successfully.');
+        Flash::success('Acordo atualizado com sucesso');
 
         return redirect(route('acordos.index'));
     }
@@ -198,14 +213,14 @@ class AcordoController extends AppBaseController
         $acordo = $this->acordoRepository->findWithoutFail($id);
 
         if (empty($acordo)) {
-            Flash::error('Acordo not found');
+            Flash::error('Acordo não encontrado');
 
             return redirect(route('acordos.index'));
         }
 
         $this->acordoRepository->delete($id);
 
-        Flash::success('Acordo deleted successfully.');
+        Flash::success('Acordo excluído com sucesso.');
 
         return redirect(route('acordos.index'));
     }

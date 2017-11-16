@@ -89,4 +89,29 @@ class Acordo extends Model
     {
         return $this->belongsTo(\App\Models\Empresa::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     **/
+    public function parcelamentos()
+    {
+        return $this->hasMany(\App\Models\Parcelamento::class);
+    }
+
+    public function setValoracordadoAttribute($value)
+    {
+        $valorsemPonto = str_replace('.', '', $value);
+        $this->attributes['valoracordado'] = str_replace(',', '.', $valorsemPonto);
+    }
+
+    public function setValororiginalAttribute($value)
+    {
+        $valorsemPonto = str_replace('.', '', $value);
+        $this->attributes['valororiginal'] = str_replace(',', '.', $valorsemPonto);
+    }
+
+    public function getValororiginalAttribute($value)
+    {
+        return number_format($value, 2, ',', '.');
+    }
 }

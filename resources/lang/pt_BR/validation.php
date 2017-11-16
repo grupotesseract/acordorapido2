@@ -1,13 +1,5 @@
 <?php
 
-/*
- * Desenvolvedores:
- * Fernando Fernandes
- * Evandro Carreira
- * Renato Gomes
- *
- */
-
 return [
 
     /*
@@ -132,6 +124,9 @@ return [
         'ra' => 'RA',
         'cidade' => 'Cidade',
         'estado' => 'Estado',
+        'valoracordado' => 'Valor Acordado',
+        'valororiginal' => 'Valor Original',
+        'observacao' => 'Histórico do Contato',
     ],
 
 ];
