@@ -98,7 +98,7 @@ class TituloDataTableModal extends DataTable
     private function getColumns()
     {
         return [
-            'selecionar' => ['name' => 'selecionar', 'title' => 'Marcar'],
+            //'selecionar' => ['name' => 'selecionar', 'title' => 'Marcar'],
             'titulo' => ['name' => 'titulo', 'data' => 'titulo'],
             'estado' => ['name' => 'estado', 'data' => 'estado'],
             'escola' => ['name' => 'empresa.nome', 'data' => 'empresa.nome'],

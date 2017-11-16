@@ -287,7 +287,7 @@ $(document).ready(function () {
 
     $("#btn_lap").click(function () {
         vueltas++;
-        consola('<li class="list-group-item"><small>' + vueltas + '</small>     ' + hor.innerHTML + ":" + min.innerHTML + ":" + seg.innerHTML + '</li><input type="hidden" name="tempoligacao[]" value="' + hor.innerHTML + ":" + min.innerHTML + ":" + seg.innerHTML + '" />');
+        consola('<li class="list-group-item"><small>' + vueltas + '</small>     ' + hor.innerHTML + ":" + min.innerHTML + ":" + seg.innerHTML + '</li><input type="hidden" class="tempoLigacao" name="tempoligacao[]" value="' + hor.innerHTML + ":" + min.innerHTML + ":" + seg.innerHTML + '" />');
     });
 
     function consola(msg) {
@@ -298,6 +298,21 @@ $(document).ready(function () {
         $("#log").html("");
         vueltas = 0;
     });
+});
+
+$(document).on("click", ".enviarLigacao", function () {
+
+    var currentdate = new Date();
+    var datetime = currentdate.getDate() + "/" + (currentdate.getMonth() + 1) + "/" + currentdate.getFullYear() + "  " + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+    var tempoLigacao = $('.tempoLigacao').last().val();
+
+    $('#tabelaLigacoes').find('tbody').append('<tr><td>' + datetime + '</td><td>' + tempoLigacao + '</td></tr>');
+    $('#tabelaLigacoes').find('tbody').append('<input type="hidden" name="datahora[]" value= "' + datetime + '" />');
+    $('#tabelaLigacoes').find('tbody').append('<input type="hidden" name="duracao[]" value= "' + tempoLigacao + '" />');
+});
+
+$('#removeLigacao').on('click', function () {
+    $('#tabelaLigacoes').find('tbody').find('tr').last().remove();
 });
 
 /***/ }),
