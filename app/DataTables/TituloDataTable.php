@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\DataTables;
 
 use App\Models\Titulo;
