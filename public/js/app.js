@@ -303,12 +303,14 @@ $(document).ready(function () {
 $(document).on("click", ".enviarLigacao", function () {
 
     var currentdate = new Date();
-    var datetime = currentdate.getDate() + "/" + (currentdate.getMonth() + 1) + "/" + currentdate.getFullYear() + "  " + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+    var datetime = currentdate.getDate() + "/" + (currentdate.getMonth() + 1) + "/" + currentdate.getFullYear();
+    /*+ currentdate.getHours() + ":"  
+    + currentdate.getMinutes() + ":" 
+    + currentdate.getSeconds();*/
     var tempoLigacao = $('.tempoLigacao').last().val();
 
-    $('#tabelaLigacoes').find('tbody').append('<tr><td>' + datetime + '</td><td>' + tempoLigacao + '</td></tr>');
-    $('#tabelaLigacoes').find('tbody').append('<input type="hidden" name="datahora[]" value= "' + datetime + '" />');
-    $('#tabelaLigacoes').find('tbody').append('<input type="hidden" name="duracao[]" value= "' + tempoLigacao + '" />');
+    $('#tabelaLigacoes').find('tbody').append('<tr><td>' + datetime + '</td><td>' + tempoLigacao + '</td><td><input type="hidden" name="datahora[]" value= "' + datetime + '" /></td><td><input type="hidden" name="duracao[]" value= "' + tempoLigacao + '" /></td></tr>');
+    $('#tabelaLigacoes').find('tbody').append('');
 });
 
 $('#removeLigacao').on('click', function () {

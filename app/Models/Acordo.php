@@ -132,4 +132,5 @@ class Acordo extends Model
     {
         return number_format($value, 2, ',', '.');
     }
+
 }

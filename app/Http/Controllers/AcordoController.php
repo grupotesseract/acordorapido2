@@ -1,12 +1,6 @@
 <?php
 
-/*
- * Desenvolvedores:
- * Fernando Fernandes
- * Evandro Carreira
- * Renato Gomes
- *
- */
+//TO-DO - Limpar Controller e Concentrar métodos auxiliares nos repositorios!
 
 namespace App\Http\Controllers;
 
@@ -15,6 +9,8 @@ use Flash;
 use Response;
 use Illuminate\Http\Request;
 use App\Models\Titulo as Titulo;
+use App\Models\Parcelamento as Parcelamento;
+use App\Models\Ligacaoacordo as Ligacaoacordo;
 use App\Models\Cliente as Cliente;
 use App\Models\Empresa as Empresa;
 use App\DataTables\AcordoDataTable;
@@ -233,6 +229,41 @@ class AcordoController extends AppBaseController
 
         $acordo = $this->acordoRepository->update($request->all(), $id);
 
+        $input = $request->all();
+        foreach ($input['data'] as $key => $valor) {
+            if (empty($valor) OR empty($input['valor'][$key])) {
+
+                Flash::error('Favor, verificar se os campos de parcelamento foram preenchidos');
+                return redirect()->back()->withInput();
+                exit;
+            }
+        }
+        
+        $ligacoesDeletadas = ligacaoacordo::where('acordo_id',$acordo->id)->delete();        
+
+        $parcelamentoDeletados = Parcelamento::where('acordo_id',$acordo->id)->delete();
+
+        foreach ($input['parcela'] as $key => $valor) {
+            $parcela = $this->parcelamentoRepository->create([
+                'numparcela' => $valor,
+                'dataparcela' => Carbon::createFromFormat('d/m/Y', $input['data'][$key]),
+                'situacao' => 'Pendente',
+                'valorparcela' => $input['valor'][$key],
+                'acordo_id' => $acordo->id
+            ]);
+        }
+
+        foreach ($input['duracao'] as $key => $valor) {
+            $ligacao = $this->ligacaoacordoRepository->create([
+                'duracao' => $valor,
+                'datahora' => $input['datahora'][$key],                
+                'acordo_id' => $acordo->id
+            ]);
+        }
+        
+
+        $titulos = Titulo::where(['cliente_id' => $input['cliente_id']])->where(['empresa_id' => $input['empresa_id']])->update(['acordo' => 'Acordo Feito - Pendente Pagamento', 'acordo_id' => $acordo->id]);
+
         Flash::success('Acordo atualizado com sucesso');
 
         return redirect(route('acordos.index'));
@@ -256,6 +287,10 @@ class AcordoController extends AppBaseController
         }
 
         $titulosDeletados = Titulo::where('acordo_id',$acordo->id)->update(['acordo_id' => NULL, 'acordo' => NULL]);        
+
+        $ligacoesDeletadas = ligacaoacordo::where('acordo_id',$acordo->id)->delete();        
+
+        $parcelamentoDeletados = Parcelamento::where('acordo_id',$acordo->id)->delete();
 
         $this->acordoRepository->delete($id);
 

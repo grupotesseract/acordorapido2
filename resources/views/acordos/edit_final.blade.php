@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-{!! Form::open(['route' => 'acordos.store']) !!}
+
+{!! Form::model($acordo, ['route' => ['acordos.update', $acordo->id], 'method' => 'PATCH']) !!}
 
     <section class="content-header">
         <h1>
