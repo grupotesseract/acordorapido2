@@ -212,7 +212,9 @@ class Titulo extends Model
 
     public function setVencimentoAttribute($value)
     {
-        $this->attributes['vencimento'] = Carbon::parse($value)->format('Y-m-d');
+        //$this->attributes['vencimento'] = Carbon::parse($value)->format('Y-m-d');
+
+        $this->attributes['vencimento'] = Carbon::createFromFormat('d/m/Y', $value);
     }
 
     public function getValorAttribute($value)
