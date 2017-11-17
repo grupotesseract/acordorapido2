@@ -59,7 +59,6 @@ class TituloDataTableModal extends DataTable
      */
     public function query()
     {
-        
         $titulos = Titulo::query()->where('cliente_id', $this->aluno)->where('empresa_id', $this->empresa)->whereIn('estado', $this->estado)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
 
         return $this->applyScopes($titulos);
