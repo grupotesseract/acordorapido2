@@ -14,7 +14,6 @@ class CriarTabelaLigacoestelefonicasAcordo extends Migration
     public function up()
     {
         Schema::create('ligacaoacordos', function (Blueprint $table) {
-            
             $table->increments('id');
             $table->timestamps();
             $table->integer('acordo_id')->unsigned();
