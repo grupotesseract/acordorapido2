@@ -206,10 +206,9 @@ class Titulo extends Model
     }
 
     public function getVencimentoAttribute($value)
-    {        
+    {
         return Carbon::parse($value)->format('d/m/Y');
-    }   
-
+    }
 
     public function setVencimentoAttribute($value)
     {
