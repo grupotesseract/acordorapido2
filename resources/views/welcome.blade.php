@@ -20,7 +20,7 @@
             <img src="http://res.cloudinary.com/tesseract/image/upload/v1507566012/acordorapidoimagem.jpg">
         </div>
         <div class="width40-fixo borda-60 responsivo">
-            <h5>O Acordo Rápido é uma ferramenta inovadora de monitorar e recuperar créditos</h5>
+            <h5>O Acordo Rápido é uma Ferramenta Inovadora para Monitorar e Recuperar Créditos</h5>
             <p>
                 Alinhado com a modernidade e a tecnologia, o Acordo Rápido elimina o estresse da relação de cobrança, oferecendo total privacidade ao cliente.
             </p>
