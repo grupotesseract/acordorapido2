@@ -118,7 +118,7 @@ class Titulo extends Model
         $titulo = self::find($obj->id);
         $titulo->estado = 'verde';
         $titulo->save();
-        $user = $titulo->cliente->user;        
+        $user = $titulo->cliente->user;
     }
 
     /**
