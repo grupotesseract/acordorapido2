@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Flash;
 use Response;
+use Carbon\Carbon as Carbon;
 use Illuminate\Http\Request;
 use App\Models\Titulo as Titulo;
 use App\Models\Parcelamento as Parcelamento;
@@ -22,9 +23,7 @@ use App\Http\Requests\CreateAcordoRequest;
 use App\Http\Requests\UpdateAcordoRequest;
 use App\Repositories\ParcelamentoRepository;
 use App\Repositories\LigacaoacordoRepository;
-
 use \Carbon\Carbon as Carbon;
-
 
 class AcordoController extends AppBaseController
 {
@@ -103,7 +102,7 @@ class AcordoController extends AppBaseController
                 'dataparcela' => Carbon::createFromFormat('d/m/Y', $input['data'][$key]),
                 'situacao' => 'Pendente',
                 'valorparcela' => $input['valor'][$key],
-                'acordo_id' => $acordo->id
+                'acordo_id' => $acordo->id,
             ]);
         }
 

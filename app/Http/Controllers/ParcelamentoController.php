@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Flash;
+use Response;
+use Illuminate\Http\Request;
+use App\Repositories\ParcelamentoRepository;
 use App\Http\Requests\CreateParcelamentoRequest;
 use App\Http\Requests\UpdateParcelamentoRequest;
-use App\Repositories\ParcelamentoRepository;
-use App\Http\Controllers\AppBaseController;
-use Illuminate\Http\Request;
-use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
-use Response;
 
 class ParcelamentoController extends AppBaseController
 {
-    /** @var  ParcelamentoRepository */
+    /** @var ParcelamentoRepository */
     private $parcelamentoRepository;
 
     public function __construct(ParcelamentoRepository $parcelamentoRepo)

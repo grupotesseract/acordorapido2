@@ -6,38 +6,35 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use \Carbon\Carbon as Carbon;
 
+
 /**
- * Class Parcelamento
- * @package App\Models
+ * Class Parcelamento.
  * @version November 16, 2017, 8:24 pm BRST
  *
  * @property \App\Models\Acordo acordo
  * @property \Illuminate\Database\Eloquent\Collection importacaoTitulo
  * @property \Illuminate\Database\Eloquent\Collection permissionRole
- * @property integer numparcela
+ * @property int numparcela
  * @property decimal valorparcela
  * @property date dataparcela
  * @property string situacao
- * @property integer acordo_id
+ * @property int acordo_id
  */
 class Parcelamento extends Model
 {
-
     public $table = 'parcelamentos';
-    
+
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
 
-
     protected $dates = ['dataparcela'];
-
 
     public $fillable = [
         'numparcela',
         'valorparcela',
         'dataparcela',
         'situacao',
-        'acordo_id'
+        'acordo_id',
     ];
 
     /**
@@ -51,11 +48,11 @@ class Parcelamento extends Model
         'dataparcela' => 'date',
         'valorparcela' => 'float',
         'situacao' => 'string',
-        'acordo_id' => 'integer'
+        'acordo_id' => 'integer',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
@@ -64,7 +61,7 @@ class Parcelamento extends Model
         'dataparcela' => 'required',
         'valorparcela' => 'required',
         'situacao' => 'required',
-        'acordo_id' => 'required'        
+        'acordo_id' => 'required',
     ];
 
     /**

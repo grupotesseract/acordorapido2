@@ -17,12 +17,11 @@ class CriarTabelaParcelamentos extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->integer('numparcela');
-            $table->decimal('valorparcela',10,2);
+            $table->decimal('valorparcela', 10, 2);
             $table->date('dataparcela');
             $table->string('situacao');
             $table->integer('acordo_id')->unsigned();
             $table->foreign('acordo_id')->references('id')->on('acordos')->onDelete('cascade');
-
         });
     }
 
