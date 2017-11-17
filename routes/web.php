@@ -71,4 +71,3 @@ Route::resource('parcelamentos', 'ParcelamentoController');
 Route::resource('parcelamentos', 'ParcelamentoController');
 
 Route::resource('ligacaoacordos', 'LigacaoacordoController');
-

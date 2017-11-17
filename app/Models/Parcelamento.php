@@ -3,9 +3,7 @@
 namespace App\Models;
 
 use Eloquent as Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use \Carbon\Carbon as Carbon;
-
+use Carbon\Carbon as Carbon;
 
 /**
  * Class Parcelamento.
@@ -90,8 +88,7 @@ class Parcelamento extends Model
 
     public function getDataparcelaAttribute($value)
     {
-        
-        $data = Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');        
+        $data = Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
 
         return $data;
     }

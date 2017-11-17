@@ -6,14 +6,13 @@ use App\Models\Ligacaoacordo;
 use InfyOm\Generator\Common\BaseRepository;
 
 /**
- * Class LigacaoacordoRepository
- * @package App\Repositories
+ * Class LigacaoacordoRepository.
  * @version November 16, 2017, 11:49 pm BRST
  *
  * @method Ligacaoacordo findWithoutFail($id, $columns = ['*'])
  * @method Ligacaoacordo find($id, $columns = ['*'])
  * @method Ligacaoacordo first($columns = ['*'])
-*/
+ */
 class LigacaoacordoRepository extends BaseRepository
 {
     /**
@@ -22,11 +21,11 @@ class LigacaoacordoRepository extends BaseRepository
     protected $fieldSearchable = [
         'acordo_id',
         'duracao',
-        'datahora'
+        'datahora',
     ];
 
     /**
-     * Configure the Model
+     * Configure the Model.
      **/
     public function model()
     {
