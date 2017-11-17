@@ -8,7 +8,6 @@ use Auth;
 use Flash;
 use Response;
 use Carbon\Carbon as Carbon;
-use Carbon\Carbon as Carbon;
 use Illuminate\Http\Request;
 use App\Models\Titulo as Titulo;
 use App\Models\Cliente as Cliente;
