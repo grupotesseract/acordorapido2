@@ -8,10 +8,9 @@ use Auth;
 use Flash;
 use Response;
 use Carbon\Carbon as Carbon;
+use Carbon\Carbon as Carbon;
 use Illuminate\Http\Request;
 use App\Models\Titulo as Titulo;
-use App\Models\Parcelamento as Parcelamento;
-use App\Models\Ligacaoacordo as Ligacaoacordo;
 use App\Models\Cliente as Cliente;
 use App\Models\Empresa as Empresa;
 use App\DataTables\AcordoDataTable;
@@ -21,9 +20,10 @@ use App\DataTables\ClienteDataTableModal;
 use App\DataTables\EmpresaDataTableModal;
 use App\Http\Requests\CreateAcordoRequest;
 use App\Http\Requests\UpdateAcordoRequest;
+use App\Models\Parcelamento as Parcelamento;
 use App\Repositories\ParcelamentoRepository;
 use App\Repositories\LigacaoacordoRepository;
-use \Carbon\Carbon as Carbon;
+use App\Models\Ligacaoacordo as Ligacaoacordo;
 
 class AcordoController extends AppBaseController
 {
@@ -32,13 +32,11 @@ class AcordoController extends AppBaseController
     private $parcelamentoRepository;
     private $ligacaoacordoRepository;
 
-
     public function __construct(AcordoRepository $acordoRepo, ParcelamentoRepository $parcelamentoRepo, LigacaoacordoRepository $ligacaoacordoRepo)
     {
         $this->acordoRepository = $acordoRepo;
         $this->parcelamentoRepository = $parcelamentoRepo;
         $this->ligacaoacordoRepository = $ligacaoacordoRepo;
-
     }
 
     /**
@@ -79,16 +77,14 @@ class AcordoController extends AppBaseController
      */
     public function store(CreateAcordoRequest $request)
     {
-        
-
         $request->request->add(['user_id' => Auth::id()]);
         $request->request->add(['situacao' => 'Pendente']);
         $input = $request->all();
 
         foreach ($input['data'] as $key => $valor) {
-            if (empty($valor) OR empty($input['valor'][$key])) {
-
+            if (empty($valor) or empty($input['valor'][$key])) {
                 Flash::error('Favor, verificar se os campos de parcelamento foram preenchidos');
+
                 return redirect()->back()->withInput();
                 exit;
             }
@@ -109,14 +105,12 @@ class AcordoController extends AppBaseController
         foreach ($input['duracao'] as $key => $valor) {
             $ligacao = $this->ligacaoacordoRepository->create([
                 'duracao' => $valor,
-                'datahora' => $input['datahora'][$key],                
-                'acordo_id' => $acordo->id
+                'datahora' => $input['datahora'][$key],
+                'acordo_id' => $acordo->id,
             ]);
         }
-        
 
         $titulos = Titulo::where(['cliente_id' => $input['cliente_id']])->where(['empresa_id' => $input['empresa_id']])->update(['acordo' => 'Acordo Feito - Pendente Pagamento', 'acordo_id' => $acordo->id]);
-
 
         Flash::success('Acordo salvo com sucesso.');
 
@@ -190,8 +184,7 @@ class AcordoController extends AppBaseController
      * @return Response
      */
     public function edit(TituloDataTableModal $titulosDataTable, $id)
-    {   
-
+    {
         $acordo = $this->acordoRepository->findWithoutFail($id);
         $aluno = $acordo->cliente;
         $empresa = $acordo->empresa;
@@ -204,7 +197,7 @@ class AcordoController extends AppBaseController
 
             return redirect(route('acordos.index'));
         }
-        
+
         return $titulosDataTable->porAluno($aluno->id)->porEstado(['amarelo'])->porEmpresa($empresa->id)->render('acordos.edit_final', ['aluno' => $aluno, 'empresa' => $empresa, 'acordo' => $acordo, 'parcelas' => $parcelas, 'ligacoes' => $ligacoes]);
     }
 
@@ -230,17 +223,17 @@ class AcordoController extends AppBaseController
 
         $input = $request->all();
         foreach ($input['data'] as $key => $valor) {
-            if (empty($valor) OR empty($input['valor'][$key])) {
-
+            if (empty($valor) or empty($input['valor'][$key])) {
                 Flash::error('Favor, verificar se os campos de parcelamento foram preenchidos');
+
                 return redirect()->back()->withInput();
                 exit;
             }
         }
-        
-        $ligacoesDeletadas = ligacaoacordo::where('acordo_id',$acordo->id)->delete();        
 
-        $parcelamentoDeletados = Parcelamento::where('acordo_id',$acordo->id)->delete();
+        $ligacoesDeletadas = ligacaoacordo::where('acordo_id', $acordo->id)->delete();
+
+        $parcelamentoDeletados = Parcelamento::where('acordo_id', $acordo->id)->delete();
 
         foreach ($input['parcela'] as $key => $valor) {
             $parcela = $this->parcelamentoRepository->create([
@@ -248,18 +241,17 @@ class AcordoController extends AppBaseController
                 'dataparcela' => Carbon::createFromFormat('d/m/Y', $input['data'][$key]),
                 'situacao' => 'Pendente',
                 'valorparcela' => $input['valor'][$key],
-                'acordo_id' => $acordo->id
+                'acordo_id' => $acordo->id,
             ]);
         }
 
         foreach ($input['duracao'] as $key => $valor) {
             $ligacao = $this->ligacaoacordoRepository->create([
                 'duracao' => $valor,
-                'datahora' => $input['datahora'][$key],                
-                'acordo_id' => $acordo->id
+                'datahora' => $input['datahora'][$key],
+                'acordo_id' => $acordo->id,
             ]);
         }
-        
 
         $titulos = Titulo::where(['cliente_id' => $input['cliente_id']])->where(['empresa_id' => $input['empresa_id']])->update(['acordo' => 'Acordo Feito - Pendente Pagamento', 'acordo_id' => $acordo->id]);
 
@@ -285,11 +277,11 @@ class AcordoController extends AppBaseController
             return redirect(route('acordos.index'));
         }
 
-        $titulosDeletados = Titulo::where('acordo_id',$acordo->id)->update(['acordo_id' => NULL, 'acordo' => NULL]);        
+        $titulosDeletados = Titulo::where('acordo_id', $acordo->id)->update(['acordo_id' => null, 'acordo' => null]);
 
-        $ligacoesDeletadas = ligacaoacordo::where('acordo_id',$acordo->id)->delete();        
+        $ligacoesDeletadas = ligacaoacordo::where('acordo_id', $acordo->id)->delete();
 
-        $parcelamentoDeletados = Parcelamento::where('acordo_id',$acordo->id)->delete();
+        $parcelamentoDeletados = Parcelamento::where('acordo_id', $acordo->id)->delete();
 
         $this->acordoRepository->delete($id);
 
