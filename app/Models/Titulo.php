@@ -211,10 +211,8 @@ class Titulo extends Model
     }
 
     public function setVencimentoAttribute($value)
-    {       
-
+    {
         $this->attributes['vencimento'] = Carbon::parse($value)->format('Y-m-d');
-
     }
 
     public function getValorAttribute($value)
