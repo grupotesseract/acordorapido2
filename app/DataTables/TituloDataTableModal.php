@@ -32,6 +32,13 @@ class TituloDataTableModal extends DataTable
         return $this;
     }
 
+    public function porEmpresa($empresa)
+    {
+        $this->empresa = $empresa;
+
+        return $this;
+    }
+
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -52,11 +59,8 @@ class TituloDataTableModal extends DataTable
      */
     public function query()
     {
-        /*$titulos = Titulo::query()->where('estado', $this->estado)->with('empresa')->with('cliente')->with(['avisos.avisosenviados' => function ($query) {
-            $query->where('status', '>=', 1)->with('user');
-        }]);*/
-
-        $titulos = Titulo::query()->where('cliente_id', $this->aluno)->whereIn('estado', $this->estado)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
+        
+        $titulos = Titulo::query()->where('cliente_id', $this->aluno)->where('empresa_id', $this->empresa)->whereIn('estado', $this->estado)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
 
         return $this->applyScopes($titulos);
     }

@@ -36,6 +36,7 @@ class Acordo extends Model
         'valoracordado',
         'valororiginal',
         'observacao',
+        'situacao',
         'user_id',
         'cliente_id',
         'empresa_id',
@@ -48,6 +49,7 @@ class Acordo extends Model
      */
     protected $casts = [
         'observacao' => 'string',
+        'situacao' => 'string',
         'user_id' => 'integer',
         'cliente_id' => 'integer',
         'empresa_id' => 'integer',
@@ -96,6 +98,22 @@ class Acordo extends Model
     public function parcelamentos()
     {
         return $this->hasMany(\App\Models\Parcelamento::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     **/
+    public function titulos()
+    {
+        return $this->hasMany(\App\Models\Titulo::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany
+     **/
+    public function ligacaoacordos()
+    {
+        return $this->hasMany(\App\Models\Ligacaoacordo::class);
     }
 
     public function setValoracordadoAttribute($value)

@@ -9,7 +9,7 @@
     {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', [
         'type' => 'submit',
         'class' => 'btn btn-danger btn-xs',
-        'onclick' => "return confirm('Are you sure?')"
+        'onclick' => "return confirm('Tem certeza que deseja excluir este acordo? Os títulos associados perderão a associação com este acordo!')"
     ]) !!}
 </div>
 {!! Form::close() !!}

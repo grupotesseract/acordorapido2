@@ -312,7 +312,7 @@ $(document).on("click", ".enviarLigacao", function () {
 });
 
 $('#removeLigacao').on('click', function () {
-    $('#tabelaLigacoes').find('tbody').find('tr').last().remove();
+    $('#tabelaLigacoes').find('tbody').find('tr').first().remove();
 });
 
 /***/ }),

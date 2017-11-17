@@ -36,6 +36,8 @@ class Titulo extends Model
         'desconto',
         'valordescontado',
         'importacao_id',
+        'acordo',
+        'acordo_id',
     ];
 
     /**
@@ -51,6 +53,7 @@ class Titulo extends Model
         'pago' => 'boolean',
         'vencimento' => 'date',
         'titulo' => 'string',
+        'acordo' => 'string',
         'importacao_id' => 'integer',
         'ano' => 'integer',
         'desconto' => 'float',
@@ -85,6 +88,14 @@ class Titulo extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      **/
+    public function acordo()
+    {
+        return $this->belongsTo(\App\Models\Acordo::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     **/
     public function importacoes()
     {
         return $this->belongsToMany(\App\Models\Importacao::class);
@@ -101,15 +112,13 @@ class Titulo extends Model
     /**
      * Atribui pago para todos os que não foram importados no módulo Verde.
      */
+    //TO-DO: DÁ PRA APAGAR ESSE MÉTODO
     public function ficaPago($obj)
     {
         $titulo = self::find($obj->id);
         $titulo->estado = 'verde';
         $titulo->save();
-
-        $user = $titulo->cliente->user;
-        // Envia o SMS
-        // @todo
+        $user = $titulo->cliente->user;        
     }
 
     /**

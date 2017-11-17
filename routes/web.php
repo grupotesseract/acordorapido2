@@ -70,3 +70,5 @@ Route::get('escolhealuno/{empresa}', ['as' => 'escolhealuno', 'uses' => 'AcordoC
 Route::resource('parcelamentos', 'ParcelamentoController');
 
 Route::resource('parcelamentos', 'ParcelamentoController');
+
+Route::resource('ligacaoacordos', 'LigacaoacordoController');

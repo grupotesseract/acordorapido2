@@ -9,7 +9,11 @@
   <label for="sel1">Escolha a escola:</label>
   <select class="form-control" name="empresa_id" id="escola">
     @forelse($escolas as $escola)
-      <option value="{{$escola->id}}" {{$escola->id == $modeloAviso->empresa_id? 'selected':''}}>{{$escola->nome}}</option>
+      @if (isset($modeloAviso))
+        <option value="{{$escola->id}}" {{$escola->id == $modeloAviso->empresa_id? 'selected':''}}>{{$escola->nome}}</option>
+      @else
+        <option value="{{$escola->id}}">{{$escola->nome}}</option>
+      @endif
     @empty 
       <p>Sem escolas cadastradas</p>
     @endforelse
@@ -19,7 +23,12 @@
 <div class="form-group col-sm-6">
   <label for="tipo">Escolha a qual módulo a mensagem será enviada</label>  
 
-  {!! Form::select('tipo', ['Nenhum' => 'Nenhum', 'Azul' => 'Azul', 'Verde' => 'Verde', 'Amarelo' => 'Amarelo', 'Vermelho' => 'Vermelho'], $modeloAviso->tipo, ['class' => "form-control"]) !!}
+      @if (isset($modeloAviso))
+        {!! Form::select('tipo', ['Nenhum' => 'Nenhum', 'Azul' => 'Azul', 'Verde' => 'Verde', 'Amarelo' => 'Amarelo', 'Vermelho' => 'Vermelho'], $modeloAviso->tipo, ['class' => "form-control"]) !!}
+      @else
+        {!! Form::select('tipo', ['Nenhum' => 'Nenhum', 'Azul' => 'Azul', 'Verde' => 'Verde', 'Amarelo' => 'Amarelo', 'Vermelho' => 'Vermelho'], null, ['class' => "form-control"]) !!}
+
+      @endif
 </div>
 
 <!-- Titulo Field -->

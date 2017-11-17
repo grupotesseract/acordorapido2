@@ -25,6 +25,8 @@ use App\DataTables\EmpresaDataTableModal;
 use App\Http\Requests\CreateAcordoRequest;
 use App\Http\Requests\UpdateAcordoRequest;
 use App\Repositories\ParcelamentoRepository;
+use App\Repositories\LigacaoacordoRepository;
+
 use \Carbon\Carbon as Carbon;
 
 
@@ -33,11 +35,15 @@ class AcordoController extends AppBaseController
     /** @var AcordoRepository */
     private $acordoRepository;
     private $parcelamentoRepository;
+    private $ligacaoacordoRepository;
 
-    public function __construct(AcordoRepository $acordoRepo, ParcelamentoRepository $parcelamentoRepo)
+
+    public function __construct(AcordoRepository $acordoRepo, ParcelamentoRepository $parcelamentoRepo, LigacaoacordoRepository $ligacaoacordoRepo)
     {
         $this->acordoRepository = $acordoRepo;
         $this->parcelamentoRepository = $parcelamentoRepo;
+        $this->ligacaoacordoRepository = $ligacaoacordoRepo;
+
     }
 
     /**
@@ -78,8 +84,20 @@ class AcordoController extends AppBaseController
      */
     public function store(CreateAcordoRequest $request)
     {
+        
+
         $request->request->add(['user_id' => Auth::id()]);
+        $request->request->add(['situacao' => 'Pendente']);
         $input = $request->all();
+
+        foreach ($input['data'] as $key => $valor) {
+            if (empty($valor) OR empty($input['valor'][$key])) {
+
+                Flash::error('Favor, verificar se os campos de parcelamento foram preenchidos');
+                return redirect()->back()->withInput();
+                exit;
+            }
+        }
 
         $acordo = $this->acordoRepository->create($input);
 
@@ -92,6 +110,18 @@ class AcordoController extends AppBaseController
                 'acordo_id' => $acordo->id
             ]);
         }
+
+        foreach ($input['duracao'] as $key => $valor) {
+            $ligacao = $this->ligacaoacordoRepository->create([
+                'duracao' => $valor,
+                'datahora' => $input['datahora'][$key],                
+                'acordo_id' => $acordo->id
+            ]);
+        }
+        
+
+        $titulos = Titulo::where(['cliente_id' => $input['cliente_id']])->where(['empresa_id' => $input['empresa_id']])->update(['acordo' => 'Acordo Feito - Pendente Pagamento', 'acordo_id' => $acordo->id]);
+
 
         Flash::success('Acordo salvo com sucesso.');
 
@@ -128,12 +158,13 @@ class AcordoController extends AppBaseController
     {
         $aluno = Cliente::find($aluno);
         $empresa = Empresa::find($empresa);
-        $titulos = $aluno->titulos;
+
+        $titulos = Titulo::where(['cliente_id' => $aluno->id])->where(['empresa_id' => $empresa->id])->get();
 
         //TO-DO: passar porcentagem do honorário!
         $valorTotalDivida = $this->acordoRepository->calculaValorDivida($empresa, $titulos);
 
-        return $titulosDataTable->porAluno($aluno->id)->porEstado(['amarelo'])->render('acordos.create_final', ['aluno' => $aluno, 'titulos' => $titulos, 'empresa' => $empresa, 'valorTotalDivida' => $valorTotalDivida]);
+        return $titulosDataTable->porAluno($aluno->id)->porEmpresa($empresa->id)->porEstado(['amarelo'])->render('acordos.create_final', ['aluno' => $aluno, 'titulos' => $titulos, 'empresa' => $empresa, 'valorTotalDivida' => $valorTotalDivida]);
     }
 
     /**
@@ -163,17 +194,23 @@ class AcordoController extends AppBaseController
      *
      * @return Response
      */
-    public function edit($id)
-    {
+    public function edit(TituloDataTableModal $titulosDataTable, $id)
+    {   
+
         $acordo = $this->acordoRepository->findWithoutFail($id);
+        $aluno = $acordo->cliente;
+        $empresa = $acordo->empresa;
+        $parcelas = $acordo->parcelamentos;
+        $ligacoes = $acordo->ligacaoacordos;
+        $titulos = Titulo::where(['cliente_id' => $aluno->id])->where(['empresa_id' => $empresa->id])->get();
 
         if (empty($acordo)) {
-            Flash::error('Acordo not found');
+            Flash::error('Acordo não encontrado');
 
             return redirect(route('acordos.index'));
         }
-
-        return view('acordos.edit')->with('acordo', $acordo);
+        
+        return $titulosDataTable->porAluno($aluno->id)->porEstado(['amarelo'])->porEmpresa($empresa->id)->render('acordos.edit_final', ['aluno' => $aluno, 'empresa' => $empresa, 'acordo' => $acordo, 'parcelas' => $parcelas, 'ligacoes' => $ligacoes]);
     }
 
     /**
@@ -217,6 +254,8 @@ class AcordoController extends AppBaseController
 
             return redirect(route('acordos.index'));
         }
+
+        $titulosDeletados = Titulo::where('acordo_id',$acordo->id)->update(['acordo_id' => NULL, 'acordo' => NULL]);        
 
         $this->acordoRepository->delete($id);
 

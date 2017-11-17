@@ -5,7 +5,7 @@
 
     <section class="content-header">
         <h1>
-            Passo 3/3 - Assinalar Títulos a Serem Negociados e Inserir Acordo
+            Módulo de Negociação - Editar Acordo
         </h1>
     </section>
 
@@ -56,7 +56,6 @@
             <div class="box-body">                    
                     <input type="hidden" name="cliente_id" value="{{$aluno->id}}" />
                     <input type="hidden" name="empresa_id" value="{{$empresa->id}}" />
-                    
                     @include('titulos.table')
 
             </div>
