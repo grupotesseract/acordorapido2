@@ -23,7 +23,6 @@ use App\Http\Requests\CreateAcordoRequest;
 use App\Http\Requests\UpdateAcordoRequest;
 use App\Repositories\ParcelamentoRepository;
 use App\Repositories\LigacaoacordoRepository;
-use \Carbon\Carbon as Carbon;
 
 class AcordoController extends AppBaseController
 {
