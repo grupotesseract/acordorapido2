@@ -10,13 +10,13 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Flash;
 use Response;
 use App\DataTables\ClienteDataTable;
 use App\Repositories\ClienteRepository;
 use App\Http\Requests\CreateClienteRequest;
 use App\Http\Requests\UpdateClienteRequest;
-use Auth;
 
 class ClienteController extends AppBaseController
 {
@@ -61,7 +61,7 @@ class ClienteController extends AppBaseController
         $negativado = isset($request->negativado) ? true : false;
         $request->request->add(['negativado' => $negativado]);
         $request->request->add(['user_id' => Auth::id()]);
-        
+
         $input = $request->all();
 
         $cliente = $this->clienteRepository->create($input);

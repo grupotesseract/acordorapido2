@@ -16,7 +16,7 @@ class CreateCamposClientes extends Migration
         Schema::table('clientes', function (Blueprint $table) {
             $table->string('email')->nullable();
             $table->string('curso')->nullable();
-            $table->string('serie')->nullable();            
+            $table->string('serie')->nullable();
         });
     }
 
@@ -30,7 +30,7 @@ class CreateCamposClientes extends Migration
         Schema::table('clientes', function (Blueprint $table) {
             $table->dropColumn('email');
             $table->dropColumn('curso');
-            $table->dropColumn('serie');            
+            $table->dropColumn('serie');
         });
     }
 }
