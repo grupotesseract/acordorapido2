@@ -87,7 +87,7 @@ class ModeloAviso extends Model
 
     public function getTituloAttribute($value)
     {
-        $titulo = (!is_null($value)) ? $value : '';
+        $titulo = (! is_null($value)) ? $value : '';
 
         return $titulo;
     }
