@@ -99,7 +99,7 @@ var handleMasks = function handleMasks() {
         });
 
         $('.valor').mask('000.000.000.000.000,00', { reverse: true });
-        $('input[name=multadiariaporc]').mask('#.##0,00', { reverse: true });
+        $('input[name=multadiariaporc]').mask('#.##0,000', { reverse: true });
         $('input[name=multaporc]').mask('000.000.000.000.000,00', { reverse: true });
         $('.escolherData').mask('00/00/0000');
         $('#valoracordado').mask('000.000.000.000.000,00', { reverse: true });
@@ -310,7 +310,6 @@ $(document).on("click", ".enviarLigacao", function () {
     var tempoLigacao = $('.tempoLigacao').last().val();
 
     $('#tabelaLigacoes').find('tbody').append('<tr><td>' + datetime + '</td><td>' + tempoLigacao + '</td><td><input type="hidden" name="datahora[]" value= "' + datetime + '" /></td><td><input type="hidden" name="duracao[]" value= "' + tempoLigacao + '" /></td></tr>');
-    $('#tabelaLigacoes').find('tbody').append('');
 });
 
 $('#removeLigacao').on('click', function () {

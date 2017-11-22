@@ -245,6 +245,8 @@ class TituloController extends AppBaseController
                         $cliente->turma = $sheet->turma;
                         $cliente->periodo = $sheet->periodo;
                         $cliente->responsavel = $sheet->responsavel;
+                        $cliente->serie = $sheet->serie;
+                        $cliente->email = $sheet->email;
 
                         if ($estado == 'amarelo' or $estado == 'vermelho') {
                             $cliente->negativado = true;
@@ -307,11 +309,16 @@ class TituloController extends AppBaseController
                         $user_id = Auth::id();
                         $escola = Empresa::find($empresa_id)->nome;
 
+                        $mensagem = str_replace('[vencimento]', $vencimento, $retorno['mensagem']);
+                        $mensagem = str_replace('[nome]', $cliente->nome, $mensagem);
+
+                        $titulo_mensagem = $retorno['titulo'];
+
                         if (count($this->avisoRepository->findWhere(['titulo_id'  => $titulo->id, 'estado' => $estado])->toArray()) == 0) {
                             $this->avisoRepository->create(
                                 [
-                                    'tituloaviso' => $retorno['titulo'],
-                                    'texto'      => str_replace('[vencimento]', $vencimento, $retorno['mensagem']),
+                                    'tituloaviso' => $titulo_mensagem,
+                                    'texto'      => $mensagem,
                                     'user_id'    => Auth::id(),
                                     'cliente_id' => $cliente_id,
                                     'status'     => 0,

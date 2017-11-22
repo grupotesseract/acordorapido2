@@ -65,6 +65,8 @@ class Empresa extends Model
         'nome' => 'required',
         'cidade' => 'required',
         'estado' => 'required',
+        'multaporc' => 'required',
+        'multadiariaporc' => 'required',
     ];
 
     /**

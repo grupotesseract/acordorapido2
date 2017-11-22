@@ -13,7 +13,7 @@ var handleMasks = function handleMasks() {
         });
 
         $('.valor').mask('000.000.000.000.000,00', { reverse: true });
-        $('input[name=multadiariaporc]').mask('#.##0,00', { reverse: true });
+        $('input[name=multadiariaporc]').mask('#.##0,000', { reverse: true });
         $('input[name=multaporc]').mask('000.000.000.000.000,00', { reverse: true });
         $('.escolherData').mask('00/00/0000');
         $('#valoracordado').mask('000.000.000.000.000,00', { reverse: true });

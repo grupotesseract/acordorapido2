@@ -79,4 +79,6 @@ class AvisoRepository extends BaseRepository
 
         return $result->getStatusCode();
     }
+
+    
 }
