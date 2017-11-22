@@ -48,7 +48,7 @@ class Cliente extends Model
         'negativado',
         'email',
         'curso',
-        'serie'
+        'serie',
     ];
 
     /**
