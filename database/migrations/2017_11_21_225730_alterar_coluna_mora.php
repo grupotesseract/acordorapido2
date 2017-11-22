@@ -14,7 +14,7 @@ class AlterarColunaMora extends Migration
     public function up()
     {
         Schema::table('empresas', function (Blueprint $table) {
-            $table->decimal('multadiariaporc', 10, 3)->nullable()->change();       
+            $table->decimal('multadiariaporc', 10, 3)->nullable()->change();
         });
     }
 
@@ -26,7 +26,7 @@ class AlterarColunaMora extends Migration
     public function down()
     {
         Schema::table('empresas', function (Blueprint $table) {
-            $table->decimal('multadiariaporc', 10, 2)->nullable()->change();       
+            $table->decimal('multadiariaporc', 10, 2)->nullable()->change();
         });
     }
 }
