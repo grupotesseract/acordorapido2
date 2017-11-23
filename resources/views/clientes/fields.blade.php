@@ -11,6 +11,24 @@
     {!! Form::text('turma', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- Email Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('email', 'Email:') !!}
+    {!! Form::email('email', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Série Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('serie', 'Série:') !!}
+    {!! Form::text('serie', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Turma Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('turma', 'Turma:') !!}
+    {!! Form::text('turma', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Periodo Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('periodo', 'Periodo:') !!}
@@ -56,7 +74,7 @@
 <!-- Negativado Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('negativado', 'Negativado:') !!}
-    {!! Form::checkbox('negativado', 'value', $cliente->negativado) !!}
+    {!! Form::checkbox('negativado', 'negativado', (isset($cliente->negativado) AND $cliente->negativado == true) ?? false ) !!}
 </div>
 
 <!-- Submit Field -->

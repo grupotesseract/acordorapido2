@@ -10,6 +10,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Flash;
 use Response;
 use App\DataTables\ClienteDataTable;
@@ -57,6 +58,10 @@ class ClienteController extends AppBaseController
      */
     public function store(CreateClienteRequest $request)
     {
+        $negativado = isset($request->negativado) ? true : false;
+        $request->request->add(['negativado' => $negativado]);
+        $request->request->add(['user_id' => Auth::id()]);
+
         $input = $request->all();
 
         $cliente = $this->clienteRepository->create($input);
@@ -138,6 +143,8 @@ class ClienteController extends AppBaseController
             return redirect(route('alunos.index'));
         }
 
+        $negativado = isset($request->negativado) ? true : false;
+        $request->request->add(['negativado' => $negativado]);
         $cliente = $this->clienteRepository->update($request->all(), $id);
 
         Flash::success('Cliente atualizado com sucesso.');

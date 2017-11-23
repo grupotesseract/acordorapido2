@@ -46,6 +46,9 @@ class Cliente extends Model
         'celular2',
         'ra',
         'negativado',
+        'email',
+        'curso',
+        'serie',
     ];
 
     /**
@@ -75,8 +78,6 @@ class Cliente extends Model
      */
     public static $rules = [
         'nome' => 'required',
-        'turma' => 'required',
-        'periodo' => 'required',
         'responsavel' => 'required',
         'ra' => 'required',
     ];
