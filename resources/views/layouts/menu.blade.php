@@ -37,7 +37,7 @@
         <li class="{{ Request::is('importacao/verde') ? 'active' : '' }}"><a href="{{url('importacao/verde')}}"><label class="label label-modulo-verde"> <span aria-hidden="true" class="glyphicon glyphicon-earphone"></span></label> Recuperação</a></li>
         @endability
         @ability('admin', 'importar-planilhas-amarelo')
-        <li class="{{ Request::is('importacao/amarelo') ? 'active' : '' }}"><a href="{{url('importacao/amarelo')}}"><label class="label label-modulo-amarelo"> <span aria-hidden="true" class="glyphicon glyphicon-phone-alt"></span></label> Intensivo</a></li>
+        <li class="{{ Request::is('importacao/amarelo') ? 'active' : '' }}"><a href="{{url('importacao/amarelo')}}"><label class="label label-modulo-amarelo"> <span aria-hidden="true" class="glyphicon glyphicon-phone-alt"></span></label> Intensiva</a></li>
         @endability
         @ability('admin', 'importar-planilhas-vermelho')
         <li class="{{ Request::is('importacao/vermelho') ? 'active' : '' }}"><a href="{{url('importacao/vermelho')}}"><label class="label label-modulo-vermelho"> <span aria-hidden="true" class="glyphicon glyphicon-alert"></span></label> Cobrança</a></li>
@@ -57,7 +57,7 @@
         <li><a href="{{url('titulos/modulo/verde')}}"><label class="label label-modulo-verde"> <span aria-hidden="true" class="glyphicon glyphicon-earphone"></span></label> Recuperação</a></li>
         @endability
         @ability('admin', 'visualizar-modulo-amarelo')
-        <li><a href="{{url('titulos/modulo/amarelo')}}"><label class="label label-modulo-amarelo"> <span aria-hidden="true" class="glyphicon glyphicon-phone-alt"></span></label> Intensivo</a></li>
+        <li><a href="{{url('titulos/modulo/amarelo')}}"><label class="label label-modulo-amarelo"> <span aria-hidden="true" class="glyphicon glyphicon-phone-alt"></span></label> Intensiva</a></li>
         @endability
         @ability('admin', 'visualizar-modulo-vermelho')
         <li><a href="{{url('titulos/modulo/vermelho')}}"><label class="label label-modulo-vermelho"> <span aria-hidden="true" class="glyphicon glyphicon-alert"></span></label> Cobrança</a></li>

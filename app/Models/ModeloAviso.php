@@ -84,4 +84,11 @@ class ModeloAviso extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function getTituloAttribute($value)
+    {
+        $titulo = (! is_null($value)) ? $value : '';
+
+        return $titulo;
+    }
 }

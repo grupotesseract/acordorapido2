@@ -127,6 +127,8 @@ return [
         'valoracordado' => 'Valor Acordado',
         'valororiginal' => 'Valor Original',
         'observacao' => 'Histórico do Contato',
+        'multaporc' => 'Multa após Vencimento',
+        'multadiariaporc' => 'Multa diária após Vencimento',
     ],
 
 ];

@@ -20,9 +20,7 @@
                     </div>
                     <div class="box-body">      
                         <p>Cidade: {{$empresa->cidade}} </p>
-                        <p>Estado: {{$empresa->estado}}</p>              
-                        <p>Multa após vencimento: {{$empresa->multaporc}}% </p>
-                        <p>Mora (juros diários sobre o valor acumulado): {{$empresa->multadiariaporc}}%</p>
+                        <p>Estado: {{$empresa->estado}}</p>
                     </div>
 
                 </div>          
@@ -35,8 +33,8 @@
                         <h3 class="box-title">{{$aluno->nome}}</h3>
                     </div>
                     <div class="box-body">      
-                        <p>Turma: {{$aluno->turma}} </p>
-                        <p>Período: {{$aluno->periodo}}</p>              
+                        <p>Série: {{$aluno->serie}} </p>
+                        <p>Email: {{$aluno->email}}</p>              
                         <p>Responsável: {{$aluno->responsavel}} </p>
                         <p>Celular 1: {{$aluno->celular}}</p>
                         <p>Celular 2: {{$aluno->celular2}}</p>
