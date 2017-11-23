@@ -21,9 +21,7 @@
                     </div>
                     <div class="box-body">      
                         <p>Cidade: {{$empresa->cidade}} </p>
-                        <p>Estado: {{$empresa->estado}}</p>              
-                        <p>Multa após vencimento: {{$empresa->multaporc}}% </p>
-                        <p>Mora (juros diários sobre o valor acumulado): {{$empresa->multadiariaporc}}%</p>
+                        <p>Estado: {{$empresa->estado}}</p>                                      
                     </div>
 
                 </div>          
@@ -36,8 +34,8 @@
                         <h3 class="box-title">{{$aluno->nome}}</h3>
                     </div>
                     <div class="box-body">      
-                        <p>Turma: {{$aluno->turma}} </p>
-                        <p>Período: {{$aluno->periodo}}</p>              
+                        <p>Série: {{$aluno->serie}} </p>
+                        <p>Email: {{$aluno->email}}</p>              
                         <p>Responsável: {{$aluno->responsavel}} </p>
                         <p>Celular 1: {{$aluno->celular}}</p>
                         <p>Celular 2: {{$aluno->celular2}}</p>
@@ -46,6 +44,24 @@
                     </div>
 
                 </div> 
+            </div>
+        </div>
+
+        <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title">Ligações Telefônicas</h3>
+
+                <button data-target="#ligacao" type="button" class="btn btn-default" id="addLigacao" data-toggle="modal">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>                    
+
+                <button type="button" class="btn btn-default" id="removeLigacao">
+                  <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                </button>
+                    
+            </div>
+            <div class="box-body">                    
+                @include('acordos.ligacoes')
             </div>
         </div>
 
@@ -88,23 +104,7 @@
             </div>
         </div>
 
-        <div class="box box-primary">
-            <div class="box-header">
-                <h3 class="box-title">Ligações Telefônicas</h3>
-
-                <button data-target="#ligacao" type="button" class="btn btn-default" id="addLigacao" data-toggle="modal">
-                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button>                    
-
-                <button type="button" class="btn btn-default" id="removeLigacao">
-                  <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                </button>
-                    
-            </div>
-            <div class="box-body">                    
-                @include('acordos.ligacoes')
-            </div>
-        </div>
+        
 
         <div class="box box-primary">
             <div class="box-body">                    

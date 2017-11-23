@@ -46,6 +46,24 @@
             </div>
         </div>
 
+        <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title">Ligações Telefônicas</h3>
+
+                <button data-target="#ligacao" type="button" class="btn btn-default" id="addLigacao" data-toggle="modal">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>                    
+
+                <button type="button" class="btn btn-default" id="removeLigacao">
+                  <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                </button>
+                    
+            </div>
+            <div class="box-body">                    
+                @include('acordos.ligacoes')
+            </div>
+        </div>
+
         <div class="box box-primary">           
             <div class="box-header">
                 <h3 class="box-title">Títulos Referentes ao Aluno: {{$aluno->nome}}</h3>
@@ -59,6 +77,8 @@
 
             </div>
         </div>
+
+
 
         <div class="box box-primary">
             <div class="box-body">                    
@@ -86,23 +106,7 @@
             </div>
         </div>
 
-        <div class="box box-primary">
-            <div class="box-header">
-                <h3 class="box-title">Ligações Telefônicas</h3>
-
-                <button data-target="#ligacao" type="button" class="btn btn-default" id="addLigacao" data-toggle="modal">
-                  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                </button>                    
-
-                <button type="button" class="btn btn-default" id="removeLigacao">
-                  <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                </button>
-                    
-            </div>
-            <div class="box-body">                    
-                @include('acordos.ligacoes')
-            </div>
-        </div>
+        
 
         <div class="box box-primary">
             <div class="box-body">                    

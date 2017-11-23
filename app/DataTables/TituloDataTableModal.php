@@ -101,16 +101,15 @@ class TituloDataTableModal extends DataTable
     private function getColumns()
     {
         return [
-            //'selecionar' => ['name' => 'selecionar', 'title' => 'Marcar'],
-            'titulo' => ['name' => 'titulo', 'data' => 'titulo'],
-            'estado' => ['name' => 'estado', 'data' => 'estado'],
-            'escola' => ['name' => 'empresa.nome', 'data' => 'empresa.nome'],
-            //'pago' => ['name' => 'pago', 'data' => 'pago'],
-            'vencimento' => ['name' => 'vencimento', 'data' => 'vencimento'],
-            'valor' => ['name' => 'valor', 'data' => 'valor'],
-            'valordescontado' => ['name' => 'valordescontado', 'data' => 'valordescontado', 'title' => 'Valor com Desconto'],
+            'selecionar' => ['name' => 'selecionar', 'title' => 'Marcar'],
             'ano' => ['name' => 'ano', 'data' => 'ano'],
+            'escola' => ['name' => 'empresa.nome', 'data' => 'empresa.nome'],
+            'módulo' => ['name' => 'estado', 'data' => 'estado'],
+            'titulo' => ['name' => 'titulo', 'data' => 'titulo'],
+            'vencimento' => ['name' => 'vencimento', 'data' => 'vencimento'],
+            'valor' => ['name' => 'valor', 'data' => 'valor', 'title' => 'Valor Bruto'],
             'desconto' => ['name' => 'desconto', 'data' => 'desconto'],
+            'valordescontado' => ['name' => 'valordescontado', 'data' => 'valordescontado', 'title' => 'Valor Líquido'],
             'avisos' => ['name' => 'avisos', 'title' => 'Operações Efetuadas'],
 
         ];
