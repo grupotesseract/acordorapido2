@@ -39,6 +39,9 @@ class Empresa extends Model
         'estado',
         'multaporc',
         'multadiariaporc',
+        'responsavel',
+        'email',
+        'telefone',
     ];
 
     /**
@@ -54,6 +57,9 @@ class Empresa extends Model
         'estado' => 'string',
         'multaporc' => 'integer',
         'multadiariaporc' => 'float',
+        'responsavel' => 'string',
+        'email' => 'string',
+        'telefone' => 'string',
     ];
 
     /**
@@ -67,6 +73,9 @@ class Empresa extends Model
         'estado' => 'required',
         'multaporc' => 'required',
         'multadiariaporc' => 'required',
+        'responsavel' => 'required',
+        'email' => 'required|email',
+        'telefone' => 'required',
     ];
 
     /**
