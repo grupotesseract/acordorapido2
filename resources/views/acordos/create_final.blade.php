@@ -21,6 +21,9 @@
                     <div class="box-body">      
                         <p>Cidade: {{$empresa->cidade}} </p>
                         <p>Estado: {{$empresa->estado}}</p>
+                        <p>Responsável pela Escola: {{$empresa->responsavel}}</p>
+                        <p>Telefone: {{$empresa->telefone}}</p>
+                        <p>Email: {{$empresa->email}}</p>
                     </div>
 
                 </div>          
