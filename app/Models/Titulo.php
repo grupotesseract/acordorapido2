@@ -252,5 +252,4 @@ class Titulo extends Model
         $valorsemPonto = str_replace('.', '', $value);
         $this->attributes['valor'] = str_replace(',', '.', $valorsemPonto);
     }
-    
 }
