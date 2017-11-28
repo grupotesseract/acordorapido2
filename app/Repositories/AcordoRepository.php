@@ -11,6 +11,7 @@
 namespace App\Repositories;
 
 use App\Models\Acordo;
+use App\Models\Titulo as Titulo;
 use Carbon\Carbon as Carbon;
 use InfyOm\Generator\Common\BaseRepository;
 
@@ -49,7 +50,7 @@ class AcordoRepository extends BaseRepository
         $valortotal = 0;
         foreach ($titulos as $titulo) {
             //CALCULAR DIFERENÇA DE DIAS ENTRE HOJE E A DATA DE VENCIMENTO
-            $vencimento = Carbon::createFromFormat('d/m/Y', $titulo->vencimento);
+            /*$vencimento = Carbon::createFromFormat('d/m/Y', $titulo->vencimento);
             $hoje = Carbon::now();
 
             $diff = $vencimento->diffInDays($hoje);
@@ -59,7 +60,11 @@ class AcordoRepository extends BaseRepository
             $valorAposVencimento = $valorTitulo * ($empresa->multaporc / 100);
 
             $potencia = pow(1 + $taxa, $diff);
-            $valortotal += $valorAposVencimento + ($valorTitulo * $potencia);
+            $valortotal += $valorAposVencimento + ($valorTitulo * $potencia);*/
+
+            $valortotal += $titulo->calculado;
+
+
         }
 
         return number_format($valortotal, 2, ',', '.');

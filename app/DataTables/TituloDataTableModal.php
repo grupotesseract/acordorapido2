@@ -110,6 +110,7 @@ class TituloDataTableModal extends DataTable
             'valor' => ['name' => 'valor', 'data' => 'valor', 'title' => 'Valor Bruto'],
             'desconto' => ['name' => 'desconto', 'data' => 'desconto'],
             'valordescontado' => ['name' => 'valordescontado', 'data' => 'valordescontado', 'title' => 'Valor Líquido'],
+            'calculado' => ['name' => 'calculado', 'title' => 'Valor Calculado', 'data' => 'calculado'],
             'avisos' => ['name' => 'avisos', 'title' => 'Operações Efetuadas'],
 
         ];

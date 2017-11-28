@@ -230,9 +230,27 @@ class Titulo extends Model
         return number_format($value, 2, ',', '.');
     }
 
+    public function getCalculadoAttribute()
+    {
+        $vencimento = Carbon::createFromFormat('d/m/Y', $this->vencimento);
+        $hoje = Carbon::now();
+
+        $diff = $vencimento->diffInDays($hoje);
+        $taxa = ($this->empresa->multadiariaporc) / 100;
+        $valorTitulo = str_replace(',', '.', str_replace('.', '', $this->valordescontado));
+
+        $valorAposVencimento = $valorTitulo * ($this->empresa->multaporc / 100);
+
+        $potencia = pow(1 + $taxa, $diff);
+        $valortotal = $valorAposVencimento + ($valorTitulo * $potencia);
+
+        return $valortotal;
+    }
+
     public function setValorAttribute($value)
     {
         $valorsemPonto = str_replace('.', '', $value);
         $this->attributes['valor'] = str_replace(',', '.', $valorsemPonto);
     }
+    
 }
