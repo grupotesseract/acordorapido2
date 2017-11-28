@@ -11,7 +11,6 @@
 namespace App\Repositories;
 
 use App\Models\Acordo;
-use App\Models\Titulo as Titulo;
 use Carbon\Carbon as Carbon;
 use InfyOm\Generator\Common\BaseRepository;
 
@@ -63,8 +62,6 @@ class AcordoRepository extends BaseRepository
             $valortotal += $valorAposVencimento + ($valorTitulo * $potencia);*/
 
             $valortotal += $titulo->calculado;
-
-
         }
 
         return number_format($valortotal, 2, ',', '.');
