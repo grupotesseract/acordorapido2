@@ -48,7 +48,8 @@ class TituloDataTableModal extends DataTable
             ->eloquent($this->query())
             ->addColumn('avisos', 'titulos.operacoes')
             ->addColumn('selecionar', 'titulos.checkbox')
-            ->rawColumns(['avisos', 'selecionar'])
+            ->addColumn('calculado', 'titulos.valorcalculado')
+            ->rawColumns(['avisos', 'selecionar', 'calculado'])
             ->make(true);
     }
 
