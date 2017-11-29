@@ -1,6 +1,5 @@
 <!-- Parcelas -->
 
-@include('flash::message')
 
 <div class="row">
     

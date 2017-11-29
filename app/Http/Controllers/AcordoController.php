@@ -23,6 +23,7 @@ use App\Models\Parcelamento as Parcelamento;
 use App\Repositories\ParcelamentoRepository;
 use App\Repositories\LigacaoacordoRepository;
 use App\Models\Ligacaoacordo as Ligacaoacordo;
+use App\Repositories\TituloRepository;
 
 class AcordoController extends AppBaseController
 {
@@ -30,12 +31,14 @@ class AcordoController extends AppBaseController
     private $acordoRepository;
     private $parcelamentoRepository;
     private $ligacaoacordoRepository;
+    private $tituloRepository;
 
-    public function __construct(AcordoRepository $acordoRepo, ParcelamentoRepository $parcelamentoRepo, LigacaoacordoRepository $ligacaoacordoRepo)
+    public function __construct(AcordoRepository $acordoRepo, ParcelamentoRepository $parcelamentoRepo, LigacaoacordoRepository $ligacaoacordoRepo, TituloRepository $tituloRepo)
     {
         $this->acordoRepository = $acordoRepo;
         $this->parcelamentoRepository = $parcelamentoRepo;
         $this->ligacaoacordoRepository = $ligacaoacordoRepo;
+        $this->tituloRepository = $tituloRepo;
     }
 
     /**
@@ -76,6 +79,8 @@ class AcordoController extends AppBaseController
      */
     public function store(CreateAcordoRequest $request)
     {
+            
+
         $request->request->add(['user_id' => Auth::id()]);
         $request->request->add(['situacao' => 'Pendente']);
         $input = $request->all();
@@ -88,8 +93,33 @@ class AcordoController extends AppBaseController
                 exit;
             }
         }
+        
+        if (empty($input['duracao'])) {
+            Flash::error('Favor, verificar se foi feita pelo menos uma ligação telefônica para este acordo');
 
-        $acordo = $this->acordoRepository->create($input);
+            return redirect()->back()->withInput();
+            exit;
+        }
+
+        $fillable = [
+            'valoracordado',
+            'valororiginal',
+            'observacao',
+            'situacao',
+            'user_id',
+            'cliente_id',
+            'empresa_id',
+        ];
+
+        $camposAcordo = array_filter(
+            $input,
+            function ($key) use ($fillable) {
+                return in_array($key, $fillable);
+            },
+            ARRAY_FILTER_USE_KEY
+        );
+
+        $acordo = $this->acordoRepository->create($camposAcordo);
 
         foreach ($input['parcela'] as $key => $valor) {
             $parcela = $this->parcelamentoRepository->create([
@@ -101,15 +131,23 @@ class AcordoController extends AppBaseController
             ]);
         }
 
-        foreach ($input['duracao'] as $key => $valor) {
-            $ligacao = $this->ligacaoacordoRepository->create([
-                'duracao' => $valor,
-                'datahora' => $input['datahora'][$key],
-                'acordo_id' => $acordo->id,
-            ]);
+        foreach ($input['titulos'] as $titulo) {
+            $tituloRepo = $this->tituloRepository->update(
+                [
+                    'retornoacordo' => 'Acordo Feito - Pendente Pagamento', 
+                    'acordo_id' => $acordo->id
+                ],$titulo);
         }
 
-        $titulos = Titulo::where(['cliente_id' => $input['cliente_id']])->where(['empresa_id' => $input['empresa_id']])->update(['acordo' => 'Acordo Feito - Pendente Pagamento', 'acordo_id' => $acordo->id]);
+        if (!empty($input['duracao'])) {
+            foreach ($input['duracao'] as $key => $valor) {
+                $ligacao = $this->ligacaoacordoRepository->create([
+                    'duracao' => $valor,
+                    'datahora' => $input['datahora'][$key],
+                    'acordo_id' => $acordo->id,
+                ]);
+            }
+        }
 
         Flash::success('Acordo salvo com sucesso.');
 
@@ -252,7 +290,7 @@ class AcordoController extends AppBaseController
             ]);
         }
 
-        $titulos = Titulo::where(['cliente_id' => $input['cliente_id']])->where(['empresa_id' => $input['empresa_id']])->update(['acordo' => 'Acordo Feito - Pendente Pagamento', 'acordo_id' => $acordo->id]);
+        $titulos = Titulo::where(['cliente_id' => $input['cliente_id']])->where(['empresa_id' => $input['empresa_id']])->update(['retornoacordo' => 'Acordo Feito - Pendente Pagamento', 'acordo_id' => $acordo->id]);
 
         Flash::success('Acordo atualizado com sucesso');
 

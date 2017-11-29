@@ -1,4 +1,4 @@
-var handleMasks = function handleMasks() {
+window.handleMasks = function handleMasks() {
     $(function () {
         $(".escolherData").datepicker({
             dateFormat: 'dd/mm/yy',
@@ -39,7 +39,7 @@ $(document).on('change', '.valor', function () {
     $('.valor').trigger('input');
 });
 
-var calculaParcelas = function calculaParcelas() {
+window.calculaParcelas = function calculaParcelas() {
     $(function () {
 
         var valor = $("input[name=valoracordado]").val(),

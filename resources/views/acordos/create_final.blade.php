@@ -11,6 +11,7 @@
 
     <div class="content">
         @include('adminlte-templates::common.errors')
+        @include('flash::message')
         
         <div class="row">
             <div class="col-sm-6 ">
@@ -75,6 +76,9 @@
             <div class="box-body">                    
                     <input type="hidden" name="cliente_id" value="{{$aluno->id}}" />
                     <input type="hidden" name="empresa_id" value="{{$empresa->id}}" />
+                    <div class="titulosSelecionados">
+
+                    </div>
                     
                     @include('titulos.table')
 

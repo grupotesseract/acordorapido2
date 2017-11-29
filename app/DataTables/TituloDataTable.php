@@ -101,7 +101,7 @@ class TituloDataTable extends DataTable
             'pago' => ['name' => 'pago', 'data' => 'pago'],
             'vencimento' => ['name' => 'vencimento', 'data' => 'vencimento'],
             'valor' => ['name' => 'valor', 'data' => 'valor'],
-            'acordo' => ['name' => 'acordo', 'data' => 'acordo'],
+            'retornoacordo' => ['name' => 'retornoacordo', 'data' => 'retornoacordo', 'title' => 'Situação Acordo'],
             'avisos' => ['name' => 'avisos', 'title' => 'Operações Efetuadas'],
 
         ];

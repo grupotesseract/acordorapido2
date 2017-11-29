@@ -36,7 +36,7 @@ class Titulo extends Model
         'desconto',
         'valordescontado',
         'importacao_id',
-        'acordo',
+        'retornoacordo',
         'acordo_id',
     ];
 
@@ -53,9 +53,10 @@ class Titulo extends Model
         'pago' => 'boolean',
         'vencimento' => 'date',
         'titulo' => 'string',
-        'acordo' => 'string',
         'importacao_id' => 'integer',
         'ano' => 'integer',
+        'acordo_id' => 'integer',
+        'retornoacordo' => 'string',
         'desconto' => 'float',
         'valordescontado' => 'float',
     ];

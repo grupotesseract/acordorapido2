@@ -122,6 +122,66 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/tesseract.js') }}"></script>
 
+<script>
+    window.selecionarTitulo = function(ev,valor,id) {
+
+        let linha = $(ev.target).parents('tr');
+        let containerSelecionados = $('.titulosSelecionados');
+        let htmlBtnRemover = "<i class='fa fa-close'></i> &nbsp; Remover ";
+        let htmlInputHidden = '<input type="hidden" id=titulo'+id+' name="titulos[]" value='+id+' />'; 
+
+        linha.find('a.btn.btn-info')
+            .attr('onclick', 'removerLinha(event,'+valor+','+id+')')
+            .removeClass('btn-info')
+            .addClass('btn-danger')
+            .html(htmlBtnRemover)
+            .next().removeAttr('disabled');
+
+        containerSelecionados.append(htmlInputHidden);
+
+        var valorAntigo = $("input[name=valororiginal]").val(),
+            valorAntigo = valorAntigo.replace(/\./g, ""),
+            valorAntigo = valorAntigo.replace(",", ".");
+
+        valorNovo = parseFloat(valorAntigo) + parseFloat(valor);
+        valorNovo = valorNovo.toFixed(2);
+
+        $("input[name=valororiginal]").val(valorNovo.toString().replace(".", ","));
+        $("input[name=valoracordado]").val(valorNovo.toString().replace(".", ","));
+
+        handleMasks();
+        calculaParcelas();
+    };
+
+    window.removerLinha = function(ev,valor,id) {
+       
+        $('.titulosSelecionados').find('#titulo'+id).remove();
+        let htmlBtnAdicionar = "<i class='fa fa-close'></i> &nbsp; Adicionar ";
+
+        let linha = $(ev.target).parents('tr');
+
+        linha.find('a.btn.btn-danger')
+            .attr('onclick', 'selecionarTitulo(event,'+valor+','+id+')')
+            .removeClass('btn-danger')
+            .addClass('btn-info')
+            .html(htmlBtnAdicionar)
+            .next().removeAttr('disabled');
+
+        var valorAntigo = $("input[name=valororiginal]").val(),
+            valorAntigo = valorAntigo.replace(/\./g, ""),
+            valorAntigo = valorAntigo.replace(",", ".");
+
+        valorNovo = parseFloat(valorAntigo) - parseFloat(valor);
+        valorNovo = valorNovo.toFixed(2);
+        
+        $("input[name=valororiginal]").val(valorNovo.toString().replace(".", ","));
+        $("input[name=valoracordado]").val(valorNovo.toString().replace(".", ","));        
+        
+        handleMasks();
+        calculaParcelas();
+
+    }
+</script>
 
 @yield('scripts')
 </body>

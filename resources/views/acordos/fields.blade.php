@@ -6,12 +6,12 @@
 	<div class="form-group col-sm-6">
 	    {!! Form::label('valororiginal', 'Valor Original:') !!}
 	    
-	    <input type="text" class="form-control" name="valororiginal" value="{{ $valorTotalDivida }}" readonly="readonly">
+	    <input type="text" class="form-control" id="valororiginal" name="valororiginal" value="0,00" readonly="readonly">
 	</div>
 	
 	<div class="form-group col-sm-6">
 	    {!! Form::label('valoracordado', 'Valor Acordado:') !!}
-	    {!! Form::text('valoracordado', $valorTotalDivida, ['class' => 'form-control', 'id' => 'valoracordado']) !!}
+	    {!! Form::text('valoracordado', '0,00', ['class' => 'form-control', 'id' => 'valoracordado']) !!}
 	</div>
 @else
 
