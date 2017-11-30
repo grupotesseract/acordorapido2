@@ -81,6 +81,17 @@
     </ul>
 </li>
 @endability
+
+@ability('admin', 'criar-acordo')
+<li class="{{ Request::is('acordos*') ? 'active' : '' }} treeview">
+    <a href="{!! route('acordos.index') !!}"><i class="fa fa-glyphicon glyphicon-thumbs-up"></i><span>Acordos e Negociações</span><i class="fa fa-angle-left pull-right"></i></a>
+    <ul class="treeview-menu">
+        <li><a href="{!! route('acordos.index') !!}"><i class="fa fa-edit"></i><span>Contatos Efetuados</span></a></li>
+        <li><a href="{!! route('acordos.create') !!}"><i class="fa fa-edit"></i><span>Entrar em Contato com Aluno</span></a></li>
+    </ul>
+    
+</li>
+@endability
 <!-- <li>
     <a href="{{ url('titulos') }}"><i class='glyphicon glyphicon-list-alt'></i> <span>Títulos</span></a>
     </li> -->
@@ -112,10 +123,6 @@
 </li>
 @endability
 
-@ability('admin', 'criar-acordo')
-<li class="{{ Request::is('acordos*') ? 'active' : '' }}">
-    <a href="{!! route('acordos.index') !!}"><i class="fa fa-edit"></i><span>Acordos</span></a>
-</li>
-@endability
+
 
 

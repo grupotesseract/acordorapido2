@@ -68,57 +68,68 @@
             </div>
         </div>
 
-        <div class="box box-primary">           
-            <div class="box-header">
-                <h3 class="box-title">Títulos Referentes ao Aluno: {{$aluno->nome}}</h3>
-                
-
-            <div class="box-body">                    
-                    <input type="hidden" name="cliente_id" value="{{$aluno->id}}" />
-                    <input type="hidden" name="empresa_id" value="{{$empresa->id}}" />
-                    <div class="titulosSelecionados">
-
-                    </div>
+        <div class="restanteInfos" style="display: none;">
+            <div class="box box-primary">           
+                <div class="box-header">
+                    <h3 class="box-title">Títulos Referentes ao Aluno: {{$aluno->nome}}</h3>
                     
-                    @include('titulos.table')
 
+                <div class="box-body">                    
+                        <input type="hidden" name="cliente_id" value="{{$aluno->id}}" />
+                        <input type="hidden" name="empresa_id" value="{{$empresa->id}}" />
+                        <div class="titulosSelecionados">
+
+                        </div>
+                        
+                        @include('titulos.table')
+
+                        <p>Valor Total da Dívida: <strong>{{$valorTotalDivida}}</strong></p>
+
+                </div>
             </div>
-        </div>
 
 
 
-        <div class="box box-primary">
-            <div class="box-body">                    
-                @include('acordos.fields')
+            <div class="box box-primary">
+                <div class="box-body">                    
+                    @include('acordos.fields')
 
+                </div>
             </div>
-        </div>
 
-        <div class="box box-primary">
-            <div class="box-header">
-                <h3 class="box-title">Parcelas</h3>
+            <div class="box box-primary">
+                <div class="box-header">
+                    <h3 class="box-title">Parcelas</h3>
 
-                    <button type="button" class="btn btn-default" id="btnAdd">
-                      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    </button>
+                        <button type="button" class="btn btn-default" id="btnAdd">
+                          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        </button>
 
-                    <button type="button" class="btn btn-default" id="btnRemove" disabled="disabled">
-                      <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
-                    </button>
-                    
+                        <button type="button" class="btn btn-default" id="btnRemove" disabled="disabled">
+                          <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                        </button>
+                        
+                </div>
+                <div class="box-body">                    
+                    @include('acordos.parcelas')
+
+                </div>
             </div>
-            <div class="box-body">                    
-                @include('acordos.parcelas')
 
+            
+
+            <div class="box box-primary">
+                <div class="box-body">                    
+                    @include('acordos.observacao')
+                </div>
             </div>
-        </div>
 
-        
-
-        <div class="box box-primary">
-            <div class="box-body">                    
-                @include('acordos.observacao')
-                {!! Form::close() !!}
+            <div class="box box-primary">
+                <div class="box-body">                    
+                    <input type="radio" name="retornoacordo" value="Acordo Feito"> Acordo Feito<br>
+                    <input type="radio" name="retornoacordo" value="Contato sem Acordo"> Contato sem Acordo<br>
+                    {!! Form::close() !!}
+                </div>
             </div>
         </div>
     </div>

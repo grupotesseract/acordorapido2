@@ -39,6 +39,11 @@ class TituloDataTableModal extends DataTable
         return $this;
     }
 
+    public function porAcordo($acordo) {
+        $this->acordo_id = $acordo;
+        return $this;
+    }
+
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -60,7 +65,13 @@ class TituloDataTableModal extends DataTable
      */
     public function query()
     {
-        $titulos = Titulo::query()->where('cliente_id', $this->aluno)->where('empresa_id', $this->empresa)->whereIn('estado', $this->estado)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
+
+        if (isset($this->acordo_id)) {
+            $titulos = Titulo::query()->where('cliente_id', $this->aluno)->where('empresa_id', $this->empresa)->where('acordo_id',$this->acordo_id)->whereIn('estado', $this->estado)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
+        }
+        else
+            $titulos = Titulo::query()->where('cliente_id', $this->aluno)->where('empresa_id', $this->empresa)->whereIn('estado', $this->estado)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
+            
 
         return $this->applyScopes($titulos);
     }
@@ -101,7 +112,7 @@ class TituloDataTableModal extends DataTable
      */
     private function getColumns()
     {
-        return [
+        $vetor = [
             'selecionar' => ['name' => 'selecionar', 'title' => 'Marcar'],
             'ano' => ['name' => 'ano', 'data' => 'ano'],
             'escola' => ['name' => 'empresa.nome', 'data' => 'empresa.nome'],
@@ -115,6 +126,12 @@ class TituloDataTableModal extends DataTable
             'avisos' => ['name' => 'avisos', 'title' => 'Operações Efetuadas'],
 
         ];
+
+        if (isset($this->acordo_id)) {
+            unset($vetor['selecionar']);
+        }
+
+        return $vetor;
     }
 
     /**

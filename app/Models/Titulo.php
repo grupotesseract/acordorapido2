@@ -245,12 +245,12 @@ class Titulo extends Model
         $potencia = pow(1 + $taxa, $diff);
         $valortotal = $valorAposVencimento + ($valorTitulo * $potencia);
 
-        return $valortotal;
+        return number_format($valortotal, 2, ',', '.');
     }
 
-    public function setValorAttribute($value)
+    /*public function setValorAttribute($value)
     {
         $valorsemPonto = str_replace('.', '', $value);
         $this->attributes['valor'] = str_replace(',', '.', $valorsemPonto);
-    }
+    }*/
 }

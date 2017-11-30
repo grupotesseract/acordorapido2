@@ -122,6 +122,7 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/tesseract.js') }}"></script>
 
+
 <script>
     window.selecionarTitulo = function(ev,valor,id) {
 
@@ -181,6 +182,33 @@
         calculaParcelas();
 
     }
+
+    $('#botaoParcelas').click(function () {
+        
+        let qtde = $("#numeroInicial").val();
+        var num = $('.clonedInput').length;        
+
+        for (i = num; i > 1; i--) {            
+            removeParcela();
+        }       
+
+        let data_inicio = $("#dataInicial").val();
+        
+        let splitted = data_inicio.split('/');
+        var dt = new Date(splitted[2],parseInt(splitted[1])-1,parseInt(splitted[0])+1);
+         
+
+        for (i = 1; i < qtde; i++) {           
+            adicionaParcela();
+            /*dt.setDate(dt.getDate()+30);
+            var finalDate = dt.getDate() + "/" + (dt.getMonth()+1) + "/" + dt.getYear();
+            console.log(finalDate);
+            $("#calendario"+i).val(finalDate);*/
+            
+        }
+    });
+
+
 </script>
 
 @yield('scripts')

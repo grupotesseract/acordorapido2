@@ -134,7 +134,7 @@ class AcordoController extends AppBaseController
         foreach ($input['titulos'] as $titulo) {
             $tituloRepo = $this->tituloRepository->update(
                 [
-                    'retornoacordo' => 'Acordo Feito - Pendente Pagamento', 
+                    'retornoacordo' => $input['retornoacordo'], 
                     'acordo_id' => $acordo->id
                 ],$titulo);
         }
@@ -235,7 +235,7 @@ class AcordoController extends AppBaseController
             return redirect(route('acordos.index'));
         }
 
-        return $titulosDataTable->porAluno($aluno->id)->porEstado(['amarelo'])->porEmpresa($empresa->id)->render('acordos.edit_final', ['aluno' => $aluno, 'empresa' => $empresa, 'acordo' => $acordo, 'parcelas' => $parcelas, 'ligacoes' => $ligacoes]);
+        return $titulosDataTable->porAluno($aluno->id)->porEstado(['amarelo'])->porEmpresa($empresa->id)->porAcordo($acordo->id)->render('acordos.edit_final', ['aluno' => $aluno, 'empresa' => $empresa, 'acordo' => $acordo, 'parcelas' => $parcelas, 'ligacoes' => $ligacoes]);
     }
 
     /**
@@ -288,9 +288,7 @@ class AcordoController extends AppBaseController
                 'datahora' => $input['datahora'][$key],
                 'acordo_id' => $acordo->id,
             ]);
-        }
-
-        $titulos = Titulo::where(['cliente_id' => $input['cliente_id']])->where(['empresa_id' => $input['empresa_id']])->update(['retornoacordo' => 'Acordo Feito - Pendente Pagamento', 'acordo_id' => $acordo->id]);
+        }       
 
         Flash::success('Acordo atualizado com sucesso');
 
@@ -314,7 +312,7 @@ class AcordoController extends AppBaseController
             return redirect(route('acordos.index'));
         }
 
-        $titulosDeletados = Titulo::where('acordo_id', $acordo->id)->update(['acordo_id' => null, 'acordo' => null]);
+        $titulosDeletados = Titulo::where('acordo_id', $acordo->id)->update(['acordo_id' => null, 'retornoacordo' => null]);
 
         $ligacoesDeletadas = ligacaoacordo::where('acordo_id', $acordo->id)->delete();
 

@@ -70,7 +70,6 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
 __webpack_require__(3);
 
 /***/ }),
@@ -142,6 +141,10 @@ window.calculaParcelas = function calculaParcelas() {
 };
 
 $('#btnAdd').click(function () {
+    adicionaParcela();
+});
+
+window.adicionaParcela = function () {
     $('#btnRemove').prop('disabled', false);
 
     var num = $('.clonedInput').length;
@@ -158,14 +161,18 @@ $('#btnAdd').click(function () {
 
     calculaParcelas();
     handleMasks();
-});
+};
 
-$('#btnRemove').on('click', function () {
+window.removeParcela = function () {
     $('.clonedInput').last().remove();
     var num = $('.clonedInput').length;
     if (num == 1) $('#btnRemove').attr('disabled', 'disabled');
     calculaParcelas();
     handleMasks();
+};
+
+$('#btnRemove').on('click', function () {
+    removeParcela();
 });
 
 $('input[name=valoracordado]').on('keyup', function () {
@@ -236,6 +243,8 @@ $(document).ready(function () {
         if (!iniciado) {
             iniciado = true;start_cron();
         }
+        $('#ligacao').modal('toggle');
+        $('.restanteInfos').css('display', 'block');
     });
 
     function start_cron() {

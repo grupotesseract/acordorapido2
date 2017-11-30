@@ -1,5 +1,22 @@
 <!-- Parcelas -->
 
+<div class="row">
+	
+	<div class="form-group">
+		<div class="form-group col-sm-6">		
+			
+				<input type='number' id="numeroInicial" class="form-control" placeholder="Número de Parcelas" />
+				
+				<input type='text' id="dataInicial" class="form-control 
+				escolherData" placeholder="Data 1ª Parcela" />
+
+				<button type="button" class="btn btn-default" id="botaoParcelas">
+	              Calcular
+	            </button>
+
+		</div>
+	</div>
+</div>
 
 <div class="row">
     

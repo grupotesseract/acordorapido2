@@ -24,5 +24,8 @@
 
 ?>
 
-<a class="btn btn-xs btn-info" onclick="javascript:selecionarTitulo(event,{{ round($valortotal,2) }}, {{ $id }})"> <i class="fa fa-plus"></i> Adicionar </a>
-<input type="hidden" name="valor" disabled value="{{ round($valortotal,2) }}"> 
+
+  
+  <a class="btn btn-xs btn-info" onclick="javascript:selecionarTitulo(event,{{ round($valortotal,2) }}, {{ $id }})"> <i class="fa fa-plus"></i> Adicionar </a>
+  <input type="hidden" name="valor" disabled value="{{ round($valortotal,2) }}"> 
+
