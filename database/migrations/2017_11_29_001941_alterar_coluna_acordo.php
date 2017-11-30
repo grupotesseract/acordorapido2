@@ -14,7 +14,7 @@ class AlterarColunaAcordo extends Migration
     public function up()
     {
         Schema::table('titulos', function (Blueprint $table) {
-            $table->renameColumn('acordo','retornoacordo');
+            $table->renameColumn('acordo', 'retornoacordo');
         });
     }
 
@@ -26,7 +26,7 @@ class AlterarColunaAcordo extends Migration
     public function down()
     {
         Schema::table('titulos', function (Blueprint $table) {
-            $table->renameColumn('retornoacordo','acordo');
+            $table->renameColumn('retornoacordo', 'acordo');
         });
     }
 }
