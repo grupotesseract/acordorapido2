@@ -11,7 +11,6 @@
 namespace App\Repositories;
 
 use App\Models\Acordo;
-use Carbon\Carbon as Carbon;
 use InfyOm\Generator\Common\BaseRepository;
 
 /**
@@ -47,7 +46,7 @@ class AcordoRepository extends BaseRepository
     public function calculaValorDivida($empresa, $titulos)
     {
         $valortotal = 0;
-        foreach ($titulos as $titulo) {            
+        foreach ($titulos as $titulo) {
             $valor = str_replace('.', '', $titulo->calculado);
             $valortotal += str_replace(',', '.', $valor);
         }
