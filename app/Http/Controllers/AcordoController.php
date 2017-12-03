@@ -24,7 +24,6 @@ use App\Models\Parcelamento as Parcelamento;
 use App\Repositories\ParcelamentoRepository;
 use App\Repositories\LigacaoacordoRepository;
 use App\Models\Ligacaoacordo as Ligacaoacordo;
-use App\Repositories\TituloRepository;
 use App\Repositories\HistoricoRepository;
 
 class AcordoController extends AppBaseController
