@@ -15,17 +15,17 @@ use App\Models\Empresa as Empresa;
 use App\DataTables\AcordoDataTable;
 use App\Repositories\AcordoRepository;
 use App\Repositories\TituloRepository;
+use App\Repositories\TituloRepository;
 use App\DataTables\TituloDataTableModal;
 use App\DataTables\ClienteDataTableModal;
 use App\DataTables\EmpresaDataTableModal;
+use App\Repositories\HistoricoRepository;
 use App\Http\Requests\CreateAcordoRequest;
 use App\Http\Requests\UpdateAcordoRequest;
 use App\Models\Parcelamento as Parcelamento;
 use App\Repositories\ParcelamentoRepository;
 use App\Repositories\LigacaoacordoRepository;
 use App\Models\Ligacaoacordo as Ligacaoacordo;
-use App\Repositories\TituloRepository;
-use App\Repositories\HistoricoRepository;
 
 class AcordoController extends AppBaseController
 {
@@ -153,7 +153,7 @@ class AcordoController extends AppBaseController
 
         $historico = $this->historicoRepository->create([
             'user_id' => Auth::id(),
-            'tipo' => 'Inserção - '.$input['retornoacordo']            
+            'tipo' => 'Inserção - '.$input['retornoacordo'],
         ]);
 
         Flash::success('Acordo salvo com sucesso.');
@@ -295,13 +295,12 @@ class AcordoController extends AppBaseController
                 'datahora' => $input['datahora'][$key],
                 'acordo_id' => $acordo->id,
             ]);
-        }     
+        }
 
         $historico = $this->historicoRepository->create([
             'user_id' => Auth::id(),
-            'tipo' => 'Atualização - '.$input['retornoacordo']            
-        ]);  
-
+            'tipo' => 'Atualização - '.$input['retornoacordo'],
+        ]);
 
         Flash::success('Acordo atualizado com sucesso');
 
