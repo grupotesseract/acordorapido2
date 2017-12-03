@@ -1,13 +1,5 @@
 <?php
 
-/*
- * Desenvolvedores:
- * Fernando Fernandes
- * Evandro Carreira
- * Renato Gomes
- *
- */
-
 namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
@@ -76,6 +68,14 @@ class User extends Authenticatable
     public function avisos()
     {
         return $this->hasMany('App\Models\Aviso');
+    }
+
+    /**
+     * Pega os historicos desse usuario.
+     */
+    public function historicos()
+    {
+        return $this->hasMany('App\Models\Historico');
     }
 
     /**

@@ -24,6 +24,7 @@ use App\Repositories\ParcelamentoRepository;
 use App\Repositories\LigacaoacordoRepository;
 use App\Models\Ligacaoacordo as Ligacaoacordo;
 use App\Repositories\TituloRepository;
+use App\Repositories\HistoricoRepository;
 
 class AcordoController extends AppBaseController
 {
@@ -32,13 +33,15 @@ class AcordoController extends AppBaseController
     private $parcelamentoRepository;
     private $ligacaoacordoRepository;
     private $tituloRepository;
+    private $historicoRepository;
 
-    public function __construct(AcordoRepository $acordoRepo, ParcelamentoRepository $parcelamentoRepo, LigacaoacordoRepository $ligacaoacordoRepo, TituloRepository $tituloRepo)
+    public function __construct(AcordoRepository $acordoRepo, ParcelamentoRepository $parcelamentoRepo, LigacaoacordoRepository $ligacaoacordoRepo, TituloRepository $tituloRepo, HistoricoRepository $historicoRepo)
     {
         $this->acordoRepository = $acordoRepo;
         $this->parcelamentoRepository = $parcelamentoRepo;
         $this->ligacaoacordoRepository = $ligacaoacordoRepo;
         $this->tituloRepository = $tituloRepo;
+        $this->historicoRepository = $historicoRepo;
     }
 
     /**
@@ -148,6 +151,11 @@ class AcordoController extends AppBaseController
                 ]);
             }
         }
+
+        $historico = $this->historicoRepository->create([
+            'user_id' => Auth::id(),
+            'tipo' => 'Inserção - '.$input['retornoacordo']            
+        ]);
 
         Flash::success('Acordo salvo com sucesso.');
 
@@ -288,7 +296,12 @@ class AcordoController extends AppBaseController
                 'datahora' => $input['datahora'][$key],
                 'acordo_id' => $acordo->id,
             ]);
-        }       
+        }     
+
+        $historico = $this->historicoRepository->create([
+            'user_id' => Auth::id(),
+            'tipo' => 'Atualização - '.$input['retornoacordo']            
+        ]);  
 
         Flash::success('Acordo atualizado com sucesso');
 

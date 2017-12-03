@@ -104,7 +104,12 @@
             </div>
         </div>
 
-        
+        <div class="box box-primary">
+            <div class="box-body">                    
+                <input type="radio" name="retornoacordo" value="Acordo Feito"> Acordo Feito<br>
+                <input type="radio" name="retornoacordo" value="Contato sem Acordo">Contato sem Acordo<br>
+            </div>
+        </div> 
 
         <div class="box box-primary">
             <div class="box-body">                    

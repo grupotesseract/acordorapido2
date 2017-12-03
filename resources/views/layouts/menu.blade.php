@@ -84,12 +84,11 @@
 
 @ability('admin', 'criar-acordo')
 <li class="{{ Request::is('acordos*') ? 'active' : '' }} treeview">
-    <a href="{!! route('acordos.index') !!}"><i class="fa fa-glyphicon glyphicon-thumbs-up"></i><span>Acordos e Negociações</span><i class="fa fa-angle-left pull-right"></i></a>
+    <a href="{!! route('acordos.index') !!}"><i class="glyphicon glyphicon-book"></i><span>Acordos e Negociações</span><i class="fa fa-angle-left pull-right"></i></a>
     <ul class="treeview-menu">
         <li><a href="{!! route('acordos.index') !!}"><i class="fa fa-edit"></i><span>Contatos Efetuados</span></a></li>
         <li><a href="{!! route('acordos.create') !!}"><i class="fa fa-edit"></i><span>Entrar em Contato com Aluno</span></a></li>
-    </ul>
-    
+    </ul>    
 </li>
 @endability
 <!-- <li>
@@ -125,4 +124,8 @@
 
 
 
+
+<li class="{{ Request::is('historicos*') ? 'active' : '' }}">
+    <a href="{!! route('historicos.index') !!}"><i class="glyphicon glyphicon-info-sign"></i><span>Historicos</span></a>
+</li>
 
