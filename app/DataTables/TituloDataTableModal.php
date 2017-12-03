@@ -39,8 +39,10 @@ class TituloDataTableModal extends DataTable
         return $this;
     }
 
-    public function porAcordo($acordo) {
+    public function porAcordo($acordo)
+    {
         $this->acordo_id = $acordo;
+
         return $this;
     }
 
@@ -65,13 +67,11 @@ class TituloDataTableModal extends DataTable
      */
     public function query()
     {
-
         if (isset($this->acordo_id)) {
-            $titulos = Titulo::query()->where('cliente_id', $this->aluno)->where('empresa_id', $this->empresa)->where('acordo_id',$this->acordo_id)->whereIn('estado', $this->estado)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
-        }
-        else
+            $titulos = Titulo::query()->where('cliente_id', $this->aluno)->where('empresa_id', $this->empresa)->where('acordo_id', $this->acordo_id)->whereIn('estado', $this->estado)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
+        } else {
             $titulos = Titulo::query()->where('cliente_id', $this->aluno)->where('empresa_id', $this->empresa)->whereIn('estado', $this->estado)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
-            
+        }
 
         return $this->applyScopes($titulos);
     }

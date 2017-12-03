@@ -14,6 +14,7 @@ use App\Models\Cliente as Cliente;
 use App\Models\Empresa as Empresa;
 use App\DataTables\AcordoDataTable;
 use App\Repositories\AcordoRepository;
+use App\Repositories\TituloRepository;
 use App\DataTables\TituloDataTableModal;
 use App\DataTables\ClienteDataTableModal;
 use App\DataTables\EmpresaDataTableModal;
@@ -82,8 +83,6 @@ class AcordoController extends AppBaseController
      */
     public function store(CreateAcordoRequest $request)
     {
-            
-
         $request->request->add(['user_id' => Auth::id()]);
         $request->request->add(['situacao' => 'Pendente']);
         $input = $request->all();
@@ -96,7 +95,7 @@ class AcordoController extends AppBaseController
                 exit;
             }
         }
-        
+
         if (empty($input['duracao'])) {
             Flash::error('Favor, verificar se foi feita pelo menos uma ligação telefônica para este acordo');
 
@@ -137,12 +136,12 @@ class AcordoController extends AppBaseController
         foreach ($input['titulos'] as $titulo) {
             $tituloRepo = $this->tituloRepository->update(
                 [
-                    'retornoacordo' => $input['retornoacordo'], 
-                    'acordo_id' => $acordo->id
-                ],$titulo);
+                    'retornoacordo' => $input['retornoacordo'],
+                    'acordo_id' => $acordo->id,
+                ], $titulo);
         }
 
-        if (!empty($input['duracao'])) {
+        if (! empty($input['duracao'])) {
             foreach ($input['duracao'] as $key => $valor) {
                 $ligacao = $this->ligacaoacordoRepository->create([
                     'duracao' => $valor,
@@ -302,6 +301,7 @@ class AcordoController extends AppBaseController
             'user_id' => Auth::id(),
             'tipo' => 'Atualização - '.$input['retornoacordo']            
         ]);  
+
 
         Flash::success('Acordo atualizado com sucesso');
 
