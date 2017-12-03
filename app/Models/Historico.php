@@ -6,11 +6,10 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Historico
- * @package App\Models
+ * Class Historico.
  * @version December 3, 2017, 7:57 pm BRST
  *
- * @property integer user_id
+ * @property int user_id
  * @property string tipo
  */
 class Historico extends Model
@@ -18,14 +17,12 @@ class Historico extends Model
     use SoftDeletes;
 
     public $table = 'historicos';
-    
 
     protected $dates = ['deleted_at'];
 
-
     public $fillable = [
         'user_id',
-        'tipo'
+        'tipo',
     ];
 
     /**
@@ -35,17 +32,17 @@ class Historico extends Model
      */
     protected $casts = [
         'user_id' => 'integer',
-        'tipo' => 'string'
+        'tipo' => 'string',
     ];
 
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     public static $rules = [
         'user_id' => 'required',
-        'tipo' => 'required'
+        'tipo' => 'required',
     ];
 
     /**
@@ -55,6 +52,4 @@ class Historico extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
-
-    
 }

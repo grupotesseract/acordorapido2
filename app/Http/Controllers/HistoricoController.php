@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Flash;
+use Response;
+use Illuminate\Http\Request;
+use App\Repositories\HistoricoRepository;
 use App\Http\Requests\CreateHistoricoRequest;
 use App\Http\Requests\UpdateHistoricoRequest;
-use App\Repositories\HistoricoRepository;
-use App\Http\Controllers\AppBaseController;
-use Illuminate\Http\Request;
-use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
-use Response;
 
 class HistoricoController extends AppBaseController
 {
-    /** @var  HistoricoRepository */
+    /** @var HistoricoRepository */
     private $historicoRepository;
 
     public function __construct(HistoricoRepository $historicoRepo)
