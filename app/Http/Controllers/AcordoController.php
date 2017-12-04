@@ -16,6 +16,7 @@ use App\DataTables\AcordoDataTable;
 use App\Repositories\AcordoRepository;
 use App\Repositories\TituloRepository;
 use App\Repositories\TituloRepository;
+
 use App\DataTables\TituloDataTableModal;
 use App\DataTables\ClienteDataTableModal;
 use App\DataTables\EmpresaDataTableModal;
@@ -302,6 +303,7 @@ class AcordoController extends AppBaseController
             'user_id' => Auth::id(),
             'tipo' => 'Atualização - '.$input['retornoacordo'],
         ]);
+
 
         Flash::success('Acordo atualizado com sucesso');
 
