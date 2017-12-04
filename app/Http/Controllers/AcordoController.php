@@ -20,13 +20,13 @@ use App\DataTables\TituloDataTableModal;
 use App\DataTables\ClienteDataTableModal;
 use App\DataTables\EmpresaDataTableModal;
 use App\Repositories\HistoricoRepository;
+use App\Repositories\HistoricoRepository;
 use App\Http\Requests\CreateAcordoRequest;
 use App\Http\Requests\UpdateAcordoRequest;
 use App\Models\Parcelamento as Parcelamento;
 use App\Repositories\ParcelamentoRepository;
 use App\Repositories\LigacaoacordoRepository;
 use App\Models\Ligacaoacordo as Ligacaoacordo;
-use App\Repositories\HistoricoRepository;
 
 class AcordoController extends AppBaseController
 {
