@@ -15,7 +15,6 @@ use App\Models\Empresa as Empresa;
 use App\DataTables\AcordoDataTable;
 use App\Repositories\AcordoRepository;
 use App\Repositories\TituloRepository;
-
 use App\DataTables\TituloDataTableModal;
 use App\DataTables\ClienteDataTableModal;
 use App\DataTables\EmpresaDataTableModal;
@@ -69,7 +68,7 @@ class AcordoController extends AppBaseController
     public function escolheAluno(ClienteDataTableModal $clienteDataTable, $empresa)
     {
         $empresa_model = Empresa::find($empresa);
-        $clientes = Titulo::where('empresa_id', $empresa)->where('retornoacordo',null)->pluck('cliente_id')->toArray();
+        $clientes = Titulo::where('empresa_id', $empresa)->where('retornoacordo', null)->pluck('cliente_id')->toArray();
 
         return $clienteDataTable->porCliente($clientes)->render('acordos.create_escolhealuno', ['empresa' => $empresa_model]);
     }
