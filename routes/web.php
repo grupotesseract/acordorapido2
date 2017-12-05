@@ -50,8 +50,8 @@ Route::post('avisos/ligacao/', 'AvisosController@salvaLigacao', ['middleware' =>
 
 Route::get('titulos/modulo/{estado}', 'TituloController@titulosModulo', ['middleware' => 'auth']);
 
-Route::get('avisos/sms/{aviso_id}', 'AvisoController@enviaSMS');
-Route::post('avisos/ligacao/', 'AvisoController@salvaLigacao');
+Route::get('avisos/sms/{aviso_id}', 'AvisoController@enviaSMS', ['middleware' => 'auth']);
+Route::post('avisos/ligacao/', 'AvisoController@salvaLigacao', ['middleware' => 'auth']);
 
 Route::resource('contatos', 'ContatoController');
 Route::resource('users', 'UserController', ['middleware' => 'auth']);
@@ -66,10 +66,10 @@ Route::get('acordofinal/{aluno}/{empresa}', ['as' => 'acordofinal', 'uses' => 'A
 
 Route::get('escolhealuno/{empresa}', ['as' => 'escolhealuno', 'uses' => 'AcordoController@escolheAluno', 'middleware' => 'auth']);
 
-Route::resource('parcelamentos', 'ParcelamentoController');
+Route::resource('parcelamentos', 'ParcelamentoController', ['middleware' => 'auth']);
 
-Route::resource('parcelamentos', 'ParcelamentoController');
+Route::resource('parcelamentos', 'ParcelamentoController', ['middleware' => 'auth']);
 
-Route::resource('ligacaoacordos', 'LigacaoacordoController');
+Route::resource('ligacaoacordos', 'LigacaoacordoController', ['middleware' => 'auth']);
 
-Route::resource('historicos', 'HistoricoController');
+Route::resource('historicos', 'HistoricoController', ['middleware' => 'auth']);

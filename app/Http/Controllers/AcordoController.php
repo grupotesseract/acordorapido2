@@ -15,12 +15,10 @@ use App\Models\Empresa as Empresa;
 use App\DataTables\AcordoDataTable;
 use App\Repositories\AcordoRepository;
 use App\Repositories\TituloRepository;
-use App\Repositories\TituloRepository;
 
 use App\DataTables\TituloDataTableModal;
 use App\DataTables\ClienteDataTableModal;
 use App\DataTables\EmpresaDataTableModal;
-use App\Repositories\HistoricoRepository;
 use App\Repositories\HistoricoRepository;
 use App\Http\Requests\CreateAcordoRequest;
 use App\Http\Requests\UpdateAcordoRequest;
@@ -71,7 +69,7 @@ class AcordoController extends AppBaseController
     public function escolheAluno(ClienteDataTableModal $clienteDataTable, $empresa)
     {
         $empresa_model = Empresa::find($empresa);
-        $clientes = Titulo::where('empresa_id', $empresa)->pluck('cliente_id')->toArray();
+        $clientes = Titulo::where('empresa_id', $empresa)->where('retornoacordo',null)->pluck('cliente_id')->toArray();
 
         return $clienteDataTable->porCliente($clientes)->render('acordos.create_escolhealuno', ['empresa' => $empresa_model]);
     }
@@ -244,7 +242,9 @@ class AcordoController extends AppBaseController
             return redirect(route('acordos.index'));
         }
 
-        return $titulosDataTable->porAluno($aluno->id)->porEstado(['amarelo'])->porEmpresa($empresa->id)->porAcordo($acordo->id)->render('acordos.edit_final', ['aluno' => $aluno, 'empresa' => $empresa, 'acordo' => $acordo, 'parcelas' => $parcelas, 'ligacoes' => $ligacoes]);
+        $valorTotalDivida = $this->acordoRepository->calculaValorDivida($empresa, $titulos);
+
+        return $titulosDataTable->porAluno($aluno->id)->porEstado(['amarelo'])->porEmpresa($empresa->id)->porAcordo($acordo->id)->render('acordos.edit_final', ['aluno' => $aluno, 'empresa' => $empresa, 'acordo' => $acordo, 'parcelas' => $parcelas, 'ligacoes' => $ligacoes, 'valorTotalDivida' => $valorTotalDivida]);
     }
 
     /**
