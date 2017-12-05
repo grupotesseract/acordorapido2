@@ -304,7 +304,6 @@ class AcordoController extends AppBaseController
             'tipo' => 'Atualização - '.$input['retornoacordo'],
         ]);
 
-
         Flash::success('Acordo atualizado com sucesso');
 
         return redirect(route('acordos.index'));
