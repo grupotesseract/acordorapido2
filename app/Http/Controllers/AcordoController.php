@@ -84,7 +84,7 @@ class AcordoController extends AppBaseController
     {
         $request->request->add(['user_id' => Auth::id()]);
         $request->request->add(['situacao' => $request->retornoacordo]);
-        
+
         $input = $request->all();
 
         foreach ($input['data'] as $key => $valor) {
@@ -258,7 +258,7 @@ class AcordoController extends AppBaseController
     public function update($id, UpdateAcordoRequest $request)
     {
         $request->request->add(['situacao' => $request->retornoacordo]);
-        
+
         $acordo = $this->acordoRepository->findWithoutFail($id);
 
         if (empty($acordo)) {
