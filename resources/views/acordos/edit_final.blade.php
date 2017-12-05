@@ -75,6 +75,8 @@
                     <input type="hidden" name="empresa_id" value="{{$empresa->id}}" />
                     @include('titulos.table')
 
+                    <p>Valor Total da Dívida: <strong>{{$valorTotalDivida}}</strong></p>
+
             </div>
         </div>
 
