@@ -72,7 +72,7 @@
 
         <div class="row modulos">
             <div class="col-xs-12 col-md-5 container-fases">
-                <h5>FASE I</h5>
+                <h5>FASE I </h5>
 
                 <div class="modulo col-sm-6 modulo-azul">
                     <h5>Prevenção</h5>
