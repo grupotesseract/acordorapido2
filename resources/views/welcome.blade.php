@@ -9,7 +9,7 @@
                 <img src="/img/logoacordorapido.png" alt="Acordo Rápido">
             </div>
         </div>
-        <h3>Monitoramento e Recuperação de Créditos</h3>
+        <h3>Monitoramento e Recuperação de Mensalidades Escolares</h3>
         
     </div>
 </div>
@@ -20,7 +20,7 @@
             <img src="http://res.cloudinary.com/tesseract/image/upload/v1507566012/acordorapidoimagem.jpg">
         </div>
         <div class="width40-fixo borda-60 responsivo">
-            <h5>O Acordo Rápido é uma Ferramenta Inovadora para Monitorar e Recuperar Créditos</h5>
+            <h5>O Acordo Rápido é uma Ferramenta Inovadora para Monitorar e Recuperar Mensalidades Escolares</h5>
             <p>
                 Alinhado com a modernidade e a tecnologia, o Acordo Rápido elimina o estresse da relação de cobrança, oferecendo total privacidade ao cliente.
             </p>
@@ -35,7 +35,7 @@
     <div class="modulo-principal">
         <div>
             <img src="/img/bola-1.png">
-            <h3>Monitoramento de Crédito</h3>            
+            <h3>Monitoramento de Mensalidades Escolares</h3>            
         </div>
     </div>
 
