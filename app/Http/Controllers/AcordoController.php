@@ -255,7 +255,7 @@ class AcordoController extends AppBaseController
 
         $valorTotalBruto = $this->acordoRepository->calculaValorTotalBruto($empresa, $titulos);
 
-        $valorTotalDescontado = $this->acordoRepository->calculaValorTotalDescontado($empresa, $titulos);        
+        $valorTotalDescontado = $this->acordoRepository->calculaValorTotalDescontado($empresa, $titulos);
 
         return $titulosDataTable->porAcordo($acordo->id)->render('acordos.edit_final', ['aluno' => $aluno, 'empresa' => $empresa, 'acordo' => $acordo, 'parcelas' => $parcelas, 'ligacoes' => $ligacoes, 'valorTotalDivida' => $valorTotalDivida, 'valorTotalDesconto' => $valorTotalDesconto, 'valorTotalBruto' => $valorTotalBruto, 'valorTotalDescontado' => $valorTotalDescontado]);
     }
