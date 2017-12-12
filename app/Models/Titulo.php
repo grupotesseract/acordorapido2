@@ -19,8 +19,7 @@ use Carbon\Carbon as Carbon;
  */
 class Titulo extends Model
 {
-    
-    protected $appends = ['calculado','calculadosemformato'];
+    protected $appends = ['calculado', 'calculadosemformato'];
     /**
      * The attributes that are mass assignable.
      *
