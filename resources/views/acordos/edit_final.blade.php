@@ -74,8 +74,15 @@
                     <input type="hidden" name="cliente_id" value="{{$aluno->id}}" />
                     <input type="hidden" name="empresa_id" value="{{$empresa->id}}" />
                     @include('titulos.table')
+            </div>
+        </div>
 
-                    <p>Valor Total da Dívida: <strong>{{$valorTotalDivida}}</strong></p>
+        <div class="box box-primary">
+            <div class="box-body">                    
+                <p>Valor Bruto Total: <strong>{{$valorTotalBruto}}</strong></p>
+                <p>Descontos Totais: <strong>{{$valorTotalDesconto}}</strong></p>
+                <p>Valor Com Desconto Total: <strong>{{$valorTotalDescontado}}</strong></p>
+                <p>Valor Atualizado Total: <strong>{{$valorTotalDivida}}</strong></p>
 
             </div>
         </div>

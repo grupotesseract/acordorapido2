@@ -68,7 +68,7 @@ class TituloDataTableModal extends DataTable
     public function query()
     {
         if (isset($this->acordo_id)) {
-            $titulos = Titulo::query()->where('cliente_id', $this->aluno)->where('empresa_id', $this->empresa)->where('acordo_id', $this->acordo_id)->whereIn('estado', $this->estado)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
+            $titulos = Titulo::query()->where('acordo_id', $this->acordo_id)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
         } else {
             $titulos = Titulo::query()->where('cliente_id', $this->aluno)->where('empresa_id', $this->empresa)->whereIn('estado', $this->estado)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
         }
@@ -88,6 +88,7 @@ class TituloDataTableModal extends DataTable
             ->ajax('')
             ->parameters([
                 'dom' => 'Bfrtip',
+                'paging' => false,
                 'scrollX' => false,
                 'buttons' => [
 

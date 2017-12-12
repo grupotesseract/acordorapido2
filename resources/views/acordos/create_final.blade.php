@@ -84,12 +84,19 @@
                         
                         @include('titulos.table')
 
-                        <p>Valor Total da Dívida: <strong>{{$valorTotalDivida}}</strong></p>
 
                 </div>
             </div>
 
+            <div class="box box-primary">
+                <div class="box-body">                    
+                    <p>Valor Bruto Total: <strong>{{$valorTotalBruto}}</strong></p>
+                    <p>Descontos Totais: <strong>{{$valorTotalDesconto}}</strong></p>
+                    <p>Valor Com Desconto Total: <strong>{{$valorTotalDescontado}}</strong></p>
+                    <p>Valor Atualizado Total: <strong>{{$valorTotalDivida}}</strong></p>
 
+                </div>
+            </div>
 
             <div class="box box-primary">
                 <div class="box-body">                    

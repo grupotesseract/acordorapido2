@@ -50,9 +50,19 @@ class AcordoController extends AppBaseController
      * @param AcordoDataTable $acordoDataTable
      * @return Response
      */
-    public function index(AcordoDataTable $acordoDataTable)
+    public function index(AcordoDataTable $acordoDataTable, $status)
     {
-        return $acordoDataTable->render('acordos.index');
+        switch ($status) {
+            case 'acordosfeitos':
+                $situacao = 'Acordo Feito';
+                break;
+
+            case 'contatosemacordo':
+                $situacao = 'Contato sem Acordo';
+                break;
+        }
+
+        return $acordoDataTable->porSituacao($situacao)->render('acordos.index');
     }
 
     /**
@@ -196,8 +206,13 @@ class AcordoController extends AppBaseController
 
         //TO-DO: passar porcentagem do honorário!
         $valorTotalDivida = $this->acordoRepository->calculaValorDivida($empresa, $titulos);
+        $valorTotalDesconto = $this->acordoRepository->calculaValorTotalDesconto($empresa, $titulos);
 
-        return $titulosDataTable->porAluno($aluno->id)->porEmpresa($empresa->id)->porEstado(['amarelo'])->render('acordos.create_final', ['aluno' => $aluno, 'titulos' => $titulos, 'empresa' => $empresa, 'valorTotalDivida' => $valorTotalDivida]);
+        $valorTotalBruto = $this->acordoRepository->calculaValorTotalBruto($empresa, $titulos);
+
+        $valorTotalDescontado = $this->acordoRepository->calculaValorTotalDescontado($empresa, $titulos);
+
+        return $titulosDataTable->porAluno($aluno->id)->porEmpresa($empresa->id)->porEstado(['amarelo'])->render('acordos.create_final', ['aluno' => $aluno, 'titulos' => $titulos, 'empresa' => $empresa, 'valorTotalDivida' => $valorTotalDivida, 'valorTotalDesconto' => $valorTotalDesconto, 'valorTotalBruto' => $valorTotalBruto, 'valorTotalDescontado' => $valorTotalDescontado]);
     }
 
     /**
@@ -234,7 +249,8 @@ class AcordoController extends AppBaseController
         $empresa = $acordo->empresa;
         $parcelas = $acordo->parcelamentos;
         $ligacoes = $acordo->ligacaoacordos;
-        $titulos = Titulo::where(['cliente_id' => $aluno->id])->where(['empresa_id' => $empresa->id])->get();
+        /*$titulos = Titulo::where(['cliente_id' => $aluno->id])->where(['empresa_id' => $empresa->id])->get();*/
+        $titulos = $acordo->titulos;
 
         if (empty($acordo)) {
             Flash::error('Acordo não encontrado');
@@ -244,7 +260,14 @@ class AcordoController extends AppBaseController
 
         $valorTotalDivida = $this->acordoRepository->calculaValorDivida($empresa, $titulos);
 
-        return $titulosDataTable->porAluno($aluno->id)->porEstado(['amarelo'])->porEmpresa($empresa->id)->porAcordo($acordo->id)->render('acordos.edit_final', ['aluno' => $aluno, 'empresa' => $empresa, 'acordo' => $acordo, 'parcelas' => $parcelas, 'ligacoes' => $ligacoes, 'valorTotalDivida' => $valorTotalDivida]);
+        $valorTotalDivida = $this->acordoRepository->calculaValorDivida($empresa, $titulos);
+        $valorTotalDesconto = $this->acordoRepository->calculaValorTotalDesconto($empresa, $titulos);
+
+        $valorTotalBruto = $this->acordoRepository->calculaValorTotalBruto($empresa, $titulos);
+
+        $valorTotalDescontado = $this->acordoRepository->calculaValorTotalDescontado($empresa, $titulos);
+
+        return $titulosDataTable->porAcordo($acordo->id)->render('acordos.edit_final', ['aluno' => $aluno, 'empresa' => $empresa, 'acordo' => $acordo, 'parcelas' => $parcelas, 'ligacoes' => $ligacoes, 'valorTotalDivida' => $valorTotalDivida, 'valorTotalDesconto' => $valorTotalDesconto, 'valorTotalBruto' => $valorTotalBruto, 'valorTotalDescontado' => $valorTotalDescontado]);
     }
 
     /**
