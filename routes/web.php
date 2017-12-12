@@ -51,6 +51,7 @@ Route::post('avisos/ligacao/', 'AvisosController@salvaLigacao', ['middleware' =>
 Route::get('titulos/modulo/{estado}', 'TituloController@titulosModulo', ['middleware' => 'auth']);
 
 Route::get('avisos/sms/{aviso_id}', 'AvisoController@enviaSMS', ['middleware' => 'auth']);
+
 Route::post('avisos/ligacao/', 'AvisoController@salvaLigacao', ['middleware' => 'auth']);
 
 Route::resource('contatos', 'ContatoController');
@@ -73,3 +74,5 @@ Route::resource('parcelamentos', 'ParcelamentoController', ['middleware' => 'aut
 Route::resource('ligacaoacordos', 'LigacaoacordoController', ['middleware' => 'auth']);
 
 Route::resource('historicos', 'HistoricoController', ['middleware' => 'auth']);
+
+Route::get('acordo/{status}', 'AcordoController@index', ['middleware' => 'auth']);

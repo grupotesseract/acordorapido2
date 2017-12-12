@@ -50,9 +50,18 @@ class AcordoController extends AppBaseController
      * @param AcordoDataTable $acordoDataTable
      * @return Response
      */
-    public function index(AcordoDataTable $acordoDataTable)
+    public function index(AcordoDataTable $acordoDataTable, $status)
     {
-        return $acordoDataTable->render('acordos.index');
+        switch ($status) {
+            case 'acordosfeitos':
+                $situacao = 'Acordo Feito';
+                break;
+
+            case 'contatosemacordo':
+                $situacao = 'Contato sem Acordo';
+                break;         
+        }
+        return $acordoDataTable->porSituacao($situacao)->render('acordos.index');
     }
 
     /**

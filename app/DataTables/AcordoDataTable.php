@@ -15,6 +15,14 @@ use Yajra\Datatables\Services\DataTable;
 
 class AcordoDataTable extends DataTable
 {
+    protected $situacao;
+
+    public function porSituacao($situacao)
+    {
+        $this->situacao = $situacao;
+        return $this;
+    }
+
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -33,7 +41,11 @@ class AcordoDataTable extends DataTable
      */
     public function query()
     {
-        $acordos = Acordo::query()->with('cliente')->with('empresa')->with('user');
+        if (isset($this->situacao))
+            $acordos = Acordo::query()->where('situacao', $this->situacao)->with('cliente')->with('empresa')->with('user');
+        else
+            $acordos = Acordo::query()->with('cliente')->with('empresa')->with('user');
+
 
         return $this->applyScopes($acordos);
     }
