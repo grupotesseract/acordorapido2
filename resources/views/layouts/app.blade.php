@@ -211,6 +211,14 @@
         }
     });
 
+    $( "#finalizaLigacao" ).click(function(){
+        $('.botaoSalvar').prop('disabled', false);
+    });
+
+    $( "#addLigacao" ).click(function(){
+        $('.finalizaLigacao').prop('disabled', false);
+    });
+
 
 </script>
 

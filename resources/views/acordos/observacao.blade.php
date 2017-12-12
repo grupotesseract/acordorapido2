@@ -14,7 +14,7 @@
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
+    {!! Form::submit('Salvar', ['class' => 'btn btn-primary botaoSalvar', 'disabled' => 'disabled']) !!}
     <a href="{!! route('acordos.index') !!}" class="btn btn-default">Cancelar</a>
-    <button data-target="#ligacao" type="button" class="btn btn-warning" id="addLigacao" data-toggle="modal">Salvar Ligação Telefônica</button>
+    <button data-target="#ligacao" type="button" class="btn btn-warning finalizaLigacao" id="finalizaLigacao" data-toggle="modal" disabled="disabled">Salvar Ligação Telefônica</button>
 </div>
