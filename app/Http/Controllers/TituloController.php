@@ -219,7 +219,7 @@ class TituloController extends AppBaseController
         $retorno = '';
         if ($request->mensagem) {
             $retorno = $this->modeloAvisoRepository->find($request->mensagem);
-        } elseif ($estado == 'azul' OR $estado == 'verde') {
+        } elseif ($estado == 'azul' or $estado == 'verde') {
             \Session::flash('flash_message_error', true);
             \Session::flash('flash_message', 'Antes de efetuar uma importação, você deve cadastrar os avisos que serão enviados para essa escola! Vá em Avisos->Modelo de Avisos');
 
@@ -310,8 +310,7 @@ class TituloController extends AppBaseController
                         $user_id = Auth::id();
                         $escola = Empresa::find($empresa_id)->nome;
 
-                        if ($estado == 'azul' OR $estado == 'verde')
-                        {
+                        if ($estado == 'azul' or $estado == 'verde') {
                             $mensagem = str_replace('[vencimento]', $vencimento, $retorno['mensagem']);
                             $mensagem = str_replace('[nome]', $cliente->nome, $mensagem);
 
