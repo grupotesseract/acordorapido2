@@ -144,7 +144,10 @@
             valorAntigo = valorAntigo.replace(/\./g, ""),
             valorAntigo = valorAntigo.replace(",", ".");
 
+        console.log(valorAntigo);
+        console.log(valor);
         valorNovo = parseFloat(valorAntigo) + parseFloat(valor);
+        console.log(valorNovo);
         valorNovo = valorNovo.toFixed(2);
 
         $("input[name=valororiginal]").val(valorNovo.toString().replace(".", ","));
@@ -206,6 +209,14 @@
             $("#calendario"+i).val(finalDate);*/
             
         }
+    });
+
+    $( "#finalizaLigacao" ).click(function(){
+        $('.botaoSalvar').prop('disabled', false);
+    });
+
+    $( "#addLigacao" ).click(function(){
+        $('.finalizaLigacao').prop('disabled', false);
     });
 
 

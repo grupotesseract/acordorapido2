@@ -53,4 +53,37 @@ class AcordoRepository extends BaseRepository
 
         return number_format($valortotal, 2, ',', '.');
     }
+
+    public function calculaValorTotalDesconto($empresa, $titulos)
+    {
+        $valortotal = 0;
+        foreach ($titulos as $titulo) {
+            $valor = str_replace('.', '', $titulo->desconto);
+            $valortotal += str_replace(',', '.', $valor);
+        }
+
+        return number_format($valortotal, 2, ',', '.');
+    }
+
+    public function calculaValorTotalBruto($empresa, $titulos)
+    {
+        $valortotal = 0;
+        foreach ($titulos as $titulo) {
+            $valor = str_replace('.', '', $titulo->valor);
+            $valortotal += str_replace(',', '.', $valor);
+        }
+
+        return number_format($valortotal, 2, ',', '.');
+    }
+
+    public function calculaValorTotalDescontado($empresa, $titulos)
+    {
+        $valortotal = 0;
+        foreach ($titulos as $titulo) {
+            $valor = str_replace('.', '', $titulo->valordescontado);
+            $valortotal += str_replace(',', '.', $valor);
+        }
+
+        return number_format($valortotal, 2, ',', '.');
+    }
 }
