@@ -83,7 +83,7 @@
 @endability
 
 @ability('admin', 'criar-acordo')
-<li class="{{ Request::is('acordos*') ? 'active' : '' }} treeview">
+<li class="{{ Request::is('acordo*') ? 'active' : '' }} treeview">
     <a href="{!! route('acordos.index') !!}"><i class="glyphicon glyphicon-book"></i><span>Acordos e Negociações</span><i class="fa fa-angle-left pull-right"></i></a>
     <ul class="treeview-menu">
         <li><a href="{{url('acordo/contatosemacordo')}}"><i class="glyphicon glyphicon-list-alt"></i><span>Contatos sem Acordo</span></a></li>
@@ -94,8 +94,8 @@
 @endability
 
 @ability('admin', 'visualizar-contatos')
-<li class="{{ Request::is('contatos*') ? 'active' : '' }} treeview">
-    <a href="{!! route('acordos.index') !!}"><i class="glyphicon glyphicon-book"></i><span>Outras Opções</span><i class="fa fa-angle-left pull-right"></i></a>
+<li class="{{ (Request::is('contatos*') OR Request::is('historicos*')) ? 'active' : '' }} treeview">
+    <a href="#"><i class="glyphicon glyphicon-book"></i><span>Outras Opções</span><i class="fa fa-angle-left pull-right"></i></a>
 
     <ul class="treeview-menu">
         <li><a href="{!! route('contatos.index') !!}"><i class="fa fa-edit"></i><span>Contatos - Formulário Site</span></a></li>
