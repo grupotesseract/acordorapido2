@@ -8,7 +8,7 @@
 </style>
 
 <input type="checkbox" id="titulosCheckbox" name="titulos[]" value="{{$valor}}" /> -->
-
+<!-- 
 <?php 
   $vencimento = Carbon\Carbon::createFromFormat('d/m/Y', $vencimento);
   $hoje = Carbon\Carbon::now();
@@ -22,10 +22,10 @@
   $potencia = pow(1 + $taxa, $diff);
   $valortotal = $valorAposVencimento + ($valorTitulo * $potencia);
 
-?>
+?> -->
 
 
   
-  <a class="btn btn-xs btn-info" onclick="javascript:selecionarTitulo(event,{{ round($valortotal,2) }}, {{ $id }})"> <i class="fa fa-plus"></i> Adicionar </a>
-  <input type="hidden" name="valor" disabled value="{{ round($valortotal,2) }}"> 
+  <a class="btn btn-xs btn-info" onclick="javascript:selecionarTitulo(event,{{ $calculadosemformato }}, {{ $id }})"> <i class="fa fa-plus"></i> Adicionar </a>
+  <input type="hidden" name="valor" disabled value="{{ $calculadosemformato }}"> 
 

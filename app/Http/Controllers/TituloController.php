@@ -216,9 +216,10 @@ class TituloController extends AppBaseController
      */
     public function importa(CreateTituloRequest $request, $estado)
     {
+        $retorno = '';
         if ($request->mensagem) {
             $retorno = $this->modeloAvisoRepository->find($request->mensagem);
-        } else {
+        } elseif ($estado == 'azul' OR $estado == 'verde') {
             \Session::flash('flash_message_error', true);
             \Session::flash('flash_message', 'Antes de efetuar uma importação, você deve cadastrar os avisos que serão enviados para essa escola! Vá em Avisos->Modelo de Avisos');
 
@@ -309,24 +310,27 @@ class TituloController extends AppBaseController
                         $user_id = Auth::id();
                         $escola = Empresa::find($empresa_id)->nome;
 
-                        $mensagem = str_replace('[vencimento]', $vencimento, $retorno['mensagem']);
-                        $mensagem = str_replace('[nome]', $cliente->nome, $mensagem);
+                        if ($estado == 'azul' OR $estado == 'verde')
+                        {
+                            $mensagem = str_replace('[vencimento]', $vencimento, $retorno['mensagem']);
+                            $mensagem = str_replace('[nome]', $cliente->nome, $mensagem);
 
-                        $titulo_mensagem = $retorno['titulo'];
+                            $titulo_mensagem = $retorno['titulo'];
 
-                        if (count($this->avisoRepository->findWhere(['titulo_id'  => $titulo->id, 'estado' => $estado])->toArray()) == 0) {
-                            $this->avisoRepository->create(
-                                [
-                                    'tituloaviso' => $titulo_mensagem,
-                                    'texto'      => $mensagem,
-                                    'user_id'    => Auth::id(),
-                                    'cliente_id' => $cliente_id,
-                                    'status'     => 0,
-                                    'estado'     => $estado,
-                                    'titulo_id'  => $titulo->id,
-                                ]
+                            if (count($this->avisoRepository->findWhere(['titulo_id'  => $titulo->id, 'estado' => $estado])->toArray()) == 0) {
+                                $this->avisoRepository->create(
+                                    [
+                                        'tituloaviso' => $titulo_mensagem,
+                                        'texto'      => $mensagem,
+                                        'user_id'    => Auth::id(),
+                                        'cliente_id' => $cliente_id,
+                                        'status'     => 0,
+                                        'estado'     => $estado,
+                                        'titulo_id'  => $titulo->id,
+                                    ]
 
-                            );
+                                );
+                            }
                         }
                     }
                 });
