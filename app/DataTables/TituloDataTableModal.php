@@ -114,9 +114,9 @@ class TituloDataTableModal extends DataTable
     private function getColumns()
     {
         $vetor = [
-            'selecionar' => ['name' => 'selecionar', 'title' => 'Marcar'],
+            'selecionar' => ['name' => 'selecionar', 'title' => ''],
             'ano' => ['name' => 'ano', 'data' => 'ano'],
-            'escola' => ['name' => 'empresa.nome', 'data' => 'empresa.nome'],
+            //'escola' => ['name' => 'empresa.nome', 'data' => 'empresa.nome'],
             'módulo' => ['name' => 'estado', 'data' => 'estado'],
             'titulo' => ['name' => 'titulo', 'data' => 'titulo'],
             'vencimento' => ['name' => 'vencimento', 'data' => 'vencimento'],
@@ -124,6 +124,8 @@ class TituloDataTableModal extends DataTable
             'desconto' => ['name' => 'desconto', 'data' => 'desconto'],
             'valordescontado' => ['name' => 'valordescontado', 'data' => 'valordescontado', 'title' => 'Valor Líquido'],
             'calculado' => ['name' => 'calculado', 'title' => 'Valor Atualizado', 'data' => 'calculado'],
+            'calculadoHonorario' => ['name' => 'calculado', 'title' => 'Valor Referência', 'data' => 'calculadohonorario'],
+            'calculadoHonorarioBruto' => ['name' => 'calculado', 'title' => 'Valor Cobrança', 'data' => 'calculadohonorariobruto'],
             'avisos' => ['name' => 'avisos', 'title' => 'Operações Efetuadas'],
 
         ];

@@ -128,7 +128,7 @@
 
         let linha = $(ev.target).parents('tr');
         let containerSelecionados = $('.titulosSelecionados');
-        let htmlBtnRemover = "<i class='fa fa-close'></i> &nbsp; Remover ";
+        let htmlBtnRemover = "<i class='fa fa-close'></i>";
         let htmlInputHidden = '<input type="hidden" id=titulo'+id+' name="titulos[]" value='+id+' />'; 
 
         linha.find('a.btn.btn-info')
@@ -160,7 +160,7 @@
     window.removerLinha = function(ev,valor,id) {
        
         $('.titulosSelecionados').find('#titulo'+id).remove();
-        let htmlBtnAdicionar = "<i class='fa fa-close'></i> &nbsp; Adicionar ";
+        let htmlBtnAdicionar = "<i class='fa fa-plus'></i>";
 
         let linha = $(ev.target).parents('tr');
 
