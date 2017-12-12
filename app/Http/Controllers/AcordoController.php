@@ -59,8 +59,9 @@ class AcordoController extends AppBaseController
 
             case 'contatosemacordo':
                 $situacao = 'Contato sem Acordo';
-                break;         
+                break;
         }
+
         return $acordoDataTable->porSituacao($situacao)->render('acordos.index');
     }
 

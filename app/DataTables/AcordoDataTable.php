@@ -20,6 +20,7 @@ class AcordoDataTable extends DataTable
     public function porSituacao($situacao)
     {
         $this->situacao = $situacao;
+
         return $this;
     }
 
@@ -41,11 +42,11 @@ class AcordoDataTable extends DataTable
      */
     public function query()
     {
-        if (isset($this->situacao))
+        if (isset($this->situacao)) {
             $acordos = Acordo::query()->where('situacao', $this->situacao)->with('cliente')->with('empresa')->with('user');
-        else
+        } else {
             $acordos = Acordo::query()->with('cliente')->with('empresa')->with('user');
-
+        }
 
         return $this->applyScopes($acordos);
     }
