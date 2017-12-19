@@ -265,7 +265,7 @@ class Titulo extends Model
         $potencia = pow(1 + $taxa, $diff);
         $valortotal = ($valorTituloAposVencimento * $potencia);
 
-        $valortotal *= (1 + $this->empresa->honorario_intensivo / 100) ;
+        $valortotal *= (1 + $this->empresa->honorario_intensivo / 100);
 
         return number_format($valortotal, 2, ',', '.');
     }
@@ -285,7 +285,7 @@ class Titulo extends Model
         $potencia = pow(1 + $taxa, $diff);
         $valortotal = ($valorTituloAposVencimento * $potencia);
 
-        $valortotal *= (1 + $this->empresa->honorario_intensivo / 100) ;
+        $valortotal *= (1 + $this->empresa->honorario_intensivo / 100);
 
         return number_format($valortotal, 2, ',', '.');
     }
@@ -305,11 +305,10 @@ class Titulo extends Model
         $potencia = pow(1 + $taxa, $diff);
         $valortotal = ($valorTituloAposVencimento * $potencia);
 
-        $valortotal *= (1 + $this->empresa->honorario_intensivo / 100) ;
+        $valortotal *= (1 + $this->empresa->honorario_intensivo / 100);
 
         return number_format($valortotal, 2, '.', '');
     }
-
 
     public function getCalculadosemformatoAttribute()
     {
