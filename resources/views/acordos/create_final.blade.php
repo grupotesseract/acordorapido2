@@ -96,6 +96,7 @@
                     <p>Descontos Totais: <strong>{{$valorTotalDesconto}}</strong></p>
                     <p>Valor Líquido Total: <strong>{{$valorTotalDescontado}}</strong></p>
                     <p>Valor Atualizado Total: <strong>{{$valorTotalDivida}}</strong></p>
+                    <p>Valor Referência Total: <strong>{{number_format($valorTotalReferencia, 2, ',', '.')}}</strong></p>
                     <p>Valor Cobrança Total: <strong>{{number_format($valorTotalCobranca, 2, ',', '.')}}</strong></p>
 
                 </div>

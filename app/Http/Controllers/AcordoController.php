@@ -217,7 +217,9 @@ class AcordoController extends AppBaseController
 
         $valorTotalCobranca = $this->acordoRepository->calculaValorTotalCobranca($empresa, $titulos);
 
-        return $titulosDataTable->porAluno($aluno->id)->porEmpresa($empresa->id)->porEstado(['amarelo'])->render('acordos.create_final', ['aluno' => $aluno, 'titulos' => $titulos, 'empresa' => $empresa, 'valorTotalDivida' => $valorTotalDivida, 'valorTotalDesconto' => $valorTotalDesconto, 'valorTotalBruto' => $valorTotalBruto, 'valorTotalDescontado' => $valorTotalDescontado, 'valorTotalCobranca' => $valorTotalCobranca]);
+        $valorTotalReferencia = $this->acordoRepository->calculaValorTotalReferencia($empresa, $titulos);
+
+        return $titulosDataTable->porAluno($aluno->id)->porEmpresa($empresa->id)->porEstado(['amarelo'])->render('acordos.create_final', ['aluno' => $aluno, 'titulos' => $titulos, 'empresa' => $empresa, 'valorTotalDivida' => $valorTotalDivida, 'valorTotalDesconto' => $valorTotalDesconto, 'valorTotalBruto' => $valorTotalBruto, 'valorTotalDescontado' => $valorTotalDescontado, 'valorTotalCobranca' => $valorTotalCobranca, 'valorTotalReferencia' => $valorTotalReferencia]);
     }
 
     /**
