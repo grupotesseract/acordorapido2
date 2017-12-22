@@ -170,6 +170,7 @@ class AcordoController extends AppBaseController
 
         //return redirect(route('acordos.index', ['status' => strtolower($input['retornoacordo'])]));
         $status = str_replace(' ', '', strtolower($input['retornoacordo']));
+
         return redirect()->action(
             'AcordoController@index', ['status' => strtolower($status)]
         );
@@ -340,6 +341,7 @@ class AcordoController extends AppBaseController
 
         //return redirect(route('acordos.index'));
         $status = str_replace(' ', '', strtolower($input['retornoacordo']));
+
         return redirect()->action(
             'AcordoController@index', ['status' => strtolower($status)]
         );
