@@ -144,17 +144,17 @@
             valorAntigo = valorAntigo.replace(/\./g, ""),
             valorAntigo = valorAntigo.replace(",", ".");
 
-        console.log(valorAntigo);
-        console.log(valor);
+        
         valorNovo = parseFloat(valorAntigo) + parseFloat(valor);
-        console.log(valorNovo);
         valorNovo = valorNovo.toFixed(2);
 
-        $("input[name=valororiginal]").val(valorNovo.toString().replace(".", ","));
-        $("input[name=valoracordado]").val(valorNovo.toString().replace(".", ","));
+        $("#valororiginal").val(valorNovo.replace(".",","));
+        $("#valoracordado").val(valorNovo.replace(".",","));
+        $('#valoracordado').mask('000.000.000.000.000,00', { reverse: true });
 
-        handleMasks();
+
         calculaParcelas();
+        handleMasks();
     };
 
     window.removerLinha = function(ev,valor,id) {
@@ -173,16 +173,18 @@
 
         var valorAntigo = $("input[name=valororiginal]").val(),
             valorAntigo = valorAntigo.replace(/\./g, ""),
-            valorAntigo = valorAntigo.replace(",", ".");
+            valorAntigo = valorAntigo.replace(",", ".");          
 
         valorNovo = parseFloat(valorAntigo) - parseFloat(valor);
         valorNovo = valorNovo.toFixed(2);
         
-        $("input[name=valororiginal]").val(valorNovo.toString().replace(".", ","));
-        $("input[name=valoracordado]").val(valorNovo.toString().replace(".", ","));        
+        $("#valororiginal").val(valorNovo.replace(".",","));
+        $("#valoracordado").val(valorNovo.replace(".",","));   
+        $('#valoracordado').mask('000.000.000.000.000,00', { reverse: true });
+
         
-        handleMasks();
         calculaParcelas();
+        handleMasks();
 
     }
 

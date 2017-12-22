@@ -86,4 +86,14 @@ class AcordoRepository extends BaseRepository
 
         return number_format($valortotal, 2, ',', '.');
     }
+
+    public function calculaValorTotalCobranca($empresa, $titulos)
+    {
+        $valortotal = 0;
+        foreach ($titulos as $titulo) {
+            $valortotal += $titulo->calculadohonorariobrutosemformato;
+        }
+
+        return $valortotal;
+    }
 }
