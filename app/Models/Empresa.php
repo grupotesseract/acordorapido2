@@ -42,6 +42,8 @@ class Empresa extends Model
         'responsavel',
         'email',
         'telefone',
+        'honorario_intensivo',
+        'honorario_cobranca',
     ];
 
     /**
@@ -60,6 +62,8 @@ class Empresa extends Model
         'responsavel' => 'string',
         'email' => 'string',
         'telefone' => 'string',
+        'honorario_intensivo' => 'integer',
+        'honorario_cobranca' => 'integer',
     ];
 
     /**

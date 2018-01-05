@@ -168,7 +168,12 @@ class AcordoController extends AppBaseController
 
         Flash::success('Acordo salvo com sucesso.');
 
-        return redirect(route('acordos.index'));
+        //return redirect(route('acordos.index', ['status' => strtolower($input['retornoacordo'])]));
+        $status = str_replace(' ', '', strtolower($input['retornoacordo']));
+
+        return redirect()->action(
+            'AcordoController@index', ['status' => strtolower($status)]
+        );
     }
 
     /**
@@ -204,7 +209,6 @@ class AcordoController extends AppBaseController
 
         $titulos = Titulo::where(['cliente_id' => $aluno->id])->where(['empresa_id' => $empresa->id])->get();
 
-        //TO-DO: passar porcentagem do honorário!
         $valorTotalDivida = $this->acordoRepository->calculaValorDivida($empresa, $titulos);
         $valorTotalDesconto = $this->acordoRepository->calculaValorTotalDesconto($empresa, $titulos);
 
@@ -212,7 +216,11 @@ class AcordoController extends AppBaseController
 
         $valorTotalDescontado = $this->acordoRepository->calculaValorTotalDescontado($empresa, $titulos);
 
-        return $titulosDataTable->porAluno($aluno->id)->porEmpresa($empresa->id)->porEstado(['amarelo'])->render('acordos.create_final', ['aluno' => $aluno, 'titulos' => $titulos, 'empresa' => $empresa, 'valorTotalDivida' => $valorTotalDivida, 'valorTotalDesconto' => $valorTotalDesconto, 'valorTotalBruto' => $valorTotalBruto, 'valorTotalDescontado' => $valorTotalDescontado]);
+        $valorTotalCobranca = $this->acordoRepository->calculaValorTotalCobranca($empresa, $titulos);
+
+        $valorTotalReferencia = $this->acordoRepository->calculaValorTotalReferencia($empresa, $titulos);
+
+        return $titulosDataTable->porAluno($aluno->id)->porEmpresa($empresa->id)->porEstado(['amarelo'])->render('acordos.create_final', ['aluno' => $aluno, 'titulos' => $titulos, 'empresa' => $empresa, 'valorTotalDivida' => $valorTotalDivida, 'valorTotalDesconto' => $valorTotalDesconto, 'valorTotalBruto' => $valorTotalBruto, 'valorTotalDescontado' => $valorTotalDescontado, 'valorTotalCobranca' => $valorTotalCobranca, 'valorTotalReferencia' => $valorTotalReferencia]);
     }
 
     /**
@@ -331,7 +339,12 @@ class AcordoController extends AppBaseController
 
         Flash::success('Acordo atualizado com sucesso');
 
-        return redirect(route('acordos.index'));
+        //return redirect(route('acordos.index'));
+        $status = str_replace(' ', '', strtolower($input['retornoacordo']));
+
+        return redirect()->action(
+            'AcordoController@index', ['status' => strtolower($status)]
+        );
     }
 
     /**

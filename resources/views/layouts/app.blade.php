@@ -128,7 +128,7 @@
 
         let linha = $(ev.target).parents('tr');
         let containerSelecionados = $('.titulosSelecionados');
-        let htmlBtnRemover = "<i class='fa fa-close'></i> &nbsp; Remover ";
+        let htmlBtnRemover = "<i class='fa fa-close'></i>";
         let htmlInputHidden = '<input type="hidden" id=titulo'+id+' name="titulos[]" value='+id+' />'; 
 
         linha.find('a.btn.btn-info')
@@ -144,23 +144,23 @@
             valorAntigo = valorAntigo.replace(/\./g, ""),
             valorAntigo = valorAntigo.replace(",", ".");
 
-        console.log(valorAntigo);
-        console.log(valor);
+        
         valorNovo = parseFloat(valorAntigo) + parseFloat(valor);
-        console.log(valorNovo);
         valorNovo = valorNovo.toFixed(2);
 
-        $("input[name=valororiginal]").val(valorNovo.toString().replace(".", ","));
-        $("input[name=valoracordado]").val(valorNovo.toString().replace(".", ","));
+        $("#valororiginal").val(valorNovo.replace(".",","));
+        $("#valoracordado").val(valorNovo.replace(".",","));
+        $('#valoracordado').mask('000.000.000.000.000,00', { reverse: true });
 
-        handleMasks();
+
         calculaParcelas();
+        handleMasks();
     };
 
     window.removerLinha = function(ev,valor,id) {
        
         $('.titulosSelecionados').find('#titulo'+id).remove();
-        let htmlBtnAdicionar = "<i class='fa fa-close'></i> &nbsp; Adicionar ";
+        let htmlBtnAdicionar = "<i class='fa fa-plus'></i>";
 
         let linha = $(ev.target).parents('tr');
 
@@ -173,16 +173,18 @@
 
         var valorAntigo = $("input[name=valororiginal]").val(),
             valorAntigo = valorAntigo.replace(/\./g, ""),
-            valorAntigo = valorAntigo.replace(",", ".");
+            valorAntigo = valorAntigo.replace(",", ".");          
 
         valorNovo = parseFloat(valorAntigo) - parseFloat(valor);
         valorNovo = valorNovo.toFixed(2);
         
-        $("input[name=valororiginal]").val(valorNovo.toString().replace(".", ","));
-        $("input[name=valoracordado]").val(valorNovo.toString().replace(".", ","));        
+        $("#valororiginal").val(valorNovo.replace(".",","));
+        $("#valoracordado").val(valorNovo.replace(".",","));   
+        $('#valoracordado').mask('000.000.000.000.000,00', { reverse: true });
+
         
-        handleMasks();
         calculaParcelas();
+        handleMasks();
 
     }
 

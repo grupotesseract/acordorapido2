@@ -19,7 +19,7 @@ use Carbon\Carbon as Carbon;
  */
 class Titulo extends Model
 {
-    protected $appends = ['calculado', 'calculadosemformato'];
+    protected $appends = ['calculado', 'calculadosemformato', 'calculadohonorario', 'calculadohonorariobruto', 'calculadohonorariobrutosemformato'];
     /**
      * The attributes that are mass assignable.
      *
@@ -242,11 +242,72 @@ class Titulo extends Model
         $valorTitulo = str_replace(',', '.', str_replace('.', '', $this->valordescontado));
 
         $valorAposVencimento = $valorTitulo * ($this->empresa->multaporc / 100);
+        $valorTituloAposVencimento = $valorTitulo + $valorAposVencimento;
 
         $potencia = pow(1 + $taxa, $diff);
-        $valortotal = $valorAposVencimento + ($valorTitulo * $potencia);
+        $valortotal = ($valorTituloAposVencimento * $potencia);
 
         return number_format($valortotal, 2, ',', '.');
+    }
+
+    public function getCalculadohonorarioAttribute()
+    {
+        $vencimento = Carbon::createFromFormat('d/m/Y', $this->vencimento);
+        $hoje = Carbon::now();
+
+        $diff = $vencimento->diffInDays($hoje);
+        $taxa = ($this->empresa->multadiariaporc) / 100;
+        $valorTitulo = str_replace(',', '.', str_replace('.', '', $this->valordescontado));
+
+        $valorAposVencimento = $valorTitulo * ($this->empresa->multaporc / 100);
+        $valorTituloAposVencimento = $valorTitulo + $valorAposVencimento;
+
+        $potencia = pow(1 + $taxa, $diff);
+        $valortotal = ($valorTituloAposVencimento * $potencia);
+
+        $valortotal *= (1 + $this->empresa->honorario_intensivo / 100);
+
+        return number_format($valortotal, 2, ',', '.');
+    }
+
+    public function getCalculadohonorariobrutoAttribute()
+    {
+        $vencimento = Carbon::createFromFormat('d/m/Y', $this->vencimento);
+        $hoje = Carbon::now();
+
+        $diff = $vencimento->diffInDays($hoje);
+        $taxa = ($this->empresa->multadiariaporc) / 100;
+        $valorTitulo = str_replace(',', '.', str_replace('.', '', $this->valor));
+
+        $valorAposVencimento = $valorTitulo * ($this->empresa->multaporc / 100);
+        $valorTituloAposVencimento = $valorTitulo + $valorAposVencimento;
+
+        $potencia = pow(1 + $taxa, $diff);
+        $valortotal = ($valorTituloAposVencimento * $potencia);
+
+        $valortotal *= (1 + $this->empresa->honorario_intensivo / 100);
+
+        return number_format($valortotal, 2, ',', '.');
+    }
+
+    public function getCalculadohonorariobrutosemformatoAttribute()
+    {
+        $vencimento = Carbon::createFromFormat('d/m/Y', $this->vencimento);
+        $hoje = Carbon::now();
+
+        $diff = $vencimento->diffInDays($hoje);
+        $taxa = ($this->empresa->multadiariaporc) / 100;
+        $valorTitulo = str_replace(',', '.', str_replace('.', '', $this->valor));
+
+        $valorAposVencimento = $valorTitulo * ($this->empresa->multaporc / 100);
+        $valorTituloAposVencimento = $valorTitulo + $valorAposVencimento;
+
+        $potencia = pow(1 + $taxa, $diff);
+        $valortotal = ($valorTituloAposVencimento * $potencia);
+
+        $valortotal *= (1 + $this->empresa->honorario_intensivo / 100);
+
+        return number_format($valortotal, 2, '.', '');
     }
 
     public function getCalculadosemformatoAttribute()
