@@ -375,6 +375,6 @@ class AcordoController extends AppBaseController
 
         Flash::success('Acordo excluído com sucesso.');
 
-        return redirect(route('acordos.index'));
+        return redirect()->back();
     }
 }
