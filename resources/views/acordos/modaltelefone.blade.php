@@ -22,8 +22,7 @@
       <div class="modal-footer">
     		  <button data-target="#ligacao" type="button" class="btn btn-default enviarLigacao" id="addLigacao" data-toggle="modal">
             Adicionar Ligação
-          </button> 
-        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+          </button>         
       </div>
     </div>
 

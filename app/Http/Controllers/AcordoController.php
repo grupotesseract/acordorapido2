@@ -53,12 +53,13 @@ class AcordoController extends AppBaseController
     public function index(AcordoDataTable $acordoDataTable, $status)
     {
         switch ($status) {
-            case 'acordosfeitos':
-                $situacao = 'Acordo Feito';
-                break;
 
             case 'contatosemacordo':
                 $situacao = 'Contato sem Acordo';
+                break;
+
+            default:
+                $situacao = 'Acordo Feito';
                 break;
         }
 

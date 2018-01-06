@@ -13,10 +13,7 @@
           </a>
           <a  id="btn_pause" type="button" class="btn btn-default">
             <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
-          </a>
-          <a  id="btn_stop" type="button" class="btn btn-default">
-            <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
-          </a>
+          </a>          
           <a  id="btn_lap" type="button" class="btn btn-default">
             <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
           </a>
