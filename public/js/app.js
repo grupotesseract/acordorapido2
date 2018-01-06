@@ -219,7 +219,7 @@ var bindContadorCaracteres = function bindContadorCaracteres(contador) {
 };
 
 var chamaSweetAlertErroDisparoEmail = function chamaSweetAlertErroDisparoEmail() {
-    swal('Oops...', 'Something went wrong!', 'error');
+    swal('Oops...', 'Houve um erro!', 'error');
 };
 
 $(document).on("click", ".enviarligacao", function () {
@@ -324,6 +324,83 @@ $(document).on("click", ".enviarLigacao", function () {
 
 $('#removeLigacao').on('click', function () {
     $('#tabelaLigacoes').find('tbody').find('tr').first().remove();
+});
+
+window.selecionarTitulo = function (ev, valor, id) {
+
+    var linha = $(ev.target).parents('tr');
+    var containerSelecionados = $('.titulosSelecionados');
+    var htmlBtnRemover = "<i class='fa fa-close'></i>";
+    var htmlInputHidden = '<input type="hidden" id=titulo' + id + ' name="titulos[]" value=' + id + ' />';
+
+    linha.find('a.btn.btn-info').attr('onclick', 'removerLinha(event,' + valor + ',' + id + ')').removeClass('btn-info').addClass('btn-danger').html(htmlBtnRemover).next().removeAttr('disabled');
+
+    containerSelecionados.append(htmlInputHidden);
+
+    var valorAntigo = $("input[name=valororiginal]").val(),
+        valorAntigo = valorAntigo.replace(/\./g, ""),
+        valorAntigo = valorAntigo.replace(",", ".");
+
+    valorNovo = parseFloat(valorAntigo) + parseFloat(valor);
+    valorNovo = valorNovo.toFixed(2);
+
+    $("#valororiginal").val(valorNovo.replace(".", ","));
+    $("#valoracordado").val(valorNovo.replace(".", ","));
+    $('#valoracordado').mask('000.000.000.000.000,00', { reverse: true });
+
+    calculaParcelas();
+    handleMasks();
+};
+
+window.removerLinha = function (ev, valor, id) {
+
+    $('.titulosSelecionados').find('#titulo' + id).remove();
+    var htmlBtnAdicionar = "<i class='fa fa-plus'></i>";
+
+    var linha = $(ev.target).parents('tr');
+
+    linha.find('a.btn.btn-danger').attr('onclick', 'selecionarTitulo(event,' + valor + ',' + id + ')').removeClass('btn-danger').addClass('btn-info').html(htmlBtnAdicionar).next().removeAttr('disabled');
+
+    var valorAntigo = $("input[name=valororiginal]").val(),
+        valorAntigo = valorAntigo.replace(/\./g, ""),
+        valorAntigo = valorAntigo.replace(",", ".");
+
+    valorNovo = parseFloat(valorAntigo) - parseFloat(valor);
+    valorNovo = valorNovo.toFixed(2);
+
+    $("#valororiginal").val(valorNovo.replace(".", ","));
+    $("#valoracordado").val(valorNovo.replace(".", ","));
+    $('#valoracordado').mask('000.000.000.000.000,00', { reverse: true });
+
+    calculaParcelas();
+    handleMasks();
+};
+
+$('#botaoParcelas').click(function () {
+
+    var qtde = $("#numeroInicial").val();
+    var data_primeira = $("#dataInicial").val();
+
+    var num = $('.clonedInput').length;
+    for (i = num; i > 1; i--) {
+        removeParcela();
+    }
+
+    for (i = 1; i < qtde; i++) {
+        adicionaParcela();
+
+        var d = $.datepicker.parseDate('dd/mm/yy', data_primeira);
+        d.setMonth(d.getMonth() + i);
+        $('#calendario' + i).datepicker('setDate', d);
+    }
+});
+
+$("#finalizaLigacao").click(function () {
+    $('.botaoSalvar').prop('disabled', false);
+});
+
+$("#addLigacao").click(function () {
+    $('.finalizaLigacao').prop('disabled', false);
 });
 
 /***/ }),
