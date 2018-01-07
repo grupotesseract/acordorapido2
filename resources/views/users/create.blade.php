@@ -15,6 +15,8 @@
                     {!! Form::open(['route' => 'users.store']) !!}
 
                         @include('users.fields')
+                        @include('users.submit')
+                        
 
                     {!! Form::close() !!}
                 </div>
