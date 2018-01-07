@@ -8,7 +8,8 @@ window.handleMasks = function handleMasks() {
             monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
             monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
             nextText: 'Próximo',
-            prevText: 'Anterior'
+            prevText: 'Anterior',
+            orientation: "top"
 
         });
 
@@ -106,7 +107,7 @@ $(document).ready(function () {
 });
 
 //Quando ready...
-$(function () {
+$(function () { 
 
     //span que contem o data-target 
     var contadorCaracteres = $('#contador-caracteres');
@@ -135,7 +136,7 @@ var bindContadorCaracteres = function bindContadorCaracteres(contador) {
 };
 
 var chamaSweetAlertErroDisparoEmail = function chamaSweetAlertErroDisparoEmail() {
-    swal('Oops...', 'Something went wrong!', 'error');
+    swal('Oops...', 'Houve um erro!', 'error');
 };
 
 $(document).on("click", ".enviarligacao", function () {
@@ -244,4 +245,110 @@ $(document).on("click", ".enviarLigacao", function () {
 $('#removeLigacao').on('click', function () {
     $('#tabelaLigacoes').find('tbody').find('tr').first().remove();
 
+});
+
+window.selecionarTitulo = function(ev,valor,id) {
+
+    let linha = $(ev.target).parents('tr');
+    let containerSelecionados = $('.titulosSelecionados');
+    let htmlBtnRemover = "<i class='fa fa-close'></i>";
+    let htmlInputHidden = '<input type="hidden" id=titulo'+id+' name="titulos[]" value='+id+' />'; 
+
+    linha.find('a.btn.btn-info')
+        .attr('onclick', 'removerLinha(event,'+valor+','+id+')')
+        .removeClass('btn-info')
+        .addClass('btn-danger')
+        .html(htmlBtnRemover)
+        .next().removeAttr('disabled');
+
+    containerSelecionados.append(htmlInputHidden);
+
+    var valorAntigo = $("input[name=valororiginal]").val(),
+        valorAntigo = valorAntigo.replace(/\./g, ""),
+        valorAntigo = valorAntigo.replace(",", ".");
+
+    
+    valorNovo = parseFloat(valorAntigo) + parseFloat(valor);
+    valorNovo = valorNovo.toFixed(2);
+
+    $("#valororiginal").val(valorNovo.replace(".",","));
+    $("#valoracordado").val(valorNovo.replace(".",","));
+    $('#valoracordado').mask('000.000.000.000.000,00', { reverse: true });
+
+
+    calculaParcelas();
+    handleMasks();
+};
+
+window.removerLinha = function(ev,valor,id) {
+   
+    $('.titulosSelecionados').find('#titulo'+id).remove();
+    let htmlBtnAdicionar = "<i class='fa fa-plus'></i>";
+
+    let linha = $(ev.target).parents('tr');
+
+    linha.find('a.btn.btn-danger')
+        .attr('onclick', 'selecionarTitulo(event,'+valor+','+id+')')
+        .removeClass('btn-danger')
+        .addClass('btn-info')
+        .html(htmlBtnAdicionar)
+        .next().removeAttr('disabled');
+
+    var valorAntigo = $("input[name=valororiginal]").val(),
+        valorAntigo = valorAntigo.replace(/\./g, ""),
+        valorAntigo = valorAntigo.replace(",", ".");          
+
+    valorNovo = parseFloat(valorAntigo) - parseFloat(valor);
+    valorNovo = valorNovo.toFixed(2);
+    
+    $("#valororiginal").val(valorNovo.replace(".",","));
+    $("#valoracordado").val(valorNovo.replace(".",","));   
+    $('#valoracordado').mask('000.000.000.000.000,00', { reverse: true });
+
+    
+    calculaParcelas();
+    handleMasks();
+
+}
+
+$('#botaoParcelas').click(function () {
+    
+    let qtde = $("#numeroInicial").val();
+    let data_primeira = $("#dataInicial").val();
+    var d = $.datepicker.parseDate('dd/mm/yy', data_primeira);
+
+    var num = $('.clonedInput').length;        
+    for (i = num; i > 1; i--) {            
+        removeParcela();
+    }               
+
+    for (i = 1; i < qtde; i++) {           
+        adicionaParcela();       
+        
+    }
+
+    num = $('.clonedInput').length;        
+    for (j = 1; j <= num; j++) {            
+        $('#calendario' + j).datepicker({
+            dateFormat: 'dd/mm/yy',
+            dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+            dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+            dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+            monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            nextText: 'Próximo',
+            prevText: 'Anterior'
+
+        });  
+        $('#calendario' + j).datepicker('setDate', d);   
+        d.setMonth(d.getMonth() + 1);
+    }
+});
+
+$( "#finalizaLigacao" ).click(function(){
+    $('.botaoSalvar').prop('disabled', false);
+});
+
+$( "#addLigacao" ).click(function(){
+    $('.finalizaLigacao').prop('disabled', false);
 });
