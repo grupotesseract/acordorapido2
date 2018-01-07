@@ -8,7 +8,8 @@ window.handleMasks = function handleMasks() {
             monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
             monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
             nextText: 'Próximo',
-            prevText: 'Anterior'
+            prevText: 'Anterior',
+            orientation: "top"
 
         });
 
@@ -314,20 +315,33 @@ $('#botaoParcelas').click(function () {
     
     let qtde = $("#numeroInicial").val();
     let data_primeira = $("#dataInicial").val();
-
+    var d = $.datepicker.parseDate('dd/mm/yy', data_primeira);
 
     var num = $('.clonedInput').length;        
     for (i = num; i > 1; i--) {            
         removeParcela();
-    }          
-     
+    }               
 
     for (i = 1; i < qtde; i++) {           
-        adicionaParcela();
+        adicionaParcela();       
         
-        var d = $.datepicker.parseDate('dd/mm/yy', data_primeira);
-        d.setMonth(d.getMonth() + i);
-        $('#calendario'+i).datepicker('setDate', d);        
+    }
+
+    num = $('.clonedInput').length;        
+    for (j = 1; j <= num; j++) {            
+        $('#calendario' + j).datepicker({
+            dateFormat: 'dd/mm/yy',
+            dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+            dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+            dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+            monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+            nextText: 'Próximo',
+            prevText: 'Anterior'
+
+        });  
+        $('#calendario' + j).datepicker('setDate', d);   
+        d.setMonth(d.getMonth() + 1);
     }
 });
 

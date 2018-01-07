@@ -8,7 +8,7 @@
 				<input type='number' id="numeroInicial" class="form-control" placeholder="Número de Parcelas" />
 				
 				<input type='text' id="dataInicial" class="form-control 
-				escolherData" placeholder="Data 1ª Parcela" />
+				escolherData" placeholder="Data 1ª Parcela" style="position: relative; z-index: 100000;" />
 
 				<button type="button" class="btn btn-default" id="botaoParcelas">
 	              Calcular
