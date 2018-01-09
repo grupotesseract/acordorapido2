@@ -14,9 +14,9 @@ use Flash;
 use Response;
 use App\DataTables\UserDataTable;
 use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends AppBaseController
 {
@@ -124,16 +124,13 @@ class UserController extends AppBaseController
      */
     public function update($id, UpdateUserRequest $request)
     {
-        
         $input = $request->all();
-        
-        if (!empty($request->password)) {
-            $input['password'] = Hash::make($request->password);
-        }
-        else {
-            $input = array_except($input,['password']);
-        }        
 
+        if (! empty($request->password)) {
+            $input['password'] = Hash::make($request->password);
+        } else {
+            $input = array_except($input, ['password']);
+        }
 
         $user = $this->userRepository->findWithoutFail($id);
 
