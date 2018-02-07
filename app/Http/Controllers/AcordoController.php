@@ -98,12 +98,14 @@ class AcordoController extends AppBaseController
 
         $input = $request->all();
 
-        foreach ($input['data'] as $key => $valor) {
-            if (empty($valor) or empty($input['valor'][$key])) {
-                Flash::error('Favor, verificar se os campos de parcelamento foram preenchidos');
+        if ($input['retornoacordo'] == 'Acordo Feito') {
+            foreach ($input['data'] as $key => $valor) {
+                if (empty($valor) or empty($input['valor'][$key])) {
+                    Flash::error('Favor, verificar se os campos de parcelamento foram preenchidos');
 
-                return redirect()->back()->withInput();
-                exit;
+                    return redirect()->back()->withInput();
+                    exit;
+                }
             }
         }
 
@@ -134,14 +136,18 @@ class AcordoController extends AppBaseController
 
         $acordo = $this->acordoRepository->create($camposAcordo);
 
-        foreach ($input['parcela'] as $key => $valor) {
-            $parcela = $this->parcelamentoRepository->create([
-                'numparcela' => $valor,
-                'dataparcela' => Carbon::createFromFormat('d/m/Y', $input['data'][$key]),
-                'situacao' => 'Pendente',
-                'valorparcela' => $input['valor'][$key],
-                'acordo_id' => $acordo->id,
-            ]);
+        
+        
+        if ($input['retornoacordo'] == 'Acordo Feito') {
+            foreach ($input['parcela'] as $key => $valor) {
+                $parcela = $this->parcelamentoRepository->create([
+                    'numparcela' => $valor,
+                    'dataparcela' => Carbon::createFromFormat('d/m/Y', $input['data'][$key]),
+                    'situacao' => 'Pendente',
+                    'valorparcela' => $input['valor'][$key],
+                    'acordo_id' => $acordo->id,
+                ]);
+            }
         }
 
         foreach ($input['titulos'] as $titulo) {
@@ -167,7 +173,12 @@ class AcordoController extends AppBaseController
             'tipo' => 'Inserção - '.$input['retornoacordo'],
         ]);
 
-        Flash::success('Acordo salvo com sucesso.');
+        if ($input['retornoacordo'] == 'Acordo Feito') {
+            Flash::success('Acordo salvo com sucesso.');
+        }
+        else
+            Flash::success('Contato salvo com sucesso');
+
 
         //return redirect(route('acordos.index', ['status' => strtolower($input['retornoacordo'])]));
         $status = str_replace(' ', '', strtolower($input['retornoacordo']));
@@ -276,7 +287,11 @@ class AcordoController extends AppBaseController
 
         $valorTotalDescontado = $this->acordoRepository->calculaValorTotalDescontado($empresa, $titulos);
 
-        return $titulosDataTable->porAcordo($acordo->id)->render('acordos.edit_final', ['aluno' => $aluno, 'empresa' => $empresa, 'acordo' => $acordo, 'parcelas' => $parcelas, 'ligacoes' => $ligacoes, 'valorTotalDivida' => $valorTotalDivida, 'valorTotalDesconto' => $valorTotalDesconto, 'valorTotalBruto' => $valorTotalBruto, 'valorTotalDescontado' => $valorTotalDescontado]);
+        $valorTotalCobranca = $this->acordoRepository->calculaValorTotalCobranca($empresa, $titulos);
+
+        $valorTotalReferencia = $this->acordoRepository->calculaValorTotalReferencia($empresa, $titulos);
+
+        return $titulosDataTable->porAcordo($acordo->id)->render('acordos.edit_final', ['aluno' => $aluno, 'empresa' => $empresa, 'acordo' => $acordo, 'parcelas' => $parcelas, 'ligacoes' => $ligacoes, 'valorTotalDivida' => $valorTotalDivida, 'valorTotalDesconto' => $valorTotalDesconto, 'valorTotalBruto' => $valorTotalBruto, 'valorTotalDescontado' => $valorTotalDescontado, 'valorTotalCobranca' => $valorTotalCobranca, 'valorTotalReferencia' => $valorTotalReferencia]);
     }
 
     /**
