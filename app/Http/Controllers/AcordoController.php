@@ -136,8 +136,6 @@ class AcordoController extends AppBaseController
 
         $acordo = $this->acordoRepository->create($camposAcordo);
 
-        
-        
         if ($input['retornoacordo'] == 'Acordo Feito') {
             foreach ($input['parcela'] as $key => $valor) {
                 $parcela = $this->parcelamentoRepository->create([
@@ -175,10 +173,9 @@ class AcordoController extends AppBaseController
 
         if ($input['retornoacordo'] == 'Acordo Feito') {
             Flash::success('Acordo salvo com sucesso.');
-        }
-        else
+        } else {
             Flash::success('Contato salvo com sucesso');
-
+        }
 
         //return redirect(route('acordos.index', ['status' => strtolower($input['retornoacordo'])]));
         $status = str_replace(' ', '', strtolower($input['retornoacordo']));
