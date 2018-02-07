@@ -136,10 +136,9 @@ class AcordoController extends AppBaseController
 
         $acordo = $this->acordoRepository->create($camposAcordo);
 
-        
-        
         foreach ($input['parcela'] as $key => $valor) {
             if (!empty($valor) && !empty($input['data'][$key])) {
+
                 $parcela = $this->parcelamentoRepository->create([
                     'numparcela' => $valor,
                     'dataparcela' => Carbon::createFromFormat('d/m/Y', $input['data'][$key]),
@@ -175,10 +174,9 @@ class AcordoController extends AppBaseController
 
         if ($input['retornoacordo'] == 'Acordo Feito') {
             Flash::success('Acordo salvo com sucesso.');
-        }
-        else
+        } else {
             Flash::success('Contato salvo com sucesso');
-
+        }
 
         //return redirect(route('acordos.index', ['status' => strtolower($input['retornoacordo'])]));
         $status = str_replace(' ', '', strtolower($input['retornoacordo']));
