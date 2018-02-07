@@ -34,7 +34,7 @@ class ClienteDataTableModal extends DataTable
      */
     public function query()
     {
-        $clientes = Cliente::query()->orderBy('nome','asc')->whereIn('id', $this->cliente)->where('negativado', true);
+        $clientes = Cliente::query()->orderBy('nome', 'asc')->whereIn('id', $this->cliente)->where('negativado', true);
 
         return $this->applyScopes($clientes);
     }
