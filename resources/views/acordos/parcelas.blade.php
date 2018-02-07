@@ -20,7 +20,7 @@
 
 <div class="row">
     
-	@if (!empty($parcelas))
+	@if ($parcelas->count() > 0)
 		@foreach ($parcelas as $parcela)
 			<div id="input{{$parcela->numparcela}}" class="col-sm-6 clonedInput" value="{{$parcela->numparcela}}">
 			    <div style="margin-bottom:4px;" id="box" class="box box-primary">	   

@@ -138,8 +138,8 @@ class AcordoController extends AppBaseController
 
         
         
-        if ($input['retornoacordo'] == 'Acordo Feito') {
-            foreach ($input['parcela'] as $key => $valor) {
+        foreach ($input['parcela'] as $key => $valor) {
+            if (!empty($valor) && !empty($input['data'][$key])) {
                 $parcela = $this->parcelamentoRepository->create([
                     'numparcela' => $valor,
                     'dataparcela' => Carbon::createFromFormat('d/m/Y', $input['data'][$key]),
@@ -305,6 +305,7 @@ class AcordoController extends AppBaseController
     public function update($id, UpdateAcordoRequest $request)
     {
         $request->request->add(['situacao' => $request->retornoacordo]);
+        $request->request->add(['user_id' => Auth::id()]);
 
         $acordo = $this->acordoRepository->findWithoutFail($id);
 
