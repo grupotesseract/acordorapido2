@@ -137,8 +137,7 @@ class AcordoController extends AppBaseController
         $acordo = $this->acordoRepository->create($camposAcordo);
 
         foreach ($input['parcela'] as $key => $valor) {
-            if (!empty($valor) && !empty($input['data'][$key])) {
-
+            if (! empty($valor) && ! empty($input['data'][$key])) {
                 $parcela = $this->parcelamentoRepository->create([
                     'numparcela' => $valor,
                     'dataparcela' => Carbon::createFromFormat('d/m/Y', $input['data'][$key]),
