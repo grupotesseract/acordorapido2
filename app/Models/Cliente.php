@@ -49,7 +49,7 @@ class Cliente extends Model
         'email',
         'curso',
         'serie',
-        'cpf_responsavel'
+        'cpf_responsavel',
     ];
 
     /**
@@ -70,7 +70,7 @@ class Cliente extends Model
         'celular2' => 'string',
         'ra' => 'string',
         'negativado' => 'boolean',
-        'cpf_responsavel' => 'string'
+        'cpf_responsavel' => 'string',
     ];
 
     /**
