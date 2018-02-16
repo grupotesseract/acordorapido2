@@ -41,6 +41,7 @@
                         <p>Série: {{$aluno->serie}} </p>
                         <p>Email: {{$aluno->email}}</p>              
                         <p>Responsável: {{$aluno->responsavel}} </p>
+                        <p>CPF Responsavel: {{$aluno->cpf_responsavel}} </p>
                         <p>Celular 1: {{$aluno->celular}}</p>
                         <p>Celular 2: {{$aluno->celular2}}</p>
                         <p>Telefone 1: {{$aluno->telefone}}</p>
