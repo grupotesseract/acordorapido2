@@ -11,9 +11,8 @@
 namespace App\Models;
 
 use Eloquent as Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Carbon\Carbon as Carbon;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Acordo.
@@ -42,7 +41,7 @@ class Acordo extends Model
         'user_id',
         'cliente_id',
         'empresa_id',
-        'data_retorno'
+        'data_retorno',
     ];
 
     /**
@@ -56,7 +55,7 @@ class Acordo extends Model
         'user_id' => 'integer',
         'cliente_id' => 'integer',
         'empresa_id' => 'integer',
-        'data_retorno' => 'date'
+        'data_retorno' => 'date',
     ];
 
     /**
@@ -148,5 +147,4 @@ class Acordo extends Model
 
         return $data;
     }
-
 }

@@ -124,7 +124,7 @@ class AcordoController extends AppBaseController
             'user_id',
             'cliente_id',
             'empresa_id',
-            'data_retorno'
+            'data_retorno',
         ];
 
         $camposAcordo = array_filter(
@@ -330,7 +330,6 @@ class AcordoController extends AppBaseController
 
         $parcelamentoDeletados = Parcelamento::where('acordo_id', $acordo->id)->delete();
 
-        
         if (isset($input['parcela'])) {
             foreach ($input['parcela'] as $key => $valor) {
                 $parcela = $this->parcelamentoRepository->create([
