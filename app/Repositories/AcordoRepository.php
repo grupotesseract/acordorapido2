@@ -94,7 +94,8 @@ class AcordoRepository extends BaseRepository
             $valortotal += $titulo->calculadohonorariobrutosemformato;
         }
 
-        return $valortotal;
+        
+        return number_format($valortotal, 2, '.', '');
     }
 
     public function calculaValorTotalReferencia($empresa, $titulos)
