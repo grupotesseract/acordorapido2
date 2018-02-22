@@ -12,6 +12,8 @@ namespace App\Models;
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon as Carbon;
+
 
 /**
  * Class Acordo.
@@ -40,6 +42,7 @@ class Acordo extends Model
         'user_id',
         'cliente_id',
         'empresa_id',
+        'data_retorno'
     ];
 
     /**
@@ -53,6 +56,7 @@ class Acordo extends Model
         'user_id' => 'integer',
         'cliente_id' => 'integer',
         'empresa_id' => 'integer',
+        'data_retorno' => 'date'
     ];
 
     /**
@@ -132,4 +136,17 @@ class Acordo extends Model
     {
         return number_format($value, 2, ',', '.');
     }
+
+    public function setDataRetornoAttribute($value)
+    {
+        $this->attributes['data_retorno'] = Carbon::createFromFormat('d/m/Y', $value);
+    }
+
+    public function getDataRetornoAttribute($value)
+    {
+        $data = Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
+
+        return $data;
+    }
+
 }

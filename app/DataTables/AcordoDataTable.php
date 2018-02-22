@@ -105,6 +105,7 @@ class AcordoDataTable extends DataTable
             'observação' => ['name' => 'observacao', 'data' => 'observacao'],
             'operador' => ['name' => 'user_id', 'data' => 'user.name'],
             'situacao' => ['name' => 'situacao', 'data' => 'situacao', 'title' => 'Situação'],
+            'data_retorno' => ['name' => 'data_retorno', 'data' => 'data_retorno', 'title' => 'Data de Retorno'],
             'aluno' => ['name' => 'cliente_id', 'data' => 'cliente.nome'],
             'empresa' => ['name' => 'empresa_id', 'data' => 'empresa.nome'],
         ];

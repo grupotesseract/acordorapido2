@@ -124,6 +124,7 @@ class AcordoController extends AppBaseController
             'user_id',
             'cliente_id',
             'empresa_id',
+            'data_retorno'
         ];
 
         $camposAcordo = array_filter(
@@ -314,12 +315,14 @@ class AcordoController extends AppBaseController
         $acordo = $this->acordoRepository->update($request->all(), $id);
 
         $input = $request->all();
-        foreach ($input['data'] as $key => $valor) {
-            if (empty($valor) or empty($input['valor'][$key])) {
-                Flash::error('Favor, verificar se os campos de parcelamento foram preenchidos');
+        if ($input['retornoacordo'] == 'Acordo Feito') {
+            foreach ($input['data'] as $key => $valor) {
+                if (empty($valor) or empty($input['valor'][$key])) {
+                    Flash::error('Favor, verificar se os campos de parcelamento foram preenchidos');
 
-                return redirect()->back()->withInput();
-                exit;
+                    return redirect()->back()->withInput();
+                    exit;
+                }
             }
         }
 
@@ -327,14 +330,17 @@ class AcordoController extends AppBaseController
 
         $parcelamentoDeletados = Parcelamento::where('acordo_id', $acordo->id)->delete();
 
-        foreach ($input['parcela'] as $key => $valor) {
-            $parcela = $this->parcelamentoRepository->create([
-                'numparcela' => $valor,
-                'dataparcela' => Carbon::createFromFormat('d/m/Y', $input['data'][$key]),
-                'situacao' => 'Pendente',
-                'valorparcela' => $input['valor'][$key],
-                'acordo_id' => $acordo->id,
-            ]);
+        
+        if (isset($input['parcela'])) {
+            foreach ($input['parcela'] as $key => $valor) {
+                $parcela = $this->parcelamentoRepository->create([
+                    'numparcela' => $valor,
+                    'dataparcela' => Carbon::createFromFormat('d/m/Y', $input['data'][$key]),
+                    'situacao' => 'Pendente',
+                    'valorparcela' => $input['valor'][$key],
+                    'acordo_id' => $acordo->id,
+                ]);
+            }
         }
 
         foreach ($input['duracao'] as $key => $valor) {
