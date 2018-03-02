@@ -136,7 +136,6 @@ class AcordoController extends AppBaseController
 
         $acordo = $this->acordoRepository->create($camposAcordo);
 
-
         if ($input['retornoacordo'] == 'Acordo Feito') {
             foreach ($input['parcela'] as $key => $valor) {
                 $parcela = $this->parcelamentoRepository->create([
