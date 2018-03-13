@@ -50,15 +50,11 @@ class AcordoDataTable extends DataTable
      */
     public function query()
     {
-        if (isset($this->data_retorno)) 
-        {
+        if (isset($this->data_retorno)) {
             $acordos = Acordo::query()->where('situacao', $this->situacao)->where('data_retorno', $this->data_retorno)->with('cliente')->with('empresa')->with('user');
-        }
-        else 
-        { 
+        } else {
             $acordos = Acordo::query()->where('situacao', $this->situacao)->with('cliente')->with('empresa')->with('user');
         }
-
 
         return $this->applyScopes($acordos);
     }
@@ -116,9 +112,9 @@ class AcordoDataTable extends DataTable
             'valororiginal' => ['name' => 'valororiginal', 'data' => 'valororiginal', 'title' => 'Valor Original'],
             'observação' => ['name' => 'observacao', 'data' => 'observacao'],
             'operador' => ['name' => 'user.name', 'data' => 'user.name'],
-            'situacao' => ['name' => 'situacao', 'data' => 'situacao', 'title' => 'Situação'],            
+            'situacao' => ['name' => 'situacao', 'data' => 'situacao', 'title' => 'Situação'],
             'aluno' => ['name' => 'cliente.nome', 'data' => 'cliente.nome'],
-            'empresa' => ['name' => 'empresa.nome', 'data' => 'empresa.nome']
+            'empresa' => ['name' => 'empresa.nome', 'data' => 'empresa.nome'],
         ];
     }
 
