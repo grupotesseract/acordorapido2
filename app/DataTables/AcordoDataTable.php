@@ -115,10 +115,10 @@ class AcordoDataTable extends DataTable
             'valoracordado' => ['name' => 'valoracordado', 'data' => 'valoracordado', 'title' => 'Valor Negociado'],
             'valororiginal' => ['name' => 'valororiginal', 'data' => 'valororiginal', 'title' => 'Valor Original'],
             'observação' => ['name' => 'observacao', 'data' => 'observacao'],
-            'operador' => ['name' => 'user_id', 'data' => 'user.name'],
+            'operador' => ['name' => 'user.name', 'data' => 'user.name'],
             'situacao' => ['name' => 'situacao', 'data' => 'situacao', 'title' => 'Situação'],            
-            'aluno' => ['name' => 'cliente_id', 'data' => 'cliente.nome'],
-            'empresa' => ['name' => 'empresa_id', 'data' => 'empresa.nome'],
+            'aluno' => ['name' => 'cliente.nome', 'data' => 'cliente.nome'],
+            'empresa' => ['name' => 'empresa.nome', 'data' => 'empresa.nome'],
         ];
     }
 
