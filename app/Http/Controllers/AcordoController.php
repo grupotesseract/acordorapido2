@@ -73,13 +73,19 @@ class AcordoController extends AppBaseController
      */
     public function create(EmpresaDataTableModal $empresaDataTable)
     {
-        return $empresaDataTable->render('acordos.create_escolheempresa');
+        $anos = array_unique(Titulo::where('retornoacordo', null)->pluck('ano')->toArray());
+        
+        foreach ($anos as $ano) {
+            $array_anos[$ano] = $ano;
+        }
+
+        return $empresaDataTable->render('acordos.create_escolheempresa', ['anos' => $array_anos]);
     }
 
-    public function escolheAluno(ClienteDataTableModal $clienteDataTable, $empresa)
+    public function escolheAluno(ClienteDataTableModal $clienteDataTable, $empresa, $ano)
     {
         $empresa_model = Empresa::find($empresa);
-        $clientes = Titulo::where('empresa_id', $empresa)->where('retornoacordo', null)->pluck('cliente_id')->toArray();
+        $clientes = Titulo::where('empresa_id', $empresa)->where('retornoacordo', null)->where('ano', $ano)->pluck('cliente_id')->toArray();
 
         return $clienteDataTable->porCliente($clientes)->render('acordos.create_escolhealuno', ['empresa' => $empresa_model]);
     }
@@ -209,7 +215,7 @@ class AcordoController extends AppBaseController
     {
         $input = $request->all();
 
-        return redirect(route('escolhealuno', ['empresa' => $input['empresa']]));
+        return redirect(route('escolhealuno', ['empresa' => $input['empresa'], 'ano' => $input['ano']]));
     }
 
     public function finalizarAcordo(TituloDataTableModal $titulosDataTable, $aluno, $empresa)
