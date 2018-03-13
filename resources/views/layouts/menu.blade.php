@@ -86,6 +86,7 @@
 <li class="{{ Request::is('acordo*') ? 'active' : '' }} treeview">
     <a href="{!! route('acordos.index') !!}"><i class="glyphicon glyphicon-book"></i><span>Acordos e Negociações</span><i class="fa fa-angle-left pull-right"></i></a>
     <ul class="treeview-menu">
+        <li><a href="{{url('acordo/retornos/contatosemacordo')}}"><i class="glyphicon glyphicon-list-alt"></i><span>Retornar Contato - Hoje</span></a></li>
         <li><a href="{{url('acordo/contatosemacordo')}}"><i class="glyphicon glyphicon-list-alt"></i><span>Contatos sem Acordo</span></a></li>
         <li><a href="{{url('acordo/acordosfeitos')}}"><i class="glyphicon glyphicon-list-alt"></i><span>Acordos Feitos</span></a></li>
         <li><a href="{!! route('acordos.create') !!}"><i class="fa fa-edit"></i><span>Entrar em Contato com Aluno</span></a></li>

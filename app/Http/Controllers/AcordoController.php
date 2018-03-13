@@ -67,19 +67,49 @@ class AcordoController extends AppBaseController
     }
 
     /**
+     * Display a listing of the Acordo for today.
+     *
+     * @param AcordoDataTable $acordoDataTable
+     * @return Response
+     */
+    public function indexRetorno(AcordoDataTable $acordoDataTable, $status)
+    {
+        switch ($status) {
+
+            case 'contatosemacordo':
+                $situacao = 'Contato sem Acordo';
+                break;
+
+            default:
+                $situacao = 'Acordo Feito';
+                break;
+        }
+
+        $data = Carbon::now();
+
+        return $acordoDataTable->porSituacaoDataRetorno($situacao, $data->toDateString())->render('acordos.index');
+    }
+
+    /**
      * Show the form for creating a new Acordo.
      *
      * @return Response
      */
     public function create(EmpresaDataTableModal $empresaDataTable)
     {
-        return $empresaDataTable->render('acordos.create_escolheempresa');
+        $anos = array_unique(Titulo::where('retornoacordo', null)->pluck('ano')->toArray());
+
+        foreach ($anos as $ano) {
+            $array_anos[$ano] = $ano;
+        }
+
+        return $empresaDataTable->render('acordos.create_escolheempresa', ['anos' => $array_anos]);
     }
 
-    public function escolheAluno(ClienteDataTableModal $clienteDataTable, $empresa)
+    public function escolheAluno(ClienteDataTableModal $clienteDataTable, $empresa, $ano)
     {
         $empresa_model = Empresa::find($empresa);
-        $clientes = Titulo::where('empresa_id', $empresa)->where('retornoacordo', null)->pluck('cliente_id')->toArray();
+        $clientes = Titulo::where('empresa_id', $empresa)->where('retornoacordo', null)->where('ano', $ano)->pluck('cliente_id')->toArray();
 
         return $clienteDataTable->porCliente($clientes)->render('acordos.create_escolhealuno', ['empresa' => $empresa_model]);
     }
@@ -124,6 +154,7 @@ class AcordoController extends AppBaseController
             'user_id',
             'cliente_id',
             'empresa_id',
+            'data_retorno',
         ];
 
         $camposAcordo = array_filter(
@@ -208,7 +239,7 @@ class AcordoController extends AppBaseController
     {
         $input = $request->all();
 
-        return redirect(route('escolhealuno', ['empresa' => $input['empresa']]));
+        return redirect(route('escolhealuno', ['empresa' => $input['empresa'], 'ano' => $input['ano']]));
     }
 
     public function finalizarAcordo(TituloDataTableModal $titulosDataTable, $aluno, $empresa)
@@ -314,12 +345,14 @@ class AcordoController extends AppBaseController
         $acordo = $this->acordoRepository->update($request->all(), $id);
 
         $input = $request->all();
-        foreach ($input['data'] as $key => $valor) {
-            if (empty($valor) or empty($input['valor'][$key])) {
-                Flash::error('Favor, verificar se os campos de parcelamento foram preenchidos');
+        if ($input['retornoacordo'] == 'Acordo Feito') {
+            foreach ($input['data'] as $key => $valor) {
+                if (empty($valor) or empty($input['valor'][$key])) {
+                    Flash::error('Favor, verificar se os campos de parcelamento foram preenchidos');
 
-                return redirect()->back()->withInput();
-                exit;
+                    return redirect()->back()->withInput();
+                    exit;
+                }
             }
         }
 
@@ -327,14 +360,16 @@ class AcordoController extends AppBaseController
 
         $parcelamentoDeletados = Parcelamento::where('acordo_id', $acordo->id)->delete();
 
-        foreach ($input['parcela'] as $key => $valor) {
-            $parcela = $this->parcelamentoRepository->create([
-                'numparcela' => $valor,
-                'dataparcela' => Carbon::createFromFormat('d/m/Y', $input['data'][$key]),
-                'situacao' => 'Pendente',
-                'valorparcela' => $input['valor'][$key],
-                'acordo_id' => $acordo->id,
-            ]);
+        if (isset($input['parcela'])) {
+            foreach ($input['parcela'] as $key => $valor) {
+                $parcela = $this->parcelamentoRepository->create([
+                    'numparcela' => $valor,
+                    'dataparcela' => Carbon::createFromFormat('d/m/Y', $input['data'][$key]),
+                    'situacao' => 'Pendente',
+                    'valorparcela' => $input['valor'][$key],
+                    'acordo_id' => $acordo->id,
+                ]);
+            }
         }
 
         foreach ($input['duracao'] as $key => $valor) {

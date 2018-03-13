@@ -115,9 +115,20 @@
 
         <div class="box box-primary">
             <div class="box-body">                    
-                <input type="radio" name="retornoacordo" value="Acordo Feito" {{ ($acordo->situacao == 'Acordo Feito') ? "checked" : '' }}> Acordo Feito<br>
-                <input type="radio" name="retornoacordo" value="Contato sem Acordo" {{ ($acordo->situacao == 'Contato sem Acordo') ? "checked" : '' }}>Contato sem Acordo<br>
+                
+                <div class="col-sm-6">
+                    <input type="radio" name="retornoacordo" value="Acordo Feito" {{ 
+                    ($acordo->situacao == 'Acordo Feito') ? "checked" : '' }}> Acordo Feito<br>
+                    <input type="radio" name="retornoacordo" value="Contato sem Acordo" {{ ($acordo->situacao == 'Contato sem Acordo') ? "checked" : '' }}>Contato sem Acordo<br>
+                </div>
+
+                <div class="col-sm-6">
+                    {!! Form::label('data_retorno', 'Data de Retorno:') !!}    
+                    
+                    <input type="text" class="form-control escolherData" name="data_retorno" placeholder="Data de Retorno" value="{{ $acordo->dataretornoconvertida }}" />
+                </div>
             </div>
+
         </div> 
 
         <div class="box box-primary">

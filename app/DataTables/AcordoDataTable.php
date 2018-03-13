@@ -24,6 +24,14 @@ class AcordoDataTable extends DataTable
         return $this;
     }
 
+    public function porSituacaoDataRetorno($situacao, $data_retorno)
+    {
+        $this->situacao = $situacao;
+        $this->data_retorno = $data_retorno;
+
+        return $this;
+    }
+
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -42,11 +50,15 @@ class AcordoDataTable extends DataTable
      */
     public function query()
     {
-        if (isset($this->situacao)) {
-            $acordos = Acordo::query()->where('situacao', $this->situacao)->with('cliente')->with('empresa')->with('user');
-        } else {
-            $acordos = Acordo::query()->with('cliente')->with('empresa')->with('user');
+        if (isset($this->data_retorno)) 
+        {
+            $acordos = Acordo::query()->where('situacao', $this->situacao)->where('data_retorno', $this->data_retorno)->with('cliente')->with('empresa')->with('user');
         }
+        else 
+        { 
+            $acordos = Acordo::query()->where('situacao', $this->situacao)->with('cliente')->with('empresa')->with('user');
+        }
+
 
         return $this->applyScopes($acordos);
     }
@@ -103,10 +115,10 @@ class AcordoDataTable extends DataTable
             'valoracordado' => ['name' => 'valoracordado', 'data' => 'valoracordado', 'title' => 'Valor Negociado'],
             'valororiginal' => ['name' => 'valororiginal', 'data' => 'valororiginal', 'title' => 'Valor Original'],
             'observação' => ['name' => 'observacao', 'data' => 'observacao'],
-            'operador' => ['name' => 'user_id', 'data' => 'user.name'],
-            'situacao' => ['name' => 'situacao', 'data' => 'situacao', 'title' => 'Situação'],
-            'aluno' => ['name' => 'cliente_id', 'data' => 'cliente.nome'],
-            'empresa' => ['name' => 'empresa_id', 'data' => 'empresa.nome'],
+            'operador' => ['name' => 'user.name', 'data' => 'user.name'],
+            'situacao' => ['name' => 'situacao', 'data' => 'situacao', 'title' => 'Situação'],            
+            'aluno' => ['name' => 'cliente.nome', 'data' => 'cliente.nome'],
+            'empresa' => ['name' => 'empresa.nome', 'data' => 'empresa.nome']
         ];
     }
 
