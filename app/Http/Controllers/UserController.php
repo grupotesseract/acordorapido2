@@ -14,6 +14,7 @@ use Flash;
 use Response;
 use App\DataTables\UserDataTable;
 use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 
@@ -58,6 +59,7 @@ class UserController extends AppBaseController
     public function store(CreateUserRequest $request)
     {
         $input = $request->all();
+        $input['password'] = Hash::make($request->password);
 
         $user = $this->userRepository->create($input);
 
@@ -122,6 +124,14 @@ class UserController extends AppBaseController
      */
     public function update($id, UpdateUserRequest $request)
     {
+        $input = $request->all();
+
+        if (! empty($request->password)) {
+            $input['password'] = Hash::make($request->password);
+        } else {
+            $input = array_except($input, ['password']);
+        }
+
         $user = $this->userRepository->findWithoutFail($id);
 
         if (empty($user)) {
@@ -130,7 +140,7 @@ class UserController extends AppBaseController
             return redirect(route('users.index'));
         }
 
-        $user = $this->userRepository->update($request->all(), $id);
+        $user = $this->userRepository->update($input, $id);
         $user->syncPermissions($request->permissoes);
 
         Flash::success('User updated successfully.');

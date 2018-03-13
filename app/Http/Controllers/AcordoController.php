@@ -333,6 +333,7 @@ class AcordoController extends AppBaseController
     public function update($id, UpdateAcordoRequest $request)
     {
         $request->request->add(['situacao' => $request->retornoacordo]);
+        $request->request->add(['user_id' => Auth::id()]);
 
         $acordo = $this->acordoRepository->findWithoutFail($id);
 
@@ -422,6 +423,6 @@ class AcordoController extends AppBaseController
 
         Flash::success('Acordo excluído com sucesso.');
 
-        return redirect(route('acordos.index'));
+        return redirect()->back();
     }
 }

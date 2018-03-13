@@ -117,12 +117,24 @@ $(document).on('change', '.valor', function () {
     var atual = $(this).val().replace(/\./g, "").replace(",", ".");
     var diferenca = prev - atual;
 
-    var valorAntigoUltimaParcela = $('.valor').last().val().replace(/\./g, "").replace(",", ".");
+    console.log(diferenca);
 
-    valorNovoUltimaParcela = (+valorAntigoUltimaParcela + diferenca).toFixed(2);
-    valorNovoUltimaParcela = valorNovoUltimaParcela.toString().replace(".", ",");
+    var totalParcelas = $('.valor').length;
+    var index = $('.valor').index($(this));
 
-    $('.valor').last().val(valorNovoUltimaParcela);
+    var parcelasAfetadas = totalParcelas - (index + 1);
+    console.log(parcelasAfetadas);
+    var valorParcelas = diferenca / parcelasAfetadas;
+    console.log(valorParcelas);
+
+    $('.valor').each(function (i, obj) {
+        if (i > index) {
+            var valorAntigoParcela = $(obj).val().replace(/\./g, "").replace(",", ".");
+            var valorNovoParcela = (+valorAntigoParcela + valorParcelas).toFixed(2);
+            var valorNovoParcela = valorNovoParcela.toString().replace(".", ",");
+            $(obj).val(valorNovoParcela);
+        }
+    });
 
     $('.valor').trigger('input');
 });

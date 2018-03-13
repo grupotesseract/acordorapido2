@@ -122,6 +122,7 @@
                         
                         <input type="text" class="form-control escolherData" name="data_retorno" placeholder="Data de Retorno" />
                     </div>
+
                 </div>
             </div>
                         
