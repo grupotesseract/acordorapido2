@@ -29,9 +29,11 @@ class Acordo extends Model
 {
     use SoftDeletes;
 
+    protected $appends = ['dataretornoconvertida'];
+
     public $table = 'acordos';
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'data_retorno'];
 
     public $fillable = [
         'valoracordado',
@@ -142,12 +144,12 @@ class Acordo extends Model
         $this->attributes['data_retorno'] = Carbon::createFromFormat('d/m/Y', $value);
     }
 
-   /* public function getDataRetornoAttribute($value)
+    public function getDataRetornoConvertidaAttribute()
     {
-        $data = Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
+        $data = Carbon::parse($this->data_retorno)->format('d/m/Y');
 
         return $data;
-    }*/
+    }
 
 
 }

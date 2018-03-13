@@ -76,3 +76,4 @@ Route::resource('ligacaoacordos', 'LigacaoacordoController', ['middleware' => 'a
 Route::resource('historicos', 'HistoricoController', ['middleware' => 'auth']);
 
 Route::get('acordo/{status}', 'AcordoController@index', ['middleware' => 'auth']);
+Route::get('acordo/retornos/{status}', 'AcordoController@indexRetorno', ['middleware' => 'auth']);

@@ -125,7 +125,7 @@
                 <div class="col-sm-6">
                     {!! Form::label('data_retorno', 'Data de Retorno:') !!}    
                     
-                    <input type="text" class="form-control escolherData" name="data_retorno" placeholder="Data de Retorno" value="{{ $acordo->data_retorno }}" />
+                    <input type="text" class="form-control escolherData" name="data_retorno" placeholder="Data de Retorno" value="{{ $acordo->dataretornoconvertida }}" />
                 </div>
             </div>
 

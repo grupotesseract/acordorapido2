@@ -72,7 +72,7 @@ class AcordoController extends AppBaseController
      * @param AcordoDataTable $acordoDataTable
      * @return Response
      */
-    public function indexHoje(AcordoDataTable $acordoDataTable, $status)
+    public function indexRetorno(AcordoDataTable $acordoDataTable, $status)
     {
         switch ($status) {
 
@@ -85,7 +85,9 @@ class AcordoController extends AppBaseController
                 break;
         }
 
-        return $acordoDataTable->porSituacao($situacao)->render('acordos.index');
+        $data = Carbon::now();
+
+        return $acordoDataTable->porSituacaoDataRetorno($situacao, $data->toDateString())->render('acordos.index');
     }
 
     /**
