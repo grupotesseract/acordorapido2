@@ -67,6 +67,28 @@ class AcordoController extends AppBaseController
     }
 
     /**
+     * Display a listing of the Acordo for today.
+     *
+     * @param AcordoDataTable $acordoDataTable
+     * @return Response
+     */
+    public function indexHoje(AcordoDataTable $acordoDataTable, $status)
+    {
+        switch ($status) {
+
+            case 'contatosemacordo':
+                $situacao = 'Contato sem Acordo';
+                break;
+
+            default:
+                $situacao = 'Acordo Feito';
+                break;
+        }
+
+        return $acordoDataTable->porSituacao($situacao)->render('acordos.index');
+    }
+
+    /**
      * Show the form for creating a new Acordo.
      *
      * @return Response
