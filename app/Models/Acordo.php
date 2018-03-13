@@ -11,6 +11,7 @@
 namespace App\Models;
 
 use Eloquent as Model;
+use Carbon\Carbon as Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -28,9 +29,11 @@ class Acordo extends Model
 {
     use SoftDeletes;
 
+    protected $appends = ['dataretornoconvertida'];
+
     public $table = 'acordos';
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at', 'data_retorno'];
 
     public $fillable = [
         'valoracordado',
@@ -40,6 +43,7 @@ class Acordo extends Model
         'user_id',
         'cliente_id',
         'empresa_id',
+        'data_retorno',
     ];
 
     /**
@@ -53,6 +57,7 @@ class Acordo extends Model
         'user_id' => 'integer',
         'cliente_id' => 'integer',
         'empresa_id' => 'integer',
+        'data_retorno' => 'string',
     ];
 
     /**
@@ -131,5 +136,17 @@ class Acordo extends Model
     public function getValororiginalAttribute($value)
     {
         return number_format($value, 2, ',', '.');
+    }
+
+    public function setDataRetornoAttribute($value)
+    {
+        $this->attributes['data_retorno'] = Carbon::createFromFormat('d/m/Y', $value);
+    }
+
+    public function getDataRetornoConvertidaAttribute()
+    {
+        $data = Carbon::parse($this->data_retorno)->format('d/m/Y');
+
+        return $data;
     }
 }

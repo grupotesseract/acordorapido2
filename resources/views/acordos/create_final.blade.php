@@ -41,6 +41,7 @@
                         <p>Série: {{$aluno->serie}} </p>
                         <p>Email: {{$aluno->email}}</p>              
                         <p>Responsável: {{$aluno->responsavel}} </p>
+                        <p>CPF Responsavel: {{$aluno->cpf_responsavel}} </p>
                         <p>Celular 1: {{$aluno->celular}}</p>
                         <p>Celular 2: {{$aluno->celular2}}</p>
                         <p>Telefone 1: {{$aluno->telefone}}</p>
@@ -111,8 +112,17 @@
 
             <div class="box box-primary">
                 <div class="box-body">                    
-                    <input type="radio" name="retornoacordo" value="Contato sem Acordo" checked="checked">Contato sem Acordo<br>
-                    <input type="radio" name="retornoacordo" value="Acordo Feito"> Acordo Feito<br>
+                    <div class="col-sm-6">
+                        <input type="radio" name="retornoacordo" value="Acordo Feito"> Acordo Feito <br>
+                        <input type="radio" name="retornoacordo" value="Contato sem Acordo">Contato sem Acordo
+                    </div>
+
+                    <div class="col-sm-6">
+                        {!! Form::label('data_retorno', 'Data de Retorno:') !!}    
+                        
+                        <input type="text" class="form-control escolherData" name="data_retorno" placeholder="Data de Retorno" />
+                    </div>
+
                 </div>
             </div>
                         
