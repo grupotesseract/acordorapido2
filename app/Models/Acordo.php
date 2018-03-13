@@ -149,6 +149,4 @@ class Acordo extends Model
 
         return $data;
     }
-
-
 }
