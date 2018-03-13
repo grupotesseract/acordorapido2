@@ -20,7 +20,8 @@
             <img src="http://res.cloudinary.com/tesseract/image/upload/v1507566012/acordorapidoimagem.jpg">
         </div>
         <div class="width40-fixo borda-60 responsivo">
-            <h5>O Acordo Rápido é uma Ferramenta Inovadora para Monitorar e Recuperar Mensalidades Escolares</h5>
+            <h5>O Acordo Rápido é uma Empresa especializada em Monitorar e Recuperar Mensalidades Escolares.</h5>
+            <p>Nossa ação é continua, dividida em 2 Fases com 4 Módulos.</p>
             <p>
                 Alinhado com a modernidade e a tecnologia, o Acordo Rápido elimina o estresse da relação de cobrança, oferecendo total privacidade ao cliente.
             </p>
@@ -30,7 +31,7 @@
 </div>
 
 <div class="modulos-box" id="modulos">
-    <h4 class="titulo-centralizado"><span>FERRAMENTA MODULAR DE AÇÃO CONTÍNUA</span></h4>
+    <h4 class="titulo-centralizado"><span>AÇÃO MODULAR E CONTÍNUA</span></h4>
 
     <div class="modulo-principal">
         <div>
@@ -62,7 +63,7 @@
 {{--
 <div class="full-width" id="modulos">
     <div class="container">
-        <h4 class="titulo-centralizado"><span>Ferramenta Modular de Ação Contínua</span></h4>
+        <h4 class="titulo-centralizado"><span>Ação Modular e Contínua</span></h4>
 
         <!-- <ul id="itenslista">
             <li>PREVINE ATRASOS</li>
