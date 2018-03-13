@@ -55,7 +55,7 @@ class Acordo extends Model
         'user_id' => 'integer',
         'cliente_id' => 'integer',
         'empresa_id' => 'integer',
-        'data_retorno' => 'string'
+        'data_retorno' => 'string',
     ];
 
     /**
@@ -70,7 +70,6 @@ class Acordo extends Model
         'cliente_id' => 'required',
         'empresa_id' => 'required',
     ];
-
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -142,12 +141,10 @@ class Acordo extends Model
         $this->attributes['data_retorno'] = Carbon::createFromFormat('d/m/Y', $value);
     }
 
-   /* public function getDataRetornoAttribute($value)
-    {
-        $data = Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
+    /* public function getDataRetornoAttribute($value)
+     {
+         $data = Carbon::createFromFormat('Y-m-d', $value)->format('d/m/Y');
 
-        return $data;
-    }*/
-
-
+         return $data;
+     }*/
 }

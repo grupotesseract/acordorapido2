@@ -96,7 +96,7 @@ class AcordoController extends AppBaseController
     public function create(EmpresaDataTableModal $empresaDataTable)
     {
         $anos = array_unique(Titulo::where('retornoacordo', null)->pluck('ano')->toArray());
-        
+
         foreach ($anos as $ano) {
             $array_anos[$ano] = $ano;
         }
