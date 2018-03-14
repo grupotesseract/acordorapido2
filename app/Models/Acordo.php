@@ -140,7 +140,7 @@ class Acordo extends Model
 
     public function setDataRetornoAttribute($value)
     {
-        $this->attributes['data_retorno'] = (!is_null($value)) ? Carbon::createFromFormat('d/m/Y', $value) : null;
+        $this->attributes['data_retorno'] = (! is_null($value)) ? Carbon::createFromFormat('d/m/Y', $value) : null;
     }
 
     public function getDataRetornoConvertidaAttribute()
