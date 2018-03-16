@@ -313,13 +313,12 @@ class TituloController extends AppBaseController
 
                         if ($estado == 'azul' or $estado == 'verde') {
                             $mensagem = str_replace('[vencimento]', $vencimento, $retorno['mensagem']);
-                            $mensagem = str_replace('[nome]', $cliente->responsavel_sms, 
+                            $mensagem = str_replace('[nome]', $cliente->responsavel_sms,
                                 $mensagem);
-                            $mensagem = str_replace('[valor]', 'R$ '. $titulo->valordescontado, $mensagem);
+                            $mensagem = str_replace('[valor]', 'R$ '.$titulo->valordescontado, $mensagem);
 
                             $titulo_mensagem = $retorno['titulo'];
-                            $titulo_mensagem = str_replace('[nome]', $cliente->responsavel_sms,$titulo_mensagem);
-
+                            $titulo_mensagem = str_replace('[nome]', $cliente->responsavel_sms, $titulo_mensagem);
 
                             if (count($this->avisoRepository->findWhere(['titulo_id'  => $titulo->id, 'estado' => $estado])->toArray()) == 0) {
                                 $this->avisoRepository->create(
