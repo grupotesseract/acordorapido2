@@ -246,6 +246,7 @@ class TituloController extends AppBaseController
                         $cliente->turma = $sheet->turma;
                         $cliente->periodo = $sheet->periodo;
                         $cliente->responsavel = $sheet->responsavel;
+                        $cliente->responsavel_sms = $sheet->responsavelsms;
                         $cliente->serie = $sheet->serie;
                         $cliente->email = $sheet->email;
 
@@ -305,16 +306,20 @@ class TituloController extends AppBaseController
                         //criar registro na tabela pivot
                         $titulo->importacoes()->attach($importacao_id);
 
-                        $vencimento = date('d-m-Y', strtotime(str_replace('-', '/', $titulo->vencimento)));
+                        $vencimento = $titulo->vencimento;
 
                         $user_id = Auth::id();
                         $escola = Empresa::find($empresa_id)->nome;
 
                         if ($estado == 'azul' or $estado == 'verde') {
                             $mensagem = str_replace('[vencimento]', $vencimento, $retorno['mensagem']);
-                            $mensagem = str_replace('[nome]', $cliente->nome, $mensagem);
+                            $mensagem = str_replace('[nome]', $cliente->responsavel_sms, 
+                                $mensagem);
+                            $mensagem = str_replace('[valor]', 'R$ '. $titulo->valordescontado, $mensagem);
 
                             $titulo_mensagem = $retorno['titulo'];
+                            $titulo_mensagem = str_replace('[nome]', $cliente->responsavel_sms,$titulo_mensagem);
+
 
                             if (count($this->avisoRepository->findWhere(['titulo_id'  => $titulo->id, 'estado' => $estado])->toArray()) == 0) {
                                 $this->avisoRepository->create(
