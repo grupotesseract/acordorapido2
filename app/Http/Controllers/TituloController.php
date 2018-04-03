@@ -252,9 +252,7 @@ class TituloController extends AppBaseController
 
                         if ($estado == 'amarelo' or $estado == 'vermelho') {
                             $cliente->negativado = true;
-                        } else {
-                            $cliente->negativado = false;
-                        }
+                        
 
                         if (! $sheet->celular or strlen($sheet->celular) == 0) {
                             $importacao->temerro = true;
