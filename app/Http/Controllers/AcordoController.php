@@ -361,7 +361,6 @@ class AcordoController extends AppBaseController
 
         $parcelamentoDeletados = Parcelamento::where('acordo_id', $acordo->id)->delete();
 
-        
         if ($input['retornoacordo'] == 'Acordo Feito') {
             foreach ($input['parcela'] as $key => $valor) {
                 $parcela = $this->parcelamentoRepository->create([
