@@ -10,14 +10,14 @@
             </div>
         </div>
         <h3>Monitoramento e Recuperação de Mensalidades Escolares</h3>
-        
+
     </div>
 </div>
 
 <div class="full-width" id="empresa">
     <div class="width100">
         <div class="width60-fixo responsivo">
-            <img src="http://res.cloudinary.com/tesseract/image/upload/v1507566012/acordorapidoimagem.jpg">
+            <img src="https://res.cloudinary.com/tesseract/image/upload/v1507566012/acordorapidoimagem.jpg">
         </div>
         <div class="width40-fixo borda-60 responsivo">
             <h5>O Acordo Rápido é uma Empresa especializada em Monitorar e Recuperar Mensalidades Escolares.</h5>
@@ -36,7 +36,7 @@
     <div class="modulo-principal">
         <div>
             <img src="/img/bola-1.png">
-            <h3>Monitoramento de Mensalidades Escolares</h3>            
+            <h3>Monitoramento de Mensalidades Escolares</h3>
         </div>
     </div>
 
@@ -69,7 +69,7 @@
             <li>PREVINE ATRASOS</li>
             <li>DIMINUI A IMPONTUALIDADE</li>
             <li>RECUPERA MENSALIDADES ATRASADAS</li>
-        </ul> -->                
+        </ul> -->
 
         <div class="row modulos">
             <div class="col-xs-12 col-md-5 container-fases">
@@ -80,7 +80,7 @@
                     <ul>
                         <li class="pull-left">Todos os clientes</li>
                         <li class="pull-left">Pontualidade</li>
-                    </ul>                            
+                    </ul>
                 </div>
                 <div class="modulo col-sm-6 modulo-verde">
                     <h5>Recuperação</h5>
@@ -92,13 +92,13 @@
             </div>
 
             <div class="col-xs-hidden col-md-2"></div>
-            
+
             <div class="col-xs-12 col-md-5 container-fases">
                 <h5>FASE II</h5>
 
                 <div class="modulo col-sm-6 modulo-amarelo">
                     <h5>Intensiva</h5>
-                    
+
                     <ul>
                         <li class="pull-left">Inadimplentes</li>
                         <li class="pull-left">Recuperação</li>
