@@ -2,12 +2,12 @@
 @if (empty($acordo))
 	<div class="form-group col-sm-12 col-lg-12">
 	    {!! Form::label('observacao', 'Histórico do Contato:') !!}
-	    {!! Form::textarea('observacao', null, ['class' => 'form-control']) !!}
+	    {!! Form::textarea('observacao', null, ['class' => 'form-control', 'required']) !!}
 	</div>
 @else
 	<div class="form-group col-sm-12 col-lg-12">
 	    {!! Form::label('observacao', 'Histórico do Contato:') !!}
-	    {!! Form::textarea('observacao', $acordo->observacao, ['class' => 'form-control']) !!}
+	    {!! Form::textarea('observacao', $acordo->observacao, ['class' => 'form-control', 'required']) !!}
 	</div>
 @endif
 
