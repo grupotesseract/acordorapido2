@@ -34,7 +34,7 @@
 			    		<span class="input-group-addon">
 			                <span class="glyphicon glyphicon-usd"></span>
 			            </span>			    
-				    	<input type="text" name="valor[]" value="{{$parcela->valorparcela}}" class="form-control valor"/>
+				    	<input type="text" name="valor[]" value="{{$parcela->valorparcela}}" class="form-control valor" required />
 				    </div>
 
 
@@ -43,7 +43,7 @@
 			            <span class="input-group-addon">
 			                <span class="glyphicon glyphicon-calendar"></span>
 			            </span>
-			            <input type='text' name="data[]" value="{{$parcela->dataparcela}}" id="calendario{{$parcela->numparcela}}" class="form-control escolherData"/>
+			            <input type='text' name="data[]" value="{{$parcela->dataparcela}}" id="calendario{{$parcela->numparcela}}" class="form-control escolherData dataParcela" style="position: relative; z-index: 100000;" required/>
 			        </div>	  
 			    </div>
 			</div>  
@@ -60,7 +60,7 @@
 		    		<span class="input-group-addon">
 		                <span class="glyphicon glyphicon-usd"></span>
 		            </span>			    
-			    	<input type="text" name="valor[]" class="form-control valor"/>
+			    	<input type="text" name="valor[]" class="form-control valor" required/>
 			    </div>
 
 
@@ -69,7 +69,7 @@
 		            <span class="input-group-addon">
 		                <span class="glyphicon glyphicon-calendar"></span>
 		            </span>
-		            <input type='text' name="data[]" id="calendario1" class="form-control escolherData"/>
+		            <input type='text' name="data[]" id="calendario1" class="form-control escolherData dataParcela" style="position: relative; z-index: 100000;" required/>
 		        </div>	    
 	    
 	    </div>

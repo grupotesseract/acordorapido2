@@ -112,20 +112,30 @@ $(document).on('focusin', '.valor', function () {
     $(this).data('val', $(this).val().replace(/\./g, "").replace(",", "."));
 });
 
+$(document).on('change', '.radioAcordo', function () {
+    var boolean_required = $(this).val() === 'Acordo Feito';
+    $('.valor').each(function (i, obj) {
+        $(obj).attr('required', boolean_required);
+    });
+
+    $('.dataParcela').each(function (i, obj) {
+        $(obj).attr('required', boolean_required);
+    });
+
+    $('#dataRetorno').attr('required', false);
+    $('#dataInicial').attr('required', boolean_required);
+});
+
 $(document).on('change', '.valor', function () {
     var prev = $(this).data('val');
     var atual = $(this).val().replace(/\./g, "").replace(",", ".");
     var diferenca = prev - atual;
 
-    console.log(diferenca);
-
     var totalParcelas = $('.valor').length;
     var index = $('.valor').index($(this));
 
     var parcelasAfetadas = totalParcelas - (index + 1);
-    console.log(parcelasAfetadas);
     var valorParcelas = diferenca / parcelasAfetadas;
-    console.log(valorParcelas);
 
     $('.valor').each(function (i, obj) {
         if (i > index) {
