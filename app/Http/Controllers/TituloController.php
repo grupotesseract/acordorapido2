@@ -334,6 +334,7 @@ class TituloController extends AppBaseController
                             }
                         }
                     }
+                }
                 });
             });
         } catch (\Exception $e) {
