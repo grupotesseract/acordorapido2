@@ -38,6 +38,10 @@
         border-bottom: 0 solid transparent;
     }
 
+    .skin-purple .main-header li.user-header {
+        background-color: #a9a3a3;
+    }
+
 </style>
 
 
