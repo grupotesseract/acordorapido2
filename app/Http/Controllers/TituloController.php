@@ -344,9 +344,7 @@ class TituloController extends AppBaseController
             exit;
         }
 
-        if ($estado == 'verde' or $estado == 'azul') {
-            $this->tituloRepository->atualizaPagantes($estado, $empresa_id, $titulos_importados);
-        }
+        $this->tituloRepository->atualizaPagantes($estado, $empresa_id, $titulos_importados);
 
         \Session::flash('flash_message_success', true);
         \Session::flash('flash_message', 'Títulos importados com sucesso!');
