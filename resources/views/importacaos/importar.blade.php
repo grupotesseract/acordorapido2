@@ -4,15 +4,15 @@
 
 
 <style>
-    .content-wrapper, .right-side {
+    .content-wrapper {
         @if ($estado == 'azul')
             background-color: #ecf0f5;
         @elseif ($estado == 'verde')
-            background-color: #92c594;
+            background-color: #b6f3b8;
         @elseif ($estado == 'amarelo')
-            background-color: #e8af53;
+            background-color: #eacb98;
         @elseif ($estado == 'vermelho')
-            background-color: #e27676;
+            background-color: #fdc9c9;
         @endif
     }
 </style>

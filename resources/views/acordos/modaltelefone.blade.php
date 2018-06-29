@@ -1,4 +1,4 @@
-<div id="ligacao" class="modal fade" role="dialog">
+<div id="ligacao" class="modal fade" role="dialog" style="z-index: 100000;">
   <div class="modal-dialog modal-lg">
 
     <!-- Modal content-->
