@@ -38,14 +38,14 @@ class TituloRepository extends BaseRepository
     }
 
     /**
-     * Atualiza para pago todos os titulos que não foram importados
+     * Atualiza para pago todos os titulos que não foram importados.
      *
      * @param number $empresa ID da Empresa
      */
     public function atualizaPagantes($estado, $empresa_id, $titulosimportados)
     {
 
-        /**
+        /*
          * O $estado diz respeito a qual estado está sendo feita a importação
          * Logo, deveremos tratar os pagantes do módulo anterior.
          */
