@@ -38,7 +38,7 @@ class TituloRepository extends BaseRepository
     }
 
     /**
-     * Atualiza para pago todos os titulos que não foram importados para o módulo VERDE.
+     * Atualiza para pago todos os titulos que não foram importados
      *
      * @param number $empresa ID da Empresa
      */
@@ -49,7 +49,7 @@ class TituloRepository extends BaseRepository
          * O $estado diz respeito a qual estado está sendo feita a importação
          * Logo, deveremos tratar os pagantes do módulo anterior.
          */
-        switch ($estado) {
+        /*switch ($estado) {
             case 'azul':
             case 'verde':
                 $estado_pagantes = 'azul';
@@ -60,10 +60,10 @@ class TituloRepository extends BaseRepository
             case 'vermelho':
                 $estado_pagantes = 'amarelo';
                 break;
-        }
+        }*/
 
         Titulo::where('empresa_id', $empresa_id)
-              ->where('estado', $estado_pagantes)
+              ->where('estado', $estado)
               ->where('pago', false)
               ->whereNotIn('id', $titulosimportados)
               ->update(['pago' => true]);

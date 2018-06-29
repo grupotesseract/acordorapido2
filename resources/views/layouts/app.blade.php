@@ -27,6 +27,19 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui//1.12.1/themes/base/jquery-ui.css" />
 
+<style>
+    .skin-purple .main-header .navbar {
+        background-color: #a9a3a3;
+    }
+
+    .skin-purple .main-header .logo {
+        background-color: #a9a3a3;
+        color: #fff;
+        border-bottom: 0 solid transparent;
+    }
+
+</style>
+
 
 <div class="wrapper">
     <!-- Main Header -->
@@ -51,7 +64,7 @@
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
-                            <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+                            <img src="/img/bola-1.png"
                                  class="user-image" alt="User Image"/>
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs">{!! Auth::user()->name !!}</span>
@@ -59,7 +72,7 @@
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">
-                                <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+                                <img src="/img/bola-1.png"
                                      class="img-circle" alt="User Image"/>
                                 <p>
                                     {!! Auth::user()->name !!}
@@ -68,9 +81,9 @@
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
-                                <div class="pull-left">
+                                <!-- <div class="pull-left">
                                     <a href="#" class="btn btn-default btn-flat">{{ trans('message.profile') }}</a>
-                                </div>
+                                </div> -->
                                 <div class="pull-right">
                                     <a href="{!! url('/logout') !!}" class="btn btn-default btn-flat"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

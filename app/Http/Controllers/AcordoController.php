@@ -109,7 +109,7 @@ class AcordoController extends AppBaseController
     public function escolheAluno(ClienteDataTableModal $clienteDataTable, $empresa, $ano)
     {
         $empresa_model = Empresa::find($empresa);
-        $clientes = Titulo::where('empresa_id', $empresa)->where('retornoacordo', null)->where('ano', $ano)->pluck('cliente_id')->toArray();
+        $clientes = Titulo::where('empresa_id', $empresa)->where('retornoacordo', null)->where('ano', $ano)->where('pago', false)->pluck('cliente_id')->toArray();
 
         return $clienteDataTable->porCliente($clientes)->render('acordos.create_escolhealuno', ['empresa' => $empresa_model]);
     }
