@@ -252,75 +252,73 @@ class TituloController extends AppBaseController
 
                         if ($estado == 'amarelo' or $estado == 'vermelho') {
                             $cliente->negativado = true;
-                        
 
-                        if (! $sheet->celular or strlen($sheet->celular) == 0) {
-                            $importacao->temerro = true;
-                            $importacao->save();
-                        }
+                            if (! $sheet->celular or strlen($sheet->celular) == 0) {
+                                $importacao->temerro = true;
+                                $importacao->save();
+                            }
 
-                        $cliente->celular = $sheet->celular;
+                            $cliente->celular = $sheet->celular;
 
-                        if (! $sheet->celular or strlen($sheet->celular) == 0) {
-                            $importacao->temerro = true;
-                            $importacao->save();
-                        }
+                            if (! $sheet->celular or strlen($sheet->celular) == 0) {
+                                $importacao->temerro = true;
+                                $importacao->save();
+                            }
 
-                        $cliente->telefone = $sheet->telefone;
-                        $cliente->telefone2 = $sheet->telefone2;
-                        $cliente->celular2 = $sheet->celular2;
+                            $cliente->telefone = $sheet->telefone;
+                            $cliente->telefone2 = $sheet->telefone2;
+                            $cliente->celular2 = $sheet->celular2;
 
-                        if (! $sheet->ra or strlen($sheet->ra) == 0) {
-                            $importacao->temerro = true;
-                            $importacao->save();
-                        }
+                            if (! $sheet->ra or strlen($sheet->ra) == 0) {
+                                $importacao->temerro = true;
+                                $importacao->save();
+                            }
 
-                        $cliente->ra = $sheet->ra;
-                        $cliente->save();
-                        $cliente_id = $cliente->id;
+                            $cliente->ra = $sheet->ra;
+                            $cliente->save();
+                            $cliente_id = $cliente->id;
 
-                        $titulo = Titulo::firstOrNew(['titulo' => $sheet->titulo, 'empresa_id' => $empresa_id]);
-                        $titulo->cliente_id = $cliente_id;
-                        $titulo->empresa_id = $empresa_id;
-                        $titulo->pago = false;
+                            $titulo = Titulo::firstOrNew(['titulo' => $sheet->titulo, 'empresa_id' => $empresa_id]);
+                            $titulo->cliente_id = $cliente_id;
+                            $titulo->empresa_id = $empresa_id;
+                            $titulo->pago = false;
 
-                        $titulo->vencimento = $sheet->vencimento;
-                        $titulo->valor = $sheet->valor;
+                            $titulo->vencimento = $sheet->vencimento;
+                            $titulo->valor = $sheet->valor;
 
-                        if (! $sheet->titulo or strlen($sheet->titulo) == 0) {
-                            $importacao->temerro = true;
-                            $importacao->save();
-                        }
+                            if (! $sheet->titulo or strlen($sheet->titulo) == 0) {
+                                $importacao->temerro = true;
+                                $importacao->save();
+                            }
 
-                        $titulo->titulo = $sheet->titulo;
-                        $titulo->estado = $estado;
-                        $titulo->ano = $sheet->ano;
-                        $titulo->desconto = $sheet->desconto;
-                        $titulo->valordescontado = $sheet->valor_com_desconto;
+                            $titulo->titulo = $sheet->titulo;
+                            $titulo->estado = $estado;
+                            $titulo->ano = $sheet->ano;
+                            $titulo->desconto = $sheet->desconto;
+                            $titulo->valordescontado = $sheet->valor_com_desconto;
 
-                        $titulo->save();
-                        $titulos_importados[] = $titulo->id;
+                            $titulo->save();
+                            $titulos_importados[] = $titulo->id;
 
-                        //criar registro na tabela pivot
-                        $titulo->importacoes()->attach($importacao_id);
+                            //criar registro na tabela pivot
+                            $titulo->importacoes()->attach($importacao_id);
 
-                        $vencimento = $titulo->vencimento;
+                            $vencimento = $titulo->vencimento;
 
-                        $user_id = Auth::id();
-                        $escola = Empresa::find($empresa_id)->nome;
+                            $user_id = Auth::id();
+                            $escola = Empresa::find($empresa_id)->nome;
 
-                        if ($estado == 'azul' or $estado == 'verde') {
-                            $mensagem = str_replace('[vencimento]', $vencimento, $retorno['mensagem']);
-                            $mensagem = str_replace('[nome]', $cliente->responsavel_sms, 
+                            if ($estado == 'azul' or $estado == 'verde') {
+                                $mensagem = str_replace('[vencimento]', $vencimento, $retorno['mensagem']);
+                                $mensagem = str_replace('[nome]', $cliente->responsavel_sms,
                                 $mensagem);
-                            $mensagem = str_replace('[valor]', 'R$ '. $titulo->valordescontado, $mensagem);
+                                $mensagem = str_replace('[valor]', 'R$ '.$titulo->valordescontado, $mensagem);
 
-                            $titulo_mensagem = $retorno['titulo'];
-                            $titulo_mensagem = str_replace('[nome]', $cliente->responsavel_sms,$titulo_mensagem);
+                                $titulo_mensagem = $retorno['titulo'];
+                                $titulo_mensagem = str_replace('[nome]', $cliente->responsavel_sms, $titulo_mensagem);
 
-
-                            if (count($this->avisoRepository->findWhere(['titulo_id'  => $titulo->id, 'estado' => $estado])->toArray()) == 0) {
-                                $this->avisoRepository->create(
+                                if (count($this->avisoRepository->findWhere(['titulo_id'  => $titulo->id, 'estado' => $estado])->toArray()) == 0) {
+                                    $this->avisoRepository->create(
                                     [
                                         'tituloaviso' => $titulo_mensagem,
                                         'texto'      => $mensagem,
@@ -332,6 +330,7 @@ class TituloController extends AppBaseController
                                     ]
 
                                 );
+                                }
                             }
                         }
                     }
