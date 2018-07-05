@@ -77,7 +77,7 @@ class User extends Authenticatable
      */
     public function historicos()
     {
-        return $this->hasMany('App\Models\Historico');
+        return $this->hasMany('App\Models\Historico')->withTrashed();
     }
 
     /**
