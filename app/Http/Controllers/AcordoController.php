@@ -421,6 +421,10 @@ class AcordoController extends AppBaseController
 
         $this->acordoRepository->delete($id);
 
+        $historico = $this->historicoRepository->create([
+            'user_id' => Auth::id(),
+        ]);
+
         Flash::success('Acordo excluído com sucesso.');
 
         return redirect()->back();

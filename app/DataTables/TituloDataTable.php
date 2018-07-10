@@ -95,7 +95,8 @@ class TituloDataTable extends DataTable
     {
         return [
             'titulo' => ['name' => 'titulo', 'data' => 'titulo'],
-            'aluno' => ['name' => 'cliente_id', 'data' => 'cliente.nome', 'searchable' => true],
+            'aluno' => ['name' => 'cliente.nome', 'data' => 'cliente.nome', 'searchable' => true],
+            'responsável' => ['name' => 'cliente.responsavel', 'data' => 'cliente.responsavel', 'searchable' => true],
             'estado' => ['name' => 'estado', 'data' => 'estado'],
             'escola' => ['name' => 'empresa.nome', 'data' => 'empresa.nome'],
             'pago' => ['name' => 'pago', 'data' => 'pago'],
