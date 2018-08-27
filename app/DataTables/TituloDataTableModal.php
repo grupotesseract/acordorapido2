@@ -70,7 +70,7 @@ class TituloDataTableModal extends DataTable
         if (isset($this->acordo_id)) {
             $titulos = Titulo::query()->where('acordo_id', $this->acordo_id)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
         } else {
-            $titulos = Titulo::query()->where('cliente_id', $this->aluno)->where('empresa_id', $this->empresa)->whereIn('estado', $this->estado)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
+            $titulos = Titulo::query()->where('cliente_id', $this->aluno)->where('empresa_id', $this->empresa)->where('pago', false)->whereIn('estado', $this->estado)->with('empresa')->with('cliente')->with('avisos.avisosenviados.user');
         }
 
         return $this->applyScopes($titulos);
