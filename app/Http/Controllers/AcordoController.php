@@ -247,7 +247,7 @@ class AcordoController extends AppBaseController
         $aluno = Cliente::find($aluno);
         $empresa = Empresa::find($empresa);
 
-        $titulos = Titulo::where(['cliente_id' => $aluno->id])->where(['empresa_id' => $empresa->id])->get();
+        $titulos = Titulo::where(['cliente_id' => $aluno->id])->where(['empresa_id' => $empresa->id])->where(['pago' => false])->get();
 
         $valorTotalDivida = $this->acordoRepository->calculaValorDivida($empresa, $titulos);
         $valorTotalDesconto = $this->acordoRepository->calculaValorTotalDesconto($empresa, $titulos);
