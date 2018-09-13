@@ -12,9 +12,11 @@
 @endif
 
 
-<!-- Submit Field -->
-<div class="form-group col-sm-12">
-    {!! Form::submit('Salvar', ['class' => 'btn btn-primary botaoSalvar', 'disabled' => 'disabled']) !!}
-    
-    <button data-target="#ligacao" type="button" class="btn btn-warning finalizaLigacao" id="finalizaLigacao" data-toggle="modal" disabled="disabled">Salvar Ligação Telefônica</button>
-</div>
+@if ($acordo->situacao !== 'Acordo Feito')
+	<!-- Submit Field -->
+	<div class="form-group col-sm-12">
+	    {!! Form::submit('Salvar', ['class' => 'btn btn-primary botaoSalvar', 'disabled' => 'disabled']) !!}
+	    
+	    <button data-target="#ligacao" type="button" class="btn btn-warning finalizaLigacao" id="finalizaLigacao" data-toggle="modal" disabled="disabled">Salvar Ligação Telefônica</button>
+	</div>
+@endif

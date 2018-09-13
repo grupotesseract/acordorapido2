@@ -73,6 +73,12 @@
             <div class="box-body">                    
                     <input type="hidden" name="cliente_id" value="{{$aluno->id}}" />
                     <input type="hidden" name="empresa_id" value="{{$empresa->id}}" />
+
+                    <div class="titulosSelecionados">
+                        @foreach ($titulos as $titulo)
+                            <input id="titulo{{$titulo->id}}"" name="titulos[]" value="{{$titulo->id}}" type="hidden">
+                        @endforeach
+                    </div>
                     @include('titulos.table')
             </div>
         </div>

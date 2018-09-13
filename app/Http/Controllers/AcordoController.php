@@ -319,7 +319,7 @@ class AcordoController extends AppBaseController
 
         $valorTotalReferencia = $this->acordoRepository->calculaValorTotalReferencia($empresa, $titulos);
 
-        return $titulosDataTable->porAcordo($acordo->id)->render('acordos.edit_final', ['aluno' => $aluno, 'empresa' => $empresa, 'acordo' => $acordo, 'parcelas' => $parcelas, 'ligacoes' => $ligacoes, 'valorTotalDivida' => $valorTotalDivida, 'valorTotalDesconto' => $valorTotalDesconto, 'valorTotalBruto' => $valorTotalBruto, 'valorTotalDescontado' => $valorTotalDescontado, 'valorTotalCobranca' => $valorTotalCobranca, 'valorTotalReferencia' => $valorTotalReferencia]);
+        return $titulosDataTable->porAcordo($acordo->id)->render('acordos.edit_final', ['aluno' => $aluno, 'empresa' => $empresa, 'acordo' => $acordo, 'parcelas' => $parcelas, 'ligacoes' => $ligacoes, 'valorTotalDivida' => $valorTotalDivida, 'valorTotalDesconto' => $valorTotalDesconto, 'valorTotalBruto' => $valorTotalBruto, 'valorTotalDescontado' => $valorTotalDescontado, 'valorTotalCobranca' => $valorTotalCobranca, 'valorTotalReferencia' => $valorTotalReferencia, 'titulos' => $titulos]);
     }
 
     /**
@@ -334,6 +334,7 @@ class AcordoController extends AppBaseController
     {
         $request->request->add(['situacao' => $request->retornoacordo]);
         $request->request->add(['user_id' => Auth::id()]);
+        $input = $request->all();
 
         $acordo = $this->acordoRepository->findWithoutFail($id);
 
@@ -343,9 +344,27 @@ class AcordoController extends AppBaseController
             return redirect(route('acordos.index'));
         }
 
-        $acordo = $this->acordoRepository->update($request->all(), $id);
+        $fillable = [
+            'valoracordado',
+            'valororiginal',
+            'observacao',
+            'situacao',
+            'user_id',
+            'cliente_id',
+            'empresa_id',
+            'data_retorno',
+        ];
 
-        $input = $request->all();
+        $camposAcordo = array_filter(
+            $input,
+            function ($key) use ($fillable) {
+                return in_array($key, $fillable);
+            },
+            ARRAY_FILTER_USE_KEY
+        );
+
+        $acordo = $this->acordoRepository->update($camposAcordo, $id);
+
         if ($input['retornoacordo'] == 'Acordo Feito') {
             foreach ($input['data'] as $key => $valor) {
                 if (empty($valor) or empty($input['valor'][$key])) {
@@ -355,6 +374,17 @@ class AcordoController extends AppBaseController
                     exit;
                 }
             }
+        }
+
+        //VOLTA OS TITULOS PRA RETORNO NULL E ATUALIZA NOVAMENTE EM SEGUIDA COM OS NOVOS
+        $titulosAcordo = $acordo->titulos()->update(['retornoacordo' => null, 'acordo_id' => null]);
+
+        foreach ($input['titulos'] as $titulo) {
+            $tituloRepo = $this->tituloRepository->update(
+                [
+                    'retornoacordo' => $input['retornoacordo'],
+                    'acordo_id' => $acordo->id,
+                ], $titulo);
         }
 
         $ligacoesDeletadas = ligacaoacordo::where('acordo_id', $acordo->id)->delete();
