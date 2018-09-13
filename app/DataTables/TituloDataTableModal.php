@@ -130,9 +130,9 @@ class TituloDataTableModal extends DataTable
 
         ];
 
-        if (isset($this->acordo_id)) {
+        /*if (isset($this->acordo_id)) {
             unset($vetor['selecionar']);
-        }
+        }*/
 
         return $vetor;
     }
