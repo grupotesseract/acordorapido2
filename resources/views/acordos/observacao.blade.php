@@ -12,7 +12,7 @@
 @endif
 
 
-@if ($acordo->situacao !== 'Acordo Feito')
+@if (empty($acordo) || (!empty($acordo) && $acordo->situacao !== 'Acordo Feito'))
 	<!-- Submit Field -->
 	<div class="form-group col-sm-12">
 	    {!! Form::submit('Salvar', ['class' => 'btn btn-primary botaoSalvar', 'disabled' => 'disabled']) !!}
